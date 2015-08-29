@@ -33,11 +33,13 @@ test:
 	grep xtest ~/.test || [ $$? -eq 0 ]
 	echo te >> ~/.test
 
-root_install_dev: root_install_user linux_rbenv_prerequisites
+root_install_dev: root_add_salt_repository root_install_user linux_rbenv_prerequisites
 	$(MAKE) ~/pkgs/direnv
 
-root_install_user:
+root_add_salt_repository:
 	add-apt-repository ppa:saltstack/salt
+
+root_install_user:
 	apt-get -y update
 	apt-get upgrade
 	# zlib1g-dev: for installing nokogirl.
