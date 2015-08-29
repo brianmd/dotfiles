@@ -1,0 +1,27 @@
+imap jj <Esc>
+set relativenumber
+let ctrlp_regexp = 0
+let ctrlp_by_filename = 1
+
+map <c-]> gt
+map <c-[> gT
+" map <m-1> 1gt
+" map <m-2> 2gt
+" map <m-3> 3gt
+" map <m-4> 4gt
+" map <m-5> 5gt
+" map <m-6> 6gt
+" map <m-7> 7gt
+" map <m-8> 8gt
+" map <m-9> 9gt
+" map <m-0> :tablast<CR>
+
+
+" set ruler
+" set matchpairs+=<:>
+" set backspace=indent,eol,start
+set switchbuf=usetab,newtab
+" set wm=0
+" let macvim_skip_colorscheme=1
+" colorscheme murphy
+"

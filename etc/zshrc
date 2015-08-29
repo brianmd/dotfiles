@@ -1,0 +1,172 @@
+# typing 'emacs' is a 15 year old habit. This is temporary until break out of
+# habit.
+alias emacs=vim
+
+# TODO: .ssh/config, .ssh/keys
+# TODO: .tmux
+
+KERNEL=`uname -s`
+
+export DEFAULT_CONFIG_FILE='~/.redmine'
+
+#    oh-my-zsh config
+#
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+# Path to your oh-my-zsh configuration.
+ZSH=$HOME/.oh-my-zsh
+
+#ZSH_THEME="robbyrussell"
+#ZSH_THEME="agnoster"
+ZSH_THEME="flazz"
+ZSH_THEME="blinks"
+ZSH_THEME="alanpeabody"
+ZSH_THEME="avit"
+ZSH_THEME="sunrise"
+ZSH_THEME="bureau"
+ZSH_THEME="cloud"
+ZSH_THEME="muse"
+ZSH_THEME="mortalscumbag"
+
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Set to this to use case-sensitive completion
+# CASE_SENSITIVE="true"
+
+# Uncomment this to disable bi-weekly auto-update checks
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment to change how often before auto-updates occur? (in days)
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment following line if you want to disable colors in ls
+# DISABLE_LS_COLORS="true"
+
+# Uncomment following line if you want to disable autosetting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment following line if you want to disable command autocorrection
+DISABLE_CORRECTION="true"
+
+# Uncomment following line if you want red dots to be displayed while waiting for completion
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment following line if you want to disable marking untracked files under
+# VCS as dirty. This makes repository status check for large repositories much,
+# much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(rails git bundler ruby brew gem vagrant git-flow)
+
+
+
+
+# PROMPT='%3~$(git_prompt_info)%# '
+#PROMPT='%3~$(git_prompt_info): '
+#RPROMPT='$(git_time_since_commit)|$(git_custom_status)%{$fg[white]%}[node `node -v`]%{$reset_color%} $EPS1'
+
+#PROMPT='%{$fg[magenta]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} %{$fg[red]%}[%~% ] %B$%b '
+#RPROMPT='$(git_time_since_commit)|$(git_custom_status) $EPS1'
+
+
+
+#ZSH_THEME_GIT_PROMPT_PREFIX="["
+#ZSH_THEME_GIT_PROMPT_SUFFIX="]"
+
+c() { cd ~/code/$1; }
+_c() { _files -W ~/code -/; }
+#compdef _c c
+
+alias ipaddrs='ifconfig -a | grep "inet "'
+
+#alias tmux='direnv exec / tmux'
+alias tmux="tmux -2"
+alias t="tmux"
+alias tls="tmux list-sessions"
+alias td="tmux detach"
+alias ta="tmux attach-session -t"
+alias tn="tmux new-window ; tmux rename-window"
+alias tp="tmux split-window"
+alias tr="tmux rename-window"
+alias tu="tmux switch-pane -U"
+
+alias b="bundle"
+alias bi="b install --path vendor"
+alias bil="bi --local"
+alias bu="b update"
+alias be="b exec"
+alias binit="bi && b package"
+alias bev="b exec vagrant"
+
+alias s="spring"
+
+alias reload="source ~/.zshrc"
+alias config="subl ~/.zshrc"
+#alias setup="subl ~/.bashrc && reload"
+
+
+alias z="zeus"
+
+# Heroku
+alias hconfig="heroku config"
+alias hlogs="heroku logs"
+alias hps="heroku ps"
+alias hrun="heroku run"
+
+# Vagrant
+#alias v="vagrant"
+alias vd="vagrant --provider=digital_ocean"
+alias va="vagrant"
+
+# Redis
+alias redismd="redis-cli -h redis-md -p 11510 -a '$REDIS_MD_PW'"
+
+#aliases
+alias .='cd ../'
+alias ..='cd ../../'
+alias ...='cd ../../../'
+alias ....='cd ../../../../'
+
+alias da='direnv allow'
+
+if [ -f ~/.config/pw ]; then
+  source ~/.config/pw
+fi
+
+export PATH="$HOME/bin:$HOME/.rbenv/bin:$HOME/.rbenv/shims:/usr/local/bin:/usr/sbin:/sbin:$PATH"
+export CDPATH=.:~/code:~:~/pkgs
+
+if [[ $KERNEL == 'Darwin' ]]; then
+  export SSL_CERT_FILE=/git/Certificates.pem
+  export JAVA_HOME=`/usr/libexec/java_home`
+  export PATH="$PATH:$HOME/Dropbox/summit/projects/summit-extensions/common/bin:/opt/local/bin:/usr/local/bin:/usr/local/share/npm/bin:$PATH:$HOME/Dropbox/summit/bin:/usr/local/share/bin:/opt/local/bin:/opt/X11/bin"
+  export CDPATH=$CDPATH:~/Documents:~/Documents/git:~/Dropbox:~/Dropbox/summit:~/Dropbox/summit/projects:~/Documents/git/summit
+else
+
+fi
+
+source $ZSH/oh-my-zsh.sh
+source ~/pkgs/dotfiles/etc/git-sh.rc
+
+if type direnv > /dev/null; then
+  #eval "$(direnv hook $0)"
+  eval "$(direnv hook $SHELL)"
+fi
+
+source ~/pkgs/dotfiles/etc/vim-sh.rc
+
+keychain git_key cloud digitalocean
+source ~/.keychain/${HOST}-sh
+
+if [ -d ${HOME}/.rbenv ]; then
+  export RBENV_ROOT=${HOME}/.rbenv
+  eval "$(rbenv init - zsh)"
+fi
+
