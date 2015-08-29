@@ -5,8 +5,11 @@ To install, clone and make as follows:
     mkdir ~/pkgs && git clone git@github.com/brianmd/dotfiles.git ~/pkgs/dotfiles
 
        AND THEN
-    cd ~/pkgs/dotfiles && make install_dev
+    cd ~/pkgs/dotfiles && sudo make root_install_dev && make install_dev
 
        IF DON'T NEED RUBY
-    cd ~/pkgs/dotfiles && make install_user
+    cd ~/pkgs/dotfiles && sudo make root_install_user && make install_user
+
+
+    (have also needed to run: make relink. Will fix this one day ...)
 

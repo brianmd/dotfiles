@@ -1,9 +1,4 @@
-# typing 'emacs' is a 15 year old habit. This is temporary until break out of
-# habit.
-alias emacs=vim
-
 # TODO: .ssh/config, .ssh/keys
-# TODO: .tmux
 
 KERNEL=`uname -s`
 
