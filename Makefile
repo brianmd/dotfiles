@@ -67,7 +67,7 @@ root_mac_baseinstall:
 root_create_shares: /usr/share/provisioners
 
 /usr/share/provisioners:
-	mkdir -p /usr/share/provisioners/boxes
+	mkdir -p /usr/share/provisioners/vagrant.d
 	mkdir -p /usr/share/provisioners/packers
 	chmod -R a+rwx /usr/share/provisioners
 
