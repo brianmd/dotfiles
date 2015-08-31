@@ -1,4 +1,6 @@
 # TODO: .ssh/config, .ssh/keys
+# TODO: add 'export VAGRANT_HOME=...' to a shared directory, then move
+# ~/.vagrant.d there
 
 KERNEL=`uname -s`
 

@@ -64,6 +64,13 @@ root_install_vagrant:
 root_mac_baseinstall:
 	brew install ag
 
+root_create_shares: /usr/share/provisioners
+
+/usr/share/provisioners:
+	mkdir -p /usr/share/provisioners/boxes
+	mkdir -p /usr/share/provisioners/packers
+	chmod -R a+rwx /usr/share/provisioners
+
 ~/pkgs/direnv:
 	mkdir -p ~/pkgs
 	git clone https://github.com/direnv/direnv ~/pkgs/direnv
