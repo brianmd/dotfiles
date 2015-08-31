@@ -1,5 +1,5 @@
 [user]
-	name = bmd
+	name = Brian Murphy-Dye
 	email = brian@murphydye.com
 [core]
 	excludesfile = /Users/bmd/pkgs/dotfiles/etc/gitignore_global

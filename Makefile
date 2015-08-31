@@ -36,6 +36,16 @@ test:
 root_install_dev: root_add_salt_repository root_install_user linux_rbenv_prerequisites
 	$(MAKE) ~/pkgs/direnv
 
+x:
+	sudo echo "\\nhello $$PATH"
+
+root_install_jenkins:
+	#wget -q -O - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -
+	sudo bash -c "echo 'deb http://pkg.jenkins-ci.org/debian binary/' >>/etc/apt/sources.list"
+	sudo apt-get update
+	sudo apt-get -y install jenkins
+	sudo service jenkins start
+
 root_add_salt_repository:
 	add-apt-repository ppa:saltstack/salt
 
