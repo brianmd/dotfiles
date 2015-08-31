@@ -24,6 +24,7 @@ pickle-email-*.html
 /copybara*
 /copybara-*.html
 .vagrant
+*.box
 .redcar/
 .rspec
 /coverage
