@@ -105,6 +105,7 @@ install_dev: install_user ~/.rbenv ~/.irb ~/.rbenv/shims/ruby
 install_user: ~/.vim ~/.oh-my-zsh ~/.zshrc ~/.tmux.conf
 	git config --global user.email "brian@murphydye.com"
 	git config --global user.name "Brian Murphy-Dye"
+	$(MAKE) relink
 
 install_github:
 	cd ~/code && git clone git@github.com:brianmd/collectr.git
