@@ -71,6 +71,11 @@ root_create_shares: /usr/share/provisioners
 	mkdir -p /usr/share/provisioners/packers
 	chmod -R a+rwx /usr/share/provisioners
 
+~/pkgs/packer:
+	mkdir -p ~/pkgs/packer
+	#cd ~/pkgs && git clone https://github.com/mitchellh/packer.git
+	cd ~/pkgs/packer && wget https://dl.bintray.com/mitchellh/packer/packer_0.8.6_linux_amd64.zip && unzip packer_0.8.6_linux_amd64.zip && rm packer_0.8.6_linux_amd64.zip
+
 ~/pkgs/direnv:
 	mkdir -p ~/pkgs
 	git clone https://github.com/direnv/direnv ~/pkgs/direnv

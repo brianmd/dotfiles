@@ -149,6 +149,11 @@ else
 
 fi
 
+if [[ -d ~/pkgs/packer ]]; then
+  export PATH=$PATH:~/pkgs/packer
+  export PACKER_CACHE_DIR=/usr/share/provisioners/packers
+fi
+
 source $ZSH/oh-my-zsh.sh
 source ~/pkgs/dotfiles/etc/git-sh.rc
 
@@ -167,6 +172,5 @@ if [ -d ${HOME}/.rbenv ]; then
   eval "$(rbenv init - zsh)"
 fi
 
-export PACKER_CACHE_DIR=/usr/share/provisioners/packers
 export VAGRANT_HOME=/usr/share/provisioners/vagrant.d
 
