@@ -3,8 +3,9 @@ set relativenumber
 let ctrlp_regexp = 0
 let ctrlp_by_filename = 1
 
-map <c-]> gt
-map <c-[> gT
+"map <c-]> gt
+"map <c-[> gT
+
 " map <m-1> 1gt
 " map <m-2> 2gt
 " map <m-3> 3gt
