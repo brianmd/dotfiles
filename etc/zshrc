@@ -141,6 +141,9 @@ fi
 
 export PATH="$HOME/bin:$HOME/.rbenv/bin:$HOME/.rbenv/shims:/usr/local/bin:/usr/sbin:/sbin:$PATH"
 export CDPATH=.:~/code:~:~/pkgs
+if [ -d ~/pkgs/boxes ]; then
+  export CDPATH=$CDPATH:~/pkgs/boxes
+fi
 
 if [[ $KERNEL == 'Darwin' ]]; then
   export SSL_CERT_FILE=/git/Certificates.pem
