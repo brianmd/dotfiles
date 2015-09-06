@@ -68,7 +68,7 @@ root_install_vagrant:
 root_install_plex:
 	mkdir -p ~/downloads
 	cd ~/downloads && wget https://downloads.plex.tv/plex-media-server/0.9.12.11.1406-8403350/plexmediaserver_0.9.12.11.1406-8403350_amd64.deb
-	dpkg -i plexmediaserver_0.9.12.11.1406-8403350_amd64.deb
+	cd ~/downloads && dpkg -i plexmediaserver_0.9.12.11.1406-8403350_amd64.deb
 
 install_vagrant:
 	vagrant plugin install vagrant-hostmanager
