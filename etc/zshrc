@@ -120,9 +120,12 @@ alias hrun="heroku run"
 
 # Vagrant
 #alias v="vagrant"
-alias vd="vagrant --provider=digital_ocean"
+#alias vd="vagrant --provider=digital_ocean"
 alias va="vagrant"
 alias vs="vagrant ssh"
+alias vu="vagrant up"
+alias vd="vagrant destroy"
+alias vh="vagrant halt"
 
 # Redis
 alias redismd="redis-cli -h redis-md -p 11510 -a '$REDIS_MD_PW'"
