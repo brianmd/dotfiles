@@ -26,3 +26,6 @@ set switchbuf=usetab,newtab
 " let macvim_skip_colorscheme=1
 " colorscheme murphy
 "
+" to prevent "crontab: temp file must be edited in place" error
+autocmd filetype crontab setlocal nobackup nowritebackup
+
