@@ -6,6 +6,11 @@ imap jj <Esc>
 set relativenumber
 let ctrlp_regexp = 0
 let ctrlp_by_filename = 1
+set hidden
+
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+"nmap <leader>md :%!/usr/local/bin/Markdown.pl --html4tags <cr>
+nmap <leader>md :!/usr/local/bin/Markdown.pl --html4tags %<cr>
 
 " these two lines make nerdtree open in the current buffer
 map <silent> <leader>d :execute 'e '. getcwd()<CR>
