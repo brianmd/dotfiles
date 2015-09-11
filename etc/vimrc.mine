@@ -1,7 +1,65 @@
+" consider vim-vinegar as a replacement of nerdtree
+
+set mouse=a
+
 imap jj <Esc>
 set relativenumber
 let ctrlp_regexp = 0
 let ctrlp_by_filename = 1
+
+" these two lines make nerdtree open in the current buffer
+map <silent> <leader>d :execute 'e '. getcwd()<CR>
+let NERDTreeHijackNetrw=1
+
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+
+" these are snipmate dependencies
+"Plugin 'MarcWebber/vim-addon-mw-utils'
+"Plugin 'tomtom/tlib_vim'
+"Plugin 'honza/vim-snippets'
+"Plugin 'garbas/vim-snipmate'
+"
+"Plugin 'tomtom/tcomment_vim'
+"  consider Plugin 'tpope/vim-commentary'
+"Plugin 'tpope/vim-endwise'
+"
+"  themes (choose one!)
+"Plugin 'altercation/vim-colors-solarized'
+"Plugin 'tomasr/molokai'
+"
+"Plugin 'tpope/vim-surround'
+"Plugin 'ervandew/supertab'
+"Plugin 'kien/ctrlp.vim'
+"Plugin 'tpope/vim-fugitive'
+Plugin 'jiangmiao/auto-pairs'
+"Plugin 'kien/ctrlp.vim'
+"Plugin 'skalnik/vim-vroom'
+"Plugin 'tpope/vim-dispatch'
+"Plugin 'mattn/webapi-vim'
+"Plugin 'mattn/gist-vim'
+"
+"  languages
+"Plugin 'vim-ruby/vim-ruby'
+"Plugin 'tpope/vim-rails.git'
+"Plugin 'kchmck/vim-coffee-script'
+"Plugin 'elixir-lang/vim-elixir'
+"Plugin 'guns/vim-clojure-static'
+"Plugin 'jimenezrick/vimerl'
+
+"let g:vroom_map_keys = 0
+"let g:vroom_use_dispatch = 1
+"let g:vroom_use_zeus = 1
+"map <leader>c :call vroom#RunTestFile()<CR>
+"map <leader>s :call vroom#RunNearestTest()<CR>
+"map <leader>t :A<CR> " \t to jump to test file
+
+call vundle#end()
+filetype plugin indent on
 
 "map <c-]> gt
 "map <c-[> gT
