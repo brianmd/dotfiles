@@ -141,6 +141,9 @@ install_github:
 	cp etc/vimrc.mine ~/.vim/vimrc.mine
 	# add emacs key bindings while in insert mode
 	cd ~/.vim && git clone git://github.com/tpope/vim-rsi.git
+	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+	# install the plugins from vimrc.mine
+	vim +PluginInstall +qall
 
 
 ~/.tmux.conf:
