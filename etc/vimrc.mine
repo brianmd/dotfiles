@@ -23,6 +23,55 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
+https://github.com/tpope/vim-abolish
+https://github.com/mileszs/ack.vim
+https://github.com/MarcWeber/vim-addon-mw-utils
+https://github.com/nviennot/vim-armasm
+https://github.com/ton/vim-bufsurf
+https://github.com/kchmck/vim-coffee-script
+https://github.com/skammer/vim-css-color
+https://github.com/hail2u/vim-css3-syntax
+https://github.com/kien/ctrlp.vim
+https://github.com/tpope/vim-cucumber
+https://github.com/elixir-lang/vim-elixir
+https://github.com/tpope/vim-endwise
+https://github.com/tpope/vim-fugitive
+https://github.com/vim-scripts/Gist.vim
+https://github.com/sjl/gundo.vim
+https://github.com/tpope/vim-haml
+https://github.com/pangloss/vim-javascript
+https://github.com/elzr/vim-json
+https://github.com/mxw/vim-jsx
+https://github.com/vim-scripts/L9
+https://github.com/groenewege/vim-less
+https://github.com/ujihisa/vim-markdown
+https://github.com/vim-scripts/matchit.zip
+https://github.com/nviennot/molokai
+https://github.com/scrooloose/nerdcommenter
+https://github.com/scrooloose/nerdtree
+https://github.com/nviennot/vim-powerline
+https://github.com/tomtom/quickfixsigns_vim
+https://github.com/tpope/vim-rails
+https://github.com/luochen1990/rainbow
+https://github.com/tpope/vim-repeat
+https://github.com/vim-ruby/vim-ruby
+https://github.com/sidnair/scala-vim
+https://github.com/ervandew/screen
+https://github.com/nviennot/vim-config/tree/master/bundle/scribe/syntax
+https://github.com/slim-template/vim-slim
+https://github.com/nviennot/snipmate.vim
+https://github.com/tpope/vim-speeddating
+https://github.com/ervandew/supertab
+https://github.com/tpope/vim-surround
+https://github.com/scrooloose/syntastic
+https://github.com/godlygeek/tabular
+https://github.com/majutsushi/tagbar
+https://github.com/tomtom/tlib_vim
+https://github.com/tpope/vim-unimpaired
+https://github.com/mattn/webapi-vim
+https://github.com/sukima/xmledit
+https://github.com/vim-scripts/YankRing.vim
+
 " these are snipmate dependencies
 "Plugin 'MarcWebber/vim-addon-mw-utils'
 "Plugin 'tomtom/tlib_vim'
