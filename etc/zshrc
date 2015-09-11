@@ -77,6 +77,9 @@ plugins=(rails git bundler ruby brew gem vagrant git-flow)
 #ZSH_THEME_GIT_PROMPT_PREFIX="["
 #ZSH_THEME_GIT_PROMPT_SUFFIX="]"
 
+alias f="ag -g"
+alias r=ag
+
 c() { cd ~/code/$1; }
 _c() { _files -W ~/code -/; }
 #compdef _c c
