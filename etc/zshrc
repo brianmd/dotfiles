@@ -146,7 +146,7 @@ if [ -f ~/.config/pw ]; then
 fi
 
 export PATH="$HOME/bin:$HOME/.rbenv/bin:$HOME/.rbenv/shims:/usr/local/bin:/usr/sbin:/sbin:$PATH"
-export CDPATH=.:~/code:~:~/pkgs
+export CDPATH=.:~/code:~:~/pkgs:~/config
 if [ -d ~/pkgs/boxes ]; then
   export CDPATH=$CDPATH:~/pkgs/boxes
 fi
@@ -166,14 +166,14 @@ if [[ -d ~/pkgs/packer ]]; then
 fi
 
 source $ZSH/oh-my-zsh.sh
-source ~/pkgs/dotfiles/etc/git-sh.rc
+source ~/.config/dotfiles/etc/git-sh.rc
 
 if type direnv > /dev/null; then
   #eval "$(direnv hook $0)"
   eval "$(direnv hook $SHELL)"
 fi
 
-source ~/pkgs/dotfiles/etc/vim-sh.rc
+source ~/.config/dotfiles/etc/vim-sh.rc
 
 keychain git_key cloud digitalocean
 source ~/.keychain/${HOST}-sh
