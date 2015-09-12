@@ -1,3 +1,4 @@
+# TODO: remove the git config to my name ...
 # TODO: .oh-my installs a .zshrc file, so mine doesn't get installed.
 #
 # TODO: could add apt-get update && apt-get upgrade, but want salt to do that
@@ -25,7 +26,7 @@ relink:
 	ln -s ${HOME}/.config/dotfiles/etc/gitconfig ~/.gitconfig
 	# ln -s ${HOME}/.config/dotfiles/vim/vimrc.mine ~/.vim/vimrc.mine
 	ln -s ${HOME}/.config/dotfiles/vim ~/.vim
-	ln -s ${HOME}/.config/dotfiles/vim/vimrc ~/.vim/vimrc
+	ln -s ${HOME}/.config/dotfiles/vim/vimrc ~/.vimrc
 	# .gitconfig points directly to the global ignore. don't need it in home
 	# directory.  ln -s ${HOME}/.config/dotfiles/etc/gitignore_global ~/.gitignore_global
 
@@ -152,8 +153,7 @@ install_vim: ~/.vim
 
 ~/.vim:
 	mkdir -p ~/.config/dotfiles/vim/bundle
-	ln -s $(HOME)/.config/dotfiles/vim $(HOME)/.vim
-	ln -s $(HOME)/.config/dotfiles/vim/vimrc $(HOME)/.vimrc
+	$(MAKE) relink
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/dotfiles/vim/bundle/Vundle.vim
 	# install the plugins from vimrc.mine
 	#$(MAKE) ~/.config/dotfiles/vim/bundle/Vundle.vim
