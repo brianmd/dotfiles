@@ -1,7 +1,3 @@
-# mkdir -p ~/pkgs && git clone https://github.com/brianmd/dotfiles.git ~/pkgs/dotfiles
-#     OR, if able to update github:
-# mkdir -p ~/pkgs && git clone git@github.com:brianmd/dotfiles.git ~/pkgs/dotfiles
-#
 # TODO: .oh-my installs a .zshrc file, so mine doesn't get installed.
 #
 # TODO: could add apt-get update && apt-get upgrade, but want salt to do that
@@ -21,20 +17,20 @@ endef
 
 relink:
 	rm -f ~/.zshrc ~/.tmux.conf ~/.inputrc ~/.gitconfig ~/.gitignore_global ~/.vim/vimrc.mine
-	ln -s ${HOME}/pkgs/dotfiles/etc/zshrc ~/.zshrc
-	ln -s ${HOME}/pkgs/dotfiles/etc/tmux.conf ~/.tmux.conf
-	ln -s ${HOME}/pkgs/dotfiles/etc/inputrc ~/.inputrc
-	ln -s ${HOME}/pkgs/dotfiles/etc/gitconfig ~/.gitconfig
-	ln -s ${HOME}/pkgs/dotfiles/etc/vimrc.mine ~/.vim/vimrc.mine
+	ln -s ${HOME}/.config/dotfiles/etc/zshrc ~/.zshrc
+	ln -s ${HOME}/.config/dotfiles/etc/tmux.conf ~/.tmux.conf
+	ln -s ${HOME}/.config/dotfiles/etc/inputrc ~/.inputrc
+	ln -s ${HOME}/.config/dotfiles/etc/gitconfig ~/.gitconfig
+	ln -s ${HOME}/.config/dotfiles/vim/vimrc.mine ~/.vim/vimrc.mine
 	# .gitconfig points directly to the global ignore. don't need it in home
-	# directory.  ln -s ${HOME}/pkgs/dotfiles/etc/gitignore_global ~/.gitignore_global
+	# directory.  ln -s ${HOME}/.config/dotfiles/etc/gitignore_global ~/.gitignore_global
 
 test:
 	grep xtest ~/.test || [ $$? -eq 0 ]
 	echo te >> ~/.test
 
 root_install_dev: root_add_salt_repository root_install_user linux_rbenv_prerequisites
-	$(MAKE) ~/pkgs/direnv
+	$(MAKE) ~/.config/direnv
 
 x:
 	sudo echo "\\nhello $$PATH"
@@ -83,15 +79,15 @@ root_create_shares: /usr/share/provisioners
 	mkdir -p /usr/share/provisioners/packers
 	chmod -R a+rwx /usr/share/provisioners
 
-~/pkgs/packer:
-	mkdir -p ~/pkgs/packer
-	#cd ~/pkgs && git clone https://github.com/mitchellh/packer.git
-	cd ~/pkgs/packer && wget https://dl.bintray.com/mitchellh/packer/packer_0.8.6_linux_amd64.zip && unzip packer_0.8.6_linux_amd64.zip && rm packer_0.8.6_linux_amd64.zip
+~/.config/packer:
+	mkdir -p ~/.config/packer
+	#cd ~/.config && git clone https://github.com/mitchellh/packer.git
+	cd ~/.config/packer && wget https://dl.bintray.com/mitchellh/packer/packer_0.8.6_linux_amd64.zip && unzip packer_0.8.6_linux_amd64.zip && rm packer_0.8.6_linux_amd64.zip
 
-~/pkgs/direnv:
-	mkdir -p ~/pkgs
-	git clone https://github.com/direnv/direnv ~/pkgs/direnv
-	cd ~/pkgs/direnv && make install
+~/.config/direnv:
+	mkdir -p ~/.config
+	git clone https://github.com/direnv/direnv ~/.config/direnv
+	cd ~/.config/direnv && make install
 
 linux_rbenv_prerequisites:
 	# from https://github.com/sstephenson/ruby-build/wiki
@@ -107,9 +103,9 @@ root_adduser:
 	$(MAKE) root_cpdot
 
 root_cpdot:
-	mkdir -p /home/${MNAME}/pkgs
-	cp -r ~/pkgs/dotfiles /home/${MNAME}/pkgs
-	chown -R ${MNAME}:${MNAME} /home/${MNAME}/pkgs
+	mkdir -p /home/${MNAME}/.config
+	cp -r ~/.config/dotfiles /home/${MNAME}/.config
+	chown -R ${MNAME}:${MNAME} /home/${MNAME}/.config
 
 
 
@@ -141,7 +137,14 @@ install_github:
 	cp etc/vimrc.mine ~/.vim/vimrc.mine
 	# add emacs key bindings while in insert mode
 	cd ~/.vim && git clone git://github.com/tpope/vim-rsi.git
-	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+	$(MAKE) install_vim
+
+install_vim:
+	$(MAKE) ~/.config/dotfiles/vim/bundle/Vundle.vim
+
+~/.config/dotfiles/vim/bundle/Vundle.vim:
+	mkdir -p ~/.config/dotfiles/vim/bundle
+	git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/dotfiles/vim/bundle/Vundle.vim
 	# install the plugins from vimrc.mine
 	vim +PluginInstall +qall
 
@@ -155,15 +158,15 @@ install_github:
 install_zshrc: ~/.oh-my-zsh ~/.zshrc
 
 ~/.oh-my-zsh:
-	mkdir -p ~/pkgs/ohmy
-	curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -o ~/pkgs/ohmy/install.sh
-	chmod a+x ~/pkgs/ohmy/install.sh
-	cd ~/pkgs/ohmy && ./install.sh
+	mkdir -p ~/.config/ohmy
+	curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -o ~/.config/ohmy/install.sh
+	chmod a+x ~/.config/ohmy/install.sh
+	cd ~/.config/ohmy && ./install.sh
 	#sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 	# chsh -s /usr/bin/zsh
 
 ~/.zshrc:
-	ln -s ${HOME}/pkgs/dotfiles/etc/zshrc ${HOME}/.zshrc
+	ln -s ${HOME}/.config/dotfiles/etc/zshrc ${HOME}/.zshrc
 
 
 
