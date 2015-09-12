@@ -161,8 +161,8 @@ install_vim: ~/.vim
 
 ~/.vim:
 	mkdir -p ~/.config/dotfiles/vim/bundle
-	touch ~/.config/dotfiels/vim/vimrc.mine
-	touch ~/.config/dotfiels/vim/gvimrc.mine
+	touch ~/.config/dotfiles/vim/vimrc.mine
+	touch ~/.config/dotfiles/vim/gvimrc.mine
 	$(MAKE) relink_vim
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/dotfiles/vim/bundle/Vundle.vim
 	# install the plugins from vimrc.mine
