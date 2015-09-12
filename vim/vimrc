@@ -1,12 +1,4 @@
-"""""""""""""""""""""""""
-" Basic features
-"""""""""""""""""""""""""
-let pathogen_disabled = []
-if !has('gui_running')
-  call add(g:pathogen_disabled, 'css-color')
-endif
-call pathogen#infect()
-
+" consider vim-vinegar as a replacement of nerdtree
 " Display options
 syntax on
 set cursorline
@@ -28,7 +20,7 @@ set wildmode=list:longest,full  " Complete longest common match and show possibl
 set backspace=eol,start,indent  " Allow backspacing over indent, eol, & start
 set complete=.,w,b,u,U,t,i,d    " Do lots of scanning on tab completion
 set updatecount=100             " Write swap file to disk every 100 chars
-set directory=~/.vim/swap       " Directory to use for the swap file
+set directory=~/.config/dotfiles/vim/swap       " Directory to use for the swap file
 set diffopt=filler,iwhite       " In diff mode, ignore whitespace changes and align unchanged lines
 set history=1000                " Remember 1000 commands
 set scrolloff=3                 " Start scrolling 3 lines before the horizontal window border
@@ -58,7 +50,7 @@ set formatoptions-=t formatoptions+=croql
 "   "500 : save up to 500 lines for each register
 "   :1000 : up to 1000 lines of command-line history will be remembered
 "   n... : where to save the viminfo files
-set viminfo=%100,'100,/100,h,\"500,:1000,n~/.vim/viminfo
+set viminfo=%100,'100,/100,h,\"500,:1000,n~/.config/dotfiles/vim/viminfo
 
 " ctags: recurse up to home to find tags. See
 " http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
@@ -68,7 +60,7 @@ set tags+=tags;$HOME
 " Undo
 set undolevels=10000
 if has("persistent_undo")
-  set undodir=~/.vim/undo       " Allow undoes to persist even after a file is closed
+  set undodir=~/.config/dotfiles/vim/undo       " Allow undoes to persist even after a file is closed
   set undofile
 endif
 
@@ -179,7 +171,7 @@ nnoremap <Leader>a :Ack
 let g:NERDSpaceDelims = 1
 
 nnoremap <C-y> :YRShow<cr>
-let g:yankring_history_dir = '$HOME/.vim'
+let g:yankring_history_dir = '$HOME/.config/dotfiles/vim'
 let g:yankring_manual_clipboard_check = 0
 
 map <Leader>l :MiniBufExplorer<cr>
@@ -260,7 +252,7 @@ end
 """""""""""""""""""""""""
 " Local config
 """""""""""""""""""""""""
-so ~/.vim/vimrc.mine
+so ~/.config/dotfiles/vim/vimrc.mine
 
 " TODO raise contrast for comments
 
@@ -287,4 +279,145 @@ augroup END
 " fix for vim-javascript + rainbow incompatibility
 autocmd FileType javascript syntax clear jsFuncBlock
 set nocursorline
+
+set mouse=a
+
+imap jj <Esc>
+set relativenumber
+let ctrlp_regexp = 0
+let ctrlp_by_filename = 1
+set hidden
+
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+"nmap <leader>md :%!/usr/local/bin/Markdown.pl --html4tags <cr>
+nmap <leader>md :!/usr/local/bin/Markdown.pl --html4tags %<cr>
+
+" these two lines make nerdtree open in the current buffer
+map <silent> <leader>d :execute 'e '. getcwd()<CR>
+let NERDTreeHijackNetrw=1
+
+set nocompatible
+filetype off
+set rtp+=~/.config/dotfiles/vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+
+"https://github.com/tpope/vim-abolish
+"https://github.com/mileszs/ack.vim
+"https://github.com/MarcWeber/vim-addon-mw-utils
+"https://github.com/nviennot/vim-armasm
+"https://github.com/ton/vim-bufsurf
+"https://github.com/kchmck/vim-coffee-script
+"https://github.com/skammer/vim-css-color
+"https://github.com/hail2u/vim-css3-syntax
+"https://github.com/kien/ctrlp.vim
+"https://github.com/tpope/vim-cucumber
+"https://github.com/elixir-lang/vim-elixir
+"https://github.com/tpope/vim-endwise
+"https://github.com/tpope/vim-fugitive
+"https://github.com/vim-scripts/Gist.vim
+"https://github.com/sjl/gundo.vim
+"https://github.com/tpope/vim-haml
+"https://github.com/pangloss/vim-javascript
+"https://github.com/elzr/vim-json
+"https://github.com/mxw/vim-jsx
+"https://github.com/vim-scripts/L9
+"https://github.com/groenewege/vim-less
+"https://github.com/ujihisa/vim-markdown
+"https://github.com/vim-scripts/matchit.zip
+"https://github.com/nviennot/molokai
+"https://github.com/scrooloose/nerdcommenter
+"https://github.com/scrooloose/nerdtree
+"https://github.com/nviennot/vim-powerline
+"https://github.com/tomtom/quickfixsigns_vim
+"https://github.com/tpope/vim-rails
+"https://github.com/luochen1990/rainbow
+"https://github.com/tpope/vim-repeat
+"https://github.com/vim-ruby/vim-ruby
+"https://github.com/sidnair/scala-vim
+"https://github.com/ervandew/screen
+"https://github.com/nviennot/vim-config/tree/master/bundle/scribe/syntax
+"https://github.com/slim-template/vim-slim
+"https://github.com/nviennot/snipmate.vim
+"https://github.com/tpope/vim-speeddating
+"https://github.com/ervandew/supertab
+"https://github.com/tpope/vim-surround
+"https://github.com/scrooloose/syntastic
+"https://github.com/godlygeek/tabular
+"https://github.com/majutsushi/tagbar
+"https://github.com/tomtom/tlib_vim
+"https://github.com/tpope/vim-unimpaired
+"https://github.com/mattn/webapi-vim
+"https://github.com/sukima/xmledit
+"https://github.com/vim-scripts/YankRing.vim
+
+" these are snipmate dependencies
+"Plugin 'MarcWebber/vim-addon-mw-utils'
+"Plugin 'tomtom/tlib_vim'
+"Plugin 'honza/vim-snippets'
+"Plugin 'garbas/vim-snipmate'
+"
+"Plugin 'tomtom/tcomment_vim'
+"  consider Plugin 'tpope/vim-commentary'
+"Plugin 'tpope/vim-endwise'
+"
+"  themes (choose one!)
+"Plugin 'altercation/vim-colors-solarized'
+"Plugin 'tomasr/molokai'
+"
+"Plugin 'tpope/vim-surround'
+"Plugin 'ervandew/supertab'
+"Plugin 'kien/ctrlp.vim'
+"Plugin 'tpope/vim-fugitive'
+Plugin 'jiangmiao/auto-pairs'
+"Plugin 'kien/ctrlp.vim'
+"Plugin 'skalnik/vim-vroom'
+"Plugin 'tpope/vim-dispatch'
+"Plugin 'mattn/webapi-vim'
+"Plugin 'mattn/gist-vim'
+"
+"  languages
+"Plugin 'vim-ruby/vim-ruby'
+"Plugin 'tpope/vim-rails.git'
+"Plugin 'kchmck/vim-coffee-script'
+"Plugin 'elixir-lang/vim-elixir'
+"Plugin 'guns/vim-clojure-static'
+"Plugin 'jimenezrick/vimerl'
+
+"let g:vroom_map_keys = 0
+"let g:vroom_use_dispatch = 1
+"let g:vroom_use_zeus = 1
+"map <leader>c :call vroom#RunTestFile()<CR>
+"map <leader>s :call vroom#RunNearestTest()<CR>
+"map <leader>t :A<CR> " \t to jump to test file
+
+call vundle#end()
+filetype plugin indent on
+
+"map <c-]> gt
+"map <c-[> gT
+
+" map <m-1> 1gt
+" map <m-2> 2gt
+" map <m-3> 3gt
+" map <m-4> 4gt
+" map <m-5> 5gt
+" map <m-6> 6gt
+" map <m-7> 7gt
+" map <m-8> 8gt
+" map <m-9> 9gt
+" map <m-0> :tablast<CR>
+
+
+" set ruler
+" set matchpairs+=<:>
+" set backspace=indent,eol,start
+set switchbuf=usetab,newtab
+" set wm=0
+" let macvim_skip_colorscheme=1
+" colorscheme murphy
+"
+" to prevent "crontab: temp file must be edited in place" error
+autocmd filetype crontab setlocal nobackup nowritebackup
 
