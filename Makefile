@@ -161,6 +161,12 @@ install_vim: ~/.vim
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/dotfiles/vim/bundle/Vundle.vim
 	# install the plugins from vimrc.mine
 	#$(MAKE) ~/.config/dotfiles/vim/bundle/Vundle.vim
+	$(MAKE) install_vim_plugins
+
+update_vim_plugins:
+	vim +PluginInstall! +qall
+
+install_vim_plugins:
 	vim +PluginInstall +qall
 
 
