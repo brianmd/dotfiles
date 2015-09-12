@@ -152,11 +152,17 @@ install_github:
 
 
 
+force_install_vim:
+	rm -f ~/.vim
+	rm -rf ~/.vim
+	$(MAKE) install_vim
 
 install_vim: ~/.vim
 
 ~/.vim:
 	mkdir -p ~/.config/dotfiles/vim/bundle
+	touch ~/.config/dotfiels/vim/vimrc.mine
+	touch ~/.config/dotfiels/vim/gvimrc.mine
 	$(MAKE) relink_vim
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/dotfiles/vim/bundle/Vundle.vim
 	# install the plugins from vimrc.mine
