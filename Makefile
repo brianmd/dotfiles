@@ -17,18 +17,22 @@ endef
 
 
 relink:
-	rm -f ~/.zshrc ~/.tmux.conf ~/.inputrc ~/.gitconfig ~/.gitignore_global ~/.vim ~/.vimrc
-	# this is a fix for those that aren't using .vim as a link
-	rm -rf ~/.vim
+	rm -f ~/.zshrc ~/.tmux.conf ~/.inputrc ~/.gitconfig ~/.gitignore_global
 	ln -s ${HOME}/.config/dotfiles/etc/zshrc ~/.zshrc
 	ln -s ${HOME}/.config/dotfiles/etc/tmux.conf ~/.tmux.conf
 	ln -s ${HOME}/.config/dotfiles/etc/inputrc ~/.inputrc
 	ln -s ${HOME}/.config/dotfiles/etc/gitconfig ~/.gitconfig
 	# ln -s ${HOME}/.config/dotfiles/vim/vimrc.mine ~/.vim/vimrc.mine
-	ln -s ${HOME}/.config/dotfiles/vim ~/.vim
-	ln -s ${HOME}/.config/dotfiles/vim/vimrc ~/.vimrc
 	# .gitconfig points directly to the global ignore. don't need it in home
 	# directory.  ln -s ${HOME}/.config/dotfiles/etc/gitignore_global ~/.gitignore_global
+	$(MAKE) relink_vim
+
+relink_vim:
+	rm -f ~/.vim ~/.vimrc
+	# this is a fix for those that aren't using .vim as a link
+	rm -rf ~/.vim
+	ln -s ${HOME}/.config/dotfiles/vim ~/.vim
+	ln -s ${HOME}/.config/dotfiles/vim/vimrc ~/.vimrc
 
 test:
 	grep xtest ~/.test || [ $$? -eq 0 ]
@@ -153,7 +157,7 @@ install_vim: ~/.vim
 
 ~/.vim:
 	mkdir -p ~/.config/dotfiles/vim/bundle
-	$(MAKE) relink
+	$(MAKE) relink_vim
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/dotfiles/vim/bundle/Vundle.vim
 	# install the plugins from vimrc.mine
 	#$(MAKE) ~/.config/dotfiles/vim/bundle/Vundle.vim
