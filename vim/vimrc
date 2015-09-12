@@ -1,3 +1,154 @@
+set nocompatible
+filetype off
+set rtp+=~/.config/dotfiles/vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+
+
+Plugin 'tpope/vim-abolish'
+Plugin 'mileszs/ack.vim'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'nviennot/vim-armasm'
+Plugin 'ton/vim-bufsurf'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'skammer/vim-css-color'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-cucumber'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-fugitive'
+Plugin 'vim-scripts/Gist.vim'
+Plugin 'sjl/gundo.vim'
+Plugin 'tpope/vim-haml'
+Plugin 'pangloss/vim-javascript'
+Plugin 'elzr/vim-json'
+Plugin 'mxw/vim-jsx'
+Plugin 'vim-scripts/L9'
+Plugin 'groenewege/vim-less'
+Plugin 'ujihisa/vim-markdown'
+Plugin 'vim-scripts/matchit.zip'
+Plugin 'nviennot/molokai'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'nviennot/vim-powerline'
+Plugin 'tomtom/quickfixsigns_vim'
+Plugin 'tpope/vim-rails'
+Plugin 'luochen1990/rainbow'
+Plugin 'tpope/vim-repeat'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'sidnair/scala-vim'
+Plugin 'ervandew/screen'
+"Plugin 'nviennot/vim-config/tree/master/bundle/scribe/syntax'
+Plugin 'slim-template/vim-slim'
+Plugin 'nviennot/snipmate.vim'
+Plugin 'tpope/vim-speeddating'
+Plugin 'ervandew/supertab'
+Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/syntastic'
+Plugin 'godlygeek/tabular'
+Plugin 'majutsushi/tagbar'
+Plugin 'tomtom/tlib_vim'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'mattn/webapi-vim'
+Plugin 'sukima/xmledit'
+Plugin 'vim-scripts/YankRing.vim'
+
+
+
+"https://github.com/tpope/vim-abolish
+"https://github.com/mileszs/ack.vim
+"https://github.com/MarcWeber/vim-addon-mw-utils
+"https://github.com/nviennot/vim-armasm
+"https://github.com/ton/vim-bufsurf
+"https://github.com/kchmck/vim-coffee-script
+"https://github.com/skammer/vim-css-color
+"https://github.com/hail2u/vim-css3-syntax
+"https://github.com/kien/ctrlp.vim
+"https://github.com/tpope/vim-cucumber
+"https://github.com/elixir-lang/vim-elixir
+"https://github.com/tpope/vim-endwise
+"https://github.com/tpope/vim-fugitive
+"https://github.com/vim-scripts/Gist.vim
+"https://github.com/sjl/gundo.vim
+"https://github.com/tpope/vim-haml
+"https://github.com/pangloss/vim-javascript
+"https://github.com/elzr/vim-json
+"https://github.com/mxw/vim-jsx
+"https://github.com/vim-scripts/L9
+"https://github.com/groenewege/vim-less
+"https://github.com/ujihisa/vim-markdown
+"https://github.com/vim-scripts/matchit.zip
+"https://github.com/nviennot/molokai
+"https://github.com/scrooloose/nerdcommenter
+"https://github.com/scrooloose/nerdtree
+"https://github.com/nviennot/vim-powerline
+"https://github.com/tomtom/quickfixsigns_vim
+"https://github.com/tpope/vim-rails
+"https://github.com/luochen1990/rainbow
+"https://github.com/tpope/vim-repeat
+"https://github.com/vim-ruby/vim-ruby
+"https://github.com/sidnair/scala-vim
+"https://github.com/ervandew/screen
+"https://github.com/nviennot/vim-config/tree/master/bundle/scribe/syntax
+"https://github.com/slim-template/vim-slim
+"https://github.com/nviennot/snipmate.vim
+"https://github.com/tpope/vim-speeddating
+"https://github.com/ervandew/supertab
+"https://github.com/tpope/vim-surround
+"https://github.com/scrooloose/syntastic
+"https://github.com/godlygeek/tabular
+"https://github.com/majutsushi/tagbar
+"https://github.com/tomtom/tlib_vim
+"https://github.com/tpope/vim-unimpaired
+"https://github.com/mattn/webapi-vim
+"https://github.com/sukima/xmledit
+"https://github.com/vim-scripts/YankRing.vim
+
+" these are snipmate dependencies
+"Plugin 'MarcWebber/vim-addon-mw-utils'
+"Plugin 'tomtom/tlib_vim'
+"Plugin 'honza/vim-snippets'
+"Plugin 'garbas/vim-snipmate'
+"
+"Plugin 'tomtom/tcomment_vim'
+"  consider Plugin 'tpope/vim-commentary'
+"Plugin 'tpope/vim-endwise'
+"
+"  themes (choose one!)
+"Plugin 'altercation/vim-colors-solarized'
+"Plugin 'tomasr/molokai'
+"
+"Plugin 'tpope/vim-surround'
+"Plugin 'ervandew/supertab'
+"Plugin 'kien/ctrlp.vim'
+"Plugin 'tpope/vim-fugitive'
+Plugin 'jiangmiao/auto-pairs'
+"Plugin 'kien/ctrlp.vim'
+"Plugin 'skalnik/vim-vroom'
+"Plugin 'tpope/vim-dispatch'
+"Plugin 'mattn/webapi-vim'
+"Plugin 'mattn/gist-vim'
+"
+"  languages
+"Plugin 'vim-ruby/vim-ruby'
+"Plugin 'tpope/vim-rails.git'
+"Plugin 'kchmck/vim-coffee-script'
+"Plugin 'elixir-lang/vim-elixir'
+"Plugin 'guns/vim-clojure-static'
+"Plugin 'jimenezrick/vimerl'
+
+"let g:vroom_map_keys = 0
+"let g:vroom_use_dispatch = 1
+"let g:vroom_use_zeus = 1
+"map <leader>c :call vroom#RunTestFile()<CR>
+"map <leader>s :call vroom#RunNearestTest()<CR>
+"map <leader>t :A<CR> " \t to jump to test file
+
+call vundle#end()
+filetype plugin indent on
+
 " consider vim-vinegar as a replacement of nerdtree
 " Display options
 syntax on
@@ -295,105 +446,6 @@ nmap <leader>md :!/usr/local/bin/Markdown.pl --html4tags %<cr>
 " these two lines make nerdtree open in the current buffer
 map <silent> <leader>d :execute 'e '. getcwd()<CR>
 let NERDTreeHijackNetrw=1
-
-set nocompatible
-filetype off
-set rtp+=~/.config/dotfiles/vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
-
-"https://github.com/tpope/vim-abolish
-"https://github.com/mileszs/ack.vim
-"https://github.com/MarcWeber/vim-addon-mw-utils
-"https://github.com/nviennot/vim-armasm
-"https://github.com/ton/vim-bufsurf
-"https://github.com/kchmck/vim-coffee-script
-"https://github.com/skammer/vim-css-color
-"https://github.com/hail2u/vim-css3-syntax
-"https://github.com/kien/ctrlp.vim
-"https://github.com/tpope/vim-cucumber
-"https://github.com/elixir-lang/vim-elixir
-"https://github.com/tpope/vim-endwise
-"https://github.com/tpope/vim-fugitive
-"https://github.com/vim-scripts/Gist.vim
-"https://github.com/sjl/gundo.vim
-"https://github.com/tpope/vim-haml
-"https://github.com/pangloss/vim-javascript
-"https://github.com/elzr/vim-json
-"https://github.com/mxw/vim-jsx
-"https://github.com/vim-scripts/L9
-"https://github.com/groenewege/vim-less
-"https://github.com/ujihisa/vim-markdown
-"https://github.com/vim-scripts/matchit.zip
-"https://github.com/nviennot/molokai
-"https://github.com/scrooloose/nerdcommenter
-"https://github.com/scrooloose/nerdtree
-"https://github.com/nviennot/vim-powerline
-"https://github.com/tomtom/quickfixsigns_vim
-"https://github.com/tpope/vim-rails
-"https://github.com/luochen1990/rainbow
-"https://github.com/tpope/vim-repeat
-"https://github.com/vim-ruby/vim-ruby
-"https://github.com/sidnair/scala-vim
-"https://github.com/ervandew/screen
-"https://github.com/nviennot/vim-config/tree/master/bundle/scribe/syntax
-"https://github.com/slim-template/vim-slim
-"https://github.com/nviennot/snipmate.vim
-"https://github.com/tpope/vim-speeddating
-"https://github.com/ervandew/supertab
-"https://github.com/tpope/vim-surround
-"https://github.com/scrooloose/syntastic
-"https://github.com/godlygeek/tabular
-"https://github.com/majutsushi/tagbar
-"https://github.com/tomtom/tlib_vim
-"https://github.com/tpope/vim-unimpaired
-"https://github.com/mattn/webapi-vim
-"https://github.com/sukima/xmledit
-"https://github.com/vim-scripts/YankRing.vim
-
-" these are snipmate dependencies
-"Plugin 'MarcWebber/vim-addon-mw-utils'
-"Plugin 'tomtom/tlib_vim'
-"Plugin 'honza/vim-snippets'
-"Plugin 'garbas/vim-snipmate'
-"
-"Plugin 'tomtom/tcomment_vim'
-"  consider Plugin 'tpope/vim-commentary'
-"Plugin 'tpope/vim-endwise'
-"
-"  themes (choose one!)
-"Plugin 'altercation/vim-colors-solarized'
-"Plugin 'tomasr/molokai'
-"
-"Plugin 'tpope/vim-surround'
-"Plugin 'ervandew/supertab'
-"Plugin 'kien/ctrlp.vim'
-"Plugin 'tpope/vim-fugitive'
-Plugin 'jiangmiao/auto-pairs'
-"Plugin 'kien/ctrlp.vim'
-"Plugin 'skalnik/vim-vroom'
-"Plugin 'tpope/vim-dispatch'
-"Plugin 'mattn/webapi-vim'
-"Plugin 'mattn/gist-vim'
-"
-"  languages
-"Plugin 'vim-ruby/vim-ruby'
-"Plugin 'tpope/vim-rails.git'
-"Plugin 'kchmck/vim-coffee-script'
-"Plugin 'elixir-lang/vim-elixir'
-"Plugin 'guns/vim-clojure-static'
-"Plugin 'jimenezrick/vimerl'
-
-"let g:vroom_map_keys = 0
-"let g:vroom_use_dispatch = 1
-"let g:vroom_use_zeus = 1
-"map <leader>c :call vroom#RunTestFile()<CR>
-"map <leader>s :call vroom#RunNearestTest()<CR>
-"map <leader>t :A<CR> " \t to jump to test file
-
-call vundle#end()
-filetype plugin indent on
 
 "map <c-]> gt
 "map <c-[> gT

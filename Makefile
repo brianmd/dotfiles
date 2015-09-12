@@ -16,12 +16,16 @@ endef
 
 
 relink:
-	rm -f ~/.zshrc ~/.tmux.conf ~/.inputrc ~/.gitconfig ~/.gitignore_global ~/.vim/vimrc.mine
+	rm -f ~/.zshrc ~/.tmux.conf ~/.inputrc ~/.gitconfig ~/.gitignore_global ~/.vim ~/.vimrc
+	# this is a fix for those that aren't using .vim as a link
+	rm -rf ~/.vim
 	ln -s ${HOME}/.config/dotfiles/etc/zshrc ~/.zshrc
 	ln -s ${HOME}/.config/dotfiles/etc/tmux.conf ~/.tmux.conf
 	ln -s ${HOME}/.config/dotfiles/etc/inputrc ~/.inputrc
 	ln -s ${HOME}/.config/dotfiles/etc/gitconfig ~/.gitconfig
-	ln -s ${HOME}/.config/dotfiles/vim/vimrc.mine ~/.vim/vimrc.mine
+	# ln -s ${HOME}/.config/dotfiles/vim/vimrc.mine ~/.vim/vimrc.mine
+	ln -s ${HOME}/.config/dotfiles/vim ~/.vim
+	ln -s ${HOME}/.config/dotfiles/vim/vimrc ~/.vim/vimrc
 	# .gitconfig points directly to the global ignore. don't need it in home
 	# directory.  ln -s ${HOME}/.config/dotfiles/etc/gitignore_global ~/.gitignore_global
 
@@ -130,7 +134,9 @@ install_github:
 	cd ~/code && git clone git@github.com:brianmd/network-tester.git
 
 
-~/.vim:
+
+
+~/.vimold:
 	# ctrlp: http://kien.github.io/ctrlp.vim/
 	git clone git://github.com/nviennot/vim-config.git ~/.vim
 	cd ~/.vim && make install
@@ -139,13 +145,18 @@ install_github:
 	cd ~/.vim && git clone git://github.com/tpope/vim-rsi.git
 	$(MAKE) install_vim
 
-install_vim:
-	$(MAKE) ~/.config/dotfiles/vim/bundle/Vundle.vim
 
-~/.config/dotfiles/vim/bundle/Vundle.vim:
+
+
+install_vim: ~/.vim
+
+~/.vim:
 	mkdir -p ~/.config/dotfiles/vim/bundle
+	ln -s $(HOME)/.config/dotfiles/vim $(HOME)/.vim
+	ln -s $(HOME)/.config/dotfiles/vim/vimrc $(HOME)/.vimrc
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/dotfiles/vim/bundle/Vundle.vim
 	# install the plugins from vimrc.mine
+	#$(MAKE) ~/.config/dotfiles/vim/bundle/Vundle.vim
 	vim +PluginInstall +qall
 
 
