@@ -71,6 +71,10 @@ root_install_vagrant:
 	easy_install pip
 
 root_install_plex:
+	# sudo mount -t hfsplus -o force,rw /dev/sdb2 /media/bmd
+	# above isn't working -- seems drive is now on sda2
+	# mount -t hfsplus -o force,rw /dev/sda2 /media/bmd
+	sudo apt-get install nfs-common nfs-kernel-server
 	mkdir -p ~/downloads
 	cd ~/downloads && wget https://downloads.plex.tv/plex-media-server/0.9.12.11.1406-8403350/plexmediaserver_0.9.12.11.1406-8403350_amd64.deb
 	cd ~/downloads && dpkg -i plexmediaserver_0.9.12.11.1406-8403350_amd64.deb
