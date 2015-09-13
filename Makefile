@@ -17,6 +17,7 @@ endef
 
 
 relink:
+	$(MAKE) ~/.oh-my-zsh
 	rm -f ~/.zshrc ~/.tmux.conf ~/.inputrc ~/.gitconfig ~/.gitignore_global
 	ln -s ${HOME}/.config/dotfiles/etc/zshrc ~/.zshrc
 	ln -s ${HOME}/.config/dotfiles/etc/tmux.conf ~/.tmux.conf
@@ -60,8 +61,8 @@ root_install_user:
 	# zlib1g-dev: for installing nokogirl.
 	# python-software-properties: for salt.
 	apt-get -y install git silversearcher-ag golang tree keychain zsh htop tmux python-software-properties zlib1g-dev
-	git config --global user.email "brian@murphydye.com"
-	git config --global user.name "Brian Murphy-Dye"
+	#git config --global user.email "brian@murphydye.com"
+	#git config --global user.name "Brian Murphy-Dye"
 
 root_install_vagrant:
 	apt-get -y install virtualbox vagrant virtualbox-dkms
@@ -71,10 +72,11 @@ root_install_vagrant:
 	easy_install pip
 
 root_install_plex:
+	# use 'sudo blkid' to find the appropriate /dev/sd??
 	# sudo mount -t hfsplus -o force,rw /dev/sdb2 /media/bmd
 	# above isn't working -- seems drive is now on sda2
 	# mount -t hfsplus -o force,rw /dev/sda2 /media/bmd
-	sudo apt-get install nfs-common nfs-kernel-server
+	sudo apt-get -y install nfs-common nfs-kernel-server
 	mkdir -p ~/downloads
 	cd ~/downloads && wget https://downloads.plex.tv/plex-media-server/0.9.12.11.1406-8403350/plexmediaserver_0.9.12.11.1406-8403350_amd64.deb
 	cd ~/downloads && dpkg -i plexmediaserver_0.9.12.11.1406-8403350_amd64.deb
@@ -104,6 +106,7 @@ root_create_shares: /usr/share/provisioners
 
 linux_rbenv_prerequisites:
 	# from https://github.com/sstephenson/ruby-build/wiki
+	# note: build-essential has make
 	apt-get -y install autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
 
 mac_rbenv_prerequisites:

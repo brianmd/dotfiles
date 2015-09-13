@@ -1,5 +1,8 @@
 To install, clone and make as follows:
 
+    Note: if make does not exist on your ubuntu, run:
+        sudo apt-get -y install build-essential
+
     mkdir -p ~/.config && git clone git@github.com:brianmd/dotfiles.git ~/.config/dotfiles
        OR
     mkdir -p ~/.config && git clone https://github.com/brianmd/dotfiles.git ~/.config/dotfiles

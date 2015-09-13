@@ -129,6 +129,7 @@ alias vs="vagrant ssh"
 alias vu="vagrant up"
 alias vd="vagrant destroy"
 alias vh="vagrant halt"
+alias vstat="vagrant status"
 
 # Redis
 alias redismd="redis-cli -h redis-md -p 11510 -a '$REDIS_MD_PW'"
