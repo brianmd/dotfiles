@@ -321,6 +321,7 @@ let NERDTreeShowFiles=1
 nnoremap <silent> <Leader>gd :Gdiff<CR>
 nnoremap <silent> <Leader>gb :Gblame<CR>
 nnoremap <silent> <Leader>gc :Gcommit<CR>
+nnoremap <silent> <Leader>gs :Gstatus<CR>
 
 nnoremap <Leader>a :Ack 
 
