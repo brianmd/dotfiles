@@ -282,6 +282,11 @@ nnoremap <Down>  3<C-w>+
 nnoremap <Left>  3<C-w><
 nnoremap <Right> 3<C-w>>
 
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
+
 nnoremap _ :split<cr>
 nnoremap \| :vsplit<cr>
 
@@ -315,6 +320,7 @@ let NERDTreeShowFiles=1
 
 nnoremap <silent> <Leader>gd :Gdiff<CR>
 nnoremap <silent> <Leader>gb :Gblame<CR>
+nnoremap <silent> <Leader>gc :Gcommit<CR>
 
 nnoremap <Leader>a :Ack 
 
