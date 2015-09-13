@@ -327,6 +327,7 @@ nnoremap <Leader>a :Ack
 
 " Put a space around comment markers
 let g:NERDSpaceDelims = 1
+map <Leader>k <Leader>c 
 
 nnoremap <C-y> :YRShow<cr>
 let g:yankring_history_dir = '$HOME/.config/dotfiles/vim'
