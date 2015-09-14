@@ -171,7 +171,6 @@ install_vim: ~/.vim
 ~/.vim:
 	mkdir -p ~/.config/dotfiles/vim/bundle
 	mkdir -p ~/.config/dotfiles/vim/swap
-	mkdir -p ~/.config/dotfiles/vim/viminfo
 	mkdir -p ~/.config/dotfiles/vim/undo
 	touch ~/.config/dotfiles/vim/vimrc.mine
 	touch ~/.config/dotfiles/vim/gvimrc.mine
