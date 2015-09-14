@@ -134,8 +134,8 @@ install_dev: install_user ~/.rbenv ~/.irb ~/.rbenv/shims/ruby
 	echo 'from the new shell, type  make install_ruby'
 
 install_user: ~/.vim ~/.oh-my-zsh ~/.zshrc ~/.tmux.conf
-	git config --global user.email "brian@murphydye.com"
-	git config --global user.name "Brian Murphy-Dye"
+	#git config --global user.email "brian@murphydye.com"
+	#git config --global user.name "Brian Murphy-Dye"
 	$(MAKE) relink
 
 install_github:
