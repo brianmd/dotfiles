@@ -50,6 +50,8 @@
 
 
 [alias]
+  # interactive rebase of all non-pushed commits
+  ri = rebase -i @{upstream}
   # see https://gist.github.com/pksunkara/988716
   a = add --all
   ai = add -i
