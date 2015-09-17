@@ -186,3 +186,7 @@ fi
 
 export VAGRANT_HOME=/usr/share/provisioners/vagrant.d
 
+# if &term =~ '256color'
+  # set t_ut=
+# fi
+
