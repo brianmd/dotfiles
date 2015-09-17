@@ -55,6 +55,7 @@ Plugin 'mattn/webapi-vim'
 Plugin 'sukima/xmledit'
 Plugin 'vim-scripts/YankRing.vim'
 
+Plugin 'heartsentwined/vim-emblem'
 
 
 "https://github.com/tpope/vim-abolish
@@ -276,16 +277,20 @@ endfunction
 noremap K k
 
 " Resize window splits
-" TODO Fix mousewheel
-nnoremap <Up>    3<C-w>-
-nnoremap <Down>  3<C-w>+
-nnoremap <Left>  3<C-w><
-nnoremap <Right> 3<C-w>>
+nnoremap <S-Up>    3<C-w>-
+nnoremap <S-Down>  3<C-w>+
+nnoremap <S-Left>  3<C-w><
+nnoremap <silent> <S-Right> 3<C-w>>
 
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
+
+" maximize current horizontal split
+set winheight=10
+set wmh=10
+map - <c-w>_
 
 nnoremap _ :split<cr>
 nnoremap \| :vsplit<cr>
