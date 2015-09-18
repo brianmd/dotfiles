@@ -94,7 +94,7 @@ alias ipaddrs='ifconfig -a | grep "inet "'
 alias tboards="trello board list"
 alias tlist="trello list list -b '$TRELLO_TODO_BOARD'"
 alias tadd="trello card create -b $TRELLO_TODO_BOARD -l $TRELLO_INBOX -n"
-alias taddhome="trello card create -b $TRELLO_TODO_BOARD -l $TRELLO_HOME_INBOX -n"
+alias thome="trello card create -b $TRELLO_TODO_BOARD -l $TRELLO_HOME_INBOX -n"
 alias tl="trello card list -b $TRELLO_TODO_BOARD -l $TRELLO_IN_PROGRESS"
 alias tlinbox="trello card list -b $TRELLO_TODO_BOARD -l $TRELLO_INBOX"
 
