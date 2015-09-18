@@ -4,6 +4,10 @@
 
 KERNEL=`uname -s`
 
+if [ -f ~/.config/.pw ]; then
+  source ~/.config/.pw
+fi
+
 export DEFAULT_CONFIG_FILE='~/.redmine'
 
 #    oh-my-zsh config
@@ -86,6 +90,11 @@ _c() { _files -W ~/code -/; }
 
 alias ipaddrs='ifconfig -a | grep "inet "'
 
+# trello
+alias tlist="trello list list -b '$TRELLO_TODO_BOARD'"
+alias tadd="trello card create -b $TRELLO_TODO_BOARD -l $TRELLO_INBOX -n"
+alias tl="trello card list -b $TRELLO_TODO_BOARD -l $TRELLO_IN_PROGRESS"
+
 #alias tmux='direnv exec / tmux'
 alias tmux="tmux -2"
 alias t="tmux"
@@ -141,10 +150,6 @@ alias ...='cd ../../../'
 alias ....='cd ../../../../'
 
 alias da='direnv allow'
-
-if [ -f ~/.config/pw ]; then
-  source ~/.config/pw
-fi
 
 export PATH="$HOME/bin:$HOME/.rbenv/bin:$HOME/.rbenv/shims:/usr/local/bin:/usr/sbin:/sbin:$PATH"
 export CDPATH=.:~/code:~:~/pkgs:~/.config
