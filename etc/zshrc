@@ -92,6 +92,7 @@ alias ipaddrs='ifconfig -a | grep "inet "'
 
 # trello
 alias inbox="trellor todo.inbox"
+alias inprogress="trellor todo.inprogress"
 alias home="trellor home.inbox"
 alias 5001="trellor home.5001"
 
