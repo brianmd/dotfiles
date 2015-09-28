@@ -16,6 +16,10 @@ define RBENV_ENV
 endef
 
 
+root_install_make:
+	# this is ironical as make can't install itself. But this is the command to run!
+	sudo apt-get -y install build-essential
+
 relink:
 	$(MAKE) ~/.oh-my-zsh
 	rm -f ~/.zshrc ~/.tmux.conf ~/.inputrc ~/.gitconfig ~/.gitignore_global
