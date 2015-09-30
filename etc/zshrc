@@ -91,10 +91,10 @@ _c() { _files -W ~/code -/; }
 alias ipaddrs='ifconfig -a | grep "inet "'
 
 # trello
-alias inbox="trellor todo.inbox"
-alias inprogress="trellor todo.inprogress"
-alias home="trellor home.inbox"
-alias 5001="trellor home.5001"
+alias inbox="trellor todo inbox"
+alias inprogress="trellor todo inprogress"
+alias home="trellor home inbox"
+alias 5001="trellor home 5001"
 
 #alias tmux='direnv exec / tmux'
 alias tmux="tmux -2"
