@@ -96,6 +96,7 @@ alias inprogress="trellor todo inprogress"
 alias home="trellor home inbox"
 alias 5001="trellor home 5001"
 
+alias xt='xterm -fg white -bg black'
 #alias tmux='direnv exec / tmux'
 alias tmux="tmux -2"
 alias t="tmux"
