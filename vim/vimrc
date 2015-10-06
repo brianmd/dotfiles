@@ -1,5 +1,6 @@
 set nocompatible
 filetype off
+" set rtp+=~/.config/dotfiles/vim/bundle/Vundle.vim
 set rtp+=~/.config/dotfiles/vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -10,7 +11,10 @@ Plugin 'tpope/vim-abolish'
 Plugin 'rking/ag.vim'
 " Plugin 'mileszs/ack.vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'nviennot/vim-armasm'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+" Plugin 'nviennot/snipmate.vim'
+" Plugin 'nviennot/vim-armasm'
 Plugin 'ton/vim-bufsurf'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'ap/vim-css-color'
@@ -18,7 +22,7 @@ Plugin 'ap/vim-css-color'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-cucumber'
-Plugin 'elixir-lang/vim-elixir'
+" Plugin 'elixir-lang/vim-elixir'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-scripts/Gist.vim'
@@ -40,18 +44,16 @@ Plugin 'tpope/vim-rails'
 Plugin 'luochen1990/rainbow'
 Plugin 'tpope/vim-repeat'
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'sidnair/scala-vim'
+" Plugin 'sidnair/scala-vim'
 Plugin 'ervandew/screen'
 "Plugin 'nviennot/vim-config/tree/master/bundle/scribe/syntax'
 Plugin 'slim-template/vim-slim'
-Plugin 'nviennot/snipmate.vim'
 Plugin 'tpope/vim-speeddating'
 Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/syntastic'
 Plugin 'godlygeek/tabular'
 Plugin 'majutsushi/tagbar'
-Plugin 'tomtom/tlib_vim'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'mattn/webapi-vim'
 Plugin 'sukima/xmledit'
@@ -150,6 +152,7 @@ Plugin 'jiangmiao/auto-pairs'
 "map <leader>t :A<CR> " \t to jump to test file
 
 call vundle#end()
+syntax enable
 filetype plugin indent on
 
 " consider vim-vinegar as a replacement of nerdtree
