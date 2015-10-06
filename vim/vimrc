@@ -7,12 +7,14 @@ Plugin 'VundleVim/Vundle.vim'
 
 
 Plugin 'tpope/vim-abolish'
-Plugin 'mileszs/ack.vim'
+Plugin 'rking/ag.vim'
+" Plugin 'mileszs/ack.vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'nviennot/vim-armasm'
 Plugin 'ton/vim-bufsurf'
 Plugin 'kchmck/vim-coffee-script'
-Plugin 'skammer/vim-css-color'
+Plugin 'ap/vim-css-color'
+" Plugin 'skammer/vim-css-color'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-cucumber'
@@ -163,6 +165,7 @@ elseif $TERM =~ '^xterm$'
   set t_Co=256
 endif
 colorscheme molokai
+let g:cssColorVimDoNotMessMyUpdatetime = 1
 
 " Misc
 filetype plugin indent on       " Do filetype detection and load custom file plugins and indent files
