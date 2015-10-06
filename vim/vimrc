@@ -479,7 +479,8 @@ let NERDTreeHijackNetrw=1
 " set ruler
 " set matchpairs+=<:>
 " set backspace=indent,eol,start
-set switchbuf=usetab,newtab
+" set switchbuf=usetab,newtab
+set switchbuf=usetab
 " set wm=0
 " let macvim_skip_colorscheme=1
 " colorscheme murphy
