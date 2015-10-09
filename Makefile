@@ -117,6 +117,7 @@ linux_rbenv_prerequisites:
 
 mac_rbenv_prerequisites:
 	brew install openssl libyaml libffi
+	brew install htop
 
 root_adduser:
 	echo "missing MNAME environment variable."
@@ -233,4 +234,7 @@ old_install_rubies:
 ~/.rbenv/shims/ruby:
 	curl -sSL http://getrbenv.com/install | bash -s -- --rubies 2.1.5 --global-ruby 2.1.5 --plugins sstephenson/ruby-build,sstephenson/rbenv-gem-rehash
 	#curl -sSL http://getrbenv.com/install | bash -s -- --rubies 2.1.5,2.2.2 --global-ruby 2.2.2 --plugins sstephenson/ruby-build,sstephenson/rbenv-gem-rehash
+	# rbenv install --list
+	# rbenv install 2.2.3
+	rbenv rehash
 
