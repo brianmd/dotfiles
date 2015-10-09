@@ -160,7 +160,7 @@ if [ -d ~/pkgs/boxes ]; then
 fi
 
 if [[ $KERNEL == 'Darwin' ]]; then
-  export SSL_CERT_FILE=/git/Certificates.pem
+  #export SSL_CERT_FILE=/git/Certificates.pem
   export JAVA_HOME=`/usr/libexec/java_home`
   export PATH="$PATH:$HOME/Dropbox/summit/projects/summit-extensions/common/bin:/opt/local/bin:/usr/local/bin:/usr/local/share/npm/bin:$PATH:$HOME/Dropbox/summit/bin:/usr/local/share/bin:/opt/local/bin:/opt/X11/bin"
   export CDPATH=$CDPATH:~/Documents:~/Documents/git:~/Dropbox:~/Dropbox/summit:~/Dropbox/summit/projects:~/Documents/git/summit
@@ -188,6 +188,9 @@ if [ -d ${HOME}/.rbenv ]; then
   export RBENV_ROOT=${HOME}/.rbenv
   eval "$(rbenv init - zsh)"
 fi
+if [ -d ${HOME}/code/summit ]; then
+  export CDPATH=$CDPATH:~/code/summit
+fi
 
 export VAGRANT_HOME=/usr/share/provisioners/vagrant.d
 
@@ -195,3 +198,6 @@ export VAGRANT_HOME=/usr/share/provisioners/vagrant.d
   # set t_ut=
 # fi
 
+
+#  installing rbenv may add export RBENV_ROOT, PATH, and eval rbenv init.
+#  These are already set above, so delete them from here
