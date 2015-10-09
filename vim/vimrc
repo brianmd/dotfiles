@@ -514,3 +514,6 @@ autocmd filetype crontab setlocal nobackup nowritebackup
   " execute "set <xLeft>=\e[1;*D"
 " endif
 
+" make yank and put commands use the OS clipboard
+set clipboard=unnamed
+
