@@ -90,9 +90,6 @@ root_install_plex:
 install_vagrant:
 	vagrant plugin install vagrant-hostmanager
 
-root_mac_baseinstall:
-	brew install ag
-
 root_create_shares: /usr/share/provisioners
 
 /usr/share/provisioners:
@@ -114,6 +111,10 @@ linux_rbenv_prerequisites:
 	# from https://github.com/sstephenson/ruby-build/wiki
 	# note: build-essential has make
 	apt-get -y install autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
+
+root_mac_baseinstall:
+	brew install ag
+	brew install vim  # bumps default mac version from 7.3 to 7.4
 
 mac_rbenv_prerequisites:
 	brew install openssl libyaml libffi
