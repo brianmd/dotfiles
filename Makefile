@@ -115,6 +115,17 @@ linux_rbenv_prerequisites:
 root_mac_baseinstall:
 	brew install ag
 	brew install vim  # bumps default mac version from 7.3 to 7.4
+	brew install redis
+	brew install caskroom/cask/brew-cask
+	brew cask install google-chrome
+	brew cask install launchrocket
+
+mac_install_direnv: ~/.config/direnv
+
+~/.config/direnv:
+	mkdir -p ~/.config
+	cd ~/.config && git clone https://github.com/direnv/direnv
+	cd ~/.config/direnv && make install
 
 mac_rbenv_prerequisites:
 	brew install openssl libyaml libffi
