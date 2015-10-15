@@ -119,6 +119,7 @@ root_mac_baseinstall:
 	brew install caskroom/cask/brew-cask
 	brew cask install google-chrome
 	brew cask install launchrocket
+	brew cask install keepingyouawake
 
 mac_install_direnv: ~/.config/direnv
 
