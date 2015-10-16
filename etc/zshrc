@@ -193,7 +193,7 @@ if [ -d ${HOME}/code/summit ]; then
   export CDPATH=$CDPATH:~/code/summit
 fi
 
-export VAGRANT_HOME=/usr/share/provisioners/vagrant.d
+# export VAGRANT_HOME=/usr/share/provisioners/vagrant.d
 
 # if &term =~ '256color'
   # set t_ut=
