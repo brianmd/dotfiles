@@ -120,6 +120,9 @@ root_mac_baseinstall:
 	brew cask install google-chrome
 	brew cask install launchrocket
 	brew cask install keepingyouawake
+	brew cask install virtualbox
+	brew cask install vagrant
+	brew cask install vagrant-manager
 
 mac_install_direnv: ~/.config/direnv
 
