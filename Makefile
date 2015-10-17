@@ -113,6 +113,8 @@ linux_rbenv_prerequisites:
 	apt-get -y install autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
 
 root_mac_baseinstall:
+	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	brew doctor
 	brew install ag
 	brew install vim  # bumps default mac version from 7.3 to 7.4
 	brew install redis
@@ -124,16 +126,37 @@ root_mac_baseinstall:
 	brew cask install vagrant
 	brew cask install vagrant-manager
 
+mac_rbenv_prerequisites:
+	brew install openssl libyaml libffi
+	brew install htop
+
+mac_gnu_tools:
+	brew tap homebrew/dupes
+	brew install findutils --default-names
+	brew install gnu-sed --default-names
+	brew install gnu-tar --default-names
+	brew install gnu-which --default-names
+	brew install gnutls --default-names
+	brew install grep --default-names
+	brew install coreutils
+	brew install binutils
+	brew install diffutils
+	brew install gzip
+	brew install watch
+	brew install tmux
+	# this makes pbcopy/pbpaste work in tmux
+	brew install reattach-to-user-namespace
+	brew install wget
+	brew install nmap
+	brew install gpg
+	brew install htop
+
 mac_install_direnv: ~/.config/direnv
 
 ~/.config/direnv:
 	mkdir -p ~/.config
 	cd ~/.config && git clone https://github.com/direnv/direnv
 	cd ~/.config/direnv && make install
-
-mac_rbenv_prerequisites:
-	brew install openssl libyaml libffi
-	brew install htop
 
 root_adduser:
 	echo "missing MNAME environment variable."
