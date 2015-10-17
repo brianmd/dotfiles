@@ -127,6 +127,8 @@ root_mac_baseinstall:
 	brew cask install vagrant-manager
 
 mac_base_config:
+	# there are tons of great mac config statements at
+	# https://gist.github.com/kimmobrunfeldt/350f4898d1b82cf10bce
 	#Enable repeat on keydown
 	defaults write -g ApplePressAndHoldEnabled -bool false
 	#Use current directory as default search scope in Finder
