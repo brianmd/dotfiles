@@ -125,6 +125,8 @@ root_mac_baseinstall:
 	brew cask install virtualbox
 	brew cask install vagrant
 	brew cask install vagrant-manager
+	# phantomjs hasn't been updated for el capitan
+	# brew install phantomjs
 
 mac_base_config:
 	# there are tons of great mac config statements at
