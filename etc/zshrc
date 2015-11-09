@@ -202,3 +202,6 @@ fi
 
 #  installing rbenv may add export RBENV_ROOT, PATH, and eval rbenv init.
 #  These are already set above, so delete them from here
+
+# added by travis gem
+[ -f /Users/bmd/.travis/travis.sh ] && source /Users/bmd/.travis/travis.sh
