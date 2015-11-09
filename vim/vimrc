@@ -197,7 +197,7 @@ set smarttab                    " Make <tab> and <backspace> smarter
 set expandtab
 set tabstop=2
 set shiftwidth=2
-set textwidth=80
+" set textwidth=80
 set formatoptions-=t formatoptions+=croql
 
 " viminfo: remember certain things when we exit
