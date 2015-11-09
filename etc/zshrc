@@ -193,6 +193,9 @@ if [ -d ${HOME}/code/summit ]; then
   export CDPATH=$CDPATH:~/code/summit
 fi
 
+export PATH="$HOME/.nodenv/bin:$PATH"
+eval "$(nodenv init -)"
+
 # export VAGRANT_HOME=/usr/share/provisioners/vagrant.d
 
 # if &term =~ '256color'
