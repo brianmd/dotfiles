@@ -76,6 +76,11 @@ root_install_vagrant:
 	wget https://bootstrap.pypa.io/ez_setup.py -O - | python
 	easy_install pip
 
+install_nodenv:
+	git clone https://github.com/atsjj/nodenv.git ~/.nodenv
+	nodenv install v4.2.2
+	nodenv rehash
+
 root_install_plex:
 	# use 'sudo blkid' to find the appropriate /dev/sd??
 	# sudo mount -t hfsplus -o force,rw /dev/sdb2 /media/bmd
