@@ -260,6 +260,7 @@ vnoremap @ :normal! @
 
 " Toggles
 set pastetoggle=<F1>
+map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
 " the nmap is just for quicker powerline feedback
 nmap <silent> <F1>      :set invpaste<CR>
 nmap          <F2>      :setlocal spell!<CR>
