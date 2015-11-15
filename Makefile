@@ -65,7 +65,7 @@ root_install_user:
 	apt-get upgrade
 	# zlib1g-dev: for installing nokogirl.
 	# python-software-properties: for salt.
-	apt-get -y install git silversearcher-ag golang tree keychain zsh htop tmux python-software-properties zlib1g-dev
+	apt-get -y install git silversearcher-ag golang tree keychain zsh htop tmux python-software-properties zlib1g-dev exuberant-ctags
 	#git config --global user.email "brian@murphydye.com"
 	#git config --global user.name "Brian Murphy-Dye"
 
@@ -124,6 +124,8 @@ root_mac_baseinstall:
 	brew install ag
 	brew install vim  # bumps default mac version from 7.3 to 7.4
 	brew install redis
+	brew install mongodb
+	brew install mariadb
 	brew install caskroom/cask/brew-cask
 	brew cask install google-chrome
 	brew cask install launchrocket
@@ -131,6 +133,7 @@ root_mac_baseinstall:
 	brew cask install virtualbox
 	brew cask install vagrant
 	brew cask install vagrant-manager
+	brew install ctags
 	# phantomjs hasn't been updated for el capitan
 	# brew install phantomjs
 

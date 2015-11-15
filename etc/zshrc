@@ -160,6 +160,9 @@ if [ -d ~/pkgs/boxes ]; then
   export CDPATH=$CDPATH:~/pkgs/boxes
 fi
 
+if [ -d ${HOME}/code/summit ]; then
+  export CDPATH=$CDPATH:~/code/summit
+fi
 if [[ $KERNEL == 'Darwin' ]]; then
   #export SSL_CERT_FILE=/git/Certificates.pem
   export JAVA_HOME=`/usr/libexec/java_home`
@@ -189,9 +192,6 @@ if [ -d ${HOME}/.rbenv ]; then
   export RBENV_ROOT=${HOME}/.rbenv
   eval "$(rbenv init - zsh)"
 fi
-if [ -d ${HOME}/code/summit ]; then
-  export CDPATH=$CDPATH:~/code/summit
-fi
 
 export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"
@@ -208,3 +208,6 @@ eval "$(nodenv init -)"
 
 # added by travis gem
 [ -f /Users/bmd/.travis/travis.sh ] && source /Users/bmd/.travis/travis.sh
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
