@@ -31,6 +31,7 @@ Plugin 'tpope/vim-haml'
 Plugin 'pangloss/vim-javascript'
 Plugin 'elzr/vim-json'
 Plugin 'mxw/vim-jsx'
+Plugin 'othree/yajs.vim'
 Plugin 'vim-scripts/L9'
 Plugin 'groenewege/vim-less'
 Plugin 'ujihisa/vim-markdown'
@@ -451,6 +452,7 @@ augroup END
 
 " fix for vim-javascript + rainbow incompatibility
 autocmd FileType javascript syntax clear jsFuncBlock
+" autocmd BufRead,BufNewFile *.es6 setfiletype javascript
 set nocursorline
 
 set mouse=a
