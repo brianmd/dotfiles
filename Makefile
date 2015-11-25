@@ -266,6 +266,7 @@ update_vim_plugins:
 
 install_vim_plugins:
 	vim +PluginInstall +qall
+	vim +PlugInstall
 
 
 ~/.tmux.conf:

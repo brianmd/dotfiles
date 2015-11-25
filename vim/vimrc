@@ -1,6 +1,71 @@
 set nocompatible
 filetype off
 " set rtp+=~/.config/dotfiles/vim/bundle/Vundle.vim
+
+call plug#begin()
+Plug 'janko-m/vim-test'
+Plug 'VundleVim/Vundle.vim'
+
+
+Plug 'tpope/vim-abolish'
+Plug 'rking/ag.vim'
+" Plug 'mileszs/ack.vim'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+" Plug 'nviennot/snipmate.vim'
+" Plug 'nviennot/vim-armasm'
+Plug 'ton/vim-bufsurf'
+Plug 'kchmck/vim-coffee-script'
+Plug 'ap/vim-css-color'
+" Plug 'skammer/vim-css-color'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-cucumber'
+" Plug 'elixir-lang/vim-elixir'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-scripts/Gist.vim'
+Plug 'sjl/gundo.vim'
+Plug 'tpope/vim-haml'
+Plug 'pangloss/vim-javascript'
+Plug 'elzr/vim-json'
+Plug 'mxw/vim-jsx'
+Plug 'othree/yajs.vim'
+Plug 'vim-scripts/L9'
+Plug 'groenewege/vim-less'
+Plug 'ujihisa/vim-markdown'
+Plug 'vim-scripts/matchit.zip'
+Plug 'nviennot/molokai'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'nviennot/vim-powerline'
+Plug 'tomtom/quickfixsigns_vim'
+Plug 'tpope/vim-rails'
+Plug 'luochen1990/rainbow'
+Plug 'tpope/vim-repeat'
+Plug 'vim-ruby/vim-ruby'
+Plug 'ecomba/vim-ruby-refactoring'
+" Plug 'sidnair/scala-vim'
+Plug 'ervandew/screen'
+"Plug 'nviennot/vim-config/tree/master/bundle/scribe/syntax'
+Plug 'slim-template/vim-slim'
+Plug 'tpope/vim-speeddating'
+Plug 'ervandew/supertab'
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/syntastic'
+Plug 'godlygeek/tabular'
+Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-unimpaired'
+Plug 'mattn/webapi-vim'
+Plug 'sukima/xmledit'
+Plug 'vim-scripts/YankRing.vim'
+
+Plug 'heartsentwined/vim-emblem'
+Plug 'jiangmiao/auto-pairs'
+
+call plug#end()
+
 set rtp+=~/.config/dotfiles/vim/bundle/Vundle.vim
 call vundle#begin()
 
