@@ -265,7 +265,7 @@ update_vim_plugins:
 	vim +PluginInstall! +qall
 
 install_vim_plugins:
-	vim +PluginInstall +qall
+	# vim +PluginInstall +qall
 	vim +PlugInstall
 
 
