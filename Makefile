@@ -262,7 +262,8 @@ install_vim: ~/.vim
 	$(MAKE) install_vim_plugins
 
 update_vim_plugins:
-	vim +PluginInstall! +qall
+	# vim +PluginInstall! +qall
+	vim +PlugUpdate
 
 install_vim_plugins:
 	# vim +PluginInstall +qall
