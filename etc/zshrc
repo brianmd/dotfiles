@@ -169,7 +169,11 @@ if [[ $KERNEL == 'Darwin' ]]; then
   export PATH="$PATH:$HOME/Dropbox/summit/projects/summit-extensions/common/bin:/opt/local/bin:/usr/local/bin:/usr/local/share/npm/bin:$PATH:$HOME/Dropbox/summit/bin:/usr/local/share/bin:/opt/local/bin:/opt/X11/bin"
   export CDPATH=$CDPATH:~/Documents:~/Documents/git:~/Dropbox:~/Dropbox/summit:~/Dropbox/summit/projects:~/Documents/git/summit
 else
-  keychain git_key cloud gru minion
+  # keychain git_key cloud gru minion
+  if [[ -f ~/.ssh/git_key ]]; then keychain git_key; fi
+  if [[ -f ~/.ssh/cloud ]]; then keychain cloud; fi
+  if [[ -f ~/.ssh/gru ]]; then keychain gru; fi
+  if [[ -f ~/.ssh/minion ]]; then keychain minion; fi
   source ~/.keychain/${HOST}-sh
 fi
 
