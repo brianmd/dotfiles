@@ -193,8 +193,10 @@ if [ -d ${HOME}/.rbenv ]; then
   eval "$(rbenv init - zsh)"
 fi
 
-export PATH="$HOME/.nodenv/bin:$PATH"
-eval "$(nodenv init -)"
+if [[ -d ~/.nodenv ]]; then
+  export PATH="$HOME/.nodenv/bin:$PATH"
+  eval "$(nodenv init -)"
+fi
 
 # export VAGRANT_HOME=/usr/share/provisioners/vagrant.d
 
