@@ -39,3 +39,6 @@ mytests
 mytests.rb
 Gemfile.my*
 Procfile
+node_modules
+
+

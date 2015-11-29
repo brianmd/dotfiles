@@ -64,6 +64,8 @@ Plug 'vim-scripts/YankRing.vim'
 Plug 'heartsentwined/vim-emblem'
 Plug 'jiangmiao/auto-pairs'
 
+Plug 'mattn/emmet-vim'
+
 call plug#end()
 
 set rtp+=~/.config/dotfiles/vim/bundle/Vundle.vim
