@@ -118,7 +118,8 @@ linux_rbenv_prerequisites:
 	# note: build-essential has make
 	apt-get -y install autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
 
-root_mac_baseinstall:
+why_root_mac_baseinstall:
+	# why should these be run as root?????
 	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	brew doctor
 	brew install ag
@@ -126,6 +127,8 @@ root_mac_baseinstall:
 	brew install redis
 	brew install mongodb
 	brew install mariadb
+	brew install watchman
+	brew install sqlite
 	brew install caskroom/cask/brew-cask
 	brew cask install google-chrome
 	brew cask install launchrocket
