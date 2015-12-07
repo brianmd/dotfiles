@@ -11,11 +11,13 @@
     "co-views": "^2.1.0",
     "curry": "^1.2.0",
     "ejs": "^2.3.4",
+    "immutable": "^3.7.5",
     "koa": "^1.1.2",
     "koa-body-parser": "^1.1.2",
     "koa-route": "^2.4.2",
     "moment": "^2.10.6",
     "monk": "^1.0.1",
+    "mori": "^0.3.2",
     "mysql": "^2.9.0",
     "use-strict": "^1.0.1"
   },
