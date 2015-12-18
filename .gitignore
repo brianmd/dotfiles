@@ -10,4 +10,5 @@
 /vim/gvimrc.mine
 /vim/bundle
 /vim/plugged
+node_modules
 
