@@ -2,10 +2,13 @@ set nocompatible
 filetype off
 " set rtp+=~/.config/dotfiles/vim/bundle/Vundle.vim
 
+" PlugInstall   or  PlugUpdate
+
 call plug#begin()
 Plug 'janko-m/vim-test'
 Plug 'VundleVim/Vundle.vim'
 
+Plug 'tpope/vim-fireplace'
 
 Plug 'tpope/vim-abolish'
 Plug 'rking/ag.vim'
