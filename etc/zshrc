@@ -81,8 +81,8 @@ plugins=(rails git bundler ruby brew gem vagrant git-flow)
 #ZSH_THEME_GIT_PROMPT_PREFIX="["
 #ZSH_THEME_GIT_PROMPT_SUFFIX="]"
 
-alias n="DEBUG=* node --harmony_destructuring --harmony_default_parameters -r dotenv/config"
-alias ni="DEBUG=* node-debug --harmony_destructuring --harmony_default_parameters -r dotenv/config"
+alias n="DEBUG=* node --harmony"
+alias ni="DEBUG=* node-debug --harmony"
 alias bn="DEBUG=* babel-node --state 0"
 alias f="ag -g"
 alias r=ag
