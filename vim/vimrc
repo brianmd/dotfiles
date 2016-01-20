@@ -366,7 +366,7 @@ function! YRRunAfterMaps()
 endfunction
 
 " Disable K for manpages - not used often and easy to accidentally hit
-noremap K k
+" noremap K k
 
 " Resize window splits
 nnoremap <S-Up>    3<C-w>-
@@ -391,7 +391,7 @@ vmap s :!sort<CR>
 vmap u :!sort -u<CR>
 
 " shift+k -> like shift+j, but no extra space
-noremap <S-k> gJ
+" noremap <S-k> gJ
 
 " Write file when you forget to use sudo
 cmap w!! w !sudo tee % >/dev/null
