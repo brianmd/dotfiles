@@ -269,7 +269,7 @@ set shortmess+=A                " Always edit file, even when swap file is found
 set foldlevelstart=99
 
 
-imap jj <Esc>
+imap fd <Esc>
 
 " up/down on displayed lines, not real lines. More useful than painful.
 noremap k gk
