@@ -237,6 +237,11 @@ install_github:
 	cd ~/code && git clone git@github.com:brianmd/shenvy.git
 	cd ~/code && git clone git@github.com:brianmd/network-tester.git
 
+root_install_mariadb:
+	add-apt-repository 'deb [arch=amd64,i386] http://sfo1.mirrors.digitalocean.com/mariadb/repo/10.1/ubuntu xenial main'
+	apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
+	apt-get update
+	apt-get install -y software-properties-common mariadb-server
 
 
 
