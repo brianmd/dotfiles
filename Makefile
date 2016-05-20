@@ -77,9 +77,14 @@ root_install_vagrant:
 	easy_install pip
 
 install_nodenv:
-	git clone https://github.com/atsjj/nodenv.git ~/.nodenv
+	git clone https://github.com/nodenv/nodenv.git ~/.nodenv
 	nodenv install v4.2.2
 	nodenv rehash
+
+root_install_java:
+	add-apt-repository ppa:webupd8team/java
+	apt-get update
+	apt-get install oracle-java8-installer
 
 root_install_plex:
 	# use 'sudo blkid' to find the appropriate /dev/sd??
@@ -111,6 +116,7 @@ root_create_shares: /usr/share/provisioners
 ~/.config/direnv:
 	mkdir -p ~/.config
 	git clone https://github.com/direnv/direnv ~/.config/direnv
+	sudo apt-get install -y go
 	cd ~/.config/direnv && make install
 
 linux_rbenv_prerequisites:
