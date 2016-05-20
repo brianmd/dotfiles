@@ -224,4 +224,10 @@ fi
 [ -f /Users/bmd/.travis/travis.sh ] && source /Users/bmd/.travis/travis.sh
 
 ### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+# export PATH="/usr/local/heroku/bin:$PATH"
+# export RBENV_ROOT=/home/bmd/.rbenv
+# export PATH=/home/bmd/.rbenv/bin:/home/bmd/.rbenv/shims:/home/bmd/.rbenv/bin:/home/bmd/.rbenv/shims:/home/bmd/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+# eval "$(rbenv init -)"
+# export RBENV_ROOT=/home/bmd/.rbenv
+# export PATH=/home/bmd/.rbenv/bin:/home/bmd/.rbenv/shims:/home/bmd/.rbenv/bin:/home/bmd/.rbenv/shims:/home/bmd/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+# eval "$(rbenv init -)"
