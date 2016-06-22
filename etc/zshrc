@@ -83,7 +83,7 @@ plugins=(rails git bundler ruby brew gem vagrant git-flow)
 
 alias e="emacsclient -t -a ''"
 alias eb="emacsbare"
-alias ec="emacsclient -c -n -a ''"
+# alias ec="emacsclient -c -n -a ''"
 alias emacsbare="emacs -nw -Q --eval \"(load-theme 'misterioso)\""
 
 alias n="DEBUG=* node --harmony"
