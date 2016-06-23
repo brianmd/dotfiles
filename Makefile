@@ -130,6 +130,7 @@ why_root_mac_baseinstall:
 	brew doctor
 	brew install ag
 	brew install vim  # bumps default mac version from 7.3 to 7.4
+	brew install emacs --with-x
 	brew install redis
 	brew install mongodb
 	brew install mariadb
