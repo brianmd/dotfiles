@@ -82,6 +82,6 @@ bindkey -M vicmd '\e^?'  backward-kill-word                # Alt-backspace
 bindkey -M vicmd '\e.'   insert-last-word
 
 # open each file in its own tab (-p), splitting vertically (-o)
-alias v='vim -op'
+# alias v='vim -op'
 set laststatus=1
 
