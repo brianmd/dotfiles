@@ -317,7 +317,7 @@ install_zshrc: ~/.oh-my-zsh ~/.zshrc
 old_install_rubies:
 	rbenv install 2.1.5
 	rbenv global 2.1.5
-	rehash
+	rbenv rehash
 
 ~/.irb:
 	# see http://velvetpulse.com/2012/11/19/improve-your-ruby-workflow-by-integrating-vim-tmux-pry/
