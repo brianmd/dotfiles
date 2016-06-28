@@ -164,7 +164,7 @@ alias ....='cd ../../../../'
 
 alias da='direnv allow'
 
-export PATH="$HOME/bin:$HOME/.rbenv/bin:$HOME/.rbenv/shims:/usr/local/bin:/usr/sbin:/sbin:$PATH"
+export PATH="$HOME/bin:$HOME/.rbenv/bin:$HOME/.rbenv/shims:/usr/local/bin:/usr/sbin:/sbin:$HOME/.local/bin:$PATH"
 export CDPATH=.:~/code:~:~/pkgs:~/.config
 if [ -d ~/pkgs/boxes ]; then
   export CDPATH=$CDPATH:~/pkgs/boxes
