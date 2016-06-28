@@ -233,3 +233,6 @@ fi
 # export RBENV_ROOT=/home/bmd/.rbenv
 # export PATH=/home/bmd/.rbenv/bin:/home/bmd/.rbenv/shims:/home/bmd/.rbenv/bin:/home/bmd/.rbenv/shims:/home/bmd/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # eval "$(rbenv init -)"
+
+# something sets xclip to a function, preventing /usr/bin/xclip from working
+unset -f xclip
