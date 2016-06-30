@@ -91,8 +91,10 @@ alias emacsbare="emacs -nw -Q --eval \"(load-theme 'misterioso)\""
 alias n="DEBUG=* node --harmony"
 alias ni="DEBUG=* node-debug --harmony"
 alias bn="DEBUG=* babel-node --state 0"
+# matching filenames
 alias f="ag -g"
-alias r=ag
+
+alias rs="rsync -ahP"
 
 c() { cd ~/code/$1; }
 _c() { _files -W ~/code -/; }
@@ -176,7 +178,7 @@ fi
 if [[ $KERNEL == 'Darwin' ]]; then
   #export SSL_CERT_FILE=/git/Certificates.pem
   export JAVA_HOME=`/usr/libexec/java_home`
-  export PATH="$PATH:$HOME/Dropbox/summit/projects/summit-extensions/common/bin:/opt/local/bin:/usr/local/bin:/usr/local/share/npm/bin:$HOME/Dropbox/summit/bin:/usr/local/share/bin:/opt/local/bin:/opt/X11/bin"
+  export PATH="$PATH:$HOME/Dropbox/summit/projects/summit-extensions/common/bin:/opt/local/bin:/usr/local/bin:/usr/local/share/npm/bin:$HOME/Dropbox/summit/bin:/usr/local/share/bin:/opt/local/bin:/opt/X11/bin:$HOME/.local/bin"
   export CDPATH=$CDPATH:~/Documents:~/Documents/git:~/Dropbox:~/Dropbox/summit:~/Dropbox/summit/projects:~/Documents/git/summit
 else
   # keychain git_key cloud gru minion
