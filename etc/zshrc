@@ -227,6 +227,10 @@ fi
 # added by travis gem
 [ -f /Users/bmd/.travis/travis.sh ] && source /Users/bmd/.travis/travis.sh
 
+export EMAIL="bmdmailer@gmail.com"
+export NAME="Brian Murphy-Dye"
+export SMTPSERVER="smtp.gmail.com"
+
 ### Added by the Heroku Toolbelt
 # export PATH="/usr/local/heroku/bin:$PATH"
 # export RBENV_ROOT=/home/bmd/.rbenv
