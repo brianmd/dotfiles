@@ -403,7 +403,7 @@ layers configuration. You are free to put any user code."
   (global-set-key (kbd "M-n") 'split-window-right-and-focus)
   (define-key (current-global-map) [remap ahs-back-to-start] 'split-window-below-and-focus)
 
-  ;; these are M-left and M-right.
+  ;; these are M-left and M-right. These interfere with org mode
   ;; (define-key (current-global-map) [remap ahs-forward] 'evil-window-decrease-width)
   ;; (define-key (current-global-map) [remap ahs-backward] 'evil-window-increase-width)
 
