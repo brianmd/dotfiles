@@ -274,19 +274,46 @@ layers configuration. You are free to put any user code."
   ;;                               "* %?\nEntered on %U\n  %i\n  %a")
   ;;                              ))
 
-  (setq org-agenda-files (list "~/org/notes.org"
-                               "~/org/work.org"
-                               "~/org/school.org"
-                               "~/org/home.org"
-                               "~/dropbox/ssummit/org/"))
+  (setq org-agenda-files (list
+                               ;; "~/dropbox/docs/org/gtd.org"
+                               ;; "~/dropbox/docs/org/work.org"
+                               ;; "~/dropbox/docs/org/home.org"
+                               "~/dropbox/docs/org/"
+                               ))
+
+  (setq org-capture-templates
+        '(("t" "GTD" entry (file+headline "~/droppbox/docs/org/gtd.org" "GTD")
+           "* TODO %?\n  %i\n  %a")
+          ("w" "Work Journal" entry (file+datetree "~/dropbox/docs/org/work-journal.org")
+           "* %?\nEntered on %U\n  %i\n  %a")
+          ("j" "Journal" entry (file+datetree "~/dropbox/docs/org/journal.org")
+           "* %?\nEntered on %U\n  %i\n  %a")
+          ))
+  ;; the above uses these escapes
+  ;; %a          annotation, normally the link created with org-store-link
+  ;; %i          initial content, the region when capture is called with C-u.
+  ;; %t, %T      timestamp, date only, or date and time
+  ;; %u, %U      like above, but inactive timestamps
 
   ;; for org mode
   (setq org-bullets-bullet-list '("■" "◆" "▲" "▶"))
-  ;(with-eval-after-load
-  ;  'org
+
+  (setq org-todo-keywords
+        ;; cone and delegated are completed tasks; the others need further action
+    '((sequence "TODO" "FEEDBACK" "VERIFY" "|" "DONE" "DELEGATED" "CANCELED")))
+
+  (setq org-todo-keyword-faces
+        '(("TODO" . (:foreground "red" :weight bold))
+          ("FEEDBACK" . "yellow")
+          ("CANCELED" . (:foreground "blue" :weight bold))
+          ))
+
+  (with-eval-after-load
+   'org
   ;  (setq org-agenda-files "/Users/bmd/.config/notes/"))
 
-  ;; Get email, and store in nnml
+
+  ;; ;; Get email, and store in nnml
   ;; (setq gnus-secondary-select-methods
   ;;   '(
   ;;     (nntp "gmane" (nntp-address "news.gmane.org"))
@@ -300,24 +327,30 @@ layers configuration. You are free to put any user code."
   ;;             (nnimap-stream ssl))
   ;;     ))
 
-  ;; Send email via Gmail:
+  ;; ;; Send email via Gmail:
   ;; (setq message-send-mail-function 'smtpmail-send-it
   ;;       smtpmail-default-smtp-server "smtp.gmail.com")
 
-  ;; Archive outgoing email in Sent folder on imap.gmail.com:
+  ;; ;; Archive outgoing email in Sent folder on imap.gmail.com:
   ;; (setq gnus-message-archive-method '(nnimap "imap.gmail.com")
   ;;       gnus-message-archive-group "[Gmail]/Sent Mail")
 
-  ;; set return email address based on incoming email address
+  ;; ;; set return email address based on incoming email address
   ;; (setq gnus-posting-styles
-  ;;       '(((header "to" "address@outlook.com")
-  ;;          (address "address@outlook.com"))
-  ;;         ((header "to" "bmdmailer@gmail.com")
-  ;;          (address "bmdmailer@gmail.com"))))
+  ;;       ;; '(((header "to" "address@outlook.com")
+  ;;       ;;    (address "address@outlook.com"))
+  ;;         ((header "to" "brian@murphydye.com")
+  ;;          (address "brian@murphydye.com"))
+  ;;         ;; ((header "to" "bmdmailer@gmail.com")
+  ;;         ;;  (address "bmdmailer@gmail.com"))
+  ;;         )
+      )
 
-  ;; store email in ~/gmail directory
-  ;; (setq nnml-directory "~/gmail")
-  ;; (setq message-directory "~/gmail")
+  ;; ;; store email in ~/gmail directory
+  ;; (setq nnml-directory "~/.config/gmail")
+  ;; (setq message-directory "~/.config/gmail")
+
+
 
                                         ;(define-key cider-minor-mode (kbd "M-e") 'cider-eval-defun-at-point)
                                         ;(define-key cider-minor-mode (kbd "M-l") 'cider-eval-buffer)
@@ -369,8 +402,10 @@ layers configuration. You are free to put any user code."
   (global-set-key (kbd "M-\\") 'split-window-right-and-focus)
   (global-set-key (kbd "M-n") 'split-window-right-and-focus)
   (define-key (current-global-map) [remap ahs-back-to-start] 'split-window-below-and-focus)
-  (define-key (current-global-map) [remap ahs-forward] 'evil-window-decrease-width)
-  (define-key (current-global-map) [remap ahs-backward] 'evil-window-increase-width)
+
+  ;; these are M-left and M-right.
+  ;; (define-key (current-global-map) [remap ahs-forward] 'evil-window-decrease-width)
+  ;; (define-key (current-global-map) [remap ahs-backward] 'evil-window-increase-width)
 
   ;; (global-unset-key (kbd "M-<left>"))
   ;; (global-unset-key "\M-left")
@@ -388,6 +423,7 @@ layers configuration. You are free to put any user code."
     "oc" 'org-capture
     "oC" 'helm-org-capture-templates ;requires templates to be defined.
     "ol" 'org-store-link
+    "ot" 'org-toggle-checkbox
     "ov" 'cider-eval-defun-to-comment
     )
 
@@ -457,3 +493,19 @@ layers configuration. You are free to put any user code."
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-agenda-files
+   (quote
+    ("~/dropbox/docs/org/gtd.org" "/home/bmd/dropbox/docs/org/gtd.org" "/home/bmd/dropbox/docs/org/journal.org")))
+ '(send-mail-function (quote mailclient-send-it)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
