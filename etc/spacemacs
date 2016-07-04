@@ -323,8 +323,6 @@ layers configuration. You are free to put any user code."
                                         ;(define-key cider-minor-mode (kbd "M-l") 'cider-eval-buffer)
                                         ;(setq clojure-enable-fancify-symbols t)
 
-  ;; (xterm-mouse-mode -1)
-
 ;  (global-set-key [mouse-4] 'scroll-down-line)
 ;  (global-set-key [mouse-5] 'scroll-up-line)
 
@@ -392,7 +390,10 @@ layers configuration. You are free to put any user code."
     "ov" 'cider-eval-defun-to-comment
     )
 
+  (xterm-mouse-mode -1)
   (setq x-select-enable-clipboard t)
+  (setq mouse-drag-copy-region t)
+  (fset 'evil-visual-update-x-selection 'ignore)
   (global-set-key (kbd "<mouse-2>") 'x-clipboard-yank)
 
   (defun ace-link-setup-default ()
