@@ -130,7 +130,7 @@ alias be="b exec"
 alias binit="bi && b package"
 alias bev="b exec vagrant"
 
-alias s="spring"
+alias s="ssh -Y"
 
 alias reload="source ~/.zshrc"
 alias config="subl ~/.zshrc"
