@@ -36,7 +36,7 @@ values."
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
-     ;; spell-checking
+     ;; spell-checking    -- produces error about missing helm file
      syntax-checking
      ;; version-control
      osx
@@ -308,8 +308,8 @@ layers configuration. You are free to put any user code."
           ("CANCELED" . (:foreground "blue" :weight bold))
           ))
 
-  (with-eval-after-load
-   'org
+  ;; (with-eval-after-load
+  ;;  'org
   ;  (setq org-agenda-files "/Users/bmd/.config/notes/"))
 
 
@@ -344,7 +344,7 @@ layers configuration. You are free to put any user code."
   ;;         ;; ((header "to" "bmdmailer@gmail.com")
   ;;         ;;  (address "bmdmailer@gmail.com"))
   ;;         )
-      )
+      ;; )
 
   ;; ;; store email in ~/gmail directory
   ;; (setq nnml-directory "~/.config/gmail")
@@ -398,7 +398,7 @@ layers configuration. You are free to put any user code."
   ;; (local-unset-key "M--")
   ;; (local-unset-key "\M--")
   ;; (global-unset-key (kbd "M--"))
-  ;; (global-set-key (kbd "M--") 'split-window-below-and-focus)
+  (global-set-key (kbd "M--") 'split-window-below-and-focus)
   (global-set-key (kbd "M-\\") 'split-window-right-and-focus)
   (global-set-key (kbd "M-n") 'split-window-right-and-focus)
   (define-key (current-global-map) [remap ahs-back-to-start] 'split-window-below-and-focus)
@@ -435,34 +435,35 @@ layers configuration. You are free to put any user code."
   ;; (global-set-key (kbd "<mouse-2>") 'x-clipboard-yank)
 
   ;; this is what makes copy/paste work in terminal mode.
-  ;; local and remote systems also need xsel
-(unless window-system
- (when (getenv "DISPLAY")
-  ;; Callback for when user cuts
-  (defun xsel-cut-function (text &optional push)
-    ;; Insert text to temp-buffer, and "send" content to xsel stdin
-    (with-temp-buffer
-      (insert text)
-      ;; I prefer using the "clipboard" selection (the one the
-      ;; typically is used by c-c/c-v) before the primary selection
-      ;; (that uses mouse-select/middle-button-click)
-      (call-process-region (point-min) (point-max) "xsel" nil 0 nil "--clipboard" "--input")))
-  ;; Call back for when user pastes
-  (defun xsel-paste-function()
-    ;; Find out what is current selection by xsel. If it is different
-    ;; from the top of the kill-ring (car kill-ring), then return
-    ;; it. Else, nil is returned, so whatever is in the top of the
-    ;; kill-ring will be used.
-    (let ((xsel-output (shell-command-to-string "xsel --clipboard --output")))
-      (unless (string= (car kill-ring) xsel-output)
+  ;; IMPORTANT: local and remote systems also need xsel
+  ;; from https://hugoheden.wordpress.com/2009/03/08/copypaste-with-emacs-in-terminal/
+  (unless window-system
+   (when (getenv "DISPLAY")
+    ;; Callback for when user cuts
+    (defun xsel-cut-function (text &optional push)
+      ;; Insert text to temp-buffer, and "send" content to xsel stdin
+      (with-temp-buffer
+        (insert text)
+        ;; I prefer using the "clipboard" selection (the one the
+        ;; typically is used by c-c/c-v) before the primary selection
+        ;; (that uses mouse-select/middle-button-click)
+        (call-process-region (point-min) (point-max) "xsel" nil 0 nil "--clipboard" "--input")))
+    ;; Call back for when user pastes
+    (defun xsel-paste-function()
+      ;; Find out what is current selection by xsel. If it is different
+      ;; from the top of the kill-ring (car kill-ring), then return
+      ;; it. Else, nil is returned, so whatever is in the top of the
+      ;; kill-ring will be used.
+      (let ((xsel-output (shell-command-to-string "xsel --clipboard --output")))
+        (unless (string= (car kill-ring) xsel-output)
 	xsel-output )))
-  ;; Attach callbacks to hooks
-  (setq interprogram-cut-function 'xsel-cut-function)
-  (setq interprogram-paste-function 'xsel-paste-function)
-  ;; Idea from
-  ;; http://shreevatsa.wordpress.com/2006/10/22/emacs-copypaste-and-x/
-  ;; http://www.mail-archive.com/help-gnu-emacs@gnu.org/msg03577.html
- ))
+    ;; Attach callbacks to hooks
+    ;; (setq interprogram-cut-function 'xsel-cut-function)
+    ;; (setq interprogram-paste-function 'xsel-paste-function)
+    ;; Idea from
+    ;; http://shreevatsa.wordpress.com/2006/10/22/emacs-copypaste-and-x/
+    ;; http://www.mail-archive.com/help-gnu-emacs@gnu.org/msg03577.html
+   ))
 
   (defun ace-link-setup-default ()
     "Setup the defualt shortcuts."
