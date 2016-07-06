@@ -24,6 +24,7 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      auto-completion
+     ;; ace-link
      better-defaults
      emacs-lisp
      git
@@ -384,6 +385,9 @@ layers configuration. You are free to put any user code."
 
   (global-set-key (kbd "M-l") 'evil-window-next)
   (global-set-key (kbd "M-h") 'evil-window-prev)
+  (global-unset-key (kbd "M-j"))
+  (global-set-key (kbd "M-j") 'evil-window-next)
+  (global-set-key (kbd "M-k") 'evil-window-prev)
 
   ;; (define-key auto-highlight-symbol-mode-major-mode (kbd "M--") nil)
   ;; (local-unset-key "M--")
@@ -425,6 +429,20 @@ layers configuration. You are free to put any user code."
     "ol" 'org-store-link
     "ot" 'org-toggle-checkbox
     "ov" 'cider-eval-defun-to-comment
+    )
+   
+  ;; Emacs Web Wowser   (note: evil-leader is ',')
+  (evil-leader/set-key-for-mode 'eww-mode
+    "ob"    'eww-add-bookmark
+    "od"    'eww-download
+    "oe"    'eww-browse-with-external-browser
+    "og"    'eww-reload
+    "oh"    'eww-back-url
+    "ol"    'eww-forward-url
+    "oq"    'eww-quit
+    "ow"    'eww-copy-page-url
+    "oB"    'eww-list-bookmarks
+    "oH"    'eww-list-histories
     )
 
   (xterm-mouse-mode -1)
