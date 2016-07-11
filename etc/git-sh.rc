@@ -2,6 +2,9 @@
 
 alias gti="git" # shame
 alias g="git"
+alias gco-track="git checkout -t origin/"
+# usage: gco-track feature/punchout
+gco-track() "git checkout -t origin/$@"
 alias g1="git log --abbrev-commit --abbrev=4 --pretty=oneline"
 alias glog="git log --oneline --decorate --branches --remotes --tags -n 70"
 alias gloga="glog --pretty=format:'%C(yellow)%h%C(reset)%C(bold red)%d%C(reset) %s %C(green)(%cr) %C(cyan)<%an>%C(reset)' | ruby -e 'puts STDIN.read.gsub(%(<#{%x(git config user.name).chomp}>), %())'"
