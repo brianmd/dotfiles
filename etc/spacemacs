@@ -42,6 +42,7 @@ values."
      ;; version-control
      osx
      gnus
+     html
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -286,6 +287,8 @@ layers configuration. You are free to put any user code."
         '(("t" "GTD" entry (file+headline "~/droppbox/docs/org/gtd.org" "GTD")
            "* TODO %?\n  %i\n  %a")
           ("w" "Work Journal" entry (file+datetree "~/dropbox/docs/org/work-journal.org")
+           "* %?")
+          ("x" "Work Journal (extended entry)" entry (file+datetree "~/dropbox/docs/org/work-journal.org")
            "* %?\nEntered on %U\n  %i\n  %a")
           ("j" "Journal" entry (file+datetree "~/dropbox/docs/org/journal.org")
            "* %?\nEntered on %U\n  %i\n  %a")
@@ -430,7 +433,27 @@ layers configuration. You are free to put any user code."
     "ot" 'org-toggle-checkbox
     "ov" 'cider-eval-defun-to-comment
     )
-   
+
+  ;; keybindings are exactly the same as in vimperator unless otherwise stated
+  (evil-define-key 'normal eww-mode-map
+    "\\" 'browse-url
+    "&" 'eww-browse-with-external-browser ;; default in eww-mode
+    "q" 'eww-quit ;; different in vimperator (run macro)
+    "a" 'eww-add-bookmark
+    "yy" 'eww-copy-page-url
+    "f" 'eww-lnum-follow
+    "F" 'eww-lnum-universal ;; in vimperator open new tab
+    "gu" 'eww-up-url
+    "gt" 'eww-top-url
+    "f" 'eww-lnum-follow
+    "F" 'eww-lnum-universal
+    "h" 'eww-back-url ;; H in vimperator, because h is :help, but I think lowercase is better for us
+    "l" 'eww-forward-url ;; in vimperator, L is used for consistency, but again I think lower case is nicer for us
+    "r" 'eww-reload
+    )
+
+  ;; 'o' is like 'f' in cVIM (ace-link-eww)
+
   ;; Emacs Web Wowser   (note: evil-leader is ',')
   (evil-leader/set-key-for-mode 'eww-mode
     "ob"    'eww-add-bookmark
