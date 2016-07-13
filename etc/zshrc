@@ -66,6 +66,7 @@ DISABLE_CORRECTION="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(rails git bundler ruby brew gem vagrant git-flow)
 
+compctl -g '~/.teamocil/*(:t:r)' teamocil
 
 
 

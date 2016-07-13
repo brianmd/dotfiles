@@ -1,3 +1,4 @@
+name: repl
 windows:
   - name: repl
     root: .

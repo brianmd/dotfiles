@@ -1,4 +1,4 @@
-name: bh
+name: fig
 windows:
   - name: repl
     root: .
