@@ -1,0 +1,11 @@
+windows:
+  - name: sample-two-panes
+    root: ~/Documents/git/papichulo
+    layout: even-horizontal
+    panes:
+      - git status
+      - rails server
+  - name: blue-harvest
+    root: ~/Documents/git/blue-harvest
+    panes:
+      - ls

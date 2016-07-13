@@ -1,0 +1,14 @@
+windows:
+  - name: repl
+    root: .
+    layout: even-horizontal
+    focus: true
+    panes:
+      - lein repl
+
+  - name: emacs
+    root: .
+    layout: even-horizontal
+    panes:
+      - emacs -nw .
+

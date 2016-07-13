@@ -1,0 +1,38 @@
+name: bh
+windows:
+  - name: blue-harvest
+    root: ~/Documents/git/blue-harvest
+    layout: even-horizontal
+    focus: true
+    panes:
+      - be rails s
+
+  - name: papichulo
+    root: ~/Documents/git/papichulo
+    layout: even-horizontal
+    panes:
+      - be rails s puma
+
+  - name: worker
+    root: ~/Documents/git/blue-harvest
+    layout: even-horizontal
+    panes:
+      - blue-worker
+
+  - name: solr
+    root: ~/Documents/git/blue-harvest
+    layout: even-horizontal
+    panes:
+      - be rake solr:server
+
+  - name: ember
+    root: ~/Documents/git/brown-truck
+    layout: even-horizontal
+    panes:
+      - ember s
+
+  - name: bh-console
+  - root: ~/Documents/git/blue-harvest
+  - panes:
+      - git status
+

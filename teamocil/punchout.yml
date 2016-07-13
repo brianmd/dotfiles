@@ -1,0 +1,23 @@
+name: punchtunnel
+windows:
+  - name: tunnels
+    root: ~/code/timmus
+    layout: even-horizontal
+    focus: true
+    panes:
+      - tunnel 3000 11000 11001
+      - tunnel 3449 11002 11003
+
+  - name: open
+    root: ~/code/timmus
+    layout: even-horizontal
+    panes:
+      - open http://meta.murphydye.com:11000/
+
+
+  - name: tail
+    root: ~/code/timmus/log
+    layout: even-horizontal
+    panes:
+      - tail punchout.log
+
