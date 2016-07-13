@@ -277,20 +277,20 @@ layers configuration. You are free to put any user code."
   ;;                              ))
 
   (setq org-agenda-files (list
-                               ;; "~/dropbox/docs/org/gtd.org"
-                               ;; "~/dropbox/docs/org/work.org"
-                               ;; "~/dropbox/docs/org/home.org"
-                               "~/dropbox/docs/org/"
+                               ;; "~/Dropbox/docs/org/gtd.org"
+                               ;; "~/Dropbox/docs/org/work.org"
+                               ;; "~/Dropbox/docs/org/home.org"
+                               "~/Dropbox/docs/org/"
                                ))
 
   (setq org-capture-templates
-        '(("t" "GTD" entry (file+headline "~/droppbox/docs/org/gtd.org" "GTD")
+        '(("t" "GTD" entry (file+headline "~/Dropbox/docs/org/gtd.org" "GTD")
            "* TODO %?\n  %i\n  %a")
-          ("w" "Work Journal" entry (file+datetree "~/dropbox/docs/org/work-journal.org")
+          ("w" "Work Journal" entry (file+datetree "~/Dropbox/docs/org/work-journal.org")
            "* %?")
-          ("x" "Work Journal (extended entry)" entry (file+datetree "~/dropbox/docs/org/work-journal.org")
+          ("x" "Work Journal (extended entry)" entry (file+datetree "~/Dropbox/docs/org/work-journal.org")
            "* %?\nEntered on %U\n  %i\n  %a")
-          ("j" "Journal" entry (file+datetree "~/dropbox/docs/org/journal.org")
+          ("j" "Journal" entry (file+datetree "~/Dropbox/docs/org/journal.org")
            "* %?\nEntered on %U\n  %i\n  %a")
           ))
   ;; the above uses these escapes
@@ -540,9 +540,10 @@ layers configuration. You are free to put any user code."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files
-   (quote
-    ("~/dropbox/docs/org/gtd.org" "/home/bmd/dropbox/docs/org/gtd.org" "/home/bmd/dropbox/docs/org/journal.org")))
+ ;; '(org-agenda-files   ;; these are set above
+ ;;   (quote
+ ;;    ("~/Dropbox/docs/org/gtd.org" "~/Dropbox/docs/org/gtd.org" "~/Dropbox/docs/org/journal.org")
+ ;;    ))
  '(send-mail-function (quote mailclient-send-it)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
