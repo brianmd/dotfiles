@@ -40,7 +40,7 @@ values."
      ;; spell-checking    -- produces error about missing helm file
      syntax-checking
      ;; version-control
-     osx
+     ;; osx
      gnus
      html
      )
