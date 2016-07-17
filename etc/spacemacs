@@ -423,7 +423,7 @@ layers configuration. You are free to put any user code."
   ;; (global-set-key (kbd "M-C-l") 'evil-window-increase-width)
 
   (global-set-key (kbd "C-M-=") 'default-text-scale-increase)
-  (global-set-key (kbd "C-M--") 'default-text-scale-decrease)')
+  (global-set-key (kbd "C-M--") 'default-text-scale-decrease)
 
   (spacemacs/set-leader-keys
     "oa" 'org-agenda
