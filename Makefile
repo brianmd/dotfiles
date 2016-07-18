@@ -22,12 +22,13 @@ root_install_make:
 
 relink:
 	$(MAKE) ~/.oh-my-zsh
-	rm -f ~/.zshrc ~/.tmux.conf ~/.inputrc ~/.gitconfig ~/.gitignore_global ~/.rspec
+	rm -f ~/.zshrc ~/.tmux.conf ~/.inputrc ~/.gitconfig ~/.gitignore_global ~/.rspec ~/.spacemacs
 	ln -s ${HOME}/.config/dotfiles/etc/zshrc ~/.zshrc
 	ln -s ${HOME}/.config/dotfiles/etc/tmux.conf ~/.tmux.conf
 	ln -s ${HOME}/.config/dotfiles/etc/inputrc ~/.inputrc
 	ln -s ${HOME}/.config/dotfiles/etc/gitconfig ~/.gitconfig
 	ln -s ${HOME}/.config/dotfiles/etc/rspec ~/.rspec
+	ln -s ${HOME}/.config/dotfiles/etc/spacemacs ~/.spacemacs
 	# ln -s ${HOME}/.config/dotfiles/vim/vimrc.mine ~/.vim/vimrc.mine
 	# .gitconfig points directly to the global ignore. don't need it in home
 	# directory.  ln -s ${HOME}/.config/dotfiles/etc/gitignore_global ~/.gitignore_global
