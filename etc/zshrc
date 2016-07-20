@@ -167,6 +167,10 @@ alias ....='cd ../../../../'
 
 alias da='direnv allow'
 
+# in emacs shell, type 'dt', then can run docker-compose
+# from http://stackoverflow.com/questions/34928552/run-commands-on-docker-container-from-emacs
+alias dt=". '/Applicaitons/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'"
+
 export PATH="$HOME/bin:$HOME/.rbenv/bin:$HOME/.rbenv/shims:/usr/local/bin:/usr/sbin:/sbin:$HOME/.local/bin:$PATH"
 export CDPATH=.:~/code:~:~/pkgs:~/.config
 if [ -d ~/pkgs/boxes ]; then
