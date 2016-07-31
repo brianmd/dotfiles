@@ -286,7 +286,7 @@ layers configuration. You are free to put any user code."
                                ))
 
   (if (string-equal "finch" (system-name))
-      (set-face-attribute 'default nil :height 260)
+      (set-face-attribute 'default nil :height 140)
       )
 
 
