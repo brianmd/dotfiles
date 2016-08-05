@@ -3,6 +3,8 @@
 # ~/.vagrant.d there
 
 KERNEL=`uname -s`
+# to auto-update oh-my-zsh
+export DISABLE_UPDATE_PROMPT=true
 
 if [ -f ~/.config/.pw ]; then
   source ~/.config/.pw
