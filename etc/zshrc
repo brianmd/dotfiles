@@ -190,9 +190,11 @@ if [[ $KERNEL == 'Darwin' ]]; then
 else
   # keychain git_key cloud gru minion
   if [[ -f ~/.ssh/git_key ]]; then keychain git_key; fi
-  if [[ -f ~/.ssh/cloud ]]; then keychain cloud; fi
-  if [[ -f ~/.ssh/gru ]]; then keychain gru; fi
-  if [[ -f ~/.ssh/minion ]]; then keychain minion; fi
+  # if [[ -f ~/.ssh/cloud ]]; then keychain cloud; fi
+  # if [[ -f ~/.ssh/gru ]]; then keychain gru; fi
+  # if [[ -f ~/.ssh/minion ]]; then keychain minion; fi
+  if [[ -f ~/.ssh/chrome ]]; then keychain chrome; fi
+  if [[ -f ~/.ssh/id_rsa ]]; then keychain id_rsa; fi
   source ~/.keychain/${HOST}-sh
 fi
 
