@@ -5,6 +5,10 @@
 
 source cloprep
 
+# try to delete the .nrepl-port file.
+# the docker container user may not be able to delete it  owned by the host user
+rm -f .nrepl-port
+
 if [[ -z $NUM_ARG ]]; then
     NREPL_PORT=7100
 else

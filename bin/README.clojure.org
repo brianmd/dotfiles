@@ -1,0 +1,25 @@
+* Purpose
+Ease development of clojure in docker containers.
+
+Leiningen provides a Dockerfile upon new app creation, which is useful for production.
+However, development is a bit different as the nrepl port needs to be shared, and
+several directories should maintain their state between builds (e.g., ~/.m2 so the
+repositories don't have to be re-downloaded each time).
+* Scripts
+- clobuild: builds the docker container. Will create a .docker-state directory in
+the current directory, with lein (~/.lein), m2 (~/.m2), and log (./log).
+The latter isn't necessary, but is intended to isolate ownership of files from
+with docker container user's UID to this one directory. There is one
+exception: ./.nrepl-port, which will be owned by the container's user.
+This is necessary soas to allow cider to find the repl (assuming emacs is run on
+ the host computer).
+- clorepl
+- clofig
+- clorun
+* Arguments
+- imagename: default is the directory's name.
+- share: the same UID/GID may be shared within the docker container as the user building the image.
+This allows ~/.m2 to be shared. However, should a hacker break out of the container back to the host,
+she will be able to obtain root privileges. It is safer to not share (which is the default), in which
+case the UID is the same as "nobody", i.e., no privileges.
+- port number (for nrepl, http): specific to the script.

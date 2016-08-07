@@ -4,8 +4,10 @@
 
 source cloprep
 
-echo docker build --build-arg USERID=$USERID --build-arg USERNAME=$WHOAMI -f $SCRIPT_DIR/clodockerfile -t $PROJ_NAME .
-docker build --build-arg USERID=$USERID --build-arg USERNAME=$WHOAMI -f $SCRIPT_DIR/clodockerfile -t $PROJ_NAME .
+cp $SCRIPT_DIR/clodockerfile .docker-state/Dockerfile
+
+echo docker build --build-arg USERID=$USERID --build-arg USERNAME=$WHOAMI -f .docker-state/Dockerfile -t $PROJ_NAME .
+docker build --build-arg USERID=$USERID --build-arg USERNAME=$WHOAMI -f .docker-state/Dockerfile -t "$PROJ_NAME" .
 
 echo
 echo "Built image: $PROJ_NAME"
