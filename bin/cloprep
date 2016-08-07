@@ -1,0 +1,45 @@
+#!/bin/bash
+
+WHOAMI=`whoami`
+DOCKER_USER_HOME="/home/$WHOAMI"
+DOCKER_WORKDIR="$DOCKER_USER_HOME/project"
+CURR_PATH=`pwd -P`
+# BASE_DIR=`basename "$PWD"`
+BASE_DIR=`basename "$CURR_PATH"`
+
+if [[ -f $HOME/.lein/profiles.clj ]]; then
+  cp $HOME/.lein/profiles.clj .docker-state/lein/
+fi
+
+# is one of these better than the other?
+# SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null && pwd )"
+# SCRIPT_DIR=`dirname "$(readlink -f $0)"`
+# SCRIPT_DIR=$(dirname `readlink -f "$0"`)
+SCRIPT_DIR=`dirname "$(readlink -f "$0")"`
+USERID=`grep $WHOAMI /etc/passwd | cut -d: -f 3`
+
+
+
+PROJ_NAME=$BASE_DIR
+
+if [[ $# -gt 0 ]]; then
+    if [[ $1 =~ ^[0-9]+$ ]]; then
+        NUM_ARG=$1
+    else
+        PROJ_NAME="$1"
+    fi
+    shift
+fi
+
+if [[ $# -gt 0 ]]; then
+  if [[ $1 =~ ^[0-9]+$ ]]; then
+    NUM_ARG=$1
+  else
+    PROJ_NAME="$1"
+  fi
+  shift
+fi
+
+mkdir -p .docker-state/m2
+mkdir -p .docker-state/lein
+mkdir -p .docker-state/log

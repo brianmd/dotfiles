@@ -1,0 +1,12 @@
+#!/bin/bash
+# Usage: clobuild [imagename]
+#        imagename: default is the current directory's name
+
+source cloprep
+
+echo docker build --build-arg USERID=$USERID --build-arg USERNAME=$WHOAMI -f $SCRIPT_DIR/clodockerfile -t $PROJ_NAME .
+docker build --build-arg USERID=$USERID --build-arg USERNAME=$WHOAMI -f $SCRIPT_DIR/clodockerfile -t $PROJ_NAME .
+
+echo
+echo "Built image: $PROJ_NAME"
+
