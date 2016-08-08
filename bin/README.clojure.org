@@ -2,7 +2,7 @@
 Ease development of clojure in docker containers.
 
 Leiningen provides a Dockerfile upon new app creation, which is useful for production.
-However, development is a bit different as the nrepl port needs to be shared, and
+However, development is a bit different as the nrepl port needs to be shared with the host, and
 several directories should maintain their state between builds (e.g., ~/.m2 so the
 repositories don't have to be re-downloaded each time).
 * Scripts
