@@ -1,15 +1,22 @@
 #!/bin/bash
 # Usage: clolein [args]+
 # Example: clolein new app test
+# Example: clolein new luminus test +cljs +swagger +auth
 
-CURR_PATH=`pwd -P`
+NO_SIDE_EFFECTS=true
+source cloprep
 
+# TODO: should add .m2 directory inside bin
+#   to share for each clolein run.
+#   Will prevent having to download libraries
+#   each time.
 docker run \
   -ti \
   --rm \
   --workdir /home/clojure \
-  --user $UID:$GID \
   -v $CURR_PATH:/home/clojure \
-  clojure \
+  clolein-image \
   lein $@
+
+# --user $USERID:$GROUPID \
 

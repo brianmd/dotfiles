@@ -20,11 +20,7 @@ docker run \
   -p 127.0.0.1:7002:7002 \
   -p 0.0.0.0:$HTTP_PORT:3449 \
   -v $CURR_PATH:$DOCKER_WORKDIR \
-  -v $CURR_PATH/.docker-state/m2:$DOCKER_USER_HOME/.m2 \
-  -v $CURR_PATH/.docker-state/lein:$DOCKER_USER_HOME/.lein \
-  -v $CURR_PATH/.docker-state/target:$DOCKER_WORKDIR/target \
-  -v $CURR_PATH/.docker-state/log:$DOCKER_WORKDIR/log \
-  -v $CURR_PATH/../.. \
+  $CLO_VOLUMES \
   $PROJ_NAME \
   lein figwheel
 
