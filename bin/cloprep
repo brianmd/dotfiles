@@ -1,7 +1,9 @@
 #!/bin/bash
 
 CLO_SHARED=false
-if [[ $NO_SIDE_EFFECTS != true ]]; then
+if [[ $NO_SIDE_EFFECTS == true ]]; then
+  CLO_SHARED=true
+else
   while [[ $# -gt 0 ]]; do
     if [[ $1 =~ ^[0-9]+$ ]]; then
         NUM_ARG=$1
@@ -12,8 +14,6 @@ if [[ $NO_SIDE_EFFECTS != true ]]; then
     fi
     shift
   done
-else
-  CLO_SHARED=true
 fi
 # echo "proj:$PROJ_NAME, num:$NUM_ARG, shared?:$CLO_SHARED"
 

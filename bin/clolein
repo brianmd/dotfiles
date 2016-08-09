@@ -6,17 +6,29 @@
 NO_SIDE_EFFECTS=true
 source cloprep
 
-# TODO: should add .m2 directory inside bin
-#   to share for each clolein run.
-#   Will prevent having to download libraries
-#   each time.
+if [[ -d $HOME/.m2 ]]; then
+    M2_VOLUME="-v $HOME/.m2:$DOCKER_USER_HOME/.m2"
+fi
+
+if docker images | grep clolein-image ; then
+    echo 'clolein-image is already built'
+else
+    echo 'building clolein-image'
+    (cd $SCRIPT_DIR && docker build -f Dockerfile.clolein -t clolein-image .)
+fi
+
+
+echo "M2:$M2_VOLUME"
 docker run \
   -ti \
   --rm \
   --workdir /home/clojure \
   -v $CURR_PATH:/home/clojure \
+  $M2_VOLUME \
   clolein-image \
-  lein $@
+  $@
+
+  # lein $@
 
 # --user $USERID:$GROUPID \
 

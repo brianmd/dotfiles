@@ -1,6 +1,11 @@
 * Purpose
 Ease development of clojure in docker containers.
 
+Why develop in containers? Security. We all to often need to keep the http port open
+for others to view our work, but how secure is the development code? We limit the
+amount of damage occur by containerizing. (Or at least raise the bar on how easily
+damage may be caused.)
+
 Leiningen provides a Dockerfile upon new app creation, which is useful for production.
 However, development is a bit different as the nrepl port needs to be shared with the host, and
 several directories should maintain their state between builds (e.g., ~/.m2 so the
