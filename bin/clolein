@@ -1,0 +1,15 @@
+#!/bin/bash
+# Usage: clolein [args]+
+# Example: clolein new app test
+
+CURR_PATH=`pwd -P`
+
+docker run \
+  -ti \
+  --rm \
+  --workdir /home/clojure \
+  --user $UID:$GID \
+  -v $CURR_PATH:/home/clojure \
+  clojure \
+  lein $@
+
