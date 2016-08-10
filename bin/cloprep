@@ -41,6 +41,7 @@ CURR_PATH=`pwd -P`
 BASE_NAME=`basename "$CURR_PATH"`
 
 if [[ -f $HOME/.lein/profiles.clj ]]; then
+  mkdir -p .docker-state/lein
   cp $HOME/.lein/profiles.clj .docker-state/lein/
 fi
 

@@ -1,11 +1,9 @@
-# cd ~/.config/dotfiles/bin
-# docker build -f Dockerfile.clolein -t clolein-image .
-
+# the clojure script will run this if clojure-image does not exist.
 FROM clojure:latest
 
-# RUN apt-get update && \
-#     apt-get install -y sudo
-
+# Maven is needed for some installations,
+# but it is a huge download, and I got tired
+# of waiting on it for now ...
 # ENV MAVEN_VERSION="3.3.9" \
 #     M2_HOME=/usr/lib/mvn
 
@@ -39,5 +37,4 @@ RUN mkdir -p /home/$USERNAME/project
 WORKDIR /home/$USERNAME/project
 USER $USERNAME
 ENV HOME /home/$USERNAME
-
 
