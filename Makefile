@@ -17,7 +17,6 @@ endef
 
 
 root_install_make:
-	# this is ironical as make can't install itself. But this is the command to run!
 	sudo apt-get -y install build-essential
 
 relink:
