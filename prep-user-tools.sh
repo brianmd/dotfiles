@@ -27,9 +27,9 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/dotfiles/vim/bun
 git clone https://github.com/direnv/direnv ~/.config/direnv || echo 'direnv already installed'
 cd ~/.config/direnv && make install    # note: needs go (golang). apt-get installs old version, which seems to be fine
 
-# git clone git@github.com:brianmd/binfiles.git ~/.config/binfiles
 git clone https://github.com/brianmd/binfiles.git ~/.config/binfiles || echo 'binfiles already installed'
 
+rm -f ~/.zshrc
 ln -s ${HOME}/.config/dotfiles/etc/zshrc ~/.zshrc
 ln -s ${HOME}/.config/dotfiles/etc/tmux.conf ~/.tmux.conf
 ln -s ${HOME}/.config/dotfiles/etc/inputrc ~/.inputrc
