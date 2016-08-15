@@ -1,0 +1,89 @@
+# TODO: remove the git config to my name ...
+# TODO: .oh-my installs a .zshrc file, so mine doesn't get installed.
+
+# root-install-user should move to another makefile
+# validate root-install-user was run first
+# 
+
+SHELL = /usr/bin/env bash
+SHELL_PROFILE = ~/.zshrc
+
+root_install_user:
+	apt-get -y update
+	apt-get upgrade
+	apt-get -y install autoconf build-essential
+	apt-get -y install git silversearcher-ag go golang tree keychain zsh htop tmux python-software-properties zlib1g-dev exuberant-ctags
+	#git config --global user.email "brian@murphydye.com"
+	#git config --global user.name "Brian Murphy-Dye"
+
+install_user: ~/.vim ~/.oh-my-zsh ~/.zshrc ~/.config/direnv
+	#git config --global user.email "brian@murphydye.com"
+	#git config --global user.name "Brian Murphy-Dye"
+	$(MAKE) relink
+
+relink:
+	$(MAKE) ~/.oh-my-zsh
+	rm -f ~/.zshrc ~/.tmux.conf ~/.inputrc ~/.gitconfig ~/.gitignore_global ~/.rspec ~/.spacemacs
+	ln -s ${HOME}/.config/dotfiles/etc/zshrc ~/.zshrc
+	ln -s ${HOME}/.config/dotfiles/etc/tmux.conf ~/.tmux.conf
+	ln -s ${HOME}/.config/dotfiles/etc/inputrc ~/.inputrc
+	ln -s ${HOME}/.config/dotfiles/etc/gitconfig ~/.gitconfig
+	ln -s ${HOME}/.config/dotfiles/etc/rspec ~/.rspec
+	ln -s ${HOME}/.config/dotfiles/etc/spacemacs ~/.spacemacs
+	# ln -s ${HOME}/.config/dotfiles/vim/vimrc.mine ~/.vim/vimrc.mine
+	# .gitconfig points directly to the global ignore. don't need it in home
+	# directory.  ln -s ${HOME}/.config/dotfiles/etc/gitignore_global ~/.gitignore_global
+	$(MAKE) relink_vim
+
+~/.config/direnv:
+	mkdir -p ~/.config
+	git clone https://github.com/direnv/direnv ~/.config/direnv
+	cd ~/.config/direnv && make install    # note: needs go (golang). apt-get installs old version, which seems to be fine
+
+~/.vim:
+	mkdir -p ~/.config/dotfiles/vim/bundle
+	mkdir -p ~/.config/dotfiles/vim/swap
+	mkdir -p ~/.config/dotfiles/vim/undo
+	touch ~/.config/dotfiles/vim/vimrc.mine
+	touch ~/.config/dotfiles/vim/gvimrc.mine
+	$(MAKE) relink_vim
+	git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/dotfiles/vim/bundle/Vundle.vim || echo 'vundle already installed'
+	# install the plugins from vimrc.mine
+	#$(MAKE) ~/.config/dotfiles/vim/bundle/Vundle.vim
+	$(MAKE) install_vim_plugins
+
+relink_vim:
+	rm -f ~/.vim ~/.vimrc
+	# this is a fix for those that aren't using .vim as a link
+	rm -rf ~/.vim
+	ln -s ${HOME}/.config/dotfiles/vim ~/.vim
+	ln -s ${HOME}/.config/dotfiles/vim/vimrc ~/.vimrc
+
+update_vim_plugins:
+	# vim +PluginInstall! +qall
+	vim +PlugUpdate
+
+install_vim_plugins:
+	# vim +PluginInstall +qall
+	vim +PlugInstall
+
+~/.oh-my-zsh:
+	mkdir -p ~/.config/ohmy
+	curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -o ~/.config/ohmy/install.sh
+	chmod a+x ~/.config/ohmy/install.sh
+	cd ~/.config/ohmy && ./install.sh
+	#sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+	# chsh -s /usr/bin/zsh
+
+~/.zshrc:
+	ln -s ${HOME}/.config/dotfiles/etc/zshrc ${HOME}/.zshrc
+
+
+# probably should delete these:
+
+force_install_vim:
+	rm -f ~/.vim
+	rm -rf ~/.vim
+	$(MAKE) install_vim
+
+install_vim: ~/.vim
