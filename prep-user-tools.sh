@@ -7,6 +7,7 @@ rm -rf ~/.vim
 mkdir -p ~/.config/ohmy
 curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -o ~/.config/ohmy/install.sh
 chmod a+x ~/.config/ohmy/install.sh
+(cd ~/.config/ohmy && echo "exit" | ./install.sh)
 #sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d || echo 'emacs.d already installed'
@@ -36,7 +37,6 @@ ln -s ${HOME}/.config/dotfiles/etc/gitconfig ~/.gitconfig
 ln -s ${HOME}/.config/dotfiles/etc/rspec ~/.rspec
 ln -s ${HOME}/.config/dotfiles/etc/spacemacs ~/.spacemacs
 
-# (cd ~/.config/ohmy && ./install.sh)
 # vim +PlugInstall
 echo "to install vim plugins: vim +PlugInstall"
 
