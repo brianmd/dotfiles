@@ -233,6 +233,9 @@ Plugin 'jiangmiao/auto-pairs'
 "map <leader>t :A<CR> " \t to jump to test file
 
 call vundle#end()
+
+colorscheme molokai
+
 syntax enable
 filetype plugin indent on
 
@@ -249,7 +252,6 @@ if $TERM =~ '256color'
 elseif $TERM =~ '^xterm$'
   set t_Co=256
 endif
-colorscheme molokai
 let g:cssColorVimDoNotMessMyUpdatetime = 1
 
 " Misc
