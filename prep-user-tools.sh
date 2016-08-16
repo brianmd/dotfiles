@@ -1,7 +1,7 @@
 #!/bin/bash
 
 rm -f ~/.zshrc ~/.tmux.conf ~/.inputrc ~/.gitconfig ~/.gitignore_global ~/.rspec ~/.spacemacs ~/.vim
-rm -rf ~/.vim
+rm -rf ~/.vim ~/.config/dotfiles/vim/bundle
 
 # .oh-my-zsh:
 mkdir -p ~/.config/ohmy
@@ -13,7 +13,7 @@ chmod a+x ~/.config/ohmy/install.sh
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d || echo 'emacs.d already installed'
 
 ln -s ${HOME}/.config/dotfiles/vim ~/.vim
-ln -s ${HOME}/.config/dotfiles/vim/vimrc ~/.vimrc
+ln -s ${HOME}/.config/dotfiles/vim/vimrc ~/.vimrc 
 
 # vim
 mkdir -p ~/.config/dotfiles/vim/bundle
