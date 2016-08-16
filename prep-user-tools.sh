@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rm -f ~/.zshrc ~/.tmux.conf ~/.inputrc ~/.gitconfig ~/.gitignore_global ~/.rspec ~/.spacemacs ~/.vim
+rm -f ~/.zshrc ~/.tmux.conf ~/.inputrc ~/.gitconfig ~/.gitignore_global ~/.rspec ~/.spacemacs ~/.vim ~/.vimrc
 rm -rf ~/.vim ~/.config/dotfiles/vim/bundle
 
 # .oh-my-zsh:
@@ -10,7 +10,7 @@ chmod a+x ~/.config/ohmy/install.sh
 (cd ~/.config/ohmy && echo "exit" | ./install.sh)
 #sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d || echo 'emacs.d already installed'
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d || echo 'emacs.d is good to go'
 
 ln -s ${HOME}/.config/dotfiles/vim ~/.vim
 ln -s ${HOME}/.config/dotfiles/vim/vimrc ~/.vimrc 
@@ -21,13 +21,13 @@ mkdir -p ~/.config/dotfiles/vim/swap
 mkdir -p ~/.config/dotfiles/vim/undo
 touch ~/.config/dotfiles/vim/vimrc.mine
 touch ~/.config/dotfiles/vim/gvimrc.mine
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/dotfiles/vim/bundle/Vundle.vim || echo 'vundle already installed'
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/dotfiles/vim/bundle/Vundle.vim || echo 'vundle is good to go'
 
 # direnv
-git clone https://github.com/direnv/direnv ~/.config/direnv || echo 'direnv already installed'
+git clone https://github.com/direnv/direnv ~/.config/direnv || echo 'direnv is good to go'
 cd ~/.config/direnv && make install    # note: needs go (golang). apt-get installs old version, which seems to be fine
 
-git clone https://github.com/brianmd/binfiles.git ~/.config/binfiles || echo 'binfiles already installed'
+git clone https://github.com/brianmd/binfiles.git ~/.config/binfiles || echo 'binfiles is good to go'
 
 rm -f ~/.zshrc
 ln -s ${HOME}/.config/dotfiles/etc/zshrc ~/.zshrc
