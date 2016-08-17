@@ -35,8 +35,11 @@ values."
      (org :variables org-enable-github-support t)
      org
      (shell :variables
-            shell-default-height 30
-            shell-default-position 'bottom)
+            shell-default-height 40
+            shell-default-position 'bottom
+            shell-default-shell 'multi-term
+            shell-default-term-shell "/bin/zsh"
+            )
      ;; spell-checking    -- produces error about missing helm file
      syntax-checking
      ;; version-control
