@@ -245,7 +245,7 @@ syntax on
 set cursorline
 set number
 set relativenumber
-set list!                       " Display unprintable characters
+" set list!                       " Display unprintable characters
 " note: removed the next line because shows an error in docker ...
 " set listchars=tab:▸\ ,trail:•,extends:»,precedes:«
 if $TERM =~ '256color'
