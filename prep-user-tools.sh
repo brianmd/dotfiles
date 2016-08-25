@@ -3,6 +3,7 @@
 rm -f ~/.zshrc ~/.tmux.conf ~/.inputrc ~/.gitconfig ~/.gitignore_global ~/.rspec ~/.spacemacs ~/.vim ~/.vimrc
 rm -rf ~/.vim ~/.config/dotfiles/vim/bundle
 
+mkdir -p ~/.config/gocode
 # .oh-my-zsh:
 mkdir -p ~/.config/ohmy
 curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -o ~/.config/ohmy/install.sh
