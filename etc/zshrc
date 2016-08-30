@@ -33,6 +33,12 @@ ZSH_THEME="cloud"
 ZSH_THEME="muse"
 ZSH_THEME="mortalscumbag"
 
+if [ -n "$INSIDE_EMACS" ]; then
+  export ZSH_THEME=""
+else
+  export ZSH_THEME="mortalscumbag"
+fi
+
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -176,7 +182,7 @@ alias dm=docker-machine
 alias dc=docker-compose
 function dmenv() { eval $(docker-machine env "$1") }
 
-export PATH="$HOME/bin:$HOME/.config/binfiles:$HOME/.rbenv/bin:$HOME/.rbenv/shims:/usr/local/bin:/usr/sbin:/sbin:$HOME/.local/bin:$HOME/.config/gocode:$PATH"
+export PATH="$HOME/bin:$HOME/.config/binfiles:$HOME/.rbenv/bin:$HOME/.rbenv/shims:/usr/local/bin:/usr/sbin:/sbin:$HOME/.local/bin:$HOME/.config/gocode/bin:$PATH"
 export CDPATH=.:~/code:~:~/pkgs:~/.config
 export GOPATH=~/.code/gocode
 if [ -d ~/pkgs/boxes ]; then
