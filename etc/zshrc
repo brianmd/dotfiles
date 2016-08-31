@@ -264,7 +264,7 @@ export SMTPSERVER="smtp.gmail.com"
 unset -f xclip
 
 # The next line updates PATH for the Google Cloud SDK.
-source ~/.config/google-cloud-sdk/path.zsh.inc
+[ -f ~/.config/google-cloud-sdk/path.zsh.inc ] && source ~/.config/google-cloud-sdk/path.zsh.inc
 
 # The next line enables shell command completion for gcloud.
-source ~/.config/google-cloud-sdk/completion.zsh.inc
+[ -f ~/.config/google/cloud-sdk/completion.zsh.inc ] && source ~/.config/google-cloud-sdk/completion.zsh.inc
