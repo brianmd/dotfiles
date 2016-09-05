@@ -272,7 +272,7 @@ layers configuration. You are free to put any user code."
   (global-set-key (kbd "C-e") 'cider-eval-defun-at-point)
 
   ;; unless file has a major mode, set mode to org-mode
-  (setq-default major-mode 'org-mode)
+  ;; (setq-default major-mode 'org-mode)
 
   (setq helm-dash-common-docsets '("Redis"))
 
