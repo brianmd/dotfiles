@@ -146,7 +146,8 @@ alias config="subl ~/.zshrc"
 #alias setup="subl ~/.bashrc && reload"
 
 # digitalocean tool
-alias do=doctl
+alias doc=doctl compute
+alias dos=doctl compute ssh
 
 # Heroku
 alias hconfig="heroku config"
