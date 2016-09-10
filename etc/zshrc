@@ -71,8 +71,8 @@ DISABLE_CORRECTION="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(rails git bundler ruby brew gem vagrant git-flow docker docker-compose docker-machine docker-local)
+# Example format: plugins=(rails git textmate ruby gem lighthouse)
+plugins=(git bundler brew vagrant git-flow docker docker-compose docker-machine docker-local)
 
 compctl -g '~/.teamocil/*(:t:r)' teamocil
 
