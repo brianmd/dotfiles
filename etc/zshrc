@@ -73,6 +73,8 @@ DISABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby gem lighthouse)
 plugins=(git bundler brew vagrant git-flow docker docker-compose docker-machine docker-local)
+source $ZSH/oh-my-zsh.sh
+source ~/.config/dotfiles/etc/git-sh.rc
 
 compctl -g '~/.teamocil/*(:t:r)' teamocil
 
@@ -181,6 +183,7 @@ alias da='direnv allow'
 # from http://stackoverflow.com/questions/34928552/run-commands-on-docker-container-from-emacs
 alias sc=systemctl
 alias dt=". '/Applicaitons/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'"
+alias d=docker
 alias dm=docker-machine
 alias dc=docker-compose
 function dmenv() { eval $(docker-machine env "$1") }
@@ -215,9 +218,6 @@ if [[ -d ~/pkgs/packer ]]; then
   export PATH=$PATH:~/pkgs/packer
   export PACKER_CACHE_DIR=/usr/share/provisioners/packers
 fi
-
-source $ZSH/oh-my-zsh.sh
-source ~/.config/dotfiles/etc/git-sh.rc
 
 if type direnv > /dev/null; then
   # eval "$(direnv hook $0)"
