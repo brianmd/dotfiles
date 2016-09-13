@@ -189,7 +189,7 @@ alias dc=docker-compose
 function dmenv() { eval $(docker-machine env "$1") }
 
 export PATH="$HOME/bin:$HOME/.config/binfiles:$HOME/.rbenv/bin:$HOME/.rbenv/shims:/usr/local/bin:/usr/sbin:/sbin:$HOME/.local/bin:$HOME/.config/gocode/bin:$PATH"
-export CDPATH=.:~/code:~:~/pkgs:~/.config
+export CDPATH=.:~/code:~/code/docker:~:~/pkgs:~/.config
 export GOPATH=~/.code/gocode
 if [ -d ~/pkgs/boxes ]; then
   export CDPATH=$CDPATH:~/pkgs/boxes
