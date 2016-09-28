@@ -13,6 +13,7 @@
 	status = auto
 [push]
 	default = current
+	followTags = true
 
 [color "branch"]
   current = yellow bold
