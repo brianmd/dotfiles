@@ -271,3 +271,8 @@ unset -f xclip
 
 # The next line enables shell command completion for gcloud.
 [ -f ~/.config/google/cloud-sdk/completion.zsh.inc ] && source ~/.config/google-cloud-sdk/completion.zsh.inc
+
+if [ -d /opt/chefdk/embedded/bin ]; then
+  export PATH="/opt/chefdk/embedded/bin:$PATH"
+  eval "$(chef shell-init zsh)"
+fi
