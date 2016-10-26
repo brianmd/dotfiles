@@ -175,6 +175,7 @@ mac_base_config:
 
 mac_rbenv_prerequisites:
 	brew install openssl libyaml libffi
+	brew link openssl --force
 	brew install htop
 
 mac_gnu_tools:
