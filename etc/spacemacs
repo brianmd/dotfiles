@@ -26,10 +26,13 @@ values."
      auto-completion
      ;; ace-link
      better-defaults
+     clojure
      emacs-lisp
      git
+     ;; note: need node installed, and [sudo] npm -g install js-beautify
+     ;;       then <spc> m-= will beautify when in json-mode
+     javascript
      markdown
-     clojure
      ruby
      ruby-on-rails
      (org :variables org-enable-github-support t)

@@ -72,7 +72,7 @@ DISABLE_CORRECTION="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby gem lighthouse)
-plugins=(git bundler brew vagrant git-flow docker docker-compose docker-machine docker-local)
+plugins=(git bundler brew vagrant git-flow docker docker-compose docker-machine docker-local knife)
 source $ZSH/oh-my-zsh.sh
 source ~/.config/dotfiles/etc/git-sh.rc
 
@@ -275,4 +275,5 @@ unset -f xclip
 if [ -d /opt/chefdk/embedded/bin ]; then
   export PATH="/opt/chefdk/embedded/bin:$PATH"
   eval "$(chef shell-init zsh)"
+  alias cheflocal="chef-client --local-mode"
 fi
