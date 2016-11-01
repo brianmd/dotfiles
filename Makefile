@@ -4,6 +4,11 @@
 # TODO: could add apt-get update && apt-get upgrade, but want salt to do that
 # TODO: show insert/normal on command line
 # TODO: teamocil?
+#
+#
+#
+#    for json pretty print emacs needs:
+#           npm -g install js-beautify
 
 
 TARGETS = $(HOME)/.pryrc $(HOME)/.irbrc
