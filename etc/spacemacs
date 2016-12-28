@@ -386,21 +386,29 @@ layers configuration. You are free to put any user code."
                                         ;(define-key cider-minor-mode (kbd "M-l") 'cider-eval-buffer)
                                         ;(setq clojure-enable-fancify-symbols t)
 
-  ;; (unless window-system
-  ;;   (global-set-key [mouse-4] 'scroll-down-line)
-  ;;   (global-set-key [mouse-5] 'scroll-up-line))
+  (unless false
+  ;(unless window-system
+    ;; (require 'mwheel)
+    ;; (require 'mouse)
+    ;; (xterm-mouse-mode t)
+    ;; (mouse-wheel-mode t)
+    ;; (global-set-key [mouse-4] 'next-line)
+    ;; (global-set-key [mouse-5] 'previous-line)
+    ;; (global-set-key [mouse-4] 'scroll-down-line)
+    ;; (global-set-key [mouse-5] 'scroll-up-line)
+    )
 
-  ;; (setq scroll-conservatively 101) ;; move minimum when cursor exits view, instead of recentering
-  ;; (setq mouse-wheel-scroll-amount '(1)) ;; mouse scroll moves 1 line at a time, instead of 5 lines
-  ;; (setq mouse-wheel-progressive-speed nil) ;; on a long mouse scroll keep scrolling by 1 line
+  (setq scroll-conservatively 101) ;; move minimum when cursor exits view, instead of recentering
+  (setq mouse-wheel-scroll-amount '(1)) ;; mouse scroll moves 1 line at a time, instead of 5 lines
+  (setq mouse-wheel-progressive-speed nil) ;; on a long mouse scroll keep scrolling by 1 line
 
-  ;; (setq mouse-wheel-scroll-amount '(2 ((shift) . 1))) ;; two lines at a time
-  ;; (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
-  ;; (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+  (setq mouse-wheel-scroll-amount '(2 ((shift) . 1))) ;; two lines at a time
+  (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+  (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 
-  ;; ( require 'smooth-scroll                        ) ;; Smooth scroll
-  ;; ( smooth-scroll-mode 1                          ) ;; Enable it
-  ;; ( setq smooth-scroll/vscroll-step-size 5        ) ;; Set the speed right
+  ( require 'smooth-scroll                        ) ;; Smooth scroll
+  ( smooth-scroll-mode 1                          ) ;; Enable it
+  ( setq smooth-scroll/vscroll-step-size 5        ) ;; Set the speed right
 
   (global-set-key (kbd "M-1") 'select-window-1)
   (global-set-key (kbd "M-2") 'select-window-2)
@@ -569,10 +577,9 @@ layers configuration. You are free to put any user code."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- ;; '(org-agenda-files   ;; these are set above
- ;;   (quote
- ;;    ("~/Dropbox/docs/org/gtd.org" "~/Dropbox/docs/org/gtd.org" "~/Dropbox/docs/org/journal.org")
- ;;    ))
+ '(package-selected-packages
+   (quote
+    (uuidgen pug-mode ox-gfm org-projectile org-download ob-http mwim minitest livid-mode skewer-mode simple-httpd link-hint hide-comnt git-link eyebrowse evil-visual-mark-mode evil-unimpaired evil-ediff eshell-z dumb-jump column-enforce-mode clojure-snippets web-mode web-beautify tagedit slim-mode scss-mode sass-mode restclient less-css-mode json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc jade-mode helm-css-scss haml-mode emmet-mode dockerfile-mode default-text-scale company-web web-completion-data company-tern dash-functional tern coffee-mode zenburn-theme xterm-color ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe use-package toc-org spacemacs-theme spaceline solarized-theme smooth-scrolling smeargle shell-pop rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs rbenv rainbow-delimiters quelpa projectile-rails popwin persp-mode pcre2el paradox page-break-lines orgit org-repo-todo org-present org-pomodoro org-plus-contrib org-bullets open-junk-file neotree multi-term move-text monokai-theme mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger gh-md flycheck-pos-tip flx-ido fill-column-indicator feature-mode fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-jumper evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eshell-prompt-extras esh-help elisp-slime-nav define-word company-statistics company-quickhelp clj-refactor clean-aindent-mode cider-eval-sexp-fu chruby bundler buffer-move bracketed-paste auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
  '(send-mail-function (quote mailclient-send-it)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
