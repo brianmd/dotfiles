@@ -277,3 +277,5 @@ if [ -d /opt/chefdk/embedded/bin ]; then
   eval "$(chef shell-init zsh)"
   alias cheflocal="chef-client --local-mode"
 fi
+
+# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
