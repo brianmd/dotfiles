@@ -273,9 +273,9 @@ unset -f xclip
 [ -f ~/.config/google/cloud-sdk/completion.zsh.inc ] && source ~/.config/google-cloud-sdk/completion.zsh.inc
 
 if [ -d /opt/chefdk/embedded/bin ]; then
-  export PATH="/opt/chefdk/embedded/bin:$PATH"
-  eval "$(chef shell-init zsh)"
-  alias cheflocal="chef-client --local-mode"
+#  export PATH="$PATH:/opt/chefdk/embedded/bin"
+#  eval "$(chef shell-init zsh)"
+#  alias cheflocal="chef-client --local-mode"
 fi
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
