@@ -211,7 +211,7 @@ else
   # if [[ -f ~/.ssh/minion ]]; then keychain minion; fi
   if [[ -f ~/.ssh/chrome ]]; then keychain chrome; fi
   # if [[ -f ~/.ssh/id_rsa ]]; then keychain id_rsa; fi
-  source ~/.keychain/${HOST}-sh
+  if [[ -f ~/.keychain/${HOST}-sh ]]; then source ~/.keychain/${HOST}-sh; fi
 fi
 
 if [[ -d ~/pkgs/packer ]]; then
