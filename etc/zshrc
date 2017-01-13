@@ -199,20 +199,20 @@ if [ -d ${HOME}/code/summit ]; then
   export CDPATH=$CDPATH:~/code/summit
 fi
 if [[ $KERNEL == 'Darwin' ]]; then
+  keychain_cmd="ssh-add -K"
   #export SSL_CERT_FILE=/git/Certificates.pem
   export JAVA_HOME=`/usr/libexec/java_home`
   export PATH="$PATH:$HOME/Dropbox/summit/projects/summit-extensions/common/bin:/opt/local/bin:/usr/local/bin:/usr/local/share/npm/bin:$HOME/Dropbox/summit/bin:/usr/local/share/bin:/opt/local/bin:/opt/X11/bin:$HOME/.local/bin"
   export CDPATH=$CDPATH:~/Documents:~/Documents/git:~/Dropbox:~/Dropbox/summit:~/Dropbox/summit/projects:~/Documents/git/summit
 else
-  # keychain git_key cloud gru minion
-  if [[ -f ~/.ssh/git_key ]]; then keychain git_key; fi
-  # if [[ -f ~/.ssh/cloud ]]; then keychain cloud; fi
-  # if [[ -f ~/.ssh/gru ]]; then keychain gru; fi
-  # if [[ -f ~/.ssh/minion ]]; then keychain minion; fi
-  if [[ -f ~/.ssh/chrome ]]; then keychain chrome; fi
-  # if [[ -f ~/.ssh/id_rsa ]]; then keychain id_rsa; fi
-  if [[ -f ~/.keychain/${HOST}-sh ]]; then source ~/.keychain/${HOST}-sh; fi
+  keychain_cmd=keychain
+  # if [[ -f ~/.keychain/${HOST}-sh ]]; then source ~/.keychain/${HOST}-sh; fi
 fi
+
+if [[ -f ~/.ssh/git_key ]]; then eval "$keychain_cmd ~/.ssh/git_key"; fi
+if [[ -f ~/.ssh/chrome ]]; then eval "$keychain_cmd ~/.ssh/chrome"; fi
+if [[ -f ~/.ssh/gru ]]; then eval "$keychain_cmd ~/.ssh/gru"; fi
+if [[ -f ~/.keychain/${HOST}-sh ]]; then source ~/.keychain/${HOST}-sh; fi
 
 if [[ -d ~/pkgs/packer ]]; then
   export PATH=$PATH:~/pkgs/packer
