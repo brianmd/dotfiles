@@ -250,6 +250,7 @@ fi
 # added by travis gem
 [ -f /Users/bmd/.travis/travis.sh ] && source /Users/bmd/.travis/travis.sh
 
+export SHELL=`which zsh`
 export EMAIL="bmdmailer@gmail.com"
 export NAME="Brian Murphy-Dye"
 export SMTPSERVER="smtp.gmail.com"
