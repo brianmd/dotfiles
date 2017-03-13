@@ -50,7 +50,7 @@ values."
      ;; osx
      gnus
      html
-     dockerfile
+     docker
      restclient
      )
    ;; List of additional packages that will be installed without being
