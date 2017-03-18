@@ -238,6 +238,10 @@ if [[ -d ~/.nodenv ]]; then
   eval "$(nodenv init -)"
 fi
 
+if [[ -d ~/.cargo/bin ]]; then
+  export PATH="$PATH:$HOME/.cargo/bin"
+fi
+
 # export VAGRANT_HOME=/usr/share/provisioners/vagrant.d
 
 # if &term =~ '256color'
