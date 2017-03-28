@@ -44,6 +44,8 @@ relink_vim:
 	rm -rf ~/.vim
 	ln -s ${HOME}/.config/dotfiles/vim ~/.vim
 	ln -s ${HOME}/.config/dotfiles/vim/vimrc ~/.vimrc
+	touch ${HOME}/.config/dotfiles/vim/vimrc.mine
+	mkdir -p ${HOME}/.config/dotfiles/vim/swap
 
 test:
 	grep xtest ~/.test || [ $$? -eq 0 ]
