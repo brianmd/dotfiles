@@ -127,11 +127,11 @@ values."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    ;; dotspacemacs-default-font '("Source Code Pro"
-   dotspacemacs-default-font '("Mono"
-                               :size 12
+   dotspacemacs-default-font '("Source Code Pro"
+                               :size 35
                                :weight normal
                                :width normal
-                               :powerline-scale 1.1)
+                               :powerline-scale 0.9)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
@@ -293,9 +293,22 @@ layers configuration. You are free to put any user code."
                                "~/Dropbox/docs/org/"
                                ))
 
-  (if (string-equal "finch" (system-name))
-      (set-face-attribute 'default nil :height 140)
-      )
+  ;; (if (string-equal "finch" (system-name))
+  ;;     ;; (spacemacs/set-font "Source Code Pro" 122))
+  ;;     (let ((scale 2))
+  ;;       (spacemacs/scale-up-or-down-font-size 1)))
+  ;; (if (string-equal "finch" (system-name))
+  ;;     (set-face-attribute 'default nil :height 140))
+  ;; (if (string-equal "finch" (system-name))
+  ;;     (spacemacs/set-font "Mono" 22))
+  ;; dotspacemacs-default-font '("Source Code Pro"
+  ;; (if (string-equal "finch" (system-name))
+  ;;     (setq-default
+  ;;      dotspacemacs-default-font '("Mono"
+  ;;                                 :size 42
+  ;;                                 :weight normal
+  ;;                                 :width normal
+  ;;                                 :powerline-scale 1.1)))
 
   (setq multi-term-program "/bin/zsh")
   (add-hook 'term-mode-hook
