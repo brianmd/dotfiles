@@ -83,7 +83,7 @@ values."
    ;; (default t)
    dotspacemacs-elpa-https t
    ;; Maximum allowed time in seconds to contact an ELPA repository.
-   dotspacemacs-elpa-timeout 5
+   dotspacemacs-elpa-timeout 10
    ;; If non nil then spacemacs will check for updates at startup
    ;; when the current branch is not `develop'. (default t)
    dotspacemacs-check-for-update t
@@ -128,7 +128,7 @@ values."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    ;; dotspacemacs-default-font '("Source Code Pro"
-   dotspacemacs-default-font '("Source Code Pro"
+   dotspacemacs-default-font '("Mono"
                                :size 35
                                :weight normal
                                :width normal
@@ -273,7 +273,7 @@ in `dotspacemacs/user-config'."
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
   (setq-default dotspacemacs-line-numbers 'relative)
-  (setq powerline-default-separator 'arrow)
+  ;; (setq powerline-default-separator 'arrow)
 
   ;(define-key cider-minor-mode (kbd "C-e") 'cider-eval-defun-at-point)
   (global-set-key (kbd "C-e") 'cider-eval-defun-at-point)
