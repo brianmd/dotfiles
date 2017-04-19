@@ -2,6 +2,8 @@
 # TODO: add 'export VAGRANT_HOME=...' to a shared directory, then move
 # ~/.vagrant.d there
 
+export TTD_DEPLOYMENT_XML=/home/bmd/code/ttd/repo/Operations/DeployTool/deployment.config
+
 KERNEL=`uname -s`
 # to auto-update oh-my-zsh
 export DISABLE_UPDATE_PROMPT=true
