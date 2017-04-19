@@ -3,6 +3,7 @@
 # ~/.vagrant.d there
 
 export TTD_DEPLOYMENT_XML=/home/bmd/code/ttd/repo/Operations/DeployTool/deployment.config
+export TTD_USER=brian.murphy-dye
 
 KERNEL=`uname -s`
 # to auto-update oh-my-zsh
