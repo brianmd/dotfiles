@@ -2,7 +2,7 @@
 # TODO: add 'export VAGRANT_HOME=...' to a shared directory, then move
 # ~/.vagrant.d there
 
-export TTD_DEPLOYMENT_XML=/home/bmd/code/ttd/repo/Operations/DeployTool/deployment.config
+export TTD_DEPLOYMENT_XML=/home/bmd/code/ttd/Operations/DeployTool/deployment.config
 export TTD_USER=brian.murphy-dye
 
 KERNEL=`uname -s`
@@ -193,7 +193,7 @@ alias dc=docker-compose
 function dmenv() { eval $(docker-machine env "$1") }
 
 export PATH="$HOME/bin:$HOME/.config/binfiles:$HOME/.rbenv/bin:$HOME/.rbenv/shims:/usr/local/bin:/usr/sbin:/sbin:$HOME/.local/bin:$HOME/.config/gocode/bin:$PATH"
-export CDPATH=.:~/code:~/code/docker:~:~/pkgs:~/.config
+export CDPATH=.:~/code:~/code/ttd:~/code/docker:~:~/pkgs:~/.config
 export GOPATH=~/.code/gocode
 if [ -d ~/pkgs/boxes ]; then
   export CDPATH=$CDPATH:~/pkgs/boxes
@@ -216,6 +216,7 @@ fi
 if [[ -f ~/.ssh/git_key ]]; then eval "$keychain_cmd ~/.ssh/git_key"; fi
 if [[ -f ~/.ssh/chrome ]]; then eval "$keychain_cmd ~/.ssh/chrome"; fi
 if [[ -f ~/.ssh/gru ]]; then eval "$keychain_cmd ~/.ssh/gru"; fi
+if [[ -f ~/.ssh/bmd-ttd ]]; then eval "$keychain_cmd ~/.ssh/bmd-ttd"; fi
 if [[ -f ~/.keychain/${HOST}-sh ]]; then source ~/.keychain/${HOST}-sh; fi
 
 if [[ -d ~/pkgs/packer ]]; then
