@@ -2,9 +2,6 @@
 # TODO: add 'export VAGRANT_HOME=...' to a shared directory, then move
 # ~/.vagrant.d there
 
-export TTD_DEPLOYMENT_XML=/home/bmd/code/ttd/hg/Operations/DeployTool/deployment.config
-export TTD_USER=brian.murphy-dye
-
 KERNEL=`uname -s`
 # to auto-update oh-my-zsh
 export DISABLE_UPDATE_PROMPT=true
@@ -195,21 +192,10 @@ function dmenv() { eval $(docker-machine env "$1") }
 export PATH="$HOME/bin:$HOME/.config/binfiles:$HOME/.rbenv/bin:$HOME/.rbenv/shims:/usr/local/bin:/usr/sbin:/sbin:$HOME/.local/bin:$HOME/.config/gocode/bin:$PATH"
 
 export CDPATH=.:~/code:~/.config
-if [ -d ~/code/docker ]; then
-    export CDPATH=$CDPATH:~/code/docker
-fi
-if [ -d ${HOME}/code/ttd ]; then
-    export CDPATH="$CDPATH:~/code/ttd:~/code/ttd/hg:~/code/ttd/git:~/code/ttd/me"
-fi
-if [ -d ${HOME}/code/summit ]; then
-  export CDPATH=$CDPATH:~/code/summit
-fi
-if [ -d ~/pkgs ]; then
-    export CDPATH=$CDPATH:~/pkgs
-fi
-if [ -d ~/pkgs/boxes ]; then
-    export CDPATH=$CDPATH:~/pkgs/boxes
-fi
+[ -d ~/code/docker ] && export CDPATH=$CDPATH:~/code/docker
+[ -d ${HOME}/code/summit ] && export CDPATH=$CDPATH:~/code/summit
+[ -d ~/pkgs ] && export CDPATH=$CDPATH:~/pkgs
+[ -d ~/pkgs/boxes ] && export CDPATH=$CDPATH:~/pkgs/boxes
 
 export GOPATH=~/.code/gocode
 
@@ -298,5 +284,7 @@ if [ -d /opt/chefdk/embedded/bin ]; then
   eval "$(chef shell-init zsh)"
   alias cheflocal="chef-client --local-mode"
 fi
+
+[ -f ~/.config/dotfiles/etc/ttdrc ] && source ~/.config/dotfiles/etc/ttdrc
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

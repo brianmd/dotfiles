@@ -1,0 +1,5 @@
+#!/bin/sh
+export TTD_DEPLOYMENT_XML=/home/bmd/code/ttd/hg/Operations/DeployTool/deployment.config
+export TTD_USER=brian.murphy-dye
+
+[ -d ${HOME}/code/ttd ] && export CDPATH="$CDPATH:~/code/ttd:~/code/ttd/hg:~/code/ttd/git:~/code/ttd/me"
