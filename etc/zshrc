@@ -39,6 +39,16 @@ else
   export ZSH_THEME="mortalscumbag"
 fi
 
+# http://oblalex.blogspot.com/2013/06/extending-oh-my-zsh-with-hgprompt.html
+# https://github.com/robbyrussell/oh-my-zsh/blob/master/themes/mortalscumbag.zsh-theme
+function hg_prompt_info {
+      hg prompt --angle-brackets "\
+        <%{$fg_bold[blue]%}hg:(%{$fg_bold[red]%}<branch>><:<tags|, >%{$fg_bold[blue]%})>\
+        %{$fg[yellow]%}<status|modified|unknown><update>\
+        <patches: <patches|join( →  )>>%{$reset_color%}" 2>/dev/null
+
+}
+
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -72,7 +82,7 @@ DISABLE_CORRECTION="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby gem lighthouse)
-plugins=(git bundler brew vagrant git-flow docker docker-compose docker-machine docker-local knife)
+plugins=(git bundler brew vagrant git-flow docker docker-compose docker-machine docker-local knife mercurial)
 source $ZSH/oh-my-zsh.sh
 source ~/.config/dotfiles/etc/git-sh.rc
 
@@ -288,3 +298,6 @@ fi
 [ -f ~/.config/dotfiles/etc/ttdrc ] && source ~/.config/dotfiles/etc/ttdrc
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# https://github.com/robbyrussell/oh-my-zsh/blob/master/themes/mortalscumbag.zsh-theme
+# PROMPT='${ret_status}%{$fg_bold[green]%}%p %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)$(hg_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'

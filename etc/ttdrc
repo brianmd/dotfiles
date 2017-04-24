@@ -1,5 +1,8 @@
 #!/bin/sh
 export TTD_DEPLOYMENT_XML=/home/bmd/code/ttd/hg/Operations/DeployTool/deployment.config
+export TTD_AEROSPIKE_JSON=/home/bmd/code/ttd/hg/tdsi/TDSIConfigs/aerospike.json
+export TTD_PEER1_DIR=/home/bmd/code/ttd/me/bootstrap/tim
+
 export TTD_USER=brian.murphy-dye
 
 [ -d ${HOME}/code/ttd ] && export CDPATH="$CDPATH:~/code/ttd:~/code/ttd/hg:~/code/ttd/git:~/code/ttd/me"
