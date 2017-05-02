@@ -2,6 +2,87 @@
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
+;(defun gker-setup-sh-mode ()
+;  (interactive)
+;  (setq sh-basic-offset 2
+;        sh-indentation 2
+;        sh-indent-for-case-label 0
+;        sh-indent-for-case-alt '+)
+;(add-hook 'sh-mode-hook 'gker-setup-sh-mode)
+
+(defun my-setup-indent (n)
+  ;; java/c/c++
+  (setq c-basic-offset n)
+  ;; web development
+  (setq coffee-tab-width n) ; coffeescript
+  (setq javascript-indent-level n) ; javascript-mode
+  (setq js-indent-level n) ; js-mode
+  (setq js2-basic-offset n) ; js2-mode, in latest js2-mode, it's alias of js-indent-level
+  (setq web-mode-markup-indent-offset n) ; web-mode, html tag in html file
+  (setq web-mode-css-indent-offset n) ; web-mode, css in html file
+  (setq web-mode-code-indent-offset n) ; web-mode, js code in html file
+  (setq css-indent-offset n) ; css-mode
+  )
+
+(defun set-indent (n)
+  (setq-default
+   evil-shift-width n
+   tab-width n
+   default-tab-width n
+   standard-indent n
+   c-basic-offset n
+   js-indent-level n
+   js2-basic-offset n
+   javascript-indent-level n
+   css-indent-offset n
+   prolog-indent-width n
+   coffee-tab-width n
+   web-mode-markup-indent-offset n
+   web-mode-css-indent-offset n
+   web-mode-code-indent-offset n
+   web-mode-markup-indent-offset n
+   web-mode-css-indent-offset n
+   web-mode-code-indent-offset n
+   web-mode-attr-indent-offset n
+   python-indent-offset n
+   python-indent n
+   sh-indentation n
+   ))
+(defun set-tab-width (n)
+  (dolist (var '(evil-shift-width
+                 default-tab-width
+                 tab-width
+                 c-basic-offset
+                 cmake-tab-width
+                 coffee-tab-width
+                 cperl-indent-level
+                 css-indent-offset
+                 elixir-smie-indent-basic
+                 enh-ruby-indent-level
+                 erlang-indent-level
+                 javascript-indent-level
+                 js-indent-level
+                 js2-basic-offset
+                 js3-indent-level
+                 lisp-indent-offset
+                 livescript-tab-width
+                 mustache-basic-offset
+                 nxml-child-indent
+                 perl-indent-level
+                 puppet-indent-level
+                 python-indent-offset
+                 ruby-indent-level
+                 rust-indent-offset
+                 scala-indent:step
+                 sgml-basic-offset
+                 sh-basic-offset
+                 web-mode-code-indent-offset
+                 web-mode-css-indent-offset
+                 web-mode-markup-indent-offset))
+    (set (make-local-variable var) n)))
+
+
+
 (defun dotspacemacs/layers ()
     "Configuration Layers declaration.
 You should not put any user code in this function besides modifying the variable
@@ -269,6 +350,10 @@ values."
 It is called immediately after `dotspacemacs/init'.  You are free to put almost
 any user code here.  The exception is org related code, which should be placed
 in `dotspacemacs/user-config'."
+  ; (my-setup-indent 2) ; indent 2 spaces width
+  (set-indent 2)
+  (set-tab-width 2)
+  (add-hook 'shell-script-hook (lambda () (set-indent 2)))
   )
 
 (defun dotspacemacs/user-config ()
@@ -276,6 +361,9 @@ in `dotspacemacs/user-config'."
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
   (setq-default dotspacemacs-line-numbers 'relative)
+
+  (setq-default sh-basic-offset 2)
+
   ;; (setq powerline-default-separator 'arrow)
 
   ;(define-key cider-minor-mode (kbd "C-e") 'cider-eval-defun-at-point)
@@ -296,7 +384,8 @@ layers configuration. You are free to put any user code."
                                ;; "~/Dropbox/docs/org/gtd.org"
                                ;; "~/Dropbox/docs/org/work.org"
                                ;; "~/Dropbox/docs/org/home.org"
-                               "~/Dropbox/docs/org/"
+                               ;; "~/Dropbox/docs/org/"
+                               "/servers/dropbox/docs/org/"
                                ))
 
   ;; (if (string-equal "finch" (system-name))
@@ -329,13 +418,13 @@ layers configuration. You are free to put any user code."
   ;; (global-set-key (kbd "M-O") 'multi-term)
 
   (setq org-capture-templates
-        '(("t" "GTD" entry (file+headline "~/Dropbox/docs/org/gtd.org" "GTD")
+        '(("t" "GTD" entry (file+headline "/servers/dropbox/docs/org/gtd.org" "GTD")
            "* TODO %?\n  %i\n  %a")
-          ("w" "Work Journal" entry (file+datetree "~/Dropbox/docs/org/work-journal.org")
+          ("w" "Work Journal" entry (file+datetree "/servers/dropbox/docs/org/work-journal.org")
            "* %?")
-          ("x" "Work Journal (extended entry)" entry (file+datetree "~/Dropbox/docs/org/work-journal.org")
+          ("x" "Work Journal (extended entry)" entry (file+datetree "/servers/dropbox/docs/org/work-journal.org")
            "* %?\nEntered on %U\n  %i\n  %a")
-          ("j" "Journal" entry (file+datetree "~/Dropbox/docs/org/journal.org")
+          ("j" "Journal" entry (file+datetree "/servers/dropbox/docs/org/journal.org")
            "* %?\nEntered on %U\n  %i\n  %a")
           ))
   ;; the above uses these escapes
@@ -599,7 +688,8 @@ layers configuration. You are free to put any user code."
  '(package-selected-packages
    (quote
     (git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl winum unfill powerline restclient-helm rake alert log4e gntp ob-restclient markdown-mode insert-shebang parent-mode projectile request gitignore-mode fuzzy pos-tip flycheck flx fish-mode magit git-commit with-editor smartparens iedit anzu evil goto-chg undo-tree f docker tablist magit-popup docker-tramp diminish company-shell company-restclient know-your-http-well company hydra inflections edn multiple-cursors paredit s peg eval-sexp-fu highlight cider seq spinner queue pkg-info clojure-mode epl inf-ruby bind-map bind-key yasnippet packed dash helm avy helm-core async auto-complete popup yaml-mode uuidgen pug-mode ox-gfm org-projectile org-download ob-http mwim minitest livid-mode skewer-mode simple-httpd link-hint hide-comnt git-link eyebrowse evil-visual-mark-mode evil-unimpaired evil-ediff eshell-z dumb-jump column-enforce-mode clojure-snippets web-mode web-beautify tagedit slim-mode scss-mode sass-mode restclient less-css-mode json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc jade-mode helm-css-scss haml-mode emmet-mode dockerfile-mode default-text-scale company-web web-completion-data company-tern dash-functional tern coffee-mode zenburn-theme xterm-color ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe use-package toc-org spacemacs-theme spaceline solarized-theme smooth-scrolling smeargle shell-pop rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs rbenv rainbow-delimiters quelpa projectile-rails popwin persp-mode pcre2el paradox page-break-lines orgit org-repo-todo org-present org-pomodoro org-plus-contrib org-bullets open-junk-file neotree multi-term move-text monokai-theme mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger gh-md flycheck-pos-tip flx-ido fill-column-indicator feature-mode fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-jumper evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eshell-prompt-extras esh-help elisp-slime-nav define-word company-statistics company-quickhelp clj-refactor clean-aindent-mode cider-eval-sexp-fu chruby bundler buffer-move bracketed-paste auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
- '(send-mail-function (quote mailclient-send-it)))
+ '(send-mail-function (quote mailclient-send-it))
+ '(standard-indent 2))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
