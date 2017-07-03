@@ -1,3 +1,4 @@
+# see https://blog.scottnonnenberg.com/better-git-configuration/
 [user]
 	name = Brian Murphy-Dye
 	email = brian@murphydye.com
@@ -12,7 +13,7 @@
 	diff = auto
 	status = auto
 [push]
-	default = current
+	default = simple
 	followTags = true
 
 [color "branch"]
@@ -37,6 +38,8 @@
 	brianmd
 [http]
 	sslVerify = false
+[merge]
+	conflictstyle = diff3
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 

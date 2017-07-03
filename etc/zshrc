@@ -209,6 +209,12 @@ export CDPATH=.:~/code:~/.config
 
 export GOPATH=~/.code/gocode
 
+# export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
+
+if [ -d ${HOME}/code/summit ]; then
+  export CDPATH=$CDPATH:~/code/summit
+fi
+
 if [[ $KERNEL == 'Darwin' ]]; then
   keychain_cmd="ssh-add -K"
   #export SSL_CERT_FILE=/git/Certificates.pem
