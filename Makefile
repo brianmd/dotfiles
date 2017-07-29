@@ -20,6 +20,9 @@ define RBENV_ENV
 	eval "$(rbenv init -)"
 endef
 
+chef:
+	wget "https://packages.chef.io/files/current/chef/13.3.28/ubuntu/16.04/chef_13.3.28-1_amd64.deb"
+	sudo dpkg -i chef_13.3.28-1_amd64.deb
 
 root_install_make:
 	sudo apt-get -y install build-essential
