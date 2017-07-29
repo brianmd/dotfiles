@@ -20,7 +20,7 @@ define RBENV_ENV
 	eval "$(rbenv init -)"
 endef
 
-chef:
+chef_ubuntu_16:
 	wget "https://packages.chef.io/files/current/chef/13.3.28/ubuntu/16.04/chef_13.3.28-1_amd64.deb"
 	sudo dpkg -i chef_13.3.28-1_amd64.deb
 
