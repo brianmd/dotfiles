@@ -122,7 +122,7 @@ c() { cd ~/code/$1; }
 _c() { _files -W ~/code -/; }
 #compdef _c c
 
-alias ipaddrs='ifconfig -a | grep "inet "'
+alias ipaddrs='ip addr list | grep "inet "'
 
 # trello
 alias inbox="trellor todo inbox"
