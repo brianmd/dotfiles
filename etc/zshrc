@@ -297,6 +297,7 @@ unset -f xclip
 
 if [ -d /opt/chefdk/embedded/bin ]; then
   export PATH="/opt/chefdk/embedded/bin:$PATH"
+  export TEST_KITCHEN=1
   eval "$(chef shell-init zsh)"
   alias cheflocal="chef-client --local-mode"
 fi
