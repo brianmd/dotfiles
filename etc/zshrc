@@ -206,6 +206,7 @@ export CDPATH=.:~/code:~/.config
 [ -d ${HOME}/code/summit ] && export CDPATH=$CDPATH:~/code/summit
 [ -d ~/pkgs ] && export CDPATH=$CDPATH:~/pkgs
 [ -d ~/pkgs/boxes ] && export CDPATH=$CDPATH:~/pkgs/boxes
+export CDPATH=$CDPATH:~
 
 export GOPATH=~/.code/gocode
 
