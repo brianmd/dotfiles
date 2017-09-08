@@ -14,6 +14,8 @@
   ;; java/c/c++
   (setq c-basic-offset n)
   ;; web development
+  (setq json-tab-width n)
+  (setq ruby-tab-width n)
   (setq coffee-tab-width n) ; coffeescript
   (setq javascript-indent-level n) ; javascript-mode
   (setq js-indent-level n) ; js-mode
@@ -31,6 +33,7 @@
    default-tab-width n
    standard-indent n
    c-basic-offset n
+   json-indent-level n
    js-indent-level n
    js2-basic-offset n
    javascript-indent-level n
@@ -46,6 +49,7 @@
    web-mode-attr-indent-offset n
    python-indent-offset n
    python-indent n
+   ruby-indent n
    sh-indentation n
    ))
 (defun set-tab-width (n)
