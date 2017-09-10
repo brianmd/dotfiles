@@ -39,7 +39,8 @@ relink:
 	# ln -s ${HOME}/.config/dotfiles/vim/vimrc.mine ~/.vim/vimrc.mine
 	# .gitconfig points directly to the global ignore. don't need it in home
 	# directory.  ln -s ${HOME}/.config/dotfiles/etc/gitignore_global ~/.gitignore_global
-	$(MAKE) relink_vim
+	# $(MAKE) relink_vim
+	$(MAKE) force_install_vim
 
 relink_vim:
 	rm -f ~/.vim ~/.vimrc
@@ -47,6 +48,7 @@ relink_vim:
 	rm -rf ~/.vim
 	ln -s ${HOME}/.config/dotfiles/vim ~/.vim
 	ln -s ${HOME}/.config/dotfiles/vim/vimrc ~/.vimrc
+	$(MAKE) install_vimrc_mine
 
 test:
 	grep xtest ~/.test || [ $$? -eq 0 ]
@@ -264,11 +266,12 @@ root_install_mariadb:
 	cd ~/.vim && git clone git://github.com/tpope/vim-rsi.git
 	$(MAKE) install_vim
 
-
-
 force_install_vim:
 	rm -f ~/.vim ~/.vimrc
 	rm -rf ~/.vim
+	ln -s ${HOME}/.config/dotfiles/vim ~/.vim
+	ln -s ${HOME}/.config/dotfiles/vim/vimrc ~/.vimrc
+	$(MAKE) install_vimrc_mine
 	$(MAKE) install_vim
 
 install_vim: ~/.vim
@@ -281,6 +284,9 @@ install_vim: ~/.vim
 	touch ~/.config/dotfiles/vim/gvimrc.mine
 	$(MAKE) relink_vim
 	$(MAKE) install_vundle
+
+install_vimrc_mine: ~/.vim/vimrc.mine
+	cp etc/vimrc.mine ~/.vim/vimrc.mine
 
 install_vundle: ~/.config/dotfiles/vim/bundle
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/dotfiles/vim/bundle/Vundle.vim || echo 'vundle already installed'
