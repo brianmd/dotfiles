@@ -49,7 +49,7 @@ relink_vim:
 	rm -rf ~/.vim
 	ln -s ${HOME}/.config/dotfiles/vim ~/.vim
 	ln -s ${HOME}/.config/dotfiles/vim/vimrc ~/.vimrc
-	$(MAKE) install_vimrc_mine
+	$(MAKE) ~/.vim/vimrc.mine
 
 test:
 	grep xtest ~/.test || [ $$? -eq 0 ]
@@ -268,7 +268,6 @@ force_install_vim:
 	rm -rf ~/.vim
 	#ln -s ${HOME}/.config/dotfiles/vim ~/.vim
 	#ln -s ${HOME}/.config/dotfiles/vim/vimrc ~/.vimrc
-	#$(MAKE) install_vimrc_mine
 	$(MAKE) install_vim
 
 install_vim: ~/.vim
@@ -279,7 +278,7 @@ install_vim: ~/.vim
 	mkdir -p ~/.config/dotfiles/vim/swap
 	mkdir -p ~/.config/dotfiles/vim/undo
 	echo "\nbefore .vimrc.mine"
-	$(MAKE) install_vimrc_mine
+	$(MAKE) ~/.vim/vimrc.mine
 	#touch ~/.config/dotfiles/vim/vimrc.mine
 	touch ~/.config/dotfiles/vim/gvimrc.mine
 	#$(MAKE) relink_vim
@@ -288,7 +287,7 @@ install_vim: ~/.vim
 	ln -s ${HOME}/.config/dotfiles/vim/vimrc ~/.vimrc
 	$(MAKE) ~/.config/dotfiles/vim/bundle/Vundle.vim
 
-install_vimrc_mine: ~/.vim/vimrc.mine
+~/.vim/vimrc.mine:
 	echo "\nin .vimrc.mine"
 	cp etc/vimrc.mine ~/.vim/vimrc.mine
 
