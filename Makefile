@@ -49,7 +49,7 @@ relink_vim:
 	rm -rf ~/.vim
 	ln -s ${HOME}/.config/dotfiles/vim ~/.vim
 	ln -s ${HOME}/.config/dotfiles/vim/vimrc ~/.vimrc
-	$(MAKE) ~/.vim/vimrc.mine
+	$(MAKE) install_vimrc_mine
 
 test:
 	grep xtest ~/.test || [ $$? -eq 0 ]
@@ -257,7 +257,7 @@ root_install_mariadb:
 	# ctrlp: http://kien.github.io/ctrlp.vim/
 	git clone git://github.com/nviennot/vim-config.git ~/.vim
 	cd ~/.vim && make install
-	cp etc/vimrc.mine ~/.vim/vimrc.mine
+	#cp etc/vimrc.mine ~/.vim/vimrc.mine
 	# add emacs key bindings while in insert mode
 	cd ~/.vim && git clone git://github.com/tpope/vim-rsi.git
 	$(MAKE) install_vim
@@ -278,7 +278,7 @@ install_vim: ~/.vim
 	mkdir -p ~/.config/dotfiles/vim/swap
 	mkdir -p ~/.config/dotfiles/vim/undo
 	echo "\nbefore .vimrc.mine"
-	$(MAKE) ~/.vim/vimrc.mine
+	$(MAKE) install_vimrc_mine
 	#touch ~/.config/dotfiles/vim/vimrc.mine
 	touch ~/.config/dotfiles/vim/gvimrc.mine
 	#$(MAKE) relink_vim
@@ -287,9 +287,11 @@ install_vim: ~/.vim
 	ln -s ${HOME}/.config/dotfiles/vim/vimrc ~/.vimrc
 	$(MAKE) ~/.config/dotfiles/vim/bundle/Vundle.vim
 
-~/.vim/vimrc.mine:
+install_vimrc_mine: ~/.config/dotfiles/vim/vimrc.mine
+
+~/.config/dotfiles/vim/vimrc.mine:
 	echo "\nin .vimrc.mine"
-	cp etc/vimrc.mine ~/.vim/vimrc.mine
+	cp etc/vimrc.mine ~/.config/dotfiles/vim/vimrc.mine
 
 ~/.config/dotfiles/vim/bundle/Vundle.vim:
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/dotfiles/vim/bundle/Vundle.vim || echo 'vundle already installed'
