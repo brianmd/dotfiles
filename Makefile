@@ -263,6 +263,7 @@ root_install_mariadb:
 	$(MAKE) install_vim
 
 force_install_vim:
+	echo "\nin force-install-vim"
 	rm -f ~/.vim ~/.vimrc
 	rm -rf ~/.vim
 	ln -s ${HOME}/.config/dotfiles/vim ~/.vim
@@ -273,18 +274,22 @@ force_install_vim:
 install_vim: ~/.vim
 
 ~/.vim:
+	echo "\nin .vim"
 	mkdir -p ~/.config/dotfiles/vim/bundle
 	mkdir -p ~/.config/dotfiles/vim/swap
 	mkdir -p ~/.config/dotfiles/vim/undo
-	touch ~/.config/dotfiles/vim/vimrc.mine
+	echo "\nbefore .vimrc.mine"
+	$(MAKE) install_vimrc_mine
+	#touch ~/.config/dotfiles/vim/vimrc.mine
 	touch ~/.config/dotfiles/vim/gvimrc.mine
 	#$(MAKE) relink_vim
+	echo "\nbefore .vimrc.mine"
 	ln -s ${HOME}/.config/dotfiles/vim ~/.vim
 	ln -s ${HOME}/.config/dotfiles/vim/vimrc ~/.vimrc
-	$(MAKE) install_vimrc_mine
 	$(MAKE) ~/.config/dotfiles/vim/bundle/Vundle.vim
 
 install_vimrc_mine: ~/.vim/vimrc.mine
+	echo "\nin .vimrc.mine"
 	cp etc/vimrc.mine ~/.vim/vimrc.mine
 
 ~/.config/dotfiles/vim/bundle/Vundle.vim:
