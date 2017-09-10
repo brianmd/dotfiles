@@ -282,12 +282,12 @@ install_vim: ~/.vim
 	ln -s ${HOME}/.config/dotfiles/vim ~/.vim
 	ln -s ${HOME}/.config/dotfiles/vim/vimrc ~/.vimrc
 	$(MAKE) install_vimrc_mine
-	$(MAKE) install_vundle
+	$(MAKE) ~/.config/dotfiles/vim/bundle
 
 install_vimrc_mine: ~/.vim/vimrc.mine
 	cp etc/vimrc.mine ~/.vim/vimrc.mine
 
-install_vundle: ~/.config/dotfiles/vim/bundle
+~/.config/dotfiles/vim/bundle:
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/dotfiles/vim/bundle/Vundle.vim || echo 'vundle already installed'
 	# install the plugins from vimrc.mine
 	#$(MAKE) ~/.config/dotfiles/vim/bundle/Vundle.vim
