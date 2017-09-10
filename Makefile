@@ -29,6 +29,7 @@ root_install_make:
 
 relink:
 	$(MAKE) ~/.oh-my-zsh
+	$(MAKE) ~/.config/direnv
 	rm -f ~/.zshrc ~/.tmux.conf ~/.inputrc ~/.gitconfig ~/.gitignore_global ~/.rspec ~/.spacemacs
 	ln -s ${HOME}/.config/dotfiles/etc/zshrc ~/.zshrc
 	ln -s ${HOME}/.config/dotfiles/etc/tmux.conf ~/.tmux.conf
@@ -211,11 +212,6 @@ mac_gnu_tools:
 
 mac_install_direnv: ~/.config/direnv
 
-~/.config/direnv:
-	mkdir -p ~/.config
-	cd ~/.config && git clone https://github.com/direnv/direnv
-	cd ~/.config/direnv && make install
-
 root_adduser:
 	echo "missing MNAME environment variable."
 	exit 1
@@ -271,7 +267,7 @@ force_install_vim:
 	rm -rf ~/.vim
 	ln -s ${HOME}/.config/dotfiles/vim ~/.vim
 	ln -s ${HOME}/.config/dotfiles/vim/vimrc ~/.vimrc
-	$(MAKE) install_vimrc_mine
+	#$(MAKE) install_vimrc_mine
 	$(MAKE) install_vim
 
 install_vim: ~/.vim
@@ -282,7 +278,10 @@ install_vim: ~/.vim
 	mkdir -p ~/.config/dotfiles/vim/undo
 	touch ~/.config/dotfiles/vim/vimrc.mine
 	touch ~/.config/dotfiles/vim/gvimrc.mine
-	$(MAKE) relink_vim
+	#$(MAKE) relink_vim
+	ln -s ${HOME}/.config/dotfiles/vim ~/.vim
+	ln -s ${HOME}/.config/dotfiles/vim/vimrc ~/.vimrc
+	$(MAKE) install_vimrc_mine
 	$(MAKE) install_vundle
 
 install_vimrc_mine: ~/.vim/vimrc.mine
