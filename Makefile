@@ -267,7 +267,7 @@ root_install_mariadb:
 
 
 force_install_vim:
-	rm -f ~/.vim
+	rm -f ~/.vim ~/.vimrc
 	rm -rf ~/.vim
 	$(MAKE) install_vim
 
@@ -280,6 +280,9 @@ install_vim: ~/.vim
 	touch ~/.config/dotfiles/vim/vimrc.mine
 	touch ~/.config/dotfiles/vim/gvimrc.mine
 	$(MAKE) relink_vim
+	$(MAKE) install_vundle
+
+install_vundle: ~/.config/dotfiles/vim/bundle
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/dotfiles/vim/bundle/Vundle.vim || echo 'vundle already installed'
 	# install the plugins from vimrc.mine
 	#$(MAKE) ~/.config/dotfiles/vim/bundle/Vundle.vim
@@ -290,8 +293,8 @@ update_vim_plugins:
 	vim +PlugUpdate
 
 install_vim_plugins:
-	# vim +PluginInstall +qall
-	vim +PlugInstall
+	vim +PluginInstall +qall
+	# vim +PlugInstall
 
 
 ~/.tmux.conf:
