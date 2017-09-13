@@ -301,12 +301,12 @@ install_vimrc_mine: ~/.config/dotfiles/vim/vimrc.mine
 	$(MAKE) install_vim_plugins
 
 update_vim_plugins:
-	vim +PluginInstall! +qall
-	# vim +PlugUpdate
+	# vim +PluginInstall! +qall
+	vim +PlugUpdate
 
 install_vim_plugins:
-	vim +PluginInstall +qall
-	# vim +PlugInstall
+	# vim +PluginInstall +qall
+	vim +PlugInstall
 
 
 ~/.tmux.conf:
