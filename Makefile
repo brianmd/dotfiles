@@ -284,7 +284,8 @@ install_vim: ~/.vim
 	ln -s ${HOME}/.config/dotfiles/vim/vimrc ~/.vimrc
 	echo "\nbefore .vimrc.mine"
 	# this installs the plugins
-	$(MAKE) ~/.config/dotfiles/vim/bundle/Vundle.vim
+	# $(MAKE) ~/.config/dotfiles/vim/bundle/Vundle.vim
+	$(MAKE) install_vim_plugins
 	# note: install plugins before adding vimrc.mine, in case it has a dependence on the plugins
 	$(MAKE) install_vimrc_mine
 
@@ -298,6 +299,7 @@ install_vimrc_mine: ~/.config/dotfiles/vim/vimrc.mine
 	# touch ~/.config/dotfiles/vim/gvimrc.mine
 
 ~/.config/dotfiles/vim/bundle/Vundle.vim:
+	# stopped using vundle
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/dotfiles/vim/bundle/Vundle.vim || echo 'vundle already installed'
 	# install the plugins from vimrc.mine
 	#$(MAKE) ~/.config/dotfiles/vim/bundle/Vundle.vim
