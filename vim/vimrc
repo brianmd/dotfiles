@@ -512,7 +512,10 @@ end
 """""""""""""""""""""""""
 " Local config
 """""""""""""""""""""""""
-so ~/.config/dotfiles/vim/vimrc.mine
+try
+  so ~/.config/dotfiles/vim/vimrc.mine
+catch
+endtry
 
 " TODO raise contrast for comments
 
