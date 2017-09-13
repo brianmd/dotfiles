@@ -258,10 +258,10 @@ force_install_spacemacs:
 	rm ~/.spacemacs
 	ln -s ~/.config/dotfiles/etc/spacemacs ~/.spacemacs
 	# install layers and quit
-	emacs -nw -batch -u bmd -q -kill
-	emacs -nw -batch -u bmd -q -kill
+	emacs -nw -batch -u $(whoami) -q -kill
+	emacs -nw -batch -u $(whoami) -q -kill
 	sed -i "s/dotspacemacs-install-packages 'all/dotspacemacs-install-packages 'used-but-keep-unused/g" ~/.spacemacs
-	emacs -nw -batch -u bmd -q -kill
+	emacs -nw -batch -u $(whoami) -q -kill
 
 ~/.vimold:
 	# ctrlp: http://kien.github.io/ctrlp.vim/
