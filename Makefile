@@ -266,6 +266,7 @@ force_install_vim:
 	echo "\nin force-install-vim"
 	rm -f ~/.vim ~/.vimrc
 	rm -rf ~/.vim
+	rm -rf ~/.config/dotfiles/vim/bundle
 	#ln -s ${HOME}/.config/dotfiles/vim ~/.vim
 	#ln -s ${HOME}/.config/dotfiles/vim/vimrc ~/.vimrc
 	$(MAKE) install_vim
