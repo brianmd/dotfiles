@@ -48,7 +48,7 @@ Plug 'vim-scripts/L9'
 Plug 'groenewege/vim-less'
 Plug 'ujihisa/vim-markdown'
 Plug 'vim-scripts/matchit.zip'
-Plug 'nviennot/molokai'
+" Plug 'nviennot/molokai'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'nviennot/vim-powerline'
@@ -234,7 +234,7 @@ Plugin 'jiangmiao/auto-pairs'
 
 call vundle#end()
 
-colorscheme molokai
+" colorscheme molokai
 
 syntax enable
 filetype plugin indent on
