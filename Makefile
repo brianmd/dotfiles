@@ -252,6 +252,11 @@ root_install_mariadb:
 	apt-get install -y software-properties-common mariadb-server
 
 
+force_install_spacemacs:
+	rm -rf ~/.emacs.d
+	git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+	rm ~/.spacemacs
+	ln -s ~/.config/dotfiles/etc/spacemacs ~/.spacemacs
 
 ~/.vimold:
 	# ctrlp: http://kien.github.io/ctrlp.vim/
