@@ -279,22 +279,23 @@ install_vim: ~/.vim
 	mkdir -p ~/.config/dotfiles/vim/bundle
 	mkdir -p ~/.config/dotfiles/vim/swap
 	mkdir -p ~/.config/dotfiles/vim/undo
-	touch ~/.config/dotfiles/vim/vimrc.mine
-	touch ~/.config/dotfiles/vim/gvimrc.mine
 	#$(MAKE) relink_vim
 	ln -s ${HOME}/.config/dotfiles/vim ~/.vim
 	ln -s ${HOME}/.config/dotfiles/vim/vimrc ~/.vimrc
 	echo "\nbefore .vimrc.mine"
-	$(MAKE) install_vimrc_mine
+	# this installs the plugins
 	$(MAKE) ~/.config/dotfiles/vim/bundle/Vundle.vim
+	# note: install plugins before adding vimrc.mine, in case it has a dependence on the plugins
+	$(MAKE) install_vimrc_mine
 
 install_vimrc_mine: ~/.config/dotfiles/vim/vimrc.mine
 
 ~/.config/dotfiles/vim/vimrc.mine:
 	echo "\nin .vimrc.mine"
-	# cp etc/vimrc.mine vim/vimrc.mine
-	touch ~/.config/dotfiles/vim/vimrc.mine
-	touch ~/.config/dotfiles/vim/gvimrc.mine
+	cp etc/vimrc.mine vim/vimrc.mine
+	cp etc/gvimrc.mine vim/gvimrc.mine
+	# touch ~/.config/dotfiles/vim/vimrc.mine
+	# touch ~/.config/dotfiles/vim/gvimrc.mine
 
 ~/.config/dotfiles/vim/bundle/Vundle.vim:
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/dotfiles/vim/bundle/Vundle.vim || echo 'vundle already installed'
