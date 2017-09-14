@@ -20,10 +20,6 @@ define RBENV_ENV
 	eval "$(rbenv init -)"
 endef
 
-chef_ubuntu_16:
-	wget "https://packages.chef.io/files/current/chef/13.3.28/ubuntu/16.04/chef_13.3.28-1_amd64.deb"
-	sudo dpkg -i chef_13.3.28-1_amd64.deb
-
 root_install_make:
 	sudo apt-get -y install build-essential
 
@@ -251,6 +247,13 @@ root_install_mariadb:
 	apt-get update
 	apt-get install -y software-properties-common mariadb-server
 
+install_ubuntu_chefdk:
+	wget "https://packages.chef.io/files/stable/chefdk/2.2.1/ubuntu/16.04/chefdk_2.2.1-1_amd64.deb" -O /tmp/chefdk.deb
+	sudo dpkg -i /tmp/chefdk.deb
+
+install_centos_chefdk:
+	wget "https://packages.chef.io/files/stable/chefdk/2.2.1/el/7/chefdk-2.2.1-1.el7.x86_64.rpm"
+	sudo dpkg -i /tmp/chefdk.deb
 
 force_install_spacemacs:
 	rm -rf ~/.emacs.d
