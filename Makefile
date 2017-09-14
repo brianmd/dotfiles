@@ -250,10 +250,26 @@ root_install_mariadb:
 install_ubuntu_chefdk:
 	wget "https://packages.chef.io/files/stable/chefdk/2.2.1/ubuntu/16.04/chefdk_2.2.1-1_amd64.deb" -O /tmp/chefdk.deb
 	sudo dpkg -i /tmp/chefdk.deb
+	echo 'need: export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"'
 
 install_centos_chefdk:
 	wget "https://packages.chef.io/files/stable/chefdk/2.2.1/el/7/chefdk-2.2.1-1.el7.x86_64.rpm"
 	sudo dpkg -i /tmp/chefdk.deb
+	echo 'need: export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"'
+
+install_ubuntu_vagrant:
+	wget "https://releases.hashicorp.com/vagrant/2.0.0/vagrant_2.0.0_x86_64.deb" -O /tmp/vagrant.deb
+	sudo dpkg -i /tmp/vagrant.deb
+
+
+install_ubuntu_emacs25:
+	sudo apt-get remove emacs
+	sudo add-apt-repository ppa:ubuntu-elisp/ppa
+	sudo apt-get update
+	sudo apt-get install emacs-snapshot
+	echo "select 'emacs-snapshot from the menu after running: sudo update-alternatives --config emacs"
+	echo "if running bash on windows, run vcxsrv, then:"
+	echo "    export DISPLAY=:0 ; (i3 &) ; (terminator &)"
 
 force_install_spacemacs:
 	rm -rf ~/.emacs.d
