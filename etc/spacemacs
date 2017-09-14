@@ -584,8 +584,8 @@ layers configuration. You are free to put any user code."
     "ol" 'org-store-link
     "ot" 'org-toggle-checkbox
     "ov" 'cider-eval-defun-to-comment
-    "ow" (lambda () (interactive) (org-capture nil "w") (evil-append 1))
-    "ox" (lambda () (interactive) (org-capture nil "x") (evil-append 1))
+    "ow" (lambda () "add work journal entry" (interactive) (org-capture nil "w") (evil-append 1))
+    "ox" (lambda () "add extended journal entry" (interactive) (org-capture nil "x") (evil-append 1))
     )
 
 
