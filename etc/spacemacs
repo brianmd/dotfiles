@@ -425,13 +425,13 @@ layers configuration. You are free to put any user code."
   ;; (global-set-key (kbd "M-O") 'multi-term)
 
   (setq org-capture-templates
-        '(("t" "GTD" entry (file+headline "/servers/dropbox/docs/org/gtd.org" "GTD")
+        '(("t" "GTD" entry (file+headline "~/Dropbox/docs/org/gtd.org" "GTD")
            "* TODO %?\n  %i\n  %a")
-          ("w" "Work Journal" entry (file+datetree "/servers/dropbox/docs/org/work-journal.org")
+          ("w" "Work Journal" entry (file+datetree "~/Dropbox/docs/org/work-journal.org")
            "* %?")
-          ("x" "Work Journal (extended entry)" entry (file+datetree "/servers/dropbox/docs/org/work-journal.org")
+          ("x" "Work Journal (extended entry)" entry (file+datetree "~/Dropbox/docs/org/work-journal.org")
            "* %?\nEntered on %U\n  %i\n  %a")
-          ("j" "Journal" entry (file+datetree "/servers/dropbox/docs/org/journal.org")
+          ("j" "Journal" entry (file+datetree "~/Dropbox/docs/org/journal.org")
            "* %?\nEntered on %U\n  %i\n  %a")
           ))
   ;; the above uses these escapes
