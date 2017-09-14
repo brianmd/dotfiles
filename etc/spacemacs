@@ -584,7 +584,10 @@ layers configuration. You are free to put any user code."
     "ol" 'org-store-link
     "ot" 'org-toggle-checkbox
     "ov" 'cider-eval-defun-to-comment
+    "ow" (lambda () (interactive) (org-capture nil "w"))
+    "ox" (lambda () (interactive) (org-capture nil "x"))
     )
+
 
   ;; keybindings are exactly the same as in vimperator unless otherwise stated
   (evil-define-key 'normal eww-mode-map
