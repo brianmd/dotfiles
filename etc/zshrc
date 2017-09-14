@@ -183,10 +183,10 @@ alias vstat="vagrant status"
 alias redismd="redis-cli -h redis-md -p 11510 -a '$REDIS_MD_PW'"
 
 #aliases
-alias .='cd ../'
-alias ..='cd ../../'
-alias ...='cd ../../../'
-alias ....='cd ../../../../'
+alias 1='cd ../'
+alias 2='cd ../../'
+alias 3='cd ../../../'
+alias 4='cd ../../../../'
 
 alias da='direnv allow'
 
@@ -202,18 +202,18 @@ function dmenv() { eval $(docker-machine env "$1") }
 # export PATH="$HOME/bin:$HOME/.config/binfiles:$HOME/.rbenv/bin:$HOME/.rbenv/shims:/usr/local/bin:/usr/sbin:/sbin:$HOME/.local/bin:$HOME/.config/gocode/bin:$PATH"
 export PATH="$HOME/bin:$HOME/.config/binfiles:/usr/local/bin:/usr/sbin:/sbin:$HOME/.local/bin:$HOME/.config/gocode/bin:$PATH"
 
-export CDPATH=.:~/code:~/.config
-[ -d ~/code/docker ] && export CDPATH=$CDPATH:~/code/docker
-[ -d ~/pkgs ] && export CDPATH=$CDPATH:~/pkgs
-[ -d ~/pkgs/boxes ] && export CDPATH=$CDPATH:~/pkgs/boxes
-export CDPATH=$CDPATH:~
+export CDPATH=".:$HOME/code:$HOME/.config"
+[ -d ~/code/docker ] && export CDPATH="$CDPATH:$HOME/code/docker"
+[ -d ~/pkgs ] && export CDPATH="$CDPATH:$HOME/pkgs"
+[ -d ~/pkgs/boxes ] && export CDPATH="$CDPATH:$HOME/pkgs/boxes"
+export CDPATH="$CDPATH:$HOME"
 
-export GOPATH=~/.code/gocode
+export GOPATH=$HOME/.code/gocode
 
 # export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
 
 if [ -d ${HOME}/code/summit ]; then
-  export CDPATH=$CDPATH:~/code/summit
+  export CDPATH=$CDPATH:$HOME/code/summit
 fi
 
 if [[ $KERNEL == 'Darwin' ]]; then
