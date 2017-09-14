@@ -204,7 +204,6 @@ export PATH="$HOME/bin:$HOME/.config/binfiles:/usr/local/bin:/usr/sbin:/sbin:$HO
 
 export CDPATH=.:~/code:~/.config
 [ -d ~/code/docker ] && export CDPATH=$CDPATH:~/code/docker
-[ -d ${HOME}/code/summit ] && export CDPATH=$CDPATH:~/code/summit
 [ -d ~/pkgs ] && export CDPATH=$CDPATH:~/pkgs
 [ -d ~/pkgs/boxes ] && export CDPATH=$CDPATH:~/pkgs/boxes
 export CDPATH=$CDPATH:~
