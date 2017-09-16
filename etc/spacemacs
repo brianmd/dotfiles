@@ -137,6 +137,7 @@ values."
             )
      ;; spell-checking    -- produces error about missing helm file
      syntax-checking
+     spell-checking
      ;; version-control
      ;; osx
      gnus
