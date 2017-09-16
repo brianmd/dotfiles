@@ -587,6 +587,7 @@ layers configuration. You are free to put any user code."
     "ov" 'cider-eval-defun-to-comment
     "ow" (lambda () "add work journal entry" (interactive) (org-capture nil "w") (evil-append 1))
     "ox" (lambda () "add extended journal entry" (interactive) (org-capture nil "x") (evil-append 1))
+    "mse" 'ruby-send-last-sexp
     )
 
 
