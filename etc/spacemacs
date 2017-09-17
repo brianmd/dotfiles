@@ -10,6 +10,22 @@
 ;        sh-indent-for-case-alt '+)
 ;(add-hook 'sh-mode-hook 'gker-setup-sh-mode)
 
+(setq org-attach-directory "/home/bmd/Dropbox/docs/org/")
+(setq-default org-attach-directory "/home/bmd/Dropbox/docs/org/")
+
+;; from https://wiki.archlinux.org/index.php/emacs#Clipboard_support_for_emacs-nox
+;(defadvice terminal-init-screen
+;  ;; The advice is named `tmux', and is run before `terminal-init-screen' runs.
+;  (before tmux activate)
+;  ;; Docstring.  This describes the advice and is made available inside emacs;
+;  ;; for example when doing C-h f terminal-init-screen RET
+;  "Apply xterm keymap, allowing use of keys passed through tmux."
+;  ;; This is the elisp code that is run before `terminal-init-screen'.
+;  (if (getenv "TMUX")
+;    (let ((map (copy-keymap xterm-function-map)))
+;    (set-keymap-parent map (keymap-parent input-decode-map))
+;(set-keymap-parent input-decode-map map))))
+
 (defun my-setup-indent (n)
   ;; java/c/c++
   (setq c-basic-offset n)
@@ -126,8 +142,8 @@ values."
      javascript
      markdown
      ruby
-     ruby-on-rails
-     (org :variables org-enable-github-support t)
+     ;; ruby-on-rails
+     ;; (org :variables org-enable-github-support t)
      org
      (shell :variables
             shell-default-height 40
@@ -397,8 +413,9 @@ layers configuration. You are free to put any user code."
                                ;; "~/Dropbox/docs/org/work.org"
                                ;; "~/Dropbox/docs/org/home.org"
                                ;; "~/Dropbox/docs/org/"
-                               "~/Dropbox/docs/org/"
+                               "/home/bmd/Dropbox/docs/org/"
                                ))
+
 
   ;; (if (string-equal "finch" (system-name))
   ;;     ;; (spacemacs/set-font "Source Code Pro" 122))

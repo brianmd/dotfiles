@@ -262,12 +262,17 @@ install_ubuntu_vagrant:
 	sudo dpkg -i /tmp/vagrant.deb
 
 
-install_ubuntu_emacs25:
-	sudo apt-get remove emacs
+install_emacs25_ubuntu:
+	sudo apt-get -y remove emacs
 	sudo add-apt-repository ppa:ubuntu-elisp/ppa
 	sudo apt-get update
-	sudo apt-get install emacs-snapshot
+	sudo apt-get -y install emacs-snapshot
+	echo
+	echo
 	echo "select 'emacs-snapshot from the menu after running: sudo update-alternatives --config emacs"
+	sudo update-alternatives --config emacs
+	echo
+	echo
 	echo "if running bash on windows, run vcxsrv, then:"
 	echo "    export DISPLAY=:0 ; (i3 &) ; (terminator &)"
 
