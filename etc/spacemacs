@@ -133,7 +133,7 @@ values."
             shell-default-height 40
             shell-default-position 'bottom
             shell-default-shell 'multi-term
-            shell-default-term-shell "/bin/zsh"
+            shell-default-term-shell "/usr/bin/zsh"
             )
      ;; spell-checking    -- produces error about missing helm file
      syntax-checking
@@ -372,6 +372,8 @@ layers configuration. You are free to put any user code."
 
   (setq-default sh-basic-offset 2)
 
+  (setq tramp-default-method "ssh")
+
   ;; (setq powerline-default-separator 'arrow)
 
   ;(define-key cider-minor-mode (kbd "C-e") 'cider-eval-defun-at-point)
@@ -387,6 +389,8 @@ layers configuration. You are free to put any user code."
   ;;                              ("j" "Journal" entry (file+datetree "~/org/journal.org")
   ;;                               "* %?\nEntered on %U\n  %i\n  %a")
   ;;                              ))
+
+  (setq multi-term-program "/usr/bin/zsh")
 
   (setq org-agenda-files (list
                                ;; "~/Dropbox/docs/org/gtd.org"
@@ -413,7 +417,6 @@ layers configuration. You are free to put any user code."
   ;;                                 :width normal
   ;;                                 :powerline-scale 1.1)))
 
-  (setq multi-term-program "/bin/zsh")
   (add-hook 'term-mode-hook
             (lambda ()
               (setq term-buffer-maximum-size 10000)
