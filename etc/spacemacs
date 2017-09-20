@@ -620,6 +620,7 @@ layers configuration. You are free to put any user code."
     "ow" (lambda () "add work journal entry" (interactive) (org-capture nil "w") (evil-append 1))
     "ox" (lambda () "add extended journal entry" (interactive) (org-capture nil "x") (evil-append 1))
     "mse" 'ruby-send-last-sexp
+    "oz" (lambda () (interactive) (find-file "~/Dropbox/docs/org/gtd.org"))
     )
 
 
