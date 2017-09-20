@@ -244,7 +244,11 @@ if type direnv > /dev/null; then
   eval "$(direnv hook zsh)"
 fi
 
-source ~/.config/dotfiles/etc/vim-sh.rc
+if [ -n "$INSIDE_EMACS" ]; then
+  echo "inside emacs, so will not load vim key bindings"
+else
+  source ~/.config/dotfiles/etc/vim-sh.rc
+fi
 
 # if [ -d ${HOME}/.rbenv ]; then
 #   export RBENV_ROOT=${HOME}/.rbenv
