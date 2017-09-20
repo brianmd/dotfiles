@@ -379,6 +379,14 @@ in `dotspacemacs/user-config'."
   (set-indent 2)
   (set-tab-width 2)
   (add-hook 'shell-script-hook (lambda () (set-indent 2)))
+
+  (add-hook 'compilation-finish-functions
+            (lambda (buf strg)
+              (switch-to-buffer-other-window "*compilation*")
+              (read-only-mode)
+              (goto-char (point-max))
+              (local-set-key (kbd "q")
+                             (lambda () (interactive) (quit-restore-window)))))
   )
 
 (defun dotspacemacs/user-config ()
@@ -652,6 +660,7 @@ layers configuration. You are free to put any user code."
   (xterm-mouse-mode -1)
   (setq x-select-enable-clipboard t)
   (setq mouse-drag-copy-region t)
+
   ;; (define-key evil-normal-state-map "y" "\"+y")
   ;; (fset 'evil-visual-update-x-selection 'ignore)
   ;; (global-set-key (kbd "<mouse-2>") 'x-clipboard-yank)

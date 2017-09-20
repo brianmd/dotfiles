@@ -6,8 +6,8 @@ KERNEL=`uname -s`
 # to auto-update oh-my-zsh
 export DISABLE_UPDATE_PROMPT=true
 
-if [ -f ~/.config/.pw ]; then
-  source ~/.config/.pw
+if [ -f ~/.config/pw ]; then
+  source ~/.config/pw
 fi
 
 export DEFAULT_CONFIG_FILE='~/.redmine'
