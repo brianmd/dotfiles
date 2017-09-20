@@ -119,10 +119,6 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
-     windows-scripts
-     lua
-     python
-     yaml
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -132,17 +128,16 @@ values."
      ;; ace-link
      better-defaults
      clojure
+     docker
      emacs-lisp
      git
-     version-control
-     (version-control :variables
-                      version-control-diff-tool 'diff-hl)
+     gnus
+     html
      ;; note: need node installed, and [sudo] npm -g install js-beautify
      ;;       then <spc> m-= will beautify when in json-mode
      javascript
+     lua
      markdown
-     ruby
-     ;; ruby-on-rails
      ;; (org :variables org-enable-github-support t)
      org
      (shell :variables
@@ -151,16 +146,21 @@ values."
             shell-default-shell 'multi-term
             shell-default-term-shell "/usr/bin/zsh"
             )
+     python
+     restclient
+     ruby
+     ;; ruby-on-rails
+     shell-scripts
+     spell-checking
      ;; spell-checking    -- produces error about missing helm file
      syntax-checking
-     spell-checking
      ;; version-control
      ;; osx
-     gnus
-     html
-     docker
-     restclient
-     shell-scripts
+     version-control
+     (version-control :variables
+                      version-control-diff-tool 'diff-hl)
+     windows-scripts
+     yaml
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
