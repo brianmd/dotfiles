@@ -236,11 +236,12 @@ values."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    ;; dotspacemacs-default-font '("Source Code Pro"
-   dotspacemacs-default-font '("Mono"
-                               :size 35
-                               :weight normal
-                               :width normal
-                               :powerline-scale 1.1)
+   ;; dotspacemacs-default-font '("Mono"
+   ;;                             ;; :size 35
+   ;;                             :weight normal
+   ;;                             :width normal
+   ;;                             :powerline-scale 1.1
+   ;;                             )
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
@@ -389,6 +390,9 @@ layers configuration. You are free to put any user code."
   (setq-default sh-basic-offset 2)
 
   (setq tramp-default-method "ssh")
+
+  (add-to-list 'org-emphasis-alist
+               `("*" (:foreground "red")))
 
   ;; (setq powerline-default-separator 'arrow)
 
