@@ -72,7 +72,7 @@ root_install_user:
 	apt-get upgrade
 	# zlib1g-dev: for installing nokogirl.
 	# python-software-properties: for salt.
-	apt-get -y install git silversearcher-ag golang tree keychain zsh htop tmux python-software-properties zlib1g-dev exuberant-ctags mercurial jq mosh
+	apt-get -y install git silversearcher-ag golang tree keychain zsh htop tmux python-software-properties zlib1g-dev exuberant-ctags mercurial jq mosh shellcheck
 	# this allows unzipping encrypted files w/ '7z x filename' or '7z e filename'
 	apt-get -y install p7zip-full
 	#git config --global user.email "brian@murphydye.com"
