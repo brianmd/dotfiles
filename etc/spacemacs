@@ -400,7 +400,7 @@ layers configuration. You are free to put any user code."
   (setq tramp-default-method "ssh")
 
   (add-to-list 'org-emphasis-alist
-               `("*" (:foreground "red")))
+               '("*" (:foreground "red")))
 
   ;; term shortcuts
   ;; (add-to-list 'term-mode-hook
