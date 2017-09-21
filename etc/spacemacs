@@ -399,6 +399,8 @@ layers configuration. You are free to put any user code."
 
   (setq tramp-default-method "ssh")
 
+  (require 'org) ;; would prefer org load lazily, but then the next line doesn't work
+                 ;; TODO change to use add-hook
   (add-to-list 'org-emphasis-alist
                '("*" (:foreground "red")))
 
