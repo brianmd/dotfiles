@@ -418,7 +418,6 @@ layers configuration. You are free to put any user code."
       ))
 
   ;; (global-set-key (kbd "M-O") 'multi-term)
-  ls /home/bmd/code
 
   ;; (global-set-key (kbd "C-c C-j") 'term-line-mode)
 
