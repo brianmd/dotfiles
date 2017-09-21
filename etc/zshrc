@@ -34,7 +34,7 @@ ZSH_THEME="muse"
 ZSH_THEME="mortalscumbag"
 
 if [ -n "$INSIDE_EMACS" ]; then
-  export ZSH_THEME=""
+  export ZSH_THEME="rawsyntax"
 else
   export ZSH_THEME="mortalscumbag"
 fi

@@ -44,29 +44,29 @@
 
 (defun set-indent (n)
   (setq-default
-   evil-shift-width n
-   tab-width n
-   default-tab-width n
-   standard-indent n
    c-basic-offset n
-   json-indent-level n
-   js-indent-level n
-   js2-basic-offset n
-   javascript-indent-level n
-   css-indent-offset n
-   prolog-indent-width n
    coffee-tab-width n
-   web-mode-markup-indent-offset n
-   web-mode-css-indent-offset n
-   web-mode-code-indent-offset n
-   web-mode-markup-indent-offset n
-   web-mode-css-indent-offset n
-   web-mode-code-indent-offset n
-   web-mode-attr-indent-offset n
-   python-indent-offset n
+   css-indent-offset n
+   default-tab-width n
+   evil-shift-width n
+   javascript-indent-level n
+   js2-basic-offset n
+   js-indent-level n
+   json-indent-level n
+   prolog-indent-width n
    python-indent n
+   python-indent-offset n
    ruby-indent n
    sh-indentation n
+   standard-indent n
+   tab-width n
+   web-mode-attr-indent-offset n
+   web-mode-code-indent-offset n
+   web-mode-code-indent-offset n
+   web-mode-css-indent-offset n
+   web-mode-css-indent-offset n
+   web-mode-markup-indent-offset n
+   web-mode-markup-indent-offset n
    ))
 (defun set-tab-width (n)
   (dolist (var '(evil-shift-width
@@ -142,7 +142,7 @@ values."
      org
      (shell :variables
             shell-default-height 40
-            shell-default-position 'bottom
+            shell-default-position 'right ;; full ;; bottom
             shell-default-shell 'multi-term
             shell-default-term-shell "/usr/bin/zsh"
             )
@@ -402,6 +402,44 @@ layers configuration. You are free to put any user code."
   (add-to-list 'org-emphasis-alist
                `("*" (:foreground "red")))
 
+  ;; term shortcuts
+  ;; (add-to-list 'term-mode-hook
+  ;;              (lambda ()
+  ;;                     (define-key term-raw-map (kbd "C-y") 'term-paste)))
+  ;; http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
+  (add-hook 'term-mode-hook
+    (lambda ()
+      (setq term-buffer-maximum-size 10000)
+      (setq show-trailing-whitespace nil)
+      ;; (autopair-mode -1)
+      (add-to-list 'term-bind-key-alist '("M-[" . multi-term-prev))
+      (add-to-list 'term-bind-key-alist '("M-]" . multi-term-next))
+      (define-key term-raw-map (kbd "C-y") 'term-paste)
+      ))
+
+  ;; (global-set-key (kbd "M-O") 'multi-term)
+  ls /home/bmd/code
+
+  ;; (global-set-key (kbd "C-c C-j") 'term-line-mode)
+
+  ;; http://paralambda.org/2012/07/02/using-gnu-emacs-as-a-terminal-emulator/
+  (setq term-bind-key-alist
+        (list (cons "C-c C-c" 'term-interrupt-subjob)
+              (cons "C-p" 'previous-line)
+              (cons "C-n" 'next-line)
+              (cons "M-f" 'term-send-forward-word)
+              (cons "M-b" 'term-send-backward-word)
+              (cons "C-c C-j" 'term-line-mode)
+              (cons "C-c C-k" 'term-char-mode)
+              (cons "M-DEL" 'term-send-backward-kill-word)
+              (cons "M-d" 'term-send-forward-kill-word)
+              (cons "<C-left>" 'term-send-backward-word)
+              (cons "<C-right>" 'term-send-forward-word)
+              ;; (cons "C-r" 'term-send-reverse-search-history)
+              (cons "M-p" 'term-send-raw-meta)
+              (cons "M-y" 'term-send-raw-meta)
+              (cons "C-y" 'term-send-raw)))
+
   ;; (setq powerline-default-separator 'arrow)
 
   ;(define-key cider-minor-mode (kbd "C-e") 'cider-eval-defun-at-point)
@@ -445,17 +483,6 @@ layers configuration. You are free to put any user code."
   ;;                                 :weight normal
   ;;                                 :width normal
   ;;                                 :powerline-scale 1.1)))
-
-  (add-hook 'term-mode-hook
-            (lambda ()
-              (setq term-buffer-maximum-size 10000)
-              (setq show-trailing-whitespace nil)
-              ;; (autopair-mode -1)
-              (add-to-list 'term-bind-key-alist '("M-[" . multi-term-prev))
-              (add-to-list 'term-bind-key-alist '("M-]" . multi-term-next))
-              (define-key term-raw-map (kbd "C-y") 'term-paste)
-              ))
-  ;; (global-set-key (kbd "M-O") 'multi-term)
 
   (setq org-capture-templates
         '(("t" "GTD" entry (file+headline "~/Dropbox/docs/org/gtd.org" "GTD")
