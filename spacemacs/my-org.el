@@ -1,5 +1,7 @@
 (provide 'my-org)
 
+(require 'org)
+
 (setq org-attach-directory "/home/bmd/Dropbox/docs/org/")
 (setq-default org-attach-directory "/home/bmd/Dropbox/docs/org/")
 
