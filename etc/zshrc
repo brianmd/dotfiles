@@ -227,7 +227,7 @@ else
   # if [[ -f ~/.keychain/${HOST}-sh ]]; then source ~/.keychain/${HOST}-sh; fi
 fi
 
-if [[ $(which $keychan_cmd) ]]; then
+if [[ -x $(which $keychan_cmd 2>/dev/null) ]]; then
   if [[ -f ~/.ssh/git_key ]]; then eval "$keychain_cmd ~/.ssh/git_key"; fi
   if [[ -f ~/.ssh/chrome ]]; then eval "$keychain_cmd ~/.ssh/chrome"; fi
   if [[ -f ~/.ssh/gru ]]; then eval "$keychain_cmd ~/.ssh/gru"; fi
