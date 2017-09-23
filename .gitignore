@@ -11,4 +11,5 @@
 /vim/bundle
 /vim/plugged
 node_modules
+.#*
 

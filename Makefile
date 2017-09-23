@@ -32,7 +32,7 @@ relink:
 	ln -s ${HOME}/.config/dotfiles/etc/inputrc ~/.inputrc
 	ln -s ${HOME}/.config/dotfiles/etc/gitconfig ~/.gitconfig
 	ln -s ${HOME}/.config/dotfiles/etc/rspec ~/.rspec
-	ln -s ${HOME}/.config/dotfiles/etc/spacemacs ~/.spacemacs
+	ln -s ${HOME}/.config/dotfiles/spacemacs/spacemacs ~/.spacemacs
 	# ln -s ${HOME}/.config/dotfiles/vim/vimrc.mine ~/.vim/vimrc.mine
 	# .gitconfig points directly to the global ignore. don't need it in home
 	# directory.  ln -s ${HOME}/.config/dotfiles/etc/gitignore_global ~/.gitignore_global
@@ -282,7 +282,7 @@ force_install_spacemacs:
 	rm -rf ~/.emacs.d
 	git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 	rm ~/.spacemacs
-	ln -s ~/.config/dotfiles/etc/spacemacs ~/.spacemacs
+	ln -s ~/.config/dotfiles/spacemacs/spacemacs ~/.spacemacs
 	# install layers and quit
 	emacs -nw -batch -u $$USER -q -kill
 	emacs -nw -batch -u $$USER -q -kill
