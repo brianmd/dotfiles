@@ -1,6 +1,6 @@
 (provide 'my-mouse)
 
-(when false
+(when nil
 ;(unless window-system
   ;; (require 'mwheel)
   ;; (require 'mouse)
