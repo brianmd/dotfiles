@@ -10,6 +10,9 @@
 (require 'my-term)
 (require 'my-windows)
 
+;; save customizations from the UI (M-x customize) to its own file
+(setq custom-file "~/.config/dotfiles/spacemacs/custom.el")
+(load custom-file 'noerror)
 
 
 ;; these were in the user-init

@@ -33,21 +33,13 @@ ZSH_THEME="cloud"
 ZSH_THEME="muse"
 ZSH_THEME="mortalscumbag"
 
-if [ -n "$INSIDE_EMACS" ]; then
-  export ZSH_THEME="rawsyntax"
-else
-  export ZSH_THEME="mortalscumbag"
-fi
+ZSH_THEME_HG_PROMPT_PREFIX="%{$fg_bold[magenta]%}hg:(%{$fg[red]%}"
+ZSH_THEME_HG_PROMPT_SUFFIX="%{$reset_color%}"
+ZSH_THEME_HG_PROMPT_DIRTY="%{$fg[magenta]%}) %{$fg[yellow]%}✗%{$reset_color%}"
+ZSH_THEME_HG_PROMPT_CLEAN="%{$fg[magenta]%})"
 
 # http://oblalex.blogspot.com/2013/06/extending-oh-my-zsh-with-hgprompt.html
 # https://github.com/robbyrussell/oh-my-zsh/blob/master/themes/mortalscumbag.zsh-theme
-function hg_prompt_info {
-      hg prompt --angle-brackets "\
-        <%{$fg_bold[blue]%}hg:(%{$fg_bold[red]%}<branch>><:<tags|, >%{$fg_bold[blue]%})>\
-        %{$fg[yellow]%}<status|modified|unknown><update>\
-        <patches: <patches|join( →  )>>%{$reset_color%}" 2>/dev/null
-
-}
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -85,6 +77,13 @@ DISABLE_CORRECTION="true"
 plugins=(git bundler brew vagrant git-flow docker docker-compose docker-machine docker-local knife mercurial kitchen knife knife_ssh)
 source $ZSH/oh-my-zsh.sh
 source ~/.config/dotfiles/etc/git-sh.rc
+
+if [ -n "$INSIDE_EMACS" ]; then
+  export ZSH_THEME="rawsyntax"
+else
+    export ZSH_THEME="mortalscumbag"
+    export PROMPT=$'\n$(ssh_connection)%{$fg_bold[green]%}%n@%m%{$reset_color%}$(my_git_prompt)$(hg_prompt_info) : %~\n[${ret_status}] %# '
+fi
 
 compctl -g '~/.teamocil/*(:t:r)' teamocil
 
@@ -316,5 +315,3 @@ export CHEF_SECRET=/home/bmd/.chef/databag-secret.pem
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# https://github.com/robbyrussell/oh-my-zsh/blob/master/themes/mortalscumbag.zsh-theme
-# PROMPT='${ret_status}%{$fg_bold[green]%}%p %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)$(hg_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
