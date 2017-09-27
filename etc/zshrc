@@ -82,6 +82,7 @@ if [ -n "$INSIDE_EMACS" ]; then
   export ZSH_THEME="rawsyntax"
 else
     export ZSH_THEME="mortalscumbag"
+    # override mortalscumbag's prompt to add mercurial output
     export PROMPT=$'\n$(ssh_connection)%{$fg_bold[green]%}%n@%m%{$reset_color%}$(my_git_prompt)$(hg_prompt_info) : %~\n[${ret_status}] %# '
 fi
 
