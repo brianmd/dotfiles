@@ -42,6 +42,7 @@ values."
      clojure
      docker
      emacs-lisp
+     ess
      git
      gnus
      html
