@@ -239,6 +239,10 @@ if [[ -d ~/pkgs/packer ]]; then
   export PACKER_CACHE_DIR=/usr/share/provisioners/packers
 fi
 
+if [[ -d /usr/local/go/bin ]]; then
+  export PATH=$PATH:/usr/local/go/bin
+fi
+
 if type direnv > /dev/null; then
   # eval "$(direnv hook $0)"
   # eval "$(direnv hook $SHELL)"
