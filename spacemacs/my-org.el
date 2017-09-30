@@ -34,7 +34,8 @@
 
   (setq org-todo-keywords
         ;; cone and delegated are completed tasks; the others need further action
-    '((sequence "TODO" "FEEDBACK" "VERIFY" "|" "DONE" "DELEGATED" "CANCELED")))
+    '((sequence "TODO" "TODAY" "DOING" "DONE" "DELEGATED" "CANCELED")))
+    ;; '((sequence "TODO" "FEEDBACK" "VERIFY" "|" "DONE" "DELEGATED" "CANCELED")))
 
   (setq org-todo-keyword-faces
         '(("TODO" . (:foreground "red" :weight bold))
