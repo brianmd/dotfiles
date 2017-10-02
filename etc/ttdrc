@@ -8,7 +8,7 @@ export TTD_OHAI="${TTD_BASE}/me/bootstrap/all-info.json"
 export TTD_USER=brian.murphy-dye
 export TTD_SSH_PRIV_KEY="${HOME}/.ssh/bmd-ttd"
 
-[ -d "~/code/ttd/brian.murphy-dye/bin" ] && [[ ! "$PATH" =~ '\/ttd\/brian' ]] && export PATH="$PATH:~/code/ttd/brian.murphy-dye/bin"
+[ -d "~/code/ttd/brian.murphy-dye/bin" ] && [[ ! "$PATH" =~ '\/ttd\/brian' ]] && export PATH="$PATH:$HOME/code/ttd/brian.murphy-dye/bin"
 
-[ -d "${HOME}/code/ttd" ] && [[  ! "$CDPATH" =~ '\/ttd\/me' ]] && export CDPATH="${CDPATH}:~/code/ttd:~/code/ttd/git:~/code/ttd/hg:~/code/ttd/me:~/code/ttd/brian.murphy-dye:~/code/ttd/brian.murphy-dye/code"
+[ -d "${HOME}/code/ttd" ] && [[  ! "$CDPATH" =~ '\/ttd\/me' ]] && export CDPATH="${CDPATH}:$HOME/code/ttd:$HOME/code/ttd/git:$HOME/code/ttd/hg:$HOME/code/ttd/me:$HOME/code/ttd/brian.murphy-dye:$HOME/code/ttd/brian.murphy-dye/code"
 
