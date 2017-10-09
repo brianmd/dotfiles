@@ -1,23 +1,15 @@
 #!/bin/zsh
-
-
-#shopt -s nullglob
-#FILES=`ls * | grep *.zip`
 setopt null_glob
 
 cd ~/.config/dotfiles/zsh
-for f in $(ls zshenv/* | grep '\.sh'); do
-  echo "loading $f"
+
+for f in $(ls zshrc.d/* | grep '\.sh'); do
+  # echo "loading $f"
   source $f
 done
 
-for f in $(ls zshrc/* | grep '\.sh'); do
-  echo "loading $f"
-  source $f
-done
-
-for f in $(ls zshenv-post/* | grep '\.sh'); do
-  echo "loading $f"
+for f in $(ls zshenv-post.d/* | grep '\.sh'); do
+  # echo "loading $f"
   source $f
 done
 

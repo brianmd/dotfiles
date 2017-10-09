@@ -28,7 +28,8 @@ relink:
 	$(MAKE) ~/.config/direnv
 	mkdir -p ~/.config/i3
 	rm -f ~/.zshrc ~/.tmux.conf ~/.inputrc ~/.gitconfig ~/.gitignore_global ~/.rspec ~/.spacemacs ~/.config/i3/config
-	ln -s ${HOME}/.config/dotfiles/etc/zshrc ~/.zshrc
+	ln -s ${HOME}/.config/dotfiles/zsh/zshenv ~/.zshenv
+	ln -s ${HOME}/.config/dotfiles/zsh/zshrc ~/.zshrc
 	ln -s ${HOME}/.config/dotfiles/etc/tmux.conf ~/.tmux.conf
 	ln -s ${HOME}/.config/dotfiles/etc/inputrc ~/.inputrc
 	ln -s ${HOME}/.config/dotfiles/etc/gitconfig ~/.gitconfig
