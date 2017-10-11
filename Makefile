@@ -385,3 +385,9 @@ old_install_rubies:
 	# rbenv install 2.2.3
 	rbenv rehash
 
+build_all:
+	sudo make root_install_user
+	make force_install_spacemacs
+	make force_relink
+	sudo apt install -y emacs ssh zsh vim direnv mosh git curl
+
