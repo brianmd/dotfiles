@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     csv
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -53,16 +54,27 @@ values."
      markdown
      ;; (org :variables org-enable-github-support t)
      org
+     python
+     (ranger :variables   ;; https://github.com/syl20bnr/spacemacs/tree/master/layers/%2Btools/ranger
+                          ;; browse-url-at-point :: opens chrome in new window
+             ;; browse-url :: same?
+             ;; goto-address-at-point :: similar
+             ;; look at helm-dash
+             ranger-show-preview t
+             ranger-cleanup-eagerly t
+             ranger-ignored-extensions '("mkv" "iso" "mp4")
+             ranger-max-preview-size 10  ;; don't preview if over 10M
+             )
+     restclient
+     ruby
      (shell :variables
             shell-default-height 40
             shell-default-position 'right ;; full ;; bottom
             shell-default-shell 'multi-term
             shell-default-term-shell "/usr/bin/zsh"
             )
-     python
-     restclient
-     ruby
      ;; ruby-on-rails
+     search-engine
      shell-scripts
      spell-checking
      ;; spell-checking    -- produces error about missing helm file

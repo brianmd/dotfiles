@@ -38,4 +38,5 @@
 
 ;; (message "done loading my-user-config")
 
+(setq ranger-cleanup-eagerly t)
 
