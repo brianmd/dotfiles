@@ -95,11 +95,26 @@
   "ol" 'org-store-link
   "ot" 'org-toggle-checkbox
   "ov" 'cider-eval-defun-to-comment
-  "ow" (lambda () "add work journal entry" (interactive) (org-capture nil "w") (evil-append 1))
-  "ox" (lambda () "add extended journal entry" (interactive) (org-capture nil "x") (evil-append 1))
+  "ow" 'add-work-entry
+  "ox" 'add-extended-work-entry
   "mse" 'ruby-send-last-sexp
-  "oz" (lambda () (interactive) (find-file "~/Dropbox/docs/org/gtd.org"))
+  "oz"'find-gtd
   )
 
+(defun add-work-entry ()
+  "add work journal entry"
+  (interactive)
+  (org-capture nil "w")
+  (evil-append 1))
+
+(defun add-extended-work-entry ()
+  "add extended journal entry"
+  (interactive)
+  (org-capture nil "x")
+  (evil-append 1))
+
+(defun find-gtd ()
+  (interactive)
+  (find-file "~/Dropbox/docs/org/gtd.org"))
 
  
