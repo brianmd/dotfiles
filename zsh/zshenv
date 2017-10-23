@@ -2,9 +2,7 @@
 
 setopt null_glob
 
-cd ~/.config/dotfiles/zsh
-
-for f in $(ls zshenv.d/* | grep '\.sh'); do
+for f in $(ls ~/.config/dotfiles/zsh/zshenv.d/* | grep '\.sh'); do
   # echo "loading $f"
   source $f
 done
