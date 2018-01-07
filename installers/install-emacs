@@ -1,0 +1,26 @@
+
+# install_emacs25_ubuntu:
+# 	sudo apt-get -y remove emacs
+# 	sudo add-apt-repository ppa:ubuntu-elisp/ppa
+# 	sudo apt-get update
+# 	sudo apt-get -y install emacs-snapshot
+# 	echo
+# 	echo
+# 	echo "select 'emacs-snapshot from the menu after running: sudo update-alternatives --config emacs"
+# 	sudo update-alternatives --config emacs
+# 	echo
+# 	echo
+# 	echo "if running bash on windows, run vcxsrv, then:"
+# 	echo "    export DISPLAY=:0 ; (i3 &) ; (terminator &)"
+
+USER=bmd
+rm -rf ~/.emacs.d
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+rm ~/.spacemacs
+ln -s ~/.config/dotfiles/spacemacs/spacemacs ~/.spacemacs
+# install layers and quit
+emacs -nw -batch -u $$USER -q -kill
+emacs -nw -batch -u $$USER -q -kill
+sed -i "s/dotspacemacs-install-packages 'all/dotspacemacs-install-packages 'used-but-keep-unused/g" ~/.spacemacs
+emacs -nw -batch -u $$USER -q -kill
+
