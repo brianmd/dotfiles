@@ -98,7 +98,9 @@
   "ow" 'add-work-entry
   "ox" 'add-extended-work-entry
   "mse" 'ruby-send-last-sexp
-  "oz"'find-gtd
+  "oz" 'find-gtd
+
+  "hw" 'sdcv-search-input
   )
 
 (defun add-work-entry ()
