@@ -1,3 +1,4 @@
+;; http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html
 (defun narrow-or-widen-dwim (p)
   "Widen if buffer is narrowed, narrow-dwim otherwise.
 Dwim means: region, org-src-block, org-subtree, or

@@ -9,6 +9,7 @@
 (require 'my-tabs)
 (require 'my-term)
 (require 'my-windows)
+(require 'narrow-or-widen)
 
 ;; save customizations from the UI (M-x customize) to its own file
 (setq custom-file "~/.config/dotfiles/spacemacs/custom.el")
