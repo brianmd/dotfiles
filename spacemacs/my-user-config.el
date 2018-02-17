@@ -10,6 +10,7 @@
 (require 'my-term)
 (require 'my-windows)
 (require 'narrow-or-widen)
+;; (load "/home/bmd/.config/dotfiles/spacemacs/narrow-or-widen")
 
 ;; save customizations from the UI (M-x customize) to its own file
 (setq custom-file "~/.config/dotfiles/spacemacs/custom.el")
@@ -41,3 +42,4 @@
 
 (setq ranger-cleanup-eagerly t)
 
+(setq org-ellipsis "⤵")

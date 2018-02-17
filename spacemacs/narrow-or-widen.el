@@ -1,9 +1,12 @@
-;; http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html
+(provide 'narrow-or-widen)
+
 (defun narrow-or-widen-dwim (p)
   "Widen if buffer is narrowed, narrow-dwim otherwise.
 Dwim means: region, org-src-block, org-subtree, or
 defun, whichever applies first. Narrowing to
 org-src-block actually calls `org-edit-src-code'.
+
+http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html
 
 With prefix P, don't widen, just narrow even if buffer
 is already narrowed."
@@ -25,12 +28,15 @@ is already narrowed."
          (LaTeX-narrow-to-environment))
         (t (narrow-to-defun))))
 
-(define-key endless/toggle-map "n"
-  #'narrow-or-widen-dwim)
+;; (define-key endless/toggle-map "n"
+;;   #'narrow-or-widen-dwim)
 ;; This line actually replaces Emacs' entire narrowing
 ;; keymap, that's how much I like this command. Only
 ;; copy it if that's what you want.
-(define-key ctl-x-map "n" #'narrow-or-widen-dwim)
+;; (define-key ctl-x-map "n" #'narrow-or-widen-dwim)
+(spacemacs/set-leader-keys
+  "nn" 'narrow-or-widen-dwim)
+
 (add-hook 'LaTeX-mode-hook
           (lambda ()
             (define-key LaTeX-mode-map "\C-xn"

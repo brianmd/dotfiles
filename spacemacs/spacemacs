@@ -377,8 +377,8 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   ;; bmd
   (setq load-path
-        (append load-path
-                '("~/.config/dotfiles/spacemacs")))
+    (append load-path
+      '("~/.config/dotfiles/spacemacs")))
   (require 'my-user-config)
   )
 
