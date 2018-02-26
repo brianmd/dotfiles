@@ -36,6 +36,7 @@ pickle-email-*.html
 
 my[A-Z0-9]*
 .my[A-Z0-9]*
+junk*
 mytests
 mytests.rb
 Gemfile.my*
