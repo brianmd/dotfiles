@@ -119,8 +119,8 @@ alias f="ag -g"
 
 alias rs="rsync -ahP"
 
-c() { cd ~/code/$1; }
-_c() { _files -W ~/code -/; }
+# bmd c() { cd ~/code/$1; }
+# bmd _c() { _files -W ~/code -/; }
 #compdef _c c
 
 alias ipaddrs='ip addr list | grep "inet "'
@@ -298,7 +298,7 @@ export SMTPSERVER="smtp.gmail.com"
 # eval "$(rbenv init -)"
 
 # something sets xclip to a function, preventing /usr/bin/xclip from working
-unset -f xclip
+# bmd unset -f xclip
 
 # The next line updates PATH for the Google Cloud SDK.
 [ -f ~/.config/google-cloud-sdk/path.zsh.inc ] && source ~/.config/google-cloud-sdk/path.zsh.inc
