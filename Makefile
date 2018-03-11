@@ -284,6 +284,7 @@ install_emacs25_ubuntu:
 force_install_spacemacs:
 	rm -rf ~/.emacs.d
 	git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+	git clone https://github.com/venmos/w3m-layer.git ~/.emacs.d/private/w3
 	rm ~/.spacemacs
 	ln -s ~/.config/dotfiles/spacemacs/spacemacs ~/.spacemacs
 	# install layers and quit
