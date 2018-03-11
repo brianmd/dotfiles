@@ -91,6 +91,8 @@ values."
      version-control
      (version-control :variables
                       version-control-diff-tool 'diff-hl)
+     w3m
+         ;; git clone https://github.com/venmos/w3m-layer.git ~/.emacs.d/private/w3m
      windows-scripts
      yaml
 
