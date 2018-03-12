@@ -36,7 +36,7 @@ ln -s ${HOME}/.config/dotfiles/etc/tmux.conf ~/.tmux.conf
 ln -s ${HOME}/.config/dotfiles/etc/inputrc ~/.inputrc
 ln -s ${HOME}/.config/dotfiles/etc/gitconfig ~/.gitconfig
 ln -s ${HOME}/.config/dotfiles/etc/rspec ~/.rspec
-ln -s ${HOME}/.config/dotfiles/etc/spacemacs ~/.spacemacs
+ln -s ${HOME}/.config/dotfiles/spacemacs/spacemacs ~/.spacemacs
 
 # vim +PlugInstall
 echo "to install vim plugins: vim +PlugInstall"
