@@ -24,6 +24,7 @@ root_install_make:
 	sudo apt-get -y install build-essential
 
 weechat:
+	# the easy way: docker run -t -i fstab/weechat-otr
 	sudo apt install libncurses-dev libcurl4-openssl-dev zlib1g-dev libgcrypt20 cmake -y
 	wget https://weechat.org/files/src/weechat-2.0.1.tar.gz
 	dxtr weechat*
