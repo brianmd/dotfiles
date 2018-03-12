@@ -23,6 +23,18 @@ endef
 root_install_make:
 	sudo apt-get -y install build-essential
 
+weechat:
+	sudo apt install libncurses-dev libcurl4-openssl-dev zlib1g-dev libgcrypt20 cmake -y
+	wget https://weechat.org/files/src/weechat-2.0.1.tar.gz
+	dxtr weechat*
+	rm weechat*.tar.gz
+	cd weechat*
+	mkdir build
+	cd build
+	cmake ..
+	make
+	sudo make install
+
 relink:
 	$(MAKE) ~/.oh-my-zsh
 	$(MAKE) ~/.config/direnv
