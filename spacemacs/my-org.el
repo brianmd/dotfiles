@@ -13,6 +13,16 @@
                         "/home/bmd/Dropbox/docs/org/"
                         ))
 
+(setq-default dotspacemacs-configuration-layers
+             '((erc :variables
+                    erc-server-list
+                    '(("irc.freenode.net"
+                       :port "6697"
+                       :ssl t
+                       :nick "some-user"
+                       :password "secret")
+                      ))))
+
 (setq org-capture-templates
       '(("t" "GTD" entry (file+headline "~/Dropbox/docs/org/gtd.org" "GTD")
          "* TODO %?\n  %i\n  %a")
