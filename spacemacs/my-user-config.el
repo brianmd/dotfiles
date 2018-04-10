@@ -16,6 +16,9 @@
 (setq custom-file "~/.config/dotfiles/spacemacs/custom.el")
 (load custom-file 'noerror)
 
+;; https://github.com/yjwen/org-reveal
+(setq org-reveal-root "file:///data/data/com.termux/files/home/code/reveal.js")
+(setq org-reveal-hlevel 1)
 
 ;; these were in the user-init
 
