@@ -17,7 +17,9 @@
 (load custom-file 'noerror)
 
 ;; https://github.com/yjwen/org-reveal
-(setq org-reveal-root "file:///data/data/com.termux/files/home/code/reveal.js")
+;; git clone https://github.com/hakimel/reveal.js.git
+;; (setq org-reveal-root "file:///data/data/com.termux/files/home/code/reveal.js")
+(setq org-reveal-root "file:///home/bmd/code/reveal.js")
 (setq org-reveal-hlevel 1)
 
 ;; these were in the user-init
