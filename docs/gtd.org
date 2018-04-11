@@ -1,0 +1,235 @@
+started <2016-07-03 Sun> 
+
+https://github.com/syl20bnr/spacemacs/tree/master/layers/org
+*
+* Format exporting
+*bold*, /italic/, _underlined_, =code= and ~verbatim~, and, if you must, ‘+strike-through+’
+horizonal line :: put at least five dashes
+-----
+# this comment line isn't exported
+#+BEGIN_COMMENT
+This isn't exported either
+#+END_COMMENT
+*** COMMENT this whole section won't be exported
+
+
+Can toggle 'COMMENT' by C-c ; 
+** FEEDBACK Quick Start
+:LOGBOOK:
+CLOCK: [2017-04-13 Thu 20:29]--[2017-04-13 Thu 20:41] =>  0:12
+CLOCK: [2017-04-13 Thu 20:28]--[2017-04-13 Thu 20:29] =>  0:01
+:END:
+SPC o c (C-c c) start a capture into 
+start a capture  SPC o c (C-c c)
+toggle todo status     t
+start a journal entry
+view gtd file
+view agenda     SPC o a
+start pomodoro  SPC m p
+clock in        SPC m I
+clock out       SPC m O
+- [ ] add quick start
+** TODO do you need to save org mode files after capture?????
+DEADLINE: <2017-04-14 Fri>
+
+** Evil mode
+| Key Binding                                | Description                                  |
+|--------------------------------------------+----------------------------------------------|
+| SPC m <dotspacemacs-major-mode-leader-key> | org-ctrl-c-ctrl-c                            |
+| SPC m *                                    | org-ctrl-c-star                              |
+| SPC m RET                                  | org-ctrl-c-ret                               |
+| SPC m -                                    | org-ctrl-c-minus                             |
+| ~SPC m ‘~                                  | org-edit-special                             |
+| SPC m ^                                    | org-sort                                     |
+| SPC m /                                    | org-sparse-tree                              |
+| SPC m .                                    | org-time-stamp                               |
+| SPC m !                                    | org-time-stamp-inactive                      |
+| SPC m a                                    | org-agenda                                   |
+| SPC m b                                    | org-tree-to-indirect-buffer                  |
+| SPC m A                                    | org-archive-subtree                          |
+| SPC m c                                    | org-capture                                  |
+| SPC m C                                    | evil-org-recompute-clocks                    |
+| SPC m d                                    | org-deadline                                 |
+| SPC m D                                    | org-insert-drawer                            |
+| SPC m e                                    | org-export-dispatch                          |
+| SPC m f                                    | org-set-effort                               |
+| SPC m I                                    | org-clock-in                                 |
+| SPC m l                                    | org-open-at-point                            |
+| SPC m n                                    | org-narrow-to-subtree                        |
+| SPC m N                                    | widen                                        |
+| SPC m O                                    | org-clock-out                                |
+| SPC m P                                    | org-set-property                             |
+| SPC m q                                    | org-clock-cancel                             |
+| SPC m R                                    | org-refile                                   |
+| SPC m s                                    | org-schedule                                 |
+| SPC m T                                    | org-show-todo-tree                           |
+| SPC m L                                    | org-shiftright                               |
+| SPC m H                                    | org-shiftleft                                |
+| SPC m K                                    | org-shiftup                                  |
+| SPC m J                                    | org-shiftdown                                |
+| SPC m C-S-l                                | org-shiftcontrolright                        |
+| SPC m C-S-h                                | org-shiftcontrolleft                         |
+| SPC m C-S-j                                | org-shiftcontroldown                         |
+| SPC m C-S-k                                | org-shiftcontrolup                           |
+| SPC s j                                    | spacemacs/jump-in-buffer (jump to a heading) |
+|--------------------------------------------+----------------------------------------------|
+** Outline
+*** Visible
+tab :: cycling current outline item
+s-tab :: global cycling
+*** Formatting
+*bold*, /italic/, _underlined_, =verbatim= and ~code~, and, if you must, ‘+strike-through+’
+To turn off fontification for marked up text, you can set org-fontify-emphasized-text to nil
+SPC t l :: toggle line wrap/truncation
+SPC t w :: toggle whitespace
+M-q (fill-paragraph) :: re-fill paragraph, there is also *M-x auto-fill-mode*. fill-region is called by fill-paragraph
+*** Spacemacs file
+SPC f e d :: edit config file
+SPC f e R :: re-read config file
+*** Help
+SPC h d f :: describe function
+*** Outlining Movement
+C-c C-n :: Next heading. 
+C-c C-p :: Previous heading. 
+C-c C-f :: Next heading same level. 
+C-c C-b :: Previous heading same level. 
+C-c C-u :: Backward to higher level heading.
+M-arrow :: *Move subtree around*
+, h I :: add line at same level
+also SPC mS[hjkl]
+*** Timestamps
+:LOGBOOK:
+CLOCK: [2017-04-13 Thu 20:16]--[2017-04-13 Thu 20:26] =>  0:10
+CLOCK: [2016-07-03 Sun 08:57]--[2017-04-13 Thu 20:28] => 6827:31
+:END:
+SPC m p :: pomodoro
+SPC m I :: Clock in
+SPC m O :: Clock out
+SPC m q :: cancel clock
+SPC m d (C-c C-d)  :: Deadline (2005-10-01 Sat +1m -- +1m means repeat every (one) month)
+SPC m s (C-c C-s) :: Scheduled to start
+SPC m . (C-c .) :: Prompt for a date and insert a corresponding timestamp. When the cursor is at an existing timestamp in the buffer, the command is used to modify this timestamp instead of inserting a new one. When this command is used twice in succession, a time range is inserted. With a prefix, also add the current time. 
+SPC m ! (C-c !) :: Like C-c ., but insert an inactive timestamp that will not cause an agenda entry. 
+S-<left>/<right> :: Change date at cursor by one day. 
+S-<up>/<down> :: Change the item under the cursor in a timestamp. The cursor can be on a year, month, day, hour or minute.
+*** Capture
+SPC o c (C-c c) :: Start a capture process, placing you into a narrowed indirect buffer to edit. 
+C-c C-c :: Once you are done entering information into the capture buffer, C-c C-c will return you to the window configuration before the capture process, so that you can resume your work without further distraction. 
+C-c C-w :: Finalize by moving the entry to a refile location (see section 9.2). 
+C-c C-k :: Abort the capture process and return to the previous state.
+, h i :: insert heading at the end of the current subtree
+*** Agenda
+r :: refresh (rebuild agenda to reflect changes)
+s :: save all org buffers
+tab :: go to entry
+return :: go to entry, delete other windows
+f :: go to next week (day)
+b :: go to prev week (day)
+. :: go to today
+o :: delete other windows
+d :: switch to day view
+w :: switch to week view
+**** Remote editing
+0--9 :: Digit argument. 
+t :: Change the TODO state of the item, in the agenda and in the org file. 
+C-k :: Delete the current agenda item along with the entire subtree belonging to it in the original Org file. 
+C-c C-w :: Refile the entry at point. 
+C-c C-x C-a or short a :: Archive the subtree corresponding to the entry at point using the default archiving command set in org-archive-default-command. 
+C-c C-x C-s or short $ :: Archive the subtree corresponding to the current headline. 
+C-c C-s :: Schedule this item, with prefix arg remove the scheduling timestamp 
+C-c C-d :: Set a deadline for this item, with prefix arg remove the deadline. 
+S-<right> and S-<left> :: Change the timestamp associated with the current line by one day. 
+I :: Start the clock on the current item. 
+O / X :: Stop/cancel the previously started clock. 
+J :: Jump to the running clock in another window.
+**** Secondary filtering
+/ :: Filter the current agenda view with respect to a tag. You are prompted for a letter to select a tag. Press ‘-’ first to select against the tag. 
+\ :: Narrow the current agenda filter by an additional condition. 
+**** Birthdays and similar stuff
++CATEGORY: Holiday
+%%(org-calendar-holiday)   ; special function for holiday names
+#+CATEGORY: Ann
+%%(diary-anniversary  5 14 1956)1 Arthur Dent is %d years old
+%%(diary-anniversary 10  2 1869) Mahatma Gandhi would be %d years old
+%%(diary-anniversary 7 2 2005) Fake person's birthday, %d years old
+%%(diary-anniversary 7 7 2005) Fake person's birthday, %d years old
+** Agendas
+** Todos
+
+* Org mode
+** todo
+| spc o t | toggle checkbox (note: must begin with hypen: - [ ] ....) |
+| t       | toggle task                                               |
+
+- t :: toggle task
+- spc o t :: toggle checkbox (note: must begin with hypen: - [ ] ....)
+-  :: also note, append [/] or [%] at end of TODO item above it for percentage done
+
+** clock
+*** toggle task clock SPC-t-m-c
+*** org-capture SPC-o-c
+* GTD
+ 
+* TODO improve org mode skills
+[[http://orgmode.org/manual/index.html][The Org Manual]]
+[[http://orgmode.org/guide/][The compact Org Manual]]
+[[http://cachestocaches.com/2016/9/my-workflow-org-agenda/][Gregory Stein's Workflow]]
+[[http://doc.norang.ca/org-mode.html][Brent Hanson's Detailed Org Mode]]
+
+
+* Ruby shortcuts
+     http://ergoemacs.org/emacs/emacs_copy_cut_kill-ring.html lots 'o commands                                                                                                                                   
+     SPC jw, avy go to word                                                                                                                                                                                      
+     SPC v, expand-region                                                                                                                                                                                        
+     SPC mse, evaluate last sexp in ruby: C-x C-e, or M-x ruby-send-last-sexp                                                                                                                                    
+     {n} SPC ', once you have the shell layer enabled, you can open multiple shells by using {n} SPC '. For example, to get the second, 2 SPC ', and to go back to the first 1 SPC '.                            
+     C-w evil window sizing, etc.                                                                                                                                                                                
+     C-M--, decrease text size                                                                                                                                                                                   
+     C-M-=, increase text size                                                                                                                                                                                   
+     describe-key → Find the command name of a keyboard shortcut.                                                                                                                                                
+     describe-function → Find the keyboard shortcut of a command.                                                                                                                                                
+     apropos-command → Search command by name.                                                                                                                                                                   
+     describe-mode → Show current mode's documentation.                                                                                                                                                          
+
+* shortcut keys
+** spacemacs
+evil-visual-paste   *************
+*** shell, multi-term
+maybe useful one day: https://snarfed.org/why_i_run_shells_inside_emacs
+M-! :: one line command
+M-| :: run a command against selected region in editor
+C-j :: next command
+C-k :: next command
+C-c C-j :: term-line-mode (allows emacs pasting)
+C-c C-k :: term-char-mode (acts like a terminal again)
+C-c C-q :: toggle paging
+M-r :: sends C-r for reverse search history
+   C-c C-x goes further back in history
+   other shell commands at:
+   https://www.gnu.org/software/emacs/manual/html_node/emacs/Shell-Ring.html#index-comint_002ddynamic_002dlist_002dinput_002dring-3660
+  *only when in char mode:*
+C-c C-c :: send C-c to terminal
+C-c char :: sends C-x char to terminal. Useful mainly for when
+   running emacs inside the terminal. For example, C-c o invokes
+   the global binding of C-x o, which is normally ‘other-window’.
+** i3
+win-shift-n :: move current window to specified desktop
+* R
+** swirl
+install.packages("swirl")
+library(swirl)
+ls() :: list variables in workspace
+rm(list=ls()) :: remove all workspace variables
+*** swirl()
+press Esc to return to R, or bye()
+When you are at the R prompt (>):
+-- Typing skip() allows you to skip the current question.
+-- Typing play() lets you experiment with R on your own; swirl will ignore what you do...
+-- UNTIL you type nxt() which will regain swirl's attention.
+-- Typing bye() causes swirl to exit. Your progress will be saved.
+-- Typing main() returns you to swirl's main menu.
+-- Typing info() displays these options again.
+
+c() :: concatenate or combine
+?c :: provides help on specified function
+
