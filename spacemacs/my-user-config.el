@@ -19,7 +19,8 @@
 ;; https://github.com/yjwen/org-reveal
 ;; git clone https://github.com/hakimel/reveal.js.git
 ;; (setq org-reveal-root "file:///data/data/com.termux/files/home/code/reveal.js")
-(setq org-reveal-root "file:///home/bmd/code/reveal.js")
+;; (setq org-reveal-root "file:///home/bmd/code/reveal.js")
+(setq org-reveal-root "file:///home/bmd/.config/dotfiles/docs/reveal.js")
 (setq org-reveal-hlevel 1)
 
 ;; these were in the user-init
