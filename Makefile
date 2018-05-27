@@ -20,6 +20,9 @@ define RBENV_ENV
 	eval "$(rbenv init -)"
 endef
 
+chromebook:
+	pkg install curl wget git silversearcher-ag make zsh mosh
+
 root_install_make:
 	sudo apt-get -y install build-essential
 
@@ -38,7 +41,7 @@ weechat:
 
 relink:
 	$(MAKE) ~/.oh-my-zsh
-	$(MAKE) ~/.config/direnv
+	# $(MAKE) ~/.config/direnv
 	mkdir -p ~/.config/i3
 	rm -f ~/.zshrc ~/.zshenv ~/.tmux.conf ~/.inputrc ~/.gitconfig ~/.gitignore_global ~/.rspec ~/.spacemacs
 	ln -s ${HOME}/.config/dotfiles/zsh/zshenv ~/.zshenv
