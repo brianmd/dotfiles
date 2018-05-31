@@ -1,0 +1,5 @@
+#!/bin/bash
+# libreadline.so.6 is sometimes needed, but 7 is loaded
+cd /lib/x86_64-linux-gnu
+sudo ln -s libreadline.so.7.0 libreadline.so.6
+
