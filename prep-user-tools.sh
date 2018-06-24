@@ -41,4 +41,4 @@ ln -s ${HOME}/.config/dotfiles/spacemacs/spacemacs ~/.spacemacs
 # vim +PlugInstall
 echo "to install vim plugins: vim +PlugInstall"
 
-# chsh -s /bin/zsh
+# sudo chsh -s /bin/zsh bmd

@@ -371,7 +371,7 @@ install_zshrc: ~/.oh-my-zsh ~/.zshrc
 	chmod a+x ~/.config/ohmy/install.sh
 	cd ~/.config/ohmy && ./install.sh
 	#sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-	# chsh -s /usr/bin/zsh
+	# sudo chsh -s /usr/bin/zsh bmd
 
 ~/.zshrc:
 	ln -s ${HOME}/.config/dotfiles/etc/zshrc ${HOME}/.zshrc
