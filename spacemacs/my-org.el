@@ -128,5 +128,3 @@
 (defun find-gtd ()
   (interactive)
   (find-file "~/Dropbox/docs/org/gtd.org"))
-
- 
