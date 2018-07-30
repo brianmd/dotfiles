@@ -315,8 +315,10 @@ fi
 
 [ -f ~/.config/dotfiles/etc/ttdrc ] && source ~/.config/dotfiles/etc/ttdrc
 
-export CHEF_TEST_KITCHEN_ENCRYPTED_DBAG_SECRET_FILE=/home/bmd/.chef/databag-secret-kitchen.pem
-export CHEF_SECRET=/home/bmd/.chef/databag-secret.pem
+# export CHEF_TEST_KITCHEN_ENCRYPTED_DBAG_SECRET_FILE=/home/bmd/.chef/databag-secret-kitchen.pem
+# export CHEF_SECRET=/home/bmd/.chef/databag-secret.pem
+export CHEF_TEST_KITCHEN_ENCRYPTED_DBAG_SECRET_FILE="$HOME/.chef/databag-secret-kitchen.pem"
+export CHEF_SECRET="$HOME/.chef/databag-secret.pem"
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
