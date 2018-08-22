@@ -1,0 +1,8 @@
+#!/bin/bash
+git clone git@gitlab.adsrvr.org:thetradedesk/adplatform.git
+git clone git@gitlab.adsrvr.org:thetradedesk/ansible.git
+git clone git@gitlab.adsrvr.org:thetradedesk/chef.git
+git clone git@gitlab.adsrvr.org:thetradedesk/tdsi.git
+git clone git@gitlab.adsrvr.org:thetradedesk/git-utils.git
+git clone git@gitlab.adsrvr.org:thetradedesk/git-client-setup-test.git
+
