@@ -1,0 +1,2 @@
+#!/bin/bash
+echo "add 'nameserver 10.100.55.67' to /etc/resolv.conf"
