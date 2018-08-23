@@ -1,2 +1,3 @@
 #!/bin/bash
+echo "add 'search use.adsrvr.org' to /etc/resolv.conf"
 echo "add 'nameserver 10.100.55.67' to /etc/resolv.conf"
