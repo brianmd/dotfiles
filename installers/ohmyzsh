@@ -1,0 +1,8 @@
+#!/bin/bash
+mkdir -p "$HOME/.config/ohmy"
+curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -o $HOME/.config/ohmy/install.sh
+chmod a+x "$HOME/.config/ohmy/install.sh"
+# oh-my-zsh install runs chsh and zsh, neither of which is good for automated installs
+# adding noop to the path makes these not hang up the installation
+PATH="${HOME}/.config/dotfiles/noop && cd "$HOME/.config/ohmy" && ./install.sh
+
