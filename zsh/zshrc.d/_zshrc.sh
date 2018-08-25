@@ -103,6 +103,8 @@ alias p='pgrep -af'
 alias c='xclip -selection clipboard'
 alias v='xclip -selection clipboard -o'
 
+alias help=tldr
+
 #ZSH_THEME_GIT_PROMPT_PREFIX="["
 #ZSH_THEME_GIT_PROMPT_SUFFIX="]"
 
