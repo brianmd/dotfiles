@@ -1,16 +1,16 @@
 # TODO: .ssh/config, .ssh/keys
 # TODO: add 'export VAGRANT_HOME=...' to a shared directory, then move
-# ~/.vagrant.d there
+# $HOME/.vagrant.d there
 
 KERNEL=`uname -s`
 # to auto-update oh-my-zsh
 export DISABLE_UPDATE_PROMPT=true
 
-if [ -f ~/.config/pw ]; then
-  source ~/.config/pw
+if [ -f "$HOME/.config/pw" ]; then
+  source "$HOME/.config/pw"
 fi
 
-export DEFAULT_CONFIG_FILE='~/.redmine'
+export DEFAULT_CONFIG_FILE='$HOME/.redmine"'
 
 #    oh-my-zsh config
 #
@@ -76,7 +76,7 @@ DISABLE_CORRECTION="true"
 # Example format: plugins=(rails git textmate ruby gem lighthouse)
 plugins=(git bundler brew vagrant git-flow docker docker-compose docker-machine docker-local knife mercurial kitchen knife knife_ssh)
 source $ZSH/oh-my-zsh.sh
-source ~/.config/dotfiles/etc/git-sh.rc
+source "$HOME/.config/dotfiles/etc/git-sh.rc"
 
 if [ -n "$INSIDE_EMACS" ]; then
   export ZSH_THEME="rawsyntax"
@@ -86,7 +86,7 @@ else
     export PROMPT=$'\n$(ssh_connection)%{$fg_bold[green]%}%n@%m%{$reset_color%}$(my_git_prompt)$(hg_prompt_info) : %~\n[${ret_status}] %# '
 fi
 
-compctl -g '~/.teamocil/*(:t:r)' teamocil
+compctl -g '$HOME/.teamocil/*(:t:r)' teamocil
 
 
 
@@ -119,8 +119,8 @@ alias f="ag -g"
 
 alias rs="rsync -ahP"
 
-# bmd c() { cd ~/code/$1; }
-# bmd _c() { _files -W ~/code -/; }
+# bmd c() { cd "$HOME/code/$1"; }
+# bmd _c() { _files -W "$HOME/code" -/; }
 #compdef _c c
 
 alias ipaddrs='ip addr list | grep "inet "'
@@ -203,9 +203,9 @@ function dmenv() { eval $(docker-machine env "$1") }
 export PATH="$HOME/bin:$HOME/.config/binfiles:/usr/local/bin:/usr/sbin:/sbin:$HOME/.local/bin:$HOME/.config/gocode/bin:$PATH"
 
 export CDPATH=".:$HOME/code:$HOME/.config"
-[ -d ~/code/docker ] && export CDPATH="$CDPATH:$HOME/code/docker"
-[ -d ~/pkgs ] && export CDPATH="$CDPATH:$HOME/pkgs"
-[ -d ~/pkgs/boxes ] && export CDPATH="$CDPATH:$HOME/pkgs/boxes"
+[ -d "$HOME/code/docker" ] && export CDPATH="$CDPATH:$HOME/code/docker"
+[ -d "$HOME/pkgs" ] && export CDPATH="$CDPATH:$HOME/pkgs"
+[ -d "$HOME/pkgs/boxes" ] && export CDPATH="$CDPATH:$HOME/pkgs/boxes"
 export CDPATH="$CDPATH:$HOME"
 
 export GOPATH=$HOME/.code/gocode
@@ -221,22 +221,22 @@ if [[ $KERNEL == 'Darwin' ]]; then
   #export SSL_CERT_FILE=/git/Certificates.pem
   export JAVA_HOME=`/usr/libexec/java_home`
   export PATH="$PATH:$HOME/Dropbox/summit/projects/summit-extensions/common/bin:/opt/local/bin:/usr/local/bin:/usr/local/share/npm/bin:$HOME/Dropbox/summit/bin:/usr/local/share/bin:/opt/local/bin:/opt/X11/bin:$HOME/.local/bin"
-  export CDPATH=$CDPATH:~/Documents:~/Documents/git:~/Dropbox:~/Dropbox/summit:~/Dropbox/summit/projects:~/Documents/git/summit
+  export CDPATH="$CDPATH:$HOME/Documents:$HOME/Documents/git:$HOME/Dropbox:$HOME/Dropbox/summit:$HOME/Dropbox/summit/projects:$HOME/Documents/git/summit"
 else
   keychain_cmd=keychain
-  # if [[ -f ~/.keychain/${HOST}-sh ]]; then source ~/.keychain/${HOST}-sh; fi
+  # if [[ -f "$HOME/.keychain/${HOST}-sh" ]]; then source "$HOME/.keychain/${HOST}-sh"; fi
 fi
 
 if [[ -x $(which $keychain_cmd 2>/dev/null) ]]; then
-  if [[ -f ~/.ssh/git_key ]]; then eval "$keychain_cmd ~/.ssh/git_key"; fi
-  if [[ -f ~/.ssh/chrome ]]; then eval "$keychain_cmd ~/.ssh/chrome"; fi
-  if [[ -f ~/.ssh/gru ]]; then eval "$keychain_cmd ~/.ssh/gru"; fi
-  if [[ -f ~/.ssh/bmd-ttd ]]; then eval "$keychain_cmd ~/.ssh/bmd-ttd"; fi
-  if [[ -f ~/.keychain/${HOST}-sh ]]; then source ~/.keychain/${HOST}-sh; fi
+  if [[ -f "$HOME/.ssh/git_key" ]]; then eval "$keychain_cmd $HOME/.ssh/git_key"; fi
+  if [[ -f "$HOME/.ssh/chrome" ]]; then eval "$keychain_cmd $HOME/.ssh/chrome"; fi
+  if [[ -f "$HOME/.ssh/gru" ]]; then eval "$keychain_cmd $HOME/.ssh/gru"; fi
+  if [[ -f "$HOME/.ssh/bmd-ttd" ]]; then eval "$keychain_cmd $HOME/.ssh/bmd-ttd"; fi
+  if [[ -f "$HOME/.keychain/${HOST}-sh" ]]; then source "$HOME/.keychain/${HOST}-sh"; fi
 fi
 
-if [[ -d ~/pkgs/packer ]]; then
-  export PATH=$PATH:~/pkgs/packer
+if [[ -d "$HOME/pkgs/packer" ]]; then
+  export PATH="$PATH:$HOME/pkgs/packer"
   export PACKER_CACHE_DIR=/usr/share/provisioners/packers
 fi
 
@@ -253,7 +253,7 @@ fi
 if [ -n "$INSIDE_EMACS" ]; then
   echo "inside emacs, so will not load vim key bindings"
 else
-  source ~/.config/dotfiles/etc/vim-sh.rc
+  source "$HOME/.config/dotfiles/etc/vim-sh.rc"
 fi
 
 # if [ -d ${HOME}/.rbenv ]; then
@@ -261,12 +261,12 @@ fi
 #   eval "$(rbenv init - zsh)"
 # fi
 
-if [[ -d ~/.nodenv ]]; then
+if [[ -d "$HOME/.nodenv" ]]; then
   export PATH="$HOME/.nodenv/bin:$PATH"
   eval "$(nodenv init -)"
 fi
 
-if [[ -d ~/.cargo/bin ]]; then
+if [[ -d "$HOME/.cargo/bin" ]]; then
   export PATH="$PATH:$HOME/.cargo/bin"
 fi
 
@@ -301,10 +301,10 @@ export SMTPSERVER="smtp.gmail.com"
 # bmd unset -f xclip
 
 # The next line updates PATH for the Google Cloud SDK.
-[ -f ~/.config/google-cloud-sdk/path.zsh.inc ] && source ~/.config/google-cloud-sdk/path.zsh.inc
+[ -f "$HOME/.config/google-cloud-sdk/path.zsh.inc" ] && source "$HOME/.config/google-cloud-sdk/path.zsh.inc"
 
 # The next line enables shell command completion for gcloud.
-[ -f ~/.config/google/cloud-sdk/completion.zsh.inc ] && source ~/.config/google-cloud-sdk/completion.zsh.inc
+[ -f "$HOME/.config/google/cloud-sdk/completion.zsh.inc" ] && source "$HOME/.config/google-cloud-sdk/completion.zsh.inc"
 
 if [ -d /opt/chefdk/embedded/bin ]; then
   export PATH="/opt/chefdk/embedded/bin:$PATH"
@@ -313,10 +313,11 @@ if [ -d /opt/chefdk/embedded/bin ]; then
   alias cheflocal="chef-client --local-mode"
 fi
 
-[ -f ~/.config/dotfiles/etc/ttdrc ] && source ~/.config/dotfiles/etc/ttdrc
+[ -f "$HOME/.config/dotfiles/etc/ttdrc" ] && source "$HOME/.config/dotfiles/etc/ttdrc"
 
 # export CHEF_TEST_KITCHEN_ENCRYPTED_DBAG_SECRET_FILE=/home/bmd/.chef/databag-secret-kitchen.pem
 # export CHEF_SECRET=/home/bmd/.chef/databag-secret.pem
+
 export CHEF_TEST_KITCHEN_ENCRYPTED_DBAG_SECRET_FILE="$HOME/.chef/databag-secret-kitchen.pem"
 export CHEF_SECRET="$HOME/.chef/databag-secret.pem"
 

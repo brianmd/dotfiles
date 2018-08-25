@@ -2,8 +2,8 @@
 
 setopt null_glob
 
-if [[ -d ~/.config/dotfiles/zsh/zshenv.d ]]; then
-  for f in $(ls ~/.config/dotfiles/zsh/zshenv.d/* | grep '\.sh'); do
+if [[ -d "$HOME/.config/dotfiles/zsh/zshenv.d" ]]; then
+  for f in $(ls "$HOME/.config/dotfiles/zsh/zshenv.d/*" | grep '\.sh'); do
       # echo "loading zshenv: $f"
       source $f
   done
