@@ -366,12 +366,13 @@ install_vim_plugins:
 install_zshrc: ~/.oh-my-zsh ~/.zshrc
 
 ~/.oh-my-zsh:
-	mkdir -p $HOME/.config/ohmy
-	curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -o $HOME/.config/ohmy/install.sh
-	chmod a+x $HOME/.config/ohmy/install.sh
-	cd $HOME/.config/ohmy && ./install.sh
-	#sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-	# sudo chsh -s /usr/bin/zsh bmd
+	installers/ohmyzsh
+	# mkdir -p $HOME/.config/ohmy
+	# curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -o $HOME/.config/ohmy/install.sh
+	# chmod a+x $HOME/.config/ohmy/install.sh
+	# cd $HOME/.config/ohmy && ./install.sh
+	# #sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+	# # sudo chsh -s /usr/bin/zsh bmd
 
 ~/.zshrc:
 	ln -s ${HOME}/.config/dotfiles/etc/zshrc ${HOME}/.zshrc
