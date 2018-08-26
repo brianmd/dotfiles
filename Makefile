@@ -40,7 +40,7 @@ weechat:
 	sudo make install
 
 relink:
-	$(MAKE) "$HOME/.oh-my-zsh"
+	$(MAKE) "~/.oh-my-zsh"
 	# $(MAKE) "$HOME/.config/direnv"
 	mkdir -p "$HOME/.config/i3"
 	rm -f "$HOME/.zshrc" "$HOME/.zshenv" "$HOME/.tmux.conf" "$HOME/.inputrc" "$HOME/.gitconfig" "$HOME/.gitignore"_global "$HOME/.rspec" "$HOME/.spacemacs"
@@ -249,7 +249,7 @@ install_dev: install_user "$HOME/.rbenv" "$HOME/.irb" "$HOME/.rbenv/shims/ruby"
 	echo 'type rbenv   should return that rbenv is a function'
 	echo 'from the new shell, type  make install_ruby'
 
-install_user: "$HOME/.vim" "$HOME/.oh-my-zsh" "$HOME/.zshrc" "$HOME/.tmux.conf"
+install_user: "$HOME/.vim" "~/.oh-my-zsh" "$HOME/.zshrc" "$HOME/.tmux.conf"
 	#git config --global user.email "brian@murphydye.com"
 	#git config --global user.name "Brian Murphy-Dye"
 	$(MAKE) relink
@@ -363,9 +363,9 @@ install_vim_plugins:
 
 
 
-install_zshrc: "$HOME/.oh-my-zsh" "$HOME/.zshrc"
+install_zshrc: "~/.oh-my-zsh" "$HOME/.zshrc"
 
-"$HOME/.oh-my-zsh":
+~/.oh-my-zsh:
 	installers/ohmyzsh
 	# mkdir -p $HOME/.config/ohmy
 	# curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -o $HOME/.config/ohmy/install.sh
