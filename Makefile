@@ -305,7 +305,7 @@ force_install_spacemacs:
 	rm -rf "${HOME}/.emacs.d"
 	git clone https://github.com/syl20bnr/spacemacs "${HOME}/.emacs.d"
 	git clone https://github.com/venmos/w3m-layer.git "${HOME}/.emacs.d/private/w3"
-	rm "${HOME}/.spacemacs"
+	rm -f "${HOME}/.spacemacs"
 	ln -s "${HOME}/.config/dotfiles/spacemacs/spacemacs" "${HOME}/.spacemacs"
 	# install layers and quit
 	emacs -nw -batch -u $$USER -q -kill
