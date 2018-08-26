@@ -137,12 +137,12 @@ root_create_shares: /usr/share/provisioners
 	mkdir -p /usr/share/provisioners/packers
 	chmod -R a+rwx /usr/share/provisioners
 
-${HOME}/.config/packer:
+~/.config/packer:
 	mkdir -p "${HOME}/.config/packer"
 	#cd "${HOME}/.config" && git clone https://github.com/mitchellh/packer.git
 	cd "${HOME}/.config/packer" && wget https://dl.bintray.com/mitchellh/packer/packer_0.8.6_linux_amd64.zip && unzip packer_0.8.6_linux_amd64.zip && rm packer_0.8.6_linux_amd64.zip
 
-${HOME}/.config/direnv:
+~/.config/direnv:
 	mkdir -p "${HOME}/.config"
 	git clone https://github.com/direnv/direnv "${HOME}/.config/direnv"
 	sudo apt-get install -y go
@@ -310,7 +310,7 @@ force_install_spacemacs:
 	sed -i "s/dotspacemacs-install-packages 'all/dotspacemacs-install-packages 'used-but-keep-unused/g" "${HOME}/.spacemacs"
 	emacs -nw -batch -u $$USER -q -kill
 
-${HOME}/.vimold:
+~/.vimold:
 	# ctrlp: http://kien.github.io/ctrlp.vim/
 	git clone git://github.com/nviennot/vim-config.git "${HOME}/.vim"
 	cd "${HOME}/.vim" && make install
@@ -331,7 +331,7 @@ force_install_vim:
 
 install_vim: "${HOME}/.vim"
 
-${HOME}/.vim:
+~/.vim:
 	echo "\nin .vim"
 	mkdir -p "${HOME}/.config/dotfiles/vim/swap"
 	mkdir -p "${HOME}/.config/dotfiles/vim/undo"
@@ -344,7 +344,7 @@ ${HOME}/.vim:
 
 install_vimrc_mine: "${HOME}/.config/dotfiles/vim/vimrc.mine"
 
-${HOME}/.config/dotfiles/vim/vimrc.mine:
+~/.config/dotfiles/vim/vimrc.mine:
 	echo "\nin .vimrc.mine"
 	cp etc/vimrc.mine vim/vimrc.mine
 	cp etc/gvimrc.mine vim/gvimrc.mine
@@ -357,7 +357,7 @@ install_vim_plugins:
 	vim +PlugInstall +qall +slient
 
 
-${HOME}/.tmux.conf:
+~/.tmux.conf:
 	git clone git://github.com/nviennot/tmux-config.git "${HOME}/.tmux"
 	cd "${HOME}/.tmux" && make install
 
@@ -365,7 +365,7 @@ ${HOME}/.tmux.conf:
 
 install_zshrc: "${HOME}/.oh-my-zsh" "${HOME}/.zshrc"
 
-${HOME}/.oh-my-zsh:
+~/.oh-my-zsh:
 	installers/ohmyzsh
 	# mkdir -p ${HOME}/.config/ohmy
 	# curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -o ${HOME}/.config/ohmy/install.sh
@@ -374,12 +374,12 @@ ${HOME}/.oh-my-zsh:
 	# #sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 	# # sudo chsh -s /usr/bin/zsh bmd
 
-${HOME}/.zshrc:
+~/.zshrc:
 	ln -s ${HOME}/.config/dotfiles/etc/zshrc ${HOME}/.zshrc
 
 
 
-${HOME}/.rbenv:
+~/.rbenv:
 	git clone https://github.com/sstephenson/rbenv.git "${HOME}/.rbenv"
 	git clone https://github.com/sstephenson/ruby-build.git "${HOME}/.rbenv/plugins/ruby-build"
 	grep rbenv $(SHELL_PROFILE) || [ $$? -eq 0 ]
@@ -392,12 +392,12 @@ old_install_rubies:
 	rbenv global 2.1.5
 	rbenv rehash
 
-${HOME}/.irb:
+~/.irb:
 	# see http://velvetpulse.com/2012/11/19/improve-your-ruby-workflow-by-integrating-vim-tmux-pry/
 	git clone git://github.com/nviennot/irb-config.git "${HOME}/.irb"
 	cd "${HOME}/.irb" && make install
 
-${HOME}/.rbenv/shims/ruby:
+~/.rbenv/shims/ruby:
 	curl -sSL http://getrbenv.com/install | bash -s -- --rubies 2.1.5 --global-ruby 2.1.5 --plugins sstephenson/ruby-build,sstephenson/rbenv-gem-rehash
 	#curl -sSL http://getrbenv.com/install | bash -s -- --rubies 2.1.5,2.2.2 --global-ruby 2.2.2 --plugins sstephenson/ruby-build,sstephenson/rbenv-gem-rehash
 	# rbenv install --list
