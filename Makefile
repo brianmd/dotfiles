@@ -298,6 +298,9 @@ install_emacs25_ubuntu:
 	echo "if running bash on windows, run vcxsrv, then:"
 	echo "    export DISPLAY=:0 ; (i3 &) ; (terminator &)"
 
+~/.emacs.d:
+	${MAKE} force_install_emacs
+
 force_install_spacemacs:
 	rm -rf "${HOME}/.emacs.d"
 	git clone https://github.com/syl20bnr/spacemacs "${HOME}/.emacs.d"
