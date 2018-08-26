@@ -43,6 +43,7 @@ relink:
 	$(MAKE) "${HOME}/.oh-my-zsh"
 	# $(MAKE) "${HOME}/.config/direnv"
 	mkdir -p "${HOME}/.config/i3"
+	# rm -f "${HOME}/.zshrc" "${HOME}/.zshenv" "${HOME}/.tmux.conf" "${HOME}/.inputrc" "${HOME}/.gitconfig" "${HOME}/.gitignore"_global "${HOME}/.rspec" "${HOME}/.spacemacs"
 	rm -f "${HOME}/.zshrc" "${HOME}/.zshenv" "${HOME}/.tmux.conf" "${HOME}/.inputrc" "${HOME}/.gitconfig" "${HOME}/.gitignore"_global "${HOME}/.rspec" "${HOME}/.spacemacs"
 	ln -s ${HOME}/.config/dotfiles/zsh/zshenv "${HOME}/.zshenv"
 	ln -s ${HOME}/.config/dotfiles/zsh/zshrc "${HOME}/.zshrc"
@@ -56,14 +57,15 @@ relink:
 	# .gitconfig points directly to the global ignore. don't need it in home
 	# directory.  ln -s ${HOME}/.config/dotfiles/etc/gitignore_global "${HOME}/.gitignore_global"
 	# $(MAKE) relink_vim
-	$(MAKE) force_install_vim
+	# $(MAKE) force_install_vim
+	$(MAKE) ${HOME}/.vim
 
 relink_vim:
 	rm -f "${HOME}/.vim "${HOME}/.vimrc"
 	# this is a fix for those that aren't using .vim as a link
 	rm -rf "${HOME}/.vim"
-	ln -s "${HOME}/.config/dotfiles/vim "${HOME}/.vim"
-	ln -s "${HOME}/.config/dotfiles/vim/vimrc "${HOME}/.vimrc"
+	ln -s "${HOME}/.config/dotfiles/vim"" "${HOME}/.vim"
+	ln -s "${HOME}/.config/dotfiles/vim/vimrc" "${HOME}/.vimrc"
 	$(MAKE) install_vimrc_mine
 
 test:
@@ -345,7 +347,7 @@ install_vim: ${HOME}/.vim
 	# note: install plugins before adding vimrc.mine, in case it has a dependence on the plugins
 	$(MAKE) install_vimrc_mine
 
-install_vimrc_mine: "${HOME}/.config/dotfiles/vim/vimrc.mine"
+install_vimrc_mine: ${HOME}/.config/dotfiles/vim/vimrc.mine
 
 ~/.config/dotfiles/vim/vimrc.mine:
 	echo "\nin .vimrc.mine"
@@ -366,7 +368,7 @@ install_vim_plugins:
 
 
 
-install_zshrc: "${HOME}/.oh-my-zsh" "${HOME}/.zshrc"
+install_zshrc: ${HOME}/.oh-my-zsh ${HOME}/.zshrc
 
 ~/.oh-my-zsh:
 	installers/ohmyzsh
