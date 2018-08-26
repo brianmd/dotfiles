@@ -51,7 +51,7 @@ relink:
 	ln -s ${HOME}/.config/dotfiles/etc/gitconfig "${HOME}/.gitconfig"
 	ln -s ${HOME}/.config/dotfiles/etc/rspec "${HOME}/.rspec"
 	ln -s ${HOME}/.config/dotfiles/spacemacs/spacemacs "${HOME}/.spacemacs"
-	[ ! -f "${HOME}/.config/i3/config ] && ln -s ${HOME}/.config/dotfiles/i3/config" "${HOME}/.config/i3/config"
+	[ ! -f "${HOME}/.config/i3/config" ] && ln -s ${HOME}/.config/dotfiles/i3/config" "${HOME}/.config/i3/config"
 	# ln -s ${HOME}/.config/dotfiles/vim/vimrc.mine "${HOME}/.vim/vimrc.mine"
 	# .gitconfig points directly to the global ignore. don't need it in home
 	# directory.  ln -s ${HOME}/.config/dotfiles/etc/gitignore_global "${HOME}/.gitignore_global"
