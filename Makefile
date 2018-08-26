@@ -299,7 +299,7 @@ install_emacs25_ubuntu:
 	echo "    export DISPLAY=:0 ; (i3 &) ; (terminator &)"
 
 ~/.emacs.d:
-	${MAKE} force_install_emacs
+	${MAKE} force_install_spacemacs
 
 force_install_spacemacs:
 	rm -rf "${HOME}/.emacs.d"
