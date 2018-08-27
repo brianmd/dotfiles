@@ -315,6 +315,8 @@ if [ -d /opt/chefdk/embedded/bin ]; then
   alias cheflocal="chef-client --local-mode"
 fi
 
+test -d ~/.linuxbrew && PATH="$PATH:$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin"
+
 [ -f "$HOME/.config/dotfiles/etc/ttdrc" ] && source "$HOME/.config/dotfiles/etc/ttdrc"
 
 # export CHEF_TEST_KITCHEN_ENCRYPTED_DBAG_SECRET_FILE=/home/bmd/.chef/databag-secret-kitchen.pem
