@@ -103,8 +103,6 @@ alias p='pgrep -af'
 alias c='xclip -selection clipboard'
 alias v='xclip -selection clipboard -o'
 
-alias help=tldr
-
 #ZSH_THEME_GIT_PROMPT_PREFIX="["
 #ZSH_THEME_GIT_PROMPT_SUFFIX="]"
 
@@ -316,6 +314,11 @@ if [ -d /opt/chefdk/embedded/bin ]; then
 fi
 
 test -d ~/.linuxbrew && PATH="$PATH:$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin"
+
+test $(which bat) && alias cat=bat
+test $(which fd) && alias fi=fd
+test $(which prettyping) && alias ping='prettyping --nolegend'
+test $(which tldr) && alias help=tldr || alias help=man
 
 [ -f "$HOME/.config/dotfiles/etc/ttdrc" ] && source "$HOME/.config/dotfiles/etc/ttdrc"
 
