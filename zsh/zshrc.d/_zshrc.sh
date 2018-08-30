@@ -315,10 +315,14 @@ fi
 
 test -d ~/.linuxbrew && PATH="$PATH:$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin"
 
-test $(which bat) && alias cat=bat
-test $(which fd) && alias fi=fd
-test $(which prettyping) && alias ping='prettyping --nolegend'
-test $(which tldr) && alias help=tldr || alias help=man
+# test $(which bat) && alias cat=bat
+type bat >/dev/null && alias cat=bat
+# test -x /usr/bin/fd && alias fi=fd
+type /usr/bin/fd >/dev/null && alias fi=fd
+# test $(which prettyping) && alias ping='prettyping --nolegend'
+type prettyping >/dev/null && alias ping='prettyping --nolegend'
+# test $(which tldr) && alias help=tldr || alias help=man
+type tldr >/dev/null && alias help=tldr || alias help=man
 
 [ -f "$HOME/.config/dotfiles/etc/ttdrc" ] && source "$HOME/.config/dotfiles/etc/ttdrc"
 

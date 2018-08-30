@@ -1,17 +1,17 @@
 #!/bin/zsh
+# don't report error when file doesn't exist
 setopt null_glob
 
 if [[ -d "$HOME/.config/dotfiles/zsh/zshrc.d" ]]; then
   for f in $(ls $HOME/.config/dotfiles/zsh/zshrc.d/* | grep '\.sh'); do
-      # echo "loading zshrc.d: $f"
-      source $f
+    # echo "loading zshrc.d: $f"
+    source $f
   done
 fi
 
 if [[ -d "$HOME/.config/dotfiles/zsh/zshenv-post.d" ]]; then
   for f in $(ls $HOME/.config/dotfiles/zsh/zshenv-post.d/* | grep '\.sh'); do
-      # echo "loading zshenv-post.d: $f"
-      source $f
+    # echo "loading zshenv-post.d: $f"
+    source $f
   done
 fi
-
