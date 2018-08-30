@@ -1,7 +1,8 @@
 # see https://blog.scottnonnenberg.com/better-git-configuration/
 [user]
   name = Brian Murphy-Dye
-  email = brian@murphydye.com
+  email = brian.murphy-dye@thetradedesk.com
+  # email = brian@murphydye.com
 [core]
   # excludesfile = $HOME/.config/dotfiles/etc/gitignore_global
   excludesfile = /home/bmd/.config/dotfiles/etc/gitignore_global
@@ -51,6 +52,9 @@
   default = current
 [branch]
   autosetupmerge = true
+[include]
+  # ttd aliases
+  path = /home/bmd/code/ttd/git-utils/gitconfig
 
 
 
