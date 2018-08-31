@@ -1,14 +1,14 @@
 #!/bin/bash
 export TTD_BASE=~/code/ttd
 export TTD_DEPLOYMENT_XML="${TTD_BASE}/hg/operations/DeployTool/deployment.config"
-export TTD_AEROSPIKE_JSON="${TTD_BASE}/hg/tdsi/TDSIConfigs/aerospike.json"
+export TTD_AEROSPIKE_JSON="${TTD_BASE}/git/tdsi/TDSIConfigs/aerospike.json"
 export TTD_PEER1_DIR="${TTD_BASE}/me/bootstrap/tim"
 export TTD_OHAI="${TTD_BASE}/me/bootstrap/all-info.json"
 
 export TTD_USER=brian.murphy-dye
 export TTD_SSH_PRIV_KEY="${HOME}/.ssh/bmd-ttd"
 
-[ -d "~/code/ttd/brian.murphy-dye/bin" ] && [[ ! "$PATH" =~ '\/ttd\/brian' ]] && export PATH="$PATH:$HOME/code/ttd/brian.murphy-dye/bin"
+[ -d "${HOME}/code/ttd/brian.murphy-dye/bin" ] && [[ ! "$PATH" =~ '\/ttd\/brian' ]] && export PATH="$PATH:$HOME/code/ttd/brian.murphy-dye/bin"
 
 [ -d "${HOME}/code/ttd" ] && [[  ! "$CDPATH" =~ '\/ttd\/me' ]] && export CDPATH="${CDPATH}:$HOME/code/ttd:$HOME/code/ttd/git:$HOME/code/ttd/hg:$HOME/code/ttd/me:$HOME/code/ttd/brian.murphy-dye:$HOME/code/ttd/brian.murphy-dye/code"
 
