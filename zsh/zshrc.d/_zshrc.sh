@@ -125,6 +125,12 @@ alias rs="rsync -ahP"
 
 alias ipaddrs='ip addr list | grep "inet "'
 
+alias myip="ip -br -c a"
+alias os='cat /etc/*release*'
+alias restart='sudo systemctl restart'
+alias start='sudo systemctl start'
+alias stop='sudo systemctl stop'
+
 # trello
 alias inbox="trellor todo inbox"
 alias inprogress="trellor todo inprogress"
