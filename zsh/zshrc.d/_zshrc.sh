@@ -106,7 +106,7 @@ alias v='xclip -selection clipboard -o'
 #ZSH_THEME_GIT_PROMPT_PREFIX="["
 #ZSH_THEME_GIT_PROMPT_SUFFIX="]"
 
-alias e="emacsclient -t -a ''"
+alias e='emacsclient -t -a ""'
 alias eb="emacsbare"
 # alias ec="emacsclient -c -n -a ''"
 alias emacsbare="emacs -nw -Q --eval \"(load-theme 'misterioso)\""
@@ -261,8 +261,9 @@ fi
 if [ -n "$INSIDE_EMACS" ]; then
   echo "inside emacs, so will not load vim key bindings"
 else
-  # source "$HOME/.config/dotfiles/etc/vim-sh.rc"
-  export EDITOR=emacsclient -t -a ''
+  # EDITOR can only be an executable -- no args
+  # export EDITOR='/usr/bin/emacsclient -t -a ""'
+  export EDITOR=emacsclient
 fi
 
 # if [ -d ${HOME}/.rbenv ]; then
@@ -323,11 +324,11 @@ if [ -d /opt/chefdk/embedded/bin ]; then
 fi
 
 test -d ~/.linuxbrew && PATH="$PATH:$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin"
-
 test $(which bat >/dev/null) && alias cat=bat
-[[ -x /usr/bin/fd ]] && alias fi=/usr/bin/fd || alias fi=/usr/bin/find
 test $(which prettyping >/dev/null) || alias ping='prettyping --nolegend'
 test $(which tldr >/dev/null) && alias help=man || alias help=tldr
+test $(which fd >/dev/null) && echo yes-fd || echo no-fd
+test $(which fd >/dev/null) && alias fii=find || alias fii=fd
 
 [ -f "$HOME/.config/dotfiles/etc/ttdrc" ] && source "$HOME/.config/dotfiles/etc/ttdrc"
 
