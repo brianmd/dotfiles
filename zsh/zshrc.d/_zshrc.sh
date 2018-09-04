@@ -261,7 +261,8 @@ fi
 if [ -n "$INSIDE_EMACS" ]; then
   echo "inside emacs, so will not load vim key bindings"
 else
-  source "$HOME/.config/dotfiles/etc/vim-sh.rc"
+  # source "$HOME/.config/dotfiles/etc/vim-sh.rc"
+  export EDITOR=emacsclient -t -a ''
 fi
 
 # if [ -d ${HOME}/.rbenv ]; then
