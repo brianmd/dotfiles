@@ -68,6 +68,7 @@
                                    \\\"$BASE\\\" nil \\\"$MERGED\\\"))\"
 [pull]
   default = current
+	rebase = true
 [branch]
   autosetupmerge = true
 [include]
