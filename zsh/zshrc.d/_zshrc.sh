@@ -324,7 +324,7 @@ fi
 test -d ~/.linuxbrew && PATH="$PATH:$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin"
 
 test $(which bat >/dev/null) && alias cat=bat
-[[ -x /usr/bin/fd ]] && (alias fi=fd) || (alias fi=find)
+[[ -x /usr/bin/fd ]] && alias fi=/usr/bin/fd || alias fi=/usr/bin/find
 test $(which prettyping >/dev/null) || alias ping='prettyping --nolegend'
 test $(which tldr >/dev/null) && alias help=man || alias help=tldr
 
