@@ -327,7 +327,6 @@ test -d ~/.linuxbrew && PATH="$PATH:$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin"
 test $(which bat >/dev/null) && alias cat=bat
 test $(which prettyping >/dev/null) || alias ping='prettyping --nolegend'
 test $(which tldr >/dev/null) && alias help=man || alias help=tldr
-test $(which fd >/dev/null) && echo yes-fd || echo no-fd
 test $(which fd >/dev/null) && alias fii=find || alias fii=fd
 
 [ -f "$HOME/.config/dotfiles/etc/ttdrc" ] && source "$HOME/.config/dotfiles/etc/ttdrc"
