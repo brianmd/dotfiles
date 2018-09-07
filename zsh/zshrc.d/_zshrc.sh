@@ -264,6 +264,7 @@ else
   # EDITOR can only be an executable -- no args
   # export EDITOR='/usr/bin/emacsclient -t -a ""'
   export EDITOR=emacsclient
+  export EDITOR=vim
 fi
 
 # if [ -d ${HOME}/.rbenv ]; then

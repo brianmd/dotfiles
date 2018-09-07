@@ -3,15 +3,19 @@
 setopt null_glob
 
 if [[ -d "$HOME/.config/dotfiles/zsh/zshrc.d" ]]; then
-  for f in $(ls $HOME/.config/dotfiles/zsh/zshrc.d/* | grep '\.sh'); do
+  # for f in $(ls $HOME/.config/dotfiles/zsh/zshrc.d/* | grep '\.sh'); do
+  for f in $(ls $HOME/.config/dotfiles/zsh/zshrc.d/*.sh); do
     # echo "loading zshrc.d: $f"
     source $f
   done
 fi
 
 if [[ -d "$HOME/.config/dotfiles/zsh/zshenv-post.d" ]]; then
-  for f in $(ls $HOME/.config/dotfiles/zsh/zshenv-post.d/* | grep '\.sh'); do
-    # echo "loading zshenv-post.d: $f"
+  echo 'exists'
+  echo $HOME/.config/dotfiles/zsh/zshenv-post.d/*.sh
+  # for f in $(ls $HOME/.config/dotfiles/zsh/zshenv-post.d/* | grep '\.sh'); do
+  for f in $HOME/.config/dotfiles/zsh/zshenv-post.d/*.sh; do
+    echo "loading zshenv-post.d: $f"
     source $f
   done
 fi
