@@ -1,0 +1,30 @@
+Testing ruby:
+
+* TODO if get ruby block disabled: SPC SPC spacemacs/recompile-elpa
+* TODO to execute: SPC SPC org-babel-execute-src-block
+
+#+BEGIN_SRC ruby :dir /usr/local/bin
+puts 'hello world!!'
+`ttdssh lax-cit110 -m df -h`
+#+END_SRC
+
+#+BEGIN_SRC ruby
+puts 'hello world!!'
+`ls -l`
+#+END_SRC
+
+#+BEGIN_SRC ruby :results output
+puts 'hello world'
+#+END_SRC
+
+#+RESULTS:
+: hello world
+
+this is the end of the test
+
+#+BEGIN_SRC shell :results output
+ls
+pwd
+#+END_SRC
+
+#+RESULTS:
