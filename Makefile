@@ -90,8 +90,8 @@ root_add_salt_repository:
 	add-apt-repository ppa:saltstack/salt
 
 root_install_user:
-	apt-get -y update
-	apt-get upgrade
+	apt-get update
+	apt-get upgrade -y
 	# zlib1g-dev: for installing nokogirl.
 	# python-software-properties: for salt.
 	apt-get -y install git silversearcher-ag golang tree keychain zsh htop tmux python-software-properties zlib1g-dev exuberant-ctags mercurial jq mosh shellcheck

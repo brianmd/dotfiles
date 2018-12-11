@@ -128,3 +128,15 @@
 (defun find-gtd ()
   (interactive)
   (find-file "~/Dropbox/docs/org/gtd.org"))
+
+; Set default column view headings: Task Total-Time Time-Stamp
+(setq org-columns-default-format "%50ITEM(Task) %10CLOCKSUM %16TIMESTAMP_IA")
+
+(require 'ob-ruby)
+(require 'ob-sh)
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '( (emacs-lisp  . t)
+    (sh . t)
+    (ruby . t)
+    ))

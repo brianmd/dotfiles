@@ -1,0 +1,8 @@
+#!/bin/bash
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt-get install -y git build-essential silversearcher-ag golang tree keychain zsh htop tmux zlib1g-dev exuberant-ctags mercurial jq mosh shellcheck glances p7zip-full
+make force_emacs_install
+# sudo apt-get install -y silversearcher-ag golang tree keychain zsh htop tmux python-software-properties zlib1g-dev exuberant-ctags mercurial jq mosh shellcheck
+# sudo apt-get install -y emacs
+# sudo apt-get install -y build-essential
