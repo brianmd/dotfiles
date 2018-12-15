@@ -14,3 +14,11 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debi
 sudo apt update
 sudo apt-get install -y docker-ce
 
+# docker compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m)" -o 
+/usr/local/bin/docker-compose
+sudo chmod a+x /usr/local/bin/docker-compose
+
+sudo usermod -a -G docker $USER
+
+
