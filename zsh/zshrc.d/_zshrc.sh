@@ -209,6 +209,7 @@ function dmenv() { eval $(docker-machine env "$1") }
 
 # export PATH="$HOME/bin:$HOME/.config/binfiles:$HOME/.rbenv/bin:$HOME/.rbenv/shims:/usr/local/bin:/usr/sbin:/sbin:$HOME/.local/bin:$HOME/.config/gocode/bin:$PATH"
 export PATH="$HOME/bin:$HOME/.config/binfiles:/usr/local/bin:/usr/sbin:/sbin:$HOME/.local/bin:$HOME/.config/gocode/bin:$PATH"
+[ -d "$HOME/.chefdk/gem/ruby/2.5.0/bin" ] && export PATH="$PATH:$HOME/.chefdk/gem/ruby/2.5.0/bin"
 
 export CDPATH=".:$HOME/code:$HOME/.config"
 [ -d "$HOME/code/docker" ] && export CDPATH="$CDPATH:$HOME/code/docker"

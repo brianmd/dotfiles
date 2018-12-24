@@ -53,3 +53,36 @@
 (global-set-key (kbd "C-0") 'text-scale-mode)
 
 (setq org-ellipsis "⤵")
+
+
+;; xoxp-10924691317-169530033073-189201081253-8c708f799095a5d0b364b13edb73a0a7
+
+(slack-register-team
+  :default t
+  :name "thetradedesk"
+  :client-id (getenv "SLACK_CLIENT")
+  :client-secret (getenv "SLACK_SECRET")
+  :token (getenv "SLACK_SECRET")
+  :subscribed-channels '(general slackbot))
+
+(add-to-list 'alert-user-configuration
+  '(((:category . "slack")) ignore nil))
+
+;; see http://endlessparentheses.com/keep-your-slack-distractions-under-control-with-emacs.html
+;; and http://endlessparentheses.com/mold-slack-entirely-to-your-liking-with-emacs.html
+
+(add-hook 'slack-mode-hook #'emojify-mode)
+
+(add-to-list
+  'alert-user-configuration
+  '(((:title . "\\(dev-aerospike\\|dev-aerospike-trn\\)")
+      (:category . "slack"))
+     libnotify nil))
+
+(add-to-list
+  'alert-user-configuration
+  '(((:message . "@brian\\|Brian")
+      (:title . "\\(okchannel\\|sosochannel\\)")
+      (:category . "slack"))
+     libnotify nil))
+
