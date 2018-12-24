@@ -1,0 +1,6 @@
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:linuxuprising/java
+sudo apt-get update
+sudo apt-get install -y oracle-java11-installer
