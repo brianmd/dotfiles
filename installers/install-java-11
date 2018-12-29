@@ -1,6 +1,11 @@
+#!/bin/bash
+# to install openjdk:
+#    sudo apt-get install -y default-jdk
+
 sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt-get install -y software-properties-common
+# sudo apt-get install -y python-software-properties
 sudo add-apt-repository ppa:linuxuprising/java
 sudo apt-get update
 sudo apt-get install -y oracle-java11-installer
