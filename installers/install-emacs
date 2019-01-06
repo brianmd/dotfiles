@@ -13,14 +13,15 @@
 # 	echo "if running bash on windows, run vcxsrv, then:"
 # 	echo "    export DISPLAY=:0 ; (i3 &) ; (terminator &)"
 
+sudo apt install -y emacs
 USER=bmd
 rm -rf ~/.emacs.d
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-rm ~/.spacemacs
+rm -f ~/.spacemacs
 ln -s ~/.config/dotfiles/spacemacs/spacemacs ~/.spacemacs
 # install layers and quit
-emacs -nw -batch -u $$USER -q -kill
-emacs -nw -batch -u $$USER -q -kill
+emacs -nw -batch -u $USER -q -kill
+emacs -nw -batch -u $USER -q -kill
 sed -i "s/dotspacemacs-install-packages 'all/dotspacemacs-install-packages 'used-but-keep-unused/g" ~/.spacemacs
-emacs -nw -batch -u $$USER -q -kill
+emacs -nw -batch -u $USER -q -kill
 

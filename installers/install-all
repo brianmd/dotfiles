@@ -1,0 +1,8 @@
+#!/bin/bash
+echo "will need to manually accept oracle license"
+sudo ./install-java-11
+sudo apt install -y vim clojure
+sudo ./install-clojure
+./install-emacs
+sudo ./install-docker
+
