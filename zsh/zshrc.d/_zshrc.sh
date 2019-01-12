@@ -268,6 +268,12 @@ else
   export EDITOR=vim
 fi
 
+if [ -d ${HOME}/.pyenv ]; then
+  export PYENV_ROOT="${HOME}/.pyenv"
+  export PATH="$PATH:${PYENV_ROOT}/bin"
+  eval "$(pyenv init - zsh)"
+fi
+
 # if [ -d ${HOME}/.rbenv ]; then
 #   export RBENV_ROOT=${HOME}/.rbenv
 #   eval "$(rbenv init - zsh)"
