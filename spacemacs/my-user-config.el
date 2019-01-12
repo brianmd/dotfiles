@@ -86,3 +86,16 @@
       (:category . "slack"))
      libnotify nil))
 
+; (spacemacs/set-leader-keys-for-major-mode 'clojure-mode "e;" 'cider-pprint-eval-defun-to-comment)
+(spacemacs/set-leader-keys-for-major-mode 'clojure-mode "ec" 'cider-ppprint-eval-last-sexp-to-comment)
+
+;; (evil-define-key 'normal clojure-mode-map (kbd ", e ;") 'cider-pprint-eval-defun-to-comment)
+
+;; (add-hook 'clojure-mode-hook
+;;           (lambda()
+;;             (spacemacs/set-leader-keys-for-major-mode 'clojure-mode
+;;               "ec" 'cider-pprint-eval-defun-to-comment)))
+;; (spacemacs|use-package-add-hook clojure
+;;   :post-config
+;;   (spacemacs/set-leader-keys-for-major-mode 'clojure-mode
+;;     "ec" 'cider-pprint-eval-defun-to-comment))
