@@ -1,6 +1,6 @@
 #set editing-mode vi
 #set keymap vi-command
-set blinking-matching-paren on
+# set blinking-matching-paren on
 set bell-style none
 set keymap vi-command
 "gg": beginning-of-history
@@ -16,9 +16,9 @@ set keymap vi-insert
 set editing-mode vi
 
 # Show all completions as soon as I press tab, even if there's more than one
-set show-all-if-ambiguous on
+# set show-all-if-ambiguous on
 # Ignore case
-set completion-ignore-case on
+# set completion-ignore-case on
 # on menu-complete, first display the common prefix, then cycle through the 
 # options when hitting TAB
 menu-complete-display-prefix on

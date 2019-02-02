@@ -345,6 +345,9 @@ test $(which fd >/dev/null) && alias fii=find || alias fii=fd
 export CHEF_TEST_KITCHEN_ENCRYPTED_DBAG_SECRET_FILE="$HOME/.chef/databag-secret-kitchen.pem"
 export CHEF_SECRET="$HOME/.chef/databag-secret.pem"
 
+export opsinventory=$HOME/code/ttd/mux/bin/ops-inventory.py
+function opssh { host=$1; shift; ssh brian.murphy-dye@`$opsinventory --ip $host` $@;  }
+
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
