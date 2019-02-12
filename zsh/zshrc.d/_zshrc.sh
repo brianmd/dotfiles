@@ -74,7 +74,7 @@ DISABLE_CORRECTION="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby gem lighthouse)
-plugins=(git bundler brew vagrant git-flow docker docker-compose docker-machine docker-local knife mercurial kitchen knife knife_ssh)
+plugins=(git bundler brew vagrant git-flow docker docker-compose docker-machine docker-local knife mercurial kitchen knife knife_ssh kubectl)
 source $ZSH/oh-my-zsh.sh
 source "$HOME/.config/dotfiles/etc/git-sh.rc"
 
@@ -212,6 +212,7 @@ export PATH="$HOME/bin:$HOME/.config/binfiles:/usr/local/bin:/usr/sbin:/sbin:$HO
 [ -d "$HOME/.chefdk/gem/ruby/2.5.0/bin" ] && export PATH="$PATH:$HOME/.chefdk/gem/ruby/2.5.0/bin"
 
 export CDPATH=".:$HOME/code:$HOME/.config"
+[ -d "$HOME/ans" ] && export CDPATH="$CDPATH:$HOME/ans"
 [ -d "$HOME/code/docker" ] && export CDPATH="$CDPATH:$HOME/code/docker"
 [ -d "$HOME/pkgs" ] && export CDPATH="$CDPATH:$HOME/pkgs"
 [ -d "$HOME/pkgs/boxes" ] && export CDPATH="$CDPATH:$HOME/pkgs/boxes"
