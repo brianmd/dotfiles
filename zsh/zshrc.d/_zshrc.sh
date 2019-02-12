@@ -97,7 +97,7 @@ compctl -g '$HOME/.teamocil/*(:t:r)' teamocil
 #PROMPT='%{$fg[magenta]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} %{$fg[red]%}[%~% ] %B$%b '
 #RPROMPT='$(git_time_since_commit)|$(git_custom_status) $EPS1'
 
-alias k=kitchen
+alias k=kubectl
 alias p='pgrep -af'
 
 alias c='xclip -selection clipboard'
