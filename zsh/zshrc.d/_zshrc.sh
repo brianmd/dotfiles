@@ -2,15 +2,16 @@
 # TODO: add 'export VAGRANT_HOME=...' to a shared directory, then move
 # $HOME/.vagrant.d there
 
-KERNEL=`uname -s`
+KERNEL=$(uname -s)
 # to auto-update oh-my-zsh
 export DISABLE_UPDATE_PROMPT=true
 
 if [ -f "$HOME/.config/pw" ]; then
+  # shellcheck source=/dev/null
   source "$HOME/.config/pw"
 fi
 
-export DEFAULT_CONFIG_FILE='$HOME/.redmine"'
+export DEFAULT_CONFIG_FILE="$HOME/.redmine"
 
 #    oh-my-zsh config
 #
@@ -33,10 +34,10 @@ ZSH_THEME="cloud"
 ZSH_THEME="muse"
 ZSH_THEME="mortalscumbag"
 
-ZSH_THEME_HG_PROMPT_PREFIX="%{$fg_bold[magenta]%}hg:(%{$fg[red]%}"
-ZSH_THEME_HG_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_HG_PROMPT_DIRTY="%{$fg[magenta]%}) %{$fg[yellow]%}✗%{$reset_color%}"
-ZSH_THEME_HG_PROMPT_CLEAN="%{$fg[magenta]%})"
+export ZSH_THEME_HG_PROMPT_PREFIX="%{$fg_bold[magenta]%}hg:(%{$fg[red]%}"
+export ZSH_THEME_HG_PROMPT_SUFFIX="%{$reset_color%}"
+export ZSH_THEME_HG_PROMPT_DIRTY="%{$fg[magenta]%}) %{$fg[yellow]%}✗%{$reset_color%}"
+export ZSH_THEME_HG_PROMPT_CLEAN="%{$fg[magenta]%})"
 
 # http://oblalex.blogspot.com/2013/06/extending-oh-my-zsh-with-hgprompt.html
 # https://github.com/robbyrussell/oh-my-zsh/blob/master/themes/mortalscumbag.zsh-theme
@@ -75,7 +76,9 @@ DISABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby gem lighthouse)
 plugins=(git bundler brew vagrant git-flow docker docker-compose docker-machine docker-local knife mercurial kitchen knife knife_ssh kubectl)
-source $ZSH/oh-my-zsh.sh
+# shellcheck source=/dev/null
+source "$ZSH/oh-my-zsh.sh"
+# shellcheck source=/dev/null
 source "$HOME/.config/dotfiles/etc/git-sh.rc"
 
 if [ -n "$INSIDE_EMACS" ]; then
@@ -98,6 +101,7 @@ compctl -g '$HOME/.teamocil/*(:t:r)' teamocil
 #RPROMPT='$(git_time_since_commit)|$(git_custom_status) $EPS1'
 
 alias k=kubectl
+alias kns='kubectl config set-context $(kubectl config current-context) --namespace '
 alias p='pgrep -af'
 
 alias c='xclip -selection clipboard'
@@ -115,7 +119,7 @@ alias n="DEBUG=* node --harmony"
 alias ni="DEBUG=* node-debug --harmony"
 alias bn="DEBUG=* babel-node --state 0"
 # matching filenames
-alias f="ag -g"
+alias f="/usr/bin/fd"
 
 alias rs="rsync -ahP"
 
@@ -205,7 +209,7 @@ alias dt=". '/Applicaitons/Docker/Docker Quickstart Terminal.app/Contents/Resour
 alias d=docker
 alias dm=docker-machine
 alias dc=docker-compose
-function dmenv() { eval $(docker-machine env "$1") }
+# function dmenv() { eval $(docker-machine env "$1") }
 
 # export PATH="$HOME/bin:$HOME/.config/binfiles:$HOME/.rbenv/bin:$HOME/.rbenv/shims:/usr/local/bin:/usr/sbin:/sbin:$HOME/.local/bin:$HOME/.config/gocode/bin:$PATH"
 export PATH="$HOME/bin:$HOME/.config/binfiles:/usr/local/bin:/usr/sbin:/sbin:$HOME/.local/bin:$HOME/.config/gocode/bin:$PATH"
@@ -222,14 +226,15 @@ export GOPATH=$HOME/.code/gocode
 
 # export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
 
-if [ -d ${HOME}/code/summit ]; then
+if [ -d "${HOME}/code/summit" ]; then
   export CDPATH=$CDPATH:$HOME/code/summit
 fi
 
 if [[ $KERNEL == 'Darwin' ]]; then
   keychain_cmd="ssh-add -K"
   #export SSL_CERT_FILE=/git/Certificates.pem
-  export JAVA_HOME=`/usr/libexec/java_home`
+  JAVA_HOME=$(/usr/libexec/java_home)
+  export JAVA_HOME
   export PATH="$PATH:$HOME/Dropbox/summit/projects/summit-extensions/common/bin:/opt/local/bin:/usr/local/bin:/usr/local/share/npm/bin:$HOME/Dropbox/summit/bin:/usr/local/share/bin:/opt/local/bin:/opt/X11/bin:$HOME/.local/bin"
   export CDPATH="$CDPATH:$HOME/Documents:$HOME/Documents/git:$HOME/Dropbox:$HOME/Dropbox/summit:$HOME/Dropbox/summit/projects:$HOME/Documents/git/summit"
 else
@@ -242,7 +247,8 @@ if [[ -x $(which $keychain_cmd 2>/dev/null) ]]; then
   if [[ -f "$HOME/.ssh/chrome" ]]; then eval "$keychain_cmd $HOME/.ssh/chrome"; fi
   if [[ -f "$HOME/.ssh/gru" ]]; then eval "$keychain_cmd $HOME/.ssh/gru"; fi
   if [[ -f "$HOME/.ssh/bmd-ttd" ]]; then eval "$keychain_cmd $HOME/.ssh/bmd-ttd"; fi
-  if [[ -f "$HOME/.keychain/${HOST}-sh" ]]; then source "$HOME/.keychain/${HOST}-sh"; fi
+  # shellcheck source=/dev/null
+  if [[ -f "$HOME/.keychain/$HOST-sh" ]]; then source "$HOME/.keychain/$HOST-sh"; fi
 fi
 
 if [[ -d "$HOME/pkgs/packer" ]]; then
@@ -269,7 +275,7 @@ else
   export EDITOR=vim
 fi
 
-if [ -d ${HOME}/.pyenv ]; then
+if [ -d "${HOME}/.pyenv" ]; then
   export PYENV_ROOT="${HOME}/.pyenv"
   export PATH="$PATH:${PYENV_ROOT}/bin"
   eval "$(pyenv init - zsh)"
@@ -300,9 +306,11 @@ fi
 #  These are already set above, so delete them from here
 
 # added by travis gem
+# shellcheck source=/dev/null
 [ -f /Users/bmd/.travis/travis.sh ] && source /Users/bmd/.travis/travis.sh
 
-export SHELL=`which zsh`
+SHELL=$(which zsh)
+export SHELL
 export EMAIL="bmdmailer@gmail.com"
 export NAME="Brian Murphy-Dye"
 export SMTPSERVER="smtp.gmail.com"
@@ -320,9 +328,11 @@ export SMTPSERVER="smtp.gmail.com"
 # bmd unset -f xclip
 
 # The next line updates PATH for the Google Cloud SDK.
+# shellcheck source=/dev/null
 [ -f "$HOME/.config/google-cloud-sdk/path.zsh.inc" ] && source "$HOME/.config/google-cloud-sdk/path.zsh.inc"
 
 # The next line enables shell command completion for gcloud.
+# shellcheck source=/dev/null
 [ -f "$HOME/.config/google/cloud-sdk/completion.zsh.inc" ] && source "$HOME/.config/google-cloud-sdk/completion.zsh.inc"
 
 if [ -d /opt/chefdk/embedded/bin ]; then
@@ -333,10 +343,10 @@ if [ -d /opt/chefdk/embedded/bin ]; then
 fi
 
 test -d ~/.linuxbrew && PATH="$PATH:$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin"
-test $(which bat >/dev/null) && alias cat=bat
-test $(which prettyping >/dev/null) || alias ping='prettyping --nolegend'
-test $(which tldr >/dev/null) && alias help=man || alias help=tldr
-test $(which fd >/dev/null) && alias fii=find || alias fii=fd
+test "$(which bat >/dev/null)" && alias cat=bat
+test "$(which prettyping >/dev/null)" || alias ping='prettyping --nolegend'
+test "$(which tldr >/dev/null)" && alias help=man || alias help=tldr
+test "$(which fd >/dev/null)" && alias fii=find || alias fii=fd
 
 [ -f "$HOME/.config/dotfiles/etc/ttdrc" ] && source "$HOME/.config/dotfiles/etc/ttdrc"
 
@@ -347,9 +357,10 @@ export CHEF_TEST_KITCHEN_ENCRYPTED_DBAG_SECRET_FILE="$HOME/.chef/databag-secret-
 export CHEF_SECRET="$HOME/.chef/databag-secret.pem"
 
 export opsinventory=$HOME/code/ttd/mux/bin/ops-inventory.py
-function opssh { host=$1; shift; ssh brian.murphy-dye@`$opsinventory --ip $host` $@;  }
+function opssh { host=$1; shift; ssh brian.murphy-dye@"$($opsinventory --ip $host)" "$@";  }
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+# shellcheck source=/dev/null
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

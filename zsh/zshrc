@@ -11,11 +11,10 @@ if [[ -d "$HOME/.config/dotfiles/zsh/zshrc.d" ]]; then
 fi
 
 if [[ -d "$HOME/.config/dotfiles/zsh/zshenv-post.d" ]]; then
-  echo 'exists'
-  echo $HOME/.config/dotfiles/zsh/zshenv-post.d/*.sh
+  # echo $HOME/.config/dotfiles/zsh/zshenv-post.d/*.sh
   # for f in $(ls $HOME/.config/dotfiles/zsh/zshenv-post.d/* | grep '\.sh'); do
   for f in $HOME/.config/dotfiles/zsh/zshenv-post.d/*.sh; do
-    echo "loading zshenv-post.d: $f"
+    # echo "loading zshenv-post.d: $f"
     source $f
   done
 fi
