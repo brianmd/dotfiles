@@ -91,6 +91,8 @@ fi
 
 compctl -g '$HOME/.teamocil/*(:t:r)' teamocil
 
+# to prevent going to a directory without typing 'cd'
+unsetopt AUTO_CD
 
 
 # PROMPT='%3~$(git_prompt_info)%# '
