@@ -366,3 +366,4 @@ function opssh { host=$1; shift; ssh brian.murphy-dye@"$($opsinventory --ip $hos
 # shellcheck source=/dev/null
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# export PATH="$PATH:/snap/bin"
