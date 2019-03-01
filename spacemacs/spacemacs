@@ -379,7 +379,7 @@ values."
 
    ;; bmd added
    ;; unless file has a major mode, set mode to org-mode
-   major-mode 'org-mode
+   ;; major-mode 'org-mode
    ))
 
 (defun dotspacemacs/user-init ()
