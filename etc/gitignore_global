@@ -5,6 +5,7 @@
 .gemtags
 *.vdi
 *~
+*.rety
 .DS_Store
 .idea
 *.tmpproj
