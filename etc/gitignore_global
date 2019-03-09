@@ -4,6 +4,7 @@
 .tags
 .gemtags
 *.vdi
+.vault_key
 *~
 *.rety
 .DS_Store
