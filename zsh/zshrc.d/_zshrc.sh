@@ -345,6 +345,7 @@ if [ -d /opt/chefdk/embedded/bin ]; then
 fi
 
 test -d ~/.linuxbrew && PATH="$PATH:$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin"
+test -d /snap/bin && PATH="$PATH:/snap/bin"
 test "$(which bat >/dev/null)" && alias cat=bat
 test "$(which prettyping >/dev/null)" || alias ping='prettyping --nolegend'
 test "$(which tldr >/dev/null)" && alias help=man || alias help=tldr
