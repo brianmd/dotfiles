@@ -340,6 +340,7 @@ export SMTPSERVER="smtp.gmail.com"
 if [ -d /opt/chefdk/embedded/bin ]; then
   export PATH="/opt/chefdk/embedded/bin:$PATH"
   export TEST_KITCHEN=1
+  # export TEST_KITCHEN_CPUS=6
   eval "$(chef shell-init zsh)"
   alias cheflocal="chef-client --local-mode"
 fi
