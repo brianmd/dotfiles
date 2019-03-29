@@ -283,10 +283,10 @@ if [ -d "${HOME}/.pyenv" ]; then
   eval "$(pyenv init - zsh)"
 fi
 
-# if [ -d ${HOME}/.rbenv ]; then
-#   export RBENV_ROOT=${HOME}/.rbenv
-#   eval "$(rbenv init - zsh)"
-# fi
+if [ -d ${HOME}/.rbenv ]; then
+  export RBENV_ROOT=${HOME}/.rbenv
+  eval "$(rbenv init - zsh)"
+fi
 
 if [[ -d "$HOME/.nodenv" ]]; then
   export PATH="$HOME/.nodenv/bin:$PATH"
