@@ -233,7 +233,8 @@ if [ -d "${HOME}/code/summit" ]; then
 fi
 
 if [[ $KERNEL == 'Darwin' ]]; then
-  keychain_cmd="ssh-add -K"
+  #keychain_cmd="ssh-add -K"
+  keychain_cmd=keychain
   #export SSL_CERT_FILE=/git/Certificates.pem
   JAVA_HOME=$(/usr/libexec/java_home)
   export JAVA_HOME
