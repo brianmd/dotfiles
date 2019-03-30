@@ -1,7 +1,8 @@
 #!/bin/bash
 export TTD_BASE=~/code/ttd
 export TTD_DEPLOYMENT_XML="${TTD_BASE}/hg/operations/DeployTool/deployment.config"
-export TTD_AEROSPIKE_JSON="${TTD_BASE}/git/tdsi/TDSIConfigs/aerospike.json"
+export TTD_AEROSPIKE_JSON="~/code/reference/tdsi/TDSIConfigs/aerospike.json"
+#export TTD_AEROSPIKE_JSON="${TTD_BASE}/git/tdsi/TDSIConfigs/aerospike.json"
 export TTD_PEER1_DIR="${TTD_BASE}/me/bootstrap/tim"
 export TTD_OHAI="${TTD_BASE}/me/bootstrap/all-info.json"
 
