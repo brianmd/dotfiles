@@ -238,7 +238,7 @@ if [[ $KERNEL == 'Darwin' ]]; then
   #export SSL_CERT_FILE=/git/Certificates.pem
   JAVA_HOME=$(/usr/libexec/java_home)
   export JAVA_HOME
-  export PATH="$PATH:$HOME/Dropbox/summit/projects/summit-extensions/common/bin:/opt/local/bin:/usr/local/bin:/usr/local/share/npm/bin:$HOME/Dropbox/summit/bin:/usr/local/share/bin:/opt/local/bin:/opt/X11/bin:$HOME/.local/bin"
+  export PATH="$PATH:/opt/local/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:/usr/local/share/bin:/opt/local/bin:/opt/X11/bin:$HOME/.local/bin"
   export CDPATH="$CDPATH:$HOME/Documents:$HOME/Documents/git:$HOME/Dropbox:$HOME/Dropbox/summit:$HOME/Dropbox/summit/projects:$HOME/Documents/git/summit"
 else
   keychain_cmd=keychain
