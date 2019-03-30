@@ -218,7 +218,7 @@ export PATH="$HOME/bin:$HOME/.config/binfiles:/usr/local/bin:/usr/sbin:/sbin:$HO
 [ -d "$HOME/.chefdk/gem/ruby/2.5.0/bin" ] && export PATH="$PATH:$HOME/.chefdk/gem/ruby/2.5.0/bin"
 
 export CDPATH=".:$HOME/code:$HOME/.config"
-[ -d "$HOME/ans" ] && export CDPATH="$CDPATH:$HOME/ans"
+[ -d "$HOME/code/ans" ] && export CDPATH="$CDPATH:$HOME/code/ans"
 [ -d "$HOME/code/docker" ] && export CDPATH="$CDPATH:$HOME/code/docker"
 [ -d "$HOME/pkgs" ] && export CDPATH="$CDPATH:$HOME/pkgs"
 [ -d "$HOME/pkgs/boxes" ] && export CDPATH="$CDPATH:$HOME/pkgs/boxes"
