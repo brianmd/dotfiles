@@ -6,11 +6,6 @@ KERNEL=$(uname -s)
 # to auto-update oh-my-zsh
 export DISABLE_UPDATE_PROMPT=true
 
-if [ -f "$HOME/.config/pw" ]; then
-  # shellcheck source=/dev/null
-  source "$HOME/.config/pw"
-fi
-
 export DEFAULT_CONFIG_FILE="$HOME/.redmine"
 
 #    oh-my-zsh config
@@ -213,24 +208,7 @@ alias dm=docker-machine
 alias dc=docker-compose
 # function dmenv() { eval $(docker-machine env "$1") }
 
-# export PATH="$HOME/bin:$HOME/.config/binfiles:$HOME/.rbenv/bin:$HOME/.rbenv/shims:/usr/local/bin:/usr/sbin:/sbin:$HOME/.local/bin:$HOME/.config/gocode/bin:$PATH"
-export PATH="$HOME/bin:$HOME/.config/binfiles:/usr/local/bin:/usr/sbin:/sbin:$HOME/.local/bin:$HOME/.config/gocode/bin:$PATH"
-[ -d "$HOME/.chefdk/gem/ruby/2.5.0/bin" ] && export PATH="$PATH:$HOME/.chefdk/gem/ruby/2.5.0/bin"
-
-export CDPATH=".:$HOME/code:$HOME/.config"
-[ -d "$HOME/code/ans" ] && export CDPATH="$CDPATH:$HOME/code/ans"
-[ -d "$HOME/code/docker" ] && export CDPATH="$CDPATH:$HOME/code/docker"
-[ -d "$HOME/pkgs" ] && export CDPATH="$CDPATH:$HOME/pkgs"
-[ -d "$HOME/pkgs/boxes" ] && export CDPATH="$CDPATH:$HOME/pkgs/boxes"
-export CDPATH="$CDPATH:$HOME"
-
-export GOPATH=$HOME/.code/gocode
-
 # export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
-
-if [ -d "${HOME}/code/summit" ]; then
-  export CDPATH=$CDPATH:$HOME/code/summit
-fi
 
 if [[ $KERNEL == 'Darwin' ]]; then
   #keychain_cmd="ssh-add -K"
@@ -238,8 +216,6 @@ if [[ $KERNEL == 'Darwin' ]]; then
   #export SSL_CERT_FILE=/git/Certificates.pem
   JAVA_HOME=$(/usr/libexec/java_home)
   export JAVA_HOME
-  export PATH="$PATH:/opt/local/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:/usr/local/share/bin:/opt/local/bin:/opt/X11/bin:$HOME/.local/bin"
-  export CDPATH="$CDPATH:$HOME/Documents:$HOME/Documents/git:$HOME/Dropbox:$HOME/Dropbox/summit:$HOME/Dropbox/summit/projects:$HOME/Documents/git/summit"
 else
   keychain_cmd=keychain
   # if [[ -f "$HOME/.keychain/${HOST}-sh" ]]; then source "$HOME/.keychain/${HOST}-sh"; fi
@@ -254,21 +230,6 @@ if [[ -x $(which $keychain_cmd 2>/dev/null) ]]; then
   if [[ -f "$HOME/.keychain/$HOST-sh" ]]; then source "$HOME/.keychain/$HOST-sh"; fi
 fi
 
-if [[ -d "$HOME/pkgs/packer" ]]; then
-  export PATH="$PATH:$HOME/pkgs/packer"
-  export PACKER_CACHE_DIR=/usr/share/provisioners/packers
-fi
-
-if [[ -d /usr/local/go/bin ]]; then
-  export PATH=$PATH:/usr/local/go/bin
-fi
-
-if type direnv > /dev/null; then
-  # eval "$(direnv hook $0)"
-  # eval "$(direnv hook $SHELL)"
-  eval "$(direnv hook zsh)"
-fi
-
 if [ -n "$INSIDE_EMACS" ]; then
   echo "inside emacs, so will not load vim key bindings"
 else
@@ -278,35 +239,12 @@ else
   export EDITOR=vim
 fi
 
-if [ -d "${HOME}/.pyenv" ]; then
-  export PYENV_ROOT="${HOME}/.pyenv"
-  export PATH="$PATH:${PYENV_ROOT}/bin"
-  eval "$(pyenv init - zsh)"
-fi
-
-if [ -d ${HOME}/.rbenv ]; then
-  export RBENV_ROOT=${HOME}/.rbenv
-  eval "$(rbenv init - zsh)"
-fi
-
-if [[ -d "$HOME/.nodenv" ]]; then
-  export PATH="$HOME/.nodenv/bin:$PATH"
-  eval "$(nodenv init -)"
-fi
-
-if [[ -d "$HOME/.cargo/bin" ]]; then
-  export PATH="$PATH:$HOME/.cargo/bin"
-fi
-
 # export VAGRANT_HOME=/usr/share/provisioners/vagrant.d
 
 # if &term =~ '256color'
   # set t_ut=
 # fi
 
-
-#  installing rbenv may add export RBENV_ROOT, PATH, and eval rbenv init.
-#  These are already set above, so delete them from here
 
 # added by travis gem
 # shellcheck source=/dev/null
@@ -330,28 +268,16 @@ export SMTPSERVER="smtp.gmail.com"
 # something sets xclip to a function, preventing /usr/bin/xclip from working
 # bmd unset -f xclip
 
-# The next line updates PATH for the Google Cloud SDK.
-# shellcheck source=/dev/null
-[ -f "$HOME/.config/google-cloud-sdk/path.zsh.inc" ] && source "$HOME/.config/google-cloud-sdk/path.zsh.inc"
-
 # The next line enables shell command completion for gcloud.
 # shellcheck source=/dev/null
 [ -f "$HOME/.config/google/cloud-sdk/completion.zsh.inc" ] && source "$HOME/.config/google-cloud-sdk/completion.zsh.inc"
 
 if [ -d /opt/chefdk/embedded/bin ]; then
-  export PATH="/opt/chefdk/embedded/bin:$PATH"
   export TEST_KITCHEN=1
   # export TEST_KITCHEN_CPUS=6
   eval "$(chef shell-init zsh)"
   alias cheflocal="chef-client --local-mode"
 fi
-
-test -d ~/.linuxbrew && PATH="$PATH:$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin"
-test -d /snap/bin && PATH="$PATH:/snap/bin"
-test "$(which bat >/dev/null)" && alias cat=bat
-test "$(which prettyping >/dev/null)" || alias ping='prettyping --nolegend'
-test "$(which tldr >/dev/null)" && alias help=man || alias help=tldr
-test "$(which fd >/dev/null)" && alias fii=find || alias fii=fd
 
 [ -f "$HOME/.config/dotfiles/etc/ttdrc" ] && source "$HOME/.config/dotfiles/etc/ttdrc"
 
@@ -371,3 +297,47 @@ function opssh { host=$1; shift; ssh brian.murphy-dye@"$($opsinventory --ip $hos
 
 # export PATH="$PATH:/snap/bin"
 export  ANSIBLE_VAULT_PASSWORD_FILE="./.vault_key"
+
+
+
+# if [[ $KERNEL == 'Darwin' ]]; then
+
+
+test -d "$HOME/pkgs/packer" && export PACKER_CACHE_DIR=/usr/share/provisioners/packers
+
+
+
+if type direnv > /dev/null; then
+    # eval "$(direnv hook $0)"
+    # eval "$(direnv hook $SHELL)"
+    eval "$(direnv hook zsh)"
+fi
+
+test "$(which bat >/dev/null)" && alias cat=bat
+test "$(which prettyping >/dev/null)" && alias ping='prettyping --nolegend'
+test "$(which tldr >/dev/null)" && alias help=man || alias help=tldr
+test "$(which fd >/dev/null)" && alias fii=find || alias fii=fd
+
+
+
+
+if [ -d "${HOME}/.pyenv" ]; then
+    export PYENV_ROOT="${HOME}/.pyenv"
+    eval "$(pyenv init - zsh)"
+fi
+
+if [ -d ${HOME}/.rbenv ]; then
+    export RBENV_ROOT=${HOME}/.rbenv
+    eval "$(rbenv init - zsh)"
+fi
+
+if [[ -d "$HOME/.nodenv" ]]; then
+    eval "$(nodenv init -)"
+fi
+
+# The next line updates PATH for the Google Cloud SDK.
+# shellcheck source=/dev/null
+[ -f "$HOME/.config/google-cloud-sdk/path.zsh.inc" ] && source "$HOME/.config/google-cloud-sdk/path.zsh.inc"
+
+#  installing rbenv may add export RBENV_ROOT, PATH, and eval rbenv init.
+#  These are already set above, so delete them from here
