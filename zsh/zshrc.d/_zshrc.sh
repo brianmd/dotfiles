@@ -248,7 +248,7 @@ fi
 
 # added by travis gem
 # shellcheck source=/dev/null
-[ -f /Users/bmd/.travis/travis.sh ] && source /Users/bmd/.travis/travis.sh
+test -f /Users/bmd/.travis/travis.sh && source /Users/bmd/.travis/travis.sh
 
 SHELL=$(which zsh)
 export SHELL
@@ -272,13 +272,6 @@ export SMTPSERVER="smtp.gmail.com"
 # shellcheck source=/dev/null
 [ -f "$HOME/.config/google/cloud-sdk/completion.zsh.inc" ] && source "$HOME/.config/google-cloud-sdk/completion.zsh.inc"
 
-if [ -d /opt/chefdk/embedded/bin ]; then
-  export TEST_KITCHEN=1
-  # export TEST_KITCHEN_CPUS=6
-  eval "$(chef shell-init zsh)"
-  alias cheflocal="chef-client --local-mode"
-fi
-
 [ -f "$HOME/.config/dotfiles/etc/ttdrc" ] && source "$HOME/.config/dotfiles/etc/ttdrc"
 
 # export CHEF_TEST_KITCHEN_ENCRYPTED_DBAG_SECRET_FILE=/home/bmd/.chef/databag-secret-kitchen.pem
@@ -288,12 +281,13 @@ export CHEF_TEST_KITCHEN_ENCRYPTED_DBAG_SECRET_FILE="$HOME/.chef/databag-secret-
 export CHEF_SECRET="$HOME/.chef/databag-secret.pem"
 
 export opsinventory=$HOME/code/ttd/mux/bin/ops-inventory.py
-function opssh { host=$1; shift; ssh brian.murphy-dye@"$($opsinventory --ip $host)" "$@";  }
+export opsinv=$HOME/code/ans/ttd-ansible/inventories/ops-inventory.py
+function opssh { host=$1; shift; ssh brian.murphy-dye@"$($opsinv --ip $host)" "$@";  }
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # shellcheck source=/dev/null
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+test -f ~/.fzf.zsh && source ~/.fzf.zsh
 
 # export PATH="$PATH:/snap/bin"
 export  ANSIBLE_VAULT_PASSWORD_FILE="./.vault_key"
@@ -305,6 +299,10 @@ export  ANSIBLE_VAULT_PASSWORD_FILE="./.vault_key"
 
 test -d "$HOME/pkgs/packer" && export PACKER_CACHE_DIR=/usr/share/provisioners/packers
 
+test "$(which bat >/dev/null)" && alias cat=bat
+test "$(which prettyping >/dev/null)" && alias ping='prettyping --nolegend'
+test "$(which tldr >/dev/null)" && alias help=man || alias help=tldr
+test "$(which fd >/dev/null)" && alias fii=find || alias fii=fd
 
 
 if type direnv > /dev/null; then
@@ -313,26 +311,32 @@ if type direnv > /dev/null; then
     eval "$(direnv hook zsh)"
 fi
 
-test "$(which bat >/dev/null)" && alias cat=bat
-test "$(which prettyping >/dev/null)" && alias ping='prettyping --nolegend'
-test "$(which tldr >/dev/null)" && alias help=man || alias help=tldr
-test "$(which fd >/dev/null)" && alias fii=find || alias fii=fd
 
+echo zzz chef shell-init $(date)
 
+#if [ -d /opt/chefdk/embedded/bin ]; then
+#    export TEST_KITCHEN=1
+#    # export TEST_KITCHEN_CPUS=6
+# TODO: this is slow
+#    eval "$(chef shell-init zsh --no-rehash)"
+#    alias cheflocal="chef-client --local-mode"
+#fi
 
+echo zzz shell-init done $(date)
+
+if [[ -d "$HOME/.nodenv" ]]; then
+    eval "$(nodenv init -)"
+fi
 
 if [ -d "${HOME}/.pyenv" ]; then
     export PYENV_ROOT="${HOME}/.pyenv"
     eval "$(pyenv init - zsh)"
 fi
 
+# TODO: this is slow
 if [ -d ${HOME}/.rbenv ]; then
     export RBENV_ROOT=${HOME}/.rbenv
-    eval "$(rbenv init - zsh)"
-fi
-
-if [[ -d "$HOME/.nodenv" ]]; then
-    eval "$(nodenv init -)"
+    eval "$(rbenv init - zsh --no-rehash)"
 fi
 
 # The next line updates PATH for the Google Cloud SDK.
@@ -341,3 +345,5 @@ fi
 
 #  installing rbenv may add export RBENV_ROOT, PATH, and eval rbenv init.
 #  These are already set above, so delete them from here
+
+echo zzz done $(date)
