@@ -42,8 +42,8 @@ for d in \
 done
 export PATH
 
-test -f "$HOME/.config/pw && source $HOME/.config/pw
-"
+test -f "$HOME/.config/pw" && source $HOME/.config/pw
+
 
 
 #if [ -d ${HOME}/.pyenv ]; then
