@@ -8,15 +8,17 @@ for d in \
         $HOME/pkgs \
         $HOME/pkgs/boxes \
         $HOME/Documents \
+        $HOME/code/mux/bin \
+        $HOME/code/mux/tasks \
     ; do
     test -d $d && CDPATH="$d:$CDPATH"
 done
+CDPATH=".:$CDPATH"
 export CDPATH
 
 # ~/.chefdk/gem/ruby/2.5.0/bin \
 PATH="/sbin"
 for d in \
-    z \
         ~/.config/binfiles \
         ~/.local/bin \
         ~/.linuxbrew \
@@ -51,3 +53,6 @@ test -f "$HOME/.config/pw" && source $HOME/.config/pw
 #  export PATH="$PATH:${PYENV_ROOT}/bin"
 #  eval "$(pyenv init - zsh)"
 #fi
+
+# export TEST_KITCHEN_CPUS=6
+
