@@ -1,6 +1,6 @@
 CDPATH="$HOME"
 for d in \
-    $HOME/code/ans \
+        $HOME/code/ans \
         $HOME/code/docker \
         $HOME/code \
         $HOME/.config \
@@ -9,8 +9,8 @@ for d in \
         $HOME/pkgs/boxes \
         $HOME/Documents \
     ; do
-  echo "path: $d"
-    test -d $d && CDPATH="$d:$CDPATH"
+  # echo "path: $d"
+  test -d $d && CDPATH="$d:$CDPATH"
 done
 CDPATH=".:$CDPATH"
 export CDPATH
@@ -41,7 +41,7 @@ for d in \
         /usr/local/go/bin \
         /usr/local/share/bin \
     ; do
-    test -d $d && PATH="$d:$PATH"
+  test -d $d && PATH="$d:$PATH"
 done
 export PATH
 
