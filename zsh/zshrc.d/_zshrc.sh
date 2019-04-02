@@ -312,8 +312,6 @@ if type direnv > /dev/null; then
 fi
 
 
-echo zzz chef shell-init $(date)
-
 #if [ -d /opt/chefdk/embedded/bin ]; then
 #    export TEST_KITCHEN=1
 #    # export TEST_KITCHEN_CPUS=6
@@ -321,8 +319,6 @@ echo zzz chef shell-init $(date)
 #    eval "$(chef shell-init zsh --no-rehash)"
 #    alias cheflocal="chef-client --local-mode"
 #fi
-
-echo zzz shell-init done $(date)
 
 if [[ -d "$HOME/.nodenv" ]]; then
     eval "$(nodenv init -)"
@@ -345,5 +341,3 @@ fi
 
 #  installing rbenv may add export RBENV_ROOT, PATH, and eval rbenv init.
 #  These are already set above, so delete them from here
-
-echo zzz done $(date)
