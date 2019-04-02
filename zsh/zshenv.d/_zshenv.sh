@@ -8,9 +8,8 @@ for d in \
         $HOME/pkgs \
         $HOME/pkgs/boxes \
         $HOME/Documents \
-        $HOME/code/mux/bin \
-        $HOME/code/mux/tasks \
     ; do
+  echo "path: $d"
     test -d $d && CDPATH="$d:$CDPATH"
 done
 CDPATH=".:$CDPATH"
@@ -27,9 +26,8 @@ for d in \
         ~/.code/gocode/bin \
         ~/.cargo/bin \
         ~/.pkgs/packer \
-        /usr/local/share/npm/bin \
-        /usr/local/go/bin \
-        /usr/local/share/bin \
+        $HOME/code/mux/bin \
+        $HOME/code/mux/tasks \
         /opt/local/bin \
         /opt/chefdk/embedded/bin \
         /opt/X11/bin \
@@ -39,6 +37,9 @@ for d in \
         /usr/local/sbin \
         /usr/sbin \
         /snap/bin \
+        /usr/local/share/npm/bin \
+        /usr/local/go/bin \
+        /usr/local/share/bin \
     ; do
     test -d $d && PATH="$d:$PATH"
 done
