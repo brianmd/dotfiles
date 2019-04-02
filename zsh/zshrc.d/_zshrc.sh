@@ -280,8 +280,9 @@ export SMTPSERVER="smtp.gmail.com"
 export CHEF_TEST_KITCHEN_ENCRYPTED_DBAG_SECRET_FILE="$HOME/.chef/databag-secret-kitchen.pem"
 export CHEF_SECRET="$HOME/.chef/databag-secret.pem"
 
-export opsinventory=$HOME/code/ttd/mux/bin/ops-inventory.py
-export opsinv=$HOME/code/ans/ttd-ansible/inventories/ops-inventory.py
+export opsinventory=$HOME/code/mux/bin/opsinventory.py
+export opinv=$HOME/code/mux/bin/opsinventory.py
+# export opsinv=$HOME/code/ans/ttd-ansible/inventories/ops-inventory.py
 function opssh { host=$1; shift; ssh brian.murphy-dye@"$($opsinv --ip $host)" "$@";  }
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
