@@ -17,3 +17,6 @@ if [[ -d "$HOME/.config/dotfiles/zsh/zshenv-post.d" ]]; then
     source $f
   done
 fi
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
