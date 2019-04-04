@@ -342,3 +342,5 @@ fi
 
 #  installing rbenv may add export RBENV_ROOT, PATH, and eval rbenv init.
 #  These are already set above, so delete them from here
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
