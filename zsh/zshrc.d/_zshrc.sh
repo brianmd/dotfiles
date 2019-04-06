@@ -70,7 +70,7 @@ DISABLE_CORRECTION="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby gem lighthouse)
-plugins=(git bundler brew vagrant git-flow docker docker-compose docker-machine docker-local knife mercurial kitchen knife knife_ssh kubectl)
+plugins=(git bundler brew vagrant git-flow docker docker-compose docker-machine knife mercurial kitchen knife knife_ssh kubectl)
 # shellcheck source=/dev/null
 source "$ZSH/oh-my-zsh.sh"
 # shellcheck source=/dev/null
@@ -116,7 +116,7 @@ alias n="DEBUG=* node --harmony"
 alias ni="DEBUG=* node-debug --harmony"
 alias bn="DEBUG=* babel-node --state 0"
 # matching filenames
-alias f="/usr/bin/fd"
+alias f="/usr/local/bin/fd"
 
 alias rs="rsync -ahP"
 
@@ -211,13 +211,13 @@ alias dc=docker-compose
 # export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
 
 if [[ $KERNEL == 'Darwin' ]]; then
-  #keychain_cmd="ssh-add -K"
-  keychain_cmd=keychain
+  #keychain_cmd="ssh-add -K --quiet"
+  keychain_cmd="keychain --quiet"
   #export SSL_CERT_FILE=/git/Certificates.pem
   JAVA_HOME=$(/usr/libexec/java_home)
   export JAVA_HOME
 else
-  keychain_cmd=keychain
+  keychain_cmd="keychain --quiet"
   # if [[ -f "$HOME/.keychain/${HOST}-sh" ]]; then source "$HOME/.keychain/${HOST}-sh"; fi
 fi
 
