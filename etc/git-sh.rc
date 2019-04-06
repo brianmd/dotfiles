@@ -21,7 +21,15 @@ alias gcommita="git commit -va"
 
 alias gclean="git clean -fd"
 alias gch="git checkout"
-alias gd="git diff --color"
+# pip install git+https://github.com/jeffkaufman/icdiff.git
+icdiff_loc=$(which icdiff)
+if [ -x $icdiff_loc ]; then
+  alias gd="git difftool --extcmd icdiff"
+else
+  alias gd="git diff --color"
+fi
+alias gd1="git diff --color"
+alias gemacs="git difftool --tool=ediffclient master --"
 alias gdr="git diff --color develop remotes/origin/develop"
 alias gds="git diff --stat --color"
 alias gdrs="git diff --stat --color develop remotes/origin/develop"

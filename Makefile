@@ -6,7 +6,6 @@
 # TODO: teamocil?
 #
 #
-#
 #    for json pretty print emacs needs:
 #           npm -g install js-beautify
 
