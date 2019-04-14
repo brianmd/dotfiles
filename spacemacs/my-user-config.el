@@ -99,3 +99,5 @@
 ;;   :post-config
 ;;   (spacemacs/set-leader-keys-for-major-mode 'clojure-mode
 ;;     "ec" 'cider-pprint-eval-defun-to-comment))
+
+(setq deft-directory "~/drop/notes")

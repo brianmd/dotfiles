@@ -2,15 +2,15 @@
 
 (require 'org)
 
-(setq org-attach-directory "/home/bmd/Dropbox/docs/org/")
-(setq-default org-attach-directory "/home/bmd/Dropbox/docs/org/")
+(setq org-attach-directory "~/drop")
+(setq-default org-attach-directory "~/drop/notes")
 
 (setq org-agenda-files (list
                         ;; "~/Dropbox/docs/org/gtd.org"
                         ;; "~/Dropbox/docs/org/work.org"
                         ;; "~/Dropbox/docs/org/home.org"
                         ;; "~/Dropbox/docs/org/"
-                        "/home/bmd/Dropbox/docs/org/"
+                        "~/drop/notes"
                         ))
 
 (setq-default dotspacemacs-configuration-layers
@@ -24,13 +24,13 @@
                       ))))
 
 (setq org-capture-templates
-      '(("t" "GTD" entry (file+headline "~/Dropbox/docs/org/gtd.org" "GTD")
+      '(("t" "GTD" entry (file+headline "~/drop/notes/gtd.org" "GTD")
          "* TODO %?\n  %i\n  %a")
-        ("w" "Work Journal" entry (file+datetree "~/Dropbox/docs/org/work-journal.org")
+        ("w" "Work Journal" entry (file+datetree "~/drop/notes/work-journal.org")
          "* %?")
-        ("x" "Work Journal (extended entry)" entry (file+datetree "~/Dropbox/docs/org/work-journal.org")
+        ("x" "Work Journal (extended entry)" entry (file+datetree "~/drop/notes/work-journal.org")
          "* %?\nEntered on %U\n  %i\n  %a")
-        ("j" "Journal" entry (file+datetree "~/Dropbox/docs/org/journal.org")
+        ("j" "Journal" entry (file+datetree "~/drop/notes/journal.org")
          "* %?\nEntered on %U\n  %i\n  %a")
         ))
   ;; the above uses these escapes
@@ -127,7 +127,7 @@
 
 (defun find-gtd ()
   (interactive)
-  (find-file "~/Dropbox/docs/org/gtd.org"))
+  (find-file "~/drop/notes/gtd.org"))
 
 ; Set default column view headings: Task Total-Time Time-Stamp
 (setq org-columns-default-format "%50ITEM(Task) %10CLOCKSUM %16TIMESTAMP_IA")
@@ -137,6 +137,6 @@
 (org-babel-do-load-languages
  'org-babel-load-languages
  '( (emacs-lisp  . t)
-    (sh . t)
+    (shell . t)
     (ruby . t)
     ))
