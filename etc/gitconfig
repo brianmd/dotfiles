@@ -5,7 +5,8 @@
   # email = brian@murphydye.com
 [core]
   # excludesfile = $HOME/.config/dotfiles/etc/gitignore_global
-  excludesfile = /home/bmd/.config/dotfiles/etc/gitignore_global
+  # excludesfile = /Users/brian.murphy-dye/.config/dotfiles/etc/gitignore_global
+  excludesfile = ~/.config/dotfiles/etc/gitignore_global
   editor = emacsclient -t -a ''
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 [web]
@@ -73,8 +74,7 @@
   autosetupmerge = true
 [include]
   # ttd aliases
-  path = /home/bmd/code/ttd/git-utils/gitconfig
-
+  #####  TODO: re-add with correct path??  path = /home/bmd/code/ttd/git-utils/gitconfig
 
 
 [alias]
