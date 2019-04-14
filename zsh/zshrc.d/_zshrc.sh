@@ -212,7 +212,8 @@ alias dc=docker-compose
 
 if [[ $KERNEL == 'Darwin' ]]; then
   #keychain_cmd="ssh-add -K --quiet"
-  keychain_cmd="keychain --quiet"
+  #keychain_cmd="keychain --quiet"
+  keychain_cmd="keychain"
   #export SSL_CERT_FILE=/git/Certificates.pem
   JAVA_HOME=$(/usr/libexec/java_home)
   export JAVA_HOME
@@ -284,6 +285,8 @@ export opsinventory=$HOME/code/mux/bin/opsinventory.py
 #export opinv=$HOME/code/mux/bin/opsinventory.py
 export oinv=$HOME/code/mux/bin/opsinventory.py
 # export opsinv=$HOME/code/ans/ttd-ansible/inventories/ops-inventory.py
+alias apl="ansible-playbook -i $oinv"
+alias ans="ansible -i $oinv"
 function osh { host=$1; shift; ssh brian.murphy-dye@"$($oinv --ip $host)" "$@";  }
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
@@ -343,5 +346,7 @@ fi
 
 #  installing rbenv may add export RBENV_ROOT, PATH, and eval rbenv init.
 #  These are already set above, so delete them from here
+
+function s2a { eval $( $(which saml2aws) script --shell=bash --profile=$@); }
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
