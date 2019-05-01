@@ -46,8 +46,7 @@ done
 export PATH
 
 test -f "$HOME/.config/pw" && source $HOME/.config/pw
-
-
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 #if [ -d ${HOME}/.pyenv ]; then
 #  export PYENV_ROOT="${HOME}/.pyenv"
@@ -56,4 +55,6 @@ test -f "$HOME/.config/pw" && source $HOME/.config/pw
 #fi
 
 # export TEST_KITCHEN_CPUS=6
+
+export ANSIBLE_ROLES_PATH="./roles:../roles:../../roles"
 
