@@ -124,7 +124,7 @@ alias rs="rsync -ahP"
 # bmd _c() { _files -W "$HOME/code" -/; }
 #compdef _c c
 
-alias ipaddrs='ip addr list | grep "inet "'
+alias ipaddrs='ifconfig | grep "inet "'
 
 alias myip="ip -br -c a"
 alias os='cat /etc/*release*'
