@@ -218,7 +218,8 @@ if [[ $KERNEL == 'Darwin' ]]; then
   JAVA_HOME=$(/usr/libexec/java_home)
   export JAVA_HOME
 else
-  keychain_cmd="keychain --quiet"
+  # keychain_cmd="keychain --quiet"
+  keychain_cmd="keychain"
   # if [[ -f "$HOME/.keychain/${HOST}-sh" ]]; then source "$HOME/.keychain/${HOST}-sh"; fi
 fi
 
