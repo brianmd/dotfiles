@@ -12,6 +12,23 @@
 (require 'narrow-or-widen)
 ;; (load "/home/bmd/.config/dotfiles/spacemacs/narrow-or-widen")
 
+(setq dired-dwim-target t)
+
+(use-package dired-narrow
+  :ensure t
+  :config
+  (bind-key "C-c C-n" #'dired-narrow)
+  ;; ("bind-key C-c C-f" #'dired-narrow-fuzzy)
+  (bind-key "C-x C-N" #'dired-narrow-regexp)
+  )
+
+(use-package dired-subtree
+  :ensure t
+  :after dired
+  :config
+  (bind-key "<tab>" #'dired-subtree-toggle dired-mode-map)
+  (bind-key "<backtab>" #'dired-subtree-cycle dired-mode-map))
+
 ;; save customizations from the UI (M-x customize) to its own file
 (setq custom-file "~/.config/dotfiles/spacemacs/custom.el")
 (load custom-file 'noerror)
@@ -65,26 +82,27 @@
   :token (getenv "SLACK_SECRET")
   :subscribed-channels '(general slackbot))
 
-(add-to-list 'alert-user-configuration
-  '(((:category . "slack")) ignore nil))
+;; (add-to-list 'alert-user-configuration
+;;   '(((:category . "slack")) ignore nil))
 
 ;; see http://endlessparentheses.com/keep-your-slack-distractions-under-control-with-emacs.html
 ;; and http://endlessparentheses.com/mold-slack-entirely-to-your-liking-with-emacs.html
 
 (add-hook 'slack-mode-hook #'emojify-mode)
 
-(add-to-list
-  'alert-user-configuration
-  '(((:title . "\\(dev-aerospike\\|dev-aerospike-trn\\)")
-      (:category . "slack"))
-     libnotify nil))
+;;     getting error about sybol's value as variable is void
+;; (add-to-list
+;;   'alert-user-configuration
+;;   '(((:title . "\\(dev-aerospike\\|dev-aerospike-trn\\)")
+;;       (:category . "slack"))
+;;      libnotify nil))
 
-(add-to-list
-  'alert-user-configuration
-  '(((:message . "@brian\\|Brian")
-      (:title . "\\(okchannel\\|sosochannel\\)")
-      (:category . "slack"))
-     libnotify nil))
+;; (add-to-list
+;;   'alert-user-configuration
+;;   '(((:message . "@brian\\|Brian")
+;;       (:title . "\\(okchannel\\|sosochannel\\)")
+;;       (:category . "slack"))
+;;      libnotify nil))
 
 ; (spacemacs/set-leader-keys-for-major-mode 'clojure-mode "e;" 'cider-pprint-eval-defun-to-comment)
 (spacemacs/set-leader-keys-for-major-mode 'clojure-mode "ec" 'cider-ppprint-eval-last-sexp-to-comment)

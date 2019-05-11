@@ -78,4 +78,3 @@
 (set-indent 2)
 (set-tab-width 2)
 (add-hook 'shell-script-hook (lambda () (set-indent 2)))
-

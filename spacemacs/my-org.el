@@ -13,15 +13,16 @@
                         "~/drop/notes"
                         ))
 
-(setq-default dotspacemacs-configuration-layers
-             '((erc :variables
-                    erc-server-list
-                    '(("irc.freenode.net"
-                       :port "6697"
-                       :ssl t
-                       :nick "some-user"
-                       :password "secret")
-                      ))))
+;; the following needs to be included with other layers in spacemacs file
+;; (setq-default dotspacemacs-configuration-layers
+;;              '((erc :variables
+;;                     erc-server-list
+;;                     '(("irc.freenode.net"
+;;                        :port "6697"
+;;                        :ssl t
+;;                        :nick "some-user"
+;;                        :password "secret")
+;;                       ))))
 
 (setq org-capture-templates
       '(("t" "GTD" entry (file+headline "~/drop/notes/gtd.org" "GTD")
