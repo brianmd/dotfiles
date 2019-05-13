@@ -1,4 +1,11 @@
+# keyboard shortcuts:  http://develop.spacemacs.org/layers/+emacs/org/README.html
+
 Testing ruby:
+
+| a | bc | deghij |
+| x |  3 |      4 |
+| y |  5 |      9 |
+|---+----+--------|
 
 * TODO if get ruby block disabled: SPC SPC spacemacs/recompile-elpa
 * TODO to execute: SPC SPC org-babel-execute-src-block
@@ -8,17 +15,45 @@ puts 'hello world!!'
 `ttdssh lax-cit110 -m df -h`
 #+END_SRC
 
-#+BEGIN_SRC ruby
-puts 'hello world!!'
-`ls -l`
+(org-babel-load-file (expand-file-name "~/drop/notes/test.org"))
+
+#+BEGIN_SRC python :results value
+  # print('hello world!!')
+  # 3 + 5
+  # # `ls -l`
+  # print('all done')
+import time
+print("Hello, today's date is %s" % time.ctime())
+print('Two plus two is')
+return [2 + 2, 99, 152]
+#+END_SRC
+
+#+RESULTS:
+| 4 | 99 | 152 |
+
+#+BEGIN_SRC plantuml :file tryout.png
+@startuml
+JAremko->robbyoconnor : I think the docs can benefit from some kind of illustration
+JAremko<-robbyoconnor : I'm too lazy -- I have actual work to do. I link to the docs. If you can write me a diagram in plantuml, I'll gladly compile and add it.
+JAremko->robbyoconnor : *gives ths diagram*
+robbyoconnor<-JAremko : *robbyoconnor adds it and JAremko is happy*
+...
+robbyoconnor->theOtherPerson : And they thinks it's funny? Yup, they definitely finds it funny. Right?
+@enduml
+#+END_SRC
+
+#+RESULTS:
+[[file:tryout.png]]
+
+#+BEGIN_SRC ruby :results output
+  puts 'hello world!!'
+  `ls -l`
+  puts 'all done'
 #+END_SRC
 
 #+BEGIN_SRC ruby :results output
 puts 'hello world'
 #+END_SRC
-
-#+RESULTS:
-: hello world
 
 this is the end of the test
 

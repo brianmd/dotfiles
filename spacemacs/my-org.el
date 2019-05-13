@@ -133,11 +133,16 @@
 ; Set default column view headings: Task Total-Time Time-Stamp
 (setq org-columns-default-format "%50ITEM(Task) %10CLOCKSUM %16TIMESTAMP_IA")
 
+(require 'ob-html)
+(require 'ob-ipython)
 (require 'ob-ruby)
 (require 'ob-shell)
+
 (org-babel-do-load-languages
  'org-babel-load-languages
  '( (emacs-lisp  . t)
-    (shell . t)
+    (html . t)
+    (python . t)
     (ruby . t)
+    (shell . t)
     ))

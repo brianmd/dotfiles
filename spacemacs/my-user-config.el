@@ -3,7 +3,7 @@
 (require 'my-clojure)
 (require 'my-copy-paste)
 (require 'my-dash-docsets)
-;; (require 'my-eww)
+(require 'my-eww)
 (require 'my-mouse)
 (require 'my-org)
 (require 'my-tabs)
@@ -12,7 +12,13 @@
 (require 'narrow-or-widen)
 ;; (load "/home/bmd/.config/dotfiles/spacemacs/narrow-or-widen")
 
+(setq org-plantuml-jar-path "/Users/brianmurphy-dye/.config/dotfiles/plantuml.jar")
+;; (setq org-plantuml-jar-path "/Users/brianmurphy-dye/.config/dotfiles")
+
 (setq dired-dwim-target t)
+
+(when (string= system-type "darwin")
+  (setq dired-use-ls-dired nil))
 
 (use-package dired-narrow
   :ensure t
@@ -22,11 +28,21 @@
   (bind-key "C-x C-N" #'dired-narrow-regexp)
   )
 
+(use-package dired-collapse
+  :ensure t
+  ;; :after dired
+  :config
+  ;; (bind-key "<tab>" #'dired-subtree-toggle dired-mode-map)
+  ;; (bind-key "<backtab>" #'dired-subtree-cycle dired-mode-map)
+  )
+(add-hook 'dired-hook #'dired-collapse-mode)
+
 (use-package dired-subtree
   :ensure t
-  :after dired
+  ;; :after dired
   :config
-  (bind-key "<tab>" #'dired-subtree-toggle dired-mode-map)
+  (bind-key "i" #'dired-subtree-toggle dired-mode-map)
+  ;; (bind-key "<tab>" #'dired-subtree-toggle dired-mode-map)
   (bind-key "<backtab>" #'dired-subtree-cycle dired-mode-map))
 
 ;; save customizations from the UI (M-x customize) to its own file
@@ -74,13 +90,14 @@
 
 ;; xoxp-10924691317-169530033073-189201081253-8c708f799095a5d0b364b13edb73a0a7
 
-(slack-register-team
-  :default t
-  :name "thetradedesk"
-  :client-id (getenv "SLACK_CLIENT")
-  :client-secret (getenv "SLACK_SECRET")
-  :token (getenv "SLACK_SECRET")
-  :subscribed-channels '(general slackbot))
+;;   TODO slack-client env vars aren't loaded?
+;; (slack-register-team
+;;   :default t
+;;   :name "thetradedesk"
+;;   :client-id (getenv "SLACK_CLIENT")
+;;   :client-secret (getenv "SLACK_SECRET")
+;;   :token (getenv "SLACK_SECRET")
+;;   :subscribed-channels '(general slackbot))
 
 ;; (add-to-list 'alert-user-configuration
 ;;   '(((:category . "slack")) ignore nil))

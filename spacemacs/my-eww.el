@@ -11,8 +11,6 @@
   "F" 'eww-lnum-universal ;; in vimperator open new tab
   "gu" 'eww-up-url
   "gt" 'eww-top-url
-  "f" 'eww-lnum-follow
-  "F" 'eww-lnum-universal
   "h" 'eww-back-url ;; H in vimperator, because h is :help, but I think lowercase is better for us
   "l" 'eww-forward-url ;; in vimperator, L is used for consistency, but again I think lower case is nicer for us
   "r" 'eww-reload

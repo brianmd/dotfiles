@@ -201,8 +201,8 @@ alias l=logit
 
 # in emacs shell, type 'dt', then can run docker-compose
 # from http://stackoverflow.com/questions/34928552/run-commands-on-docker-container-from-emacs
-alias sc=systemctl
 alias dt=". '/Applicaitons/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'"
+alias sc=systemctl
 alias d=docker
 alias dm=docker-machine
 alias dc=docker-compose
