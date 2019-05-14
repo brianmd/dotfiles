@@ -703,7 +703,7 @@ is already narrowed."
 ;; xoxp-10924691317-169530033073-189201081253-8c708f799095a5d0b364b13edb73a0a7
 #+END_SRC
 ** Personal map -- TODO make my own
-#+BEGIN_SRC emacs-list :tangle no
+#+BEGIN_SRC emacs-lisp :tangle no
 unset C- and M- digit keys
 ;(dotimes (n 10)
 ;  (global-unset-key (kbd (format "C-%d" n)))
@@ -758,6 +758,15 @@ unset C- and M- digit keys
 
 (global-set-key [mouse-3] 'flyspell-correct-word-before-point)
 #+END_SRC
+** Ruby
+#+BEGIN_SRC emacs-lisp
+(require 'seeing-is-believing)
+(add-hook 'ruby-mode-hook 'seeing-is-believing)
+#+END_SRC
+
+#+RESULTS:
+| seeing-is-believing | ruby-tools-mode | rubocop-mode | robe-mode | turn-on-evil-matchit-mode | inf-ruby-minor-mode | spacemacs//init-jump-handlers-ruby-mode | spacemacs//init-company-ruby-mode | company-mode |
+
 ** Terminal
 #+BEGIN_SRC emacs-lisp
 (debug-msg "terminal ...")

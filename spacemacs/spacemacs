@@ -11,11 +11,12 @@
 
 (setq my-additional-packages
       '(
-        sdcv
         dired-collapse
         dired-narrow
         dired-subtree
         org-brain
+        sdcv
+        seeing-is-believing
         ))
 
 (setq my-layers

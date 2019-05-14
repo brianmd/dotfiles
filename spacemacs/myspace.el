@@ -528,6 +528,9 @@ is already narrowed."
 
 ;; xoxp-10924691317-169530033073-189201081253-8c708f799095a5d0b364b13edb73a0a7
 
+(require 'seeing-is-believing)
+(add-hook 'ruby-mode-hook 'seeing-is-believing)
+
 (debug-msg "terminal ...")
 ;; term shortcuts
 ;; (add-to-list 'term-mode-hook
