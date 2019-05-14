@@ -15,6 +15,7 @@
         dired-collapse
         dired-narrow
         dired-subtree
+        org-brain
         ))
 
 (setq my-layers
@@ -40,14 +41,14 @@
      plantuml
      python
      (ranger :variables
-             )
+       )
      restclient
      (ruby :variables
-           )
+       ruby-enable-enh-ruby-mode t)
      scala
      syntax-checking
      (version-control :variables
-                      version-controll-diff-tool 'diff-hl)
+       version-controll-diff-tool 'diff-hl)
      osx
      spell-checking
      shell-scripts

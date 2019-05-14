@@ -1,12 +1,82 @@
-(message "starting spacemacs init")
+(defun debug-msg (msg)
+  (if t
+    (message msg)))
+(debug-msg "starting spacemacs init ...")
 
+(defun load-if-exists (f)
+  "load the elisp file only if it exists and is readable"
+  (if (file-readable-p f)
+      (load-file f)))
+
+;; (load-if-exists "~/Sync/shared/mu4econfig.el")
+;; (load-if-exists "~/Sync/shared/not-for-github.el")
+
+;; this is a just-in-case I forget I'm already emacs
+(defun eshell/emacs (file)
+      (find-file file))
+(defun eshell/vim (file)
+      (find-file file))
+(defun eshell/e (file)
+      (find-file file))
+(defun eshell/ee (file)
+      (find-file-other-window file))
+
+(defun eshell/gs () (git status))
+
+;; from http://www.howardism.org/Technical/Emacs/eshell-fun.html
+(defun eshell-here ()
+  "Opens up a new shell in the directory associated with the
+current buffer's file. The eshell is renamed to match that
+directory to make multiple eshell windows easier."
+  (interactive)
+  (let* ((parent (if (buffer-file-name)
+                     (file-name-directory (buffer-file-name))
+                   default-directory))
+         (height (/ (window-total-height) 3))
+         (name   (car (last (split-string parent "/" t)))))
+    (split-window-vertically (- height))
+    (other-window 1)
+    (eshell "new")
+    (rename-buffer (concat "*eshell: " name "*"))
+
+    (insert (concat "ls"))
+    (eshell-send-input)))
+(global-set-key (kbd "C-!") 'eshell-here)
+(defun eshell/x ()
+  (insert "exit")
+  (eshell-send-input)
+  (delete-window))
+
+
+;; alias ll 'ls -l $*'
+;; ls -al > #<buffer some-notes.org>
+
+(debug-msg "clojure ...")
 (global-set-key (kbd "C-e") 'cider-eval-defun-at-point)
 
                                         ;(define-key cider-minor-mode (kbd "M-e") 'cider-eval-defun-at-point)
                                         ;(define-key cider-minor-mode (kbd "M-l") 'cider-eval-buffer)
                                         ;(setq clojure-enable-fancify-symbols t)
+; (spacemacs/set-leader-keys-for-major-mode 'clojure-mode "e;" 'cider-pprint-eval-defun-to-comment)
+(spacemacs/set-leader-keys-for-major-mode 'clojure-mode "ec" 'cider-ppprint-eval-last-sexp-to-comment)
 
-(message "copy/paste ...")
+;; (add-to-list 'exec-path "/home/zamansky/bin/")
+
+
+;; (evil-define-key 'normal clojure-mode-map (kbd ", e ;") 'cider-pprint-eval-defun-to-comment)
+
+;; (add-hook 'clojure-mode-hook
+;;           (lambda()
+;;             (spacemacs/set-leader-keys-for-major-mode 'clojure-mode
+;;               "ec" 'cider-pprint-eval-defun-to-comment)))
+;; (spacemacs|use-package-add-hook clojure
+;;   :post-config
+;;   (spacemacs/set-leader-keys-for-major-mode 'clojure-mode
+;;     "ec" 'cider-pprint-eval-defun-to-comment))
+
+(setq deft-directory "~/drop/notes")
+
+(debug-msg "copy/paste ...")
   (setq x-select-enable-clipboard t)
   ;; (setq mouse-drag-copy-region t)
 
@@ -47,7 +117,36 @@
 
 (setq helm-dash-common-docsets '("Redis"))
 
-(message "fonts ...")
+(setq dired-dwim-target t)
+(when (string= system-type "darwin")
+  (setq dired-use-ls-dired nil))
+
+(use-package dired-narrow
+  :ensure t
+  :config
+  (bind-key "C-c C-n" #'dired-narrow)
+  ;; ("bind-key C-c C-f" #'dired-narrow-fuzzy)
+  (bind-key "C-x C-N" #'dired-narrow-regexp)
+  )
+
+(use-package dired-collapse
+  :ensure t
+  ;; :after dired
+  :config
+  ;; (bind-key "<tab>" #'dired-subtree-toggle dired-mode-map)
+  ;; (bind-key "<backtab>" #'dired-subtree-cycle dired-mode-map)
+  )
+(add-hook 'dired-hook #'dired-collapse-mode)
+
+(use-package dired-subtree
+  :ensure t
+  ;; :after dired
+  :config
+  (bind-key "i" #'dired-subtree-toggle dired-mode-map)
+  ;; (bind-key "<tab>" #'dired-subtree-toggle dired-mode-map)
+  (bind-key "<backtab>" #'dired-subtree-cycle dired-mode-map))
+
+(debug-msg "fonts ...")
 ;;; Monaco font for programming (and some other modes)
 ;; from https://www.reddit.com/r/emacs/comments/73lplp/what_are_your_preferred_fonts_in_emacs/
 (defvar dh-monaco-face-remapping-alist nil)
@@ -79,7 +178,87 @@
 ;; TODO the # sign causes an error, even though it is correct :(
 ;; (add-hook 'prog-mode-hook #’dh-set-monaco-font)
 
-(message "fonts ...")
+(debug-msg "indent tabs ...")
+(defun my-setup-indent (n)
+  ;; java/c/c++
+  (setq c-basic-offset n)
+  ;; web development
+  (setq json-tab-width n)
+  (setq ruby-tab-width n)
+  (setq coffee-tab-width n) ; coffeescript
+  (setq javascript-indent-level n) ; javascript-mode
+  (setq js-indent-level n) ; js-mode
+  (setq js2-basic-offset n) ; js2-mode, in latest js2-mode, it's alias of js-indent-level
+  (setq web-mode-markup-indent-offset n) ; web-mode, html tag in html file
+  (setq web-mode-css-indent-offset n) ; web-mode, css in html file
+  (setq web-mode-code-indent-offset n) ; web-mode, js code in html file
+  (setq css-indent-offset n) ; css-mode
+  )
+
+(defun set-indent (n)
+  (setq-default
+   c-basic-offset n
+   coffee-tab-width n
+   css-indent-offset n
+   default-tab-width n
+   evil-shift-width n
+   javascript-indent-level n
+   js2-basic-offset n
+   js-indent-level n
+   json-indent-level n
+   prolog-indent-width n
+   python-indent n
+   python-indent-offset n
+   ruby-indent n
+   sh-indentation n
+   standard-indent n
+   tab-width n
+   web-mode-attr-indent-offset n
+   web-mode-code-indent-offset n
+   web-mode-code-indent-offset n
+   web-mode-css-indent-offset n
+   web-mode-css-indent-offset n
+   web-mode-markup-indent-offset n
+   web-mode-markup-indent-offset n
+   ))
+(defun set-tab-width (n)
+  (dolist (var '(evil-shift-width
+                 default-tab-width
+                 tab-width
+                 c-basic-offset
+                 cmake-tab-width
+                 coffee-tab-width
+                 cperl-indent-level
+                 css-indent-offset
+                 elixir-smie-indent-basic
+                 enh-ruby-indent-level
+                 erlang-indent-level
+                 javascript-indent-level
+                 js-indent-level
+                 js2-basic-offset
+                 js3-indent-level
+                 lisp-indent-offset
+                 livescript-tab-width
+                 mustache-basic-offset
+                 nxml-child-indent
+                 perl-indent-level
+                 puppet-indent-level
+                 python-indent-offset
+                 ruby-indent-level
+                 rust-indent-offset
+                 scala-indent:step
+                 sgml-basic-offset
+                 sh-basic-offset
+                 web-mode-code-indent-offset
+                 web-mode-css-indent-offset
+                 web-mode-markup-indent-offset))
+    (set (make-local-variable var) n)))
+
+(set-indent 2)
+(set-tab-width 2)
+(add-hook 'shell-script-hook (lambda () (set-indent 2)))
+
+(debug-msg "mouse ...")
 (when nil
 ;(unless window-system
   ;; (require 'mwheel)
@@ -110,7 +289,49 @@
 
 ;; (setq transient-mark-mode t)
 
-(message "org ...")
+(defun narrow-or-widen-dwim (p)
+  "Widen if buffer is narrowed, narrow-dwim otherwise.
+Dwim means: region, org-src-block, org-subtree, or
+defun, whichever applies first. Narrowing to
+org-src-block actually calls `org-edit-src-code'.
+
+http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html
+
+With prefix P, don't widen, just narrow even if buffer
+is already narrowed."
+  (interactive "P")
+  (declare (interactive-only))
+  (cond ((and (buffer-narrowed-p) (not p)) (widen))
+        ((region-active-p)
+         (narrow-to-region (region-beginning)
+                           (region-end)))
+        ((derived-mode-p 'org-mode)
+         ;; `org-edit-src-code' is not a real narrowing
+         ;; command. Remove this first conditional if
+         ;; you don't want it.
+         (cond ((ignore-errors (org-edit-src-code) t)
+                (delete-other-windows))
+               ((ignore-errors (org-narrow-to-block) t))
+               (t (org-narrow-to-subtree))))
+        ((derived-mode-p 'latex-mode)
+         (LaTeX-narrow-to-environment))
+        (t (narrow-to-defun))))
+
+;; (define-key endless/toggle-map "n"
+;;   #'narrow-or-widen-dwim)
+;; This line actually replaces Emacs' entire narrowing
+;; keymap, that's how much I like this command. Only
+;; copy it if that's what you want.
+;; (define-key ctl-x-map "n" #'narrow-or-widen-dwim)
+(spacemacs/set-leader-keys
+  "nn" 'narrow-or-widen-dwim)
+
+(add-hook 'LaTeX-mode-hook
+          (lambda ()
+            (define-key LaTeX-mode-map "\C-xn"
+              nil)))
+
+(debug-msg "org ...")
 (require 'org)
 
 (setq org-attach-directory "~/drop")
@@ -255,93 +476,59 @@
  'org-babel-load-languages
  '( (emacs-lisp  . t)
     ;; (html . t)
+    (js . t)
+    (org . t)
     (python . t)
     ;; (ipython . t)
     (ruby . t)
     (shell . t)
     ))
 
-(message "indent tabs ...")
-(defun my-setup-indent (n)
-  ;; java/c/c++
-  (setq c-basic-offset n)
-  ;; web development
-  (setq json-tab-width n)
-  (setq ruby-tab-width n)
-  (setq coffee-tab-width n) ; coffeescript
-  (setq javascript-indent-level n) ; javascript-mode
-  (setq js-indent-level n) ; js-mode
-  (setq js2-basic-offset n) ; js2-mode, in latest js2-mode, it's alias of js-indent-level
-  (setq web-mode-markup-indent-offset n) ; web-mode, html tag in html file
-  (setq web-mode-css-indent-offset n) ; web-mode, css in html file
-  (setq web-mode-code-indent-offset n) ; web-mode, js code in html file
-  (setq css-indent-offset n) ; css-mode
-  )
+;; save customizations from the UI (M-x customize) to its own file
+(setq custom-file "~/.config/dotfiles/spacemacs/custom.el")
+(load custom-file 'noerror)
 
-(defun set-indent (n)
-  (setq-default
-   c-basic-offset n
-   coffee-tab-width n
-   css-indent-offset n
-   default-tab-width n
-   evil-shift-width n
-   javascript-indent-level n
-   js2-basic-offset n
-   js-indent-level n
-   json-indent-level n
-   prolog-indent-width n
-   python-indent n
-   python-indent-offset n
-   ruby-indent n
-   sh-indentation n
-   standard-indent n
-   tab-width n
-   web-mode-attr-indent-offset n
-   web-mode-code-indent-offset n
-   web-mode-code-indent-offset n
-   web-mode-css-indent-offset n
-   web-mode-css-indent-offset n
-   web-mode-markup-indent-offset n
-   web-mode-markup-indent-offset n
-   ))
-(defun set-tab-width (n)
-  (dolist (var '(evil-shift-width
-                 default-tab-width
-                 tab-width
-                 c-basic-offset
-                 cmake-tab-width
-                 coffee-tab-width
-                 cperl-indent-level
-                 css-indent-offset
-                 elixir-smie-indent-basic
-                 enh-ruby-indent-level
-                 erlang-indent-level
-                 javascript-indent-level
-                 js-indent-level
-                 js2-basic-offset
-                 js3-indent-level
-                 lisp-indent-offset
-                 livescript-tab-width
-                 mustache-basic-offset
-                 nxml-child-indent
-                 perl-indent-level
-                 puppet-indent-level
-                 python-indent-offset
-                 ruby-indent-level
-                 rust-indent-offset
-                 scala-indent:step
-                 sgml-basic-offset
-                 sh-basic-offset
-                 web-mode-code-indent-offset
-                 web-mode-css-indent-offset
-                 web-mode-markup-indent-offset))
-    (set (make-local-variable var) n)))
+;; https://github.com/yjwen/org-reveal
+;; git clone https://github.com/hakimel/reveal.js.git
+;; (setq org-reveal-root "file:///data/data/com.termux/files/home/code/reveal.js")
+;; (setq org-reveal-root "file:///home/bmd/code/reveal.js")
+(setq org-reveal-root "file:///home/bmd/.config/dotfiles/docs/reveal.js")
+(setq org-reveal-hlevel 1)
 
-(set-indent 2)
-(set-tab-width 2)
-(add-hook 'shell-script-hook (lambda () (set-indent 2)))
+;; these were in the user-init
 
-(message "terminal ...")
+(add-hook 'compilation-finish-functions
+  (lambda (buf strg)
+    (switch-to-buffer-other-window "*compilation*")
+    (read-only-mode)
+    (goto-char (point-max))
+    (local-set-key (kbd "q")
+      (lambda () (interactive) (quit-restore-window)))))
+
+(defun ace-link-setup-default ()
+  "Setup the defualt shortcuts."
+  (eval-after-load "info"
+    '(define-key Info-mode-map "o" 'ace-link-info))
+  (eval-after-load "help-mode"
+    '(define-key help-mode-map "o" 'ace-link-help))
+  (eval-after-load "eww"
+    '(progn
+       (define-key eww-link-keymap "o" 'ace-link-eww)
+       (define-key eww-mode-map "o" 'ace-link-eww))))
+
+;; (debug-msg "done loading my-user-config")
+
+(setq ranger-cleanup-eagerly t)
+
+(global-set-key (kbd "C-=") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
+(global-set-key (kbd "C-0") 'text-scale-mode)
+
+(setq org-ellipsis "⤵")
+
+;; xoxp-10924691317-169530033073-189201081253-8c708f799095a5d0b364b13edb73a0a7
+
+(debug-msg "terminal ...")
 ;; term shortcuts
 ;; (add-to-list 'term-mode-hook
 ;;              (lambda ()
@@ -384,110 +571,6 @@
 (setq multi-term-program "/usr/bin/zsh")
 
 (setq delete-by-moving-to-trash t)
-
-;; (require 'my-clojure)
-;; (require 'my-copy-paste)
-;; (require 'my-dash-docsets)
-;; (require 'my-eww)
-;; (require 'my-mouse)
-;; (require 'my-org)
-;; (require 'my-tabs)
-;; (require 'my-term)
-;; (require 'my-windows)
-;; (require 'narrow-or-widen)
-;; (load "/home/bmd/.config/dotfiles/spacemacs/narrow-or-widen")
-
-;; (setq org-plantuml-jar-path "/Users/brianmurphy-dye/.config/dotfiles")
-
-(setq dired-dwim-target t)
-(when (string= system-type "darwin")
-  (setq dired-use-ls-dired nil))
-
-(use-package dired-narrow
-  :ensure t
-  :config
-  (bind-key "C-c C-n" #'dired-narrow)
-  ;; ("bind-key C-c C-f" #'dired-narrow-fuzzy)
-  (bind-key "C-x C-N" #'dired-narrow-regexp)
-  )
-
-(use-package dired-collapse
-  :ensure t
-  ;; :after dired
-  :config
-  ;; (bind-key "<tab>" #'dired-subtree-toggle dired-mode-map)
-  ;; (bind-key "<backtab>" #'dired-subtree-cycle dired-mode-map)
-  )
-(add-hook 'dired-hook #'dired-collapse-mode)
-
-(use-package dired-subtree
-  :ensure t
-  ;; :after dired
-  :config
-  (bind-key "i" #'dired-subtree-toggle dired-mode-map)
-  ;; (bind-key "<tab>" #'dired-subtree-toggle dired-mode-map)
-  (bind-key "<backtab>" #'dired-subtree-cycle dired-mode-map))
-
-;; save customizations from the UI (M-x customize) to its own file
-(setq custom-file "~/.config/dotfiles/spacemacs/custom.el")
-(load custom-file 'noerror)
-
-;; https://github.com/yjwen/org-reveal
-;; git clone https://github.com/hakimel/reveal.js.git
-;; (setq org-reveal-root "file:///data/data/com.termux/files/home/code/reveal.js")
-;; (setq org-reveal-root "file:///home/bmd/code/reveal.js")
-(setq org-reveal-root "file:///home/bmd/.config/dotfiles/docs/reveal.js")
-(setq org-reveal-hlevel 1)
-
-;; these were in the user-init
-
-(add-hook 'compilation-finish-functions
-  (lambda (buf strg)
-    (switch-to-buffer-other-window "*compilation*")
-    (read-only-mode)
-    (goto-char (point-max))
-    (local-set-key (kbd "q")
-      (lambda () (interactive) (quit-restore-window)))))
-
-(defun ace-link-setup-default ()
-  "Setup the defualt shortcuts."
-  (eval-after-load "info"
-    '(define-key Info-mode-map "o" 'ace-link-info))
-  (eval-after-load "help-mode"
-    '(define-key help-mode-map "o" 'ace-link-help))
-  (eval-after-load "eww"
-    '(progn
-       (define-key eww-link-keymap "o" 'ace-link-eww)
-       (define-key eww-mode-map "o" 'ace-link-eww))))
-
-;; (message "done loading my-user-config")
-
-(setq ranger-cleanup-eagerly t)
-
-(global-set-key (kbd "C-=") 'text-scale-increase)
-(global-set-key (kbd "C--") 'text-scale-decrease)
-(global-set-key (kbd "C-0") 'text-scale-mode)
-
-(setq org-ellipsis "⤵")
-
-;; xoxp-10924691317-169530033073-189201081253-8c708f799095a5d0b364b13edb73a0a7
-
-(message "clojure ...")
-; (spacemacs/set-leader-keys-for-major-mode 'clojure-mode "e;" 'cider-pprint-eval-defun-to-comment)
-(spacemacs/set-leader-keys-for-major-mode 'clojure-mode "ec" 'cider-ppprint-eval-last-sexp-to-comment)
-
-;; (evil-define-key 'normal clojure-mode-map (kbd ", e ;") 'cider-pprint-eval-defun-to-comment)
-
-;; (add-hook 'clojure-mode-hook
-;;           (lambda()
-;;             (spacemacs/set-leader-keys-for-major-mode 'clojure-mode
-;;               "ec" 'cider-pprint-eval-defun-to-comment)))
-;; (spacemacs|use-package-add-hook clojure
-;;   :post-config
-;;   (spacemacs/set-leader-keys-for-major-mode 'clojure-mode
-;;     "ec" 'cider-pprint-eval-defun-to-comment))
-
-(setq deft-directory "~/drop/notes")
 
 (global-set-key (kbd "M-1") 'select-window-1)
 (global-set-key (kbd "M-2") 'select-window-2)
@@ -542,4 +625,4 @@
 
 (setq org-plantuml-jar-path "/Users/brianmurphy-dye/.config/dotfiles/plantuml.jar")
 
-(message "all done ...")
+(debug-msg "all done ...")
