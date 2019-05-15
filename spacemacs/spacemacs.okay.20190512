@@ -2,77 +2,7 @@
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
-;; layers: my-layers
-;; dotspacemacs-additional-packages: my-additional-packages
-;; themes, my-user-config
-;; font: "DejaVu Sans Mono", size 23
-;; dotspacemacs-excluded-packages:  ess-R-object-popup
-;; dotspacemacs-check-for-update t
-
-(setq my-additional-packages
-      '(
-        dired-collapse
-        dired-narrow
-        dired-subtree
-        org-brain
-        sdcv
-        seeing-is-believing
-        yasnippet-snippets
-        ))
-
-(setq my-layers
-   '(
-     csv
-     auto-completion
-     better-defaults
-     clojure
-     csharp
-     (deft :variables
-       deft-directory "~/drop/notes")
-     docker
-     erc
-     git
-     gnus
-     go
-     html
-     javascript
-     lua
-     markdown
-     org
-     ;; (org :variables org-enable-reveal-js-support t)
-     plantuml
-     python
-     (ranger :variables
-       )
-     restclient
-     (ruby :variables
-       ruby-enable-enh-ruby-mode t)
-     scala
-     syntax-checking
-     (version-control :variables
-       version-controll-diff-tool 'diff-hl)
-     osx
-     spell-checking
-     shell-scripts
-     search-engine
-     slack
-     yaml
-
-     helm
-     emacs-lisp
-     git
-     markdown
-     ;; org
-     (shell :variables
-            shell-default-height 30
-            shell-default-position 'bottom
-            shell-default-shell 'eshell
-            shell-default-term-shell "/bin/zsh")
-     ;; spell-checking
-     ;; syntax-checking
-     ;; version-control
-     ))
-
+;; (org-babel-load-file (expand-file-name "~/.config/dotfiles/spacemacs/myspace.org"))
 
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration.
@@ -101,73 +31,121 @@ values."
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
-   dotspacemacs-configuration-layers my-layers
-   ;; '(
-   ;;   ;; ----------------------------------------------------------------
-   ;;   ;; Example of useful layers you may want to use right away.
-   ;;   ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
-   ;;   ;; <M-m f e R> (Emacs style) to install them.
-   ;;   ;; ----------------------------------------------------------------
-   ;;   csv
-   ;;   auto-completion
-   ;;   better-defaults
-   ;;   clojure
-   ;;   csharp
-   ;;   (deft :variables
-   ;;     deft-directory "~/drop/notes")
-   ;;   docker
-   ;;   erc
-   ;;   git
-   ;;   gnus
-   ;;   go
-   ;;   html
-   ;;   javascript
-   ;;   lua
-   ;;   markdown
-   ;;   org
-   ;;   ;; (org :variables org-enable-reveal-js-support t)
-   ;;   plantuml
-   ;;   python
-   ;;   (ranger :variables
-   ;;           )
-   ;;   restclient
-   ;;   (ruby :variables
-   ;;         )
-   ;;   scala
-   ;;   syntax-checking
-   ;;   (version-control :variables
-   ;;                    version-controll-diff-tool 'diff-hl)
-   ;;   osx
-   ;;   spell-checking
-   ;;   shell-scripts
-   ;;   search-engine
-   ;;   slack
-   ;;   yaml
+   dotspacemacs-configuration-layers
+   '(
+     ;; ansible
+     csv
+     ;; ----------------------------------------------------------------
+     ;; Example of useful layers you may want to use right away.
+     ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
+     ;; <M-m f e R> (Emacs style) to install them.
+     ;; ----------------------------------------------------------------
+     auto-completion
+     ;; ace-link
+     better-defaults
+     clojure
+     csharp
+     (deft :variables
+       deft-directory "~/drop/notes")
+     ;; dash
+     ;; dired-hack-utils
+     docker
+     emacs-lisp
+     erc
+     ;; (erc :variables
+     ;;       erc-server-list
+     ;;       '(("irc.freenode.net"
+     ;;          :port "6697"
+     ;;          :ssl t
+     ;;          :nick "some-user"
+     ;;          :password "secret"
+     ;;          )))
+     ;; ess
+     git
+     gnus
+     ;; go
+     helm
+     html
+     ;; note: need node installed, and [sudo] npm -g install js-beautify
+     ;;       then <spc> m-= will beautify when in json-mode
+     ipython
+     javascript
+     lua
+     markdown
+     osx
+     ;; (org :variables org-enable-github-support t)
+     ;; org
+     (org :variables org-enable-reveal-js-support t)
+     plantuml
+     python
+     (ranger :variables   ;; https://github.com/syl20bnr/spacemacs/tree/master/layers/%2Btools/ranger
+                          ;; browse-url-at-point :: opens chrome in new window
+             ;; browse-url :: same?
+             ;; goto-address-at-point :: similar
+             ;; look at helm-dash
+             ranger-show-preview t
+             ranger-cleanup-eagerly t
+             ranger-ignored-extensions '("mkv" "iso" "mp4")
+             ranger-max-preview-size 10  ;; don't preview if over 10M
+             )
+     restclient
+     (ruby :variables
+        ;; ruby-test-runner 'rspec
+        ;; ruby-enable-enh-ruby-mode t
+        )
+     scala
+     (shell :variables
+            shell-default-height 40
+            shell-default-position 'right ;; full ;; bottom
+            shell-default-shell 'eshell
+            ;; shell-default-shell 'multi-term
+            ;; shell-default-shell 'multi-term
+            shell-default-term-shell "/bin/zsh"
+            )
+     ;; ruby-on-rails
+     search-engine
+     shell-scripts
+     ;; slack
+     spell-checking
+     ;; sql
+     syntax-checking
+     ;; version-control
+     (version-control :variables
+                      version-control-diff-tool 'diff-hl)
+     ;; w3m
+         ;; git clone https://github.com/venmos/w3m-layer.git ~/.emacs.d/private/w3m
+     ;; windows-scripts
+     yaml
 
-   ;;   helm
-   ;;   emacs-lisp
-   ;;   git
-   ;;   markdown
-   ;;   ;; org
-   ;;   (shell :variables
-   ;;          shell-default-height 30
-   ;;          shell-default-position 'bottom
-   ;;          shell-default-shell 'eshell
-   ;;          shell-default-term-shell "/bin/zsh")
-   ;;   ;; spell-checking
-   ;;   ;; syntax-checking
-   ;;   ;; version-control
-   ;;   )
-   ;; ;; List of additional packages that will be installed without being
+     ;; ;; auto-completion
+     ;; ;; better-defaults
+     ;; emacs-lisp
+     ;; ;; git
+     ;; ;; markdown
+     ;; ;; org
+     ;; ;; (shell :variables
+     ;; ;;        shell-default-height 30
+     ;; ;;        shell-default-position 'bottom)
+     ;; ;; spell-checking
+     ;; ;; syntax-checking
+     ;; ;; version-control
+     )
+   ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages my-additional-packages
-   ;; '()
+   ;; dotspacemacs-additional-packages '(terraform-mode sdcv)
+   dotspacemacs-additional-packages '(
+                                      sdcv
+                                       dired-collapse
+                                       dired-narrow
+                                       dired-subtree
+                                       )
+   ;; bmd changed to dotspacemacs-additional-packages '(default-text-scale)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(ess-R-object-popup) ;; TODO remove at some point: https://github.com/syl20bnr/spacemacs/issues/9464
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
@@ -194,7 +172,7 @@ values."
    ;; (default t)
    dotspacemacs-elpa-https t
    ;; Maximum allowed time in seconds to contact an ELPA repository.
-   dotspacemacs-elpa-timeout 5
+   dotspacemacs-elpa-timeout 5 ;; bmd changed to 10
    ;; If non nil then spacemacs will check for updates at startup
    ;; when the current branch is not `develop'. Note that checking for
    ;; new versions works via git commands, thus it calls GitHub services
@@ -236,13 +214,23 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(spacemacs-dark
-                         spacemacs-light)
+                         spacemacs-light
+                         ;; bmd added the following
+                         monokai
+                         molokai
+                         spolsky
+                         tronesque
+                         solarized-dark
+                         zenburn
+                         zonokai-blue
+                         )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+   ;; dotspacemacs-default-font '("Source Code Pro"
+   dotspacemacs-default-font '("DejaVu Sans Mono"
+                               :size 23
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -368,7 +356,8 @@ values."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers 'relative  ;; bmd
+   ;; bmd original: dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers 'relative
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -400,6 +389,10 @@ values."
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
    dotspacemacs-whitespace-cleanup nil
+
+   ;; bmd added
+   ;; unless file has a major mode, set mode to org-mode
+   ;; major-mode 'org-mode
    ))
 
 (defun dotspacemacs/user-init ()
@@ -418,10 +411,13 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  ;; bmd
   (setq load-path
-        (append load-path
-                '("~/.config/dotfiles/spacemacs")))
+    (append load-path
+      '("~/.config/dotfiles/spacemacs")))
   ;; (require 'my-user-config)
+  ;; (org-babel-load-file (expand-file-name "~/drop/notes/test.org"))
+  (message "about to load myspace.org")
   (org-babel-load-file (expand-file-name "~/.config/dotfiles/spacemacs/myspace.org"))
   )
 
@@ -434,7 +430,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (sdcv showtip dired-subtree dired-narrow dired-collapse dired-hacks-utils yaml-mode slack emojify circe oauth2 websocket ht insert-shebang flyspell-correct-helm flyspell-correct fish-mode engine-mode company-shell auto-dictionary reveal-in-osx-finder pbcopy osx-trash osx-dictionary launchctl git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter flycheck-pos-tip pos-tip diff-hl noflet ensime sbt-mode scala-mode xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby restclient-helm ob-restclient ob-http company-restclient restclient know-your-http-well ranger web-beautify plantuml-mode ox-reveal org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download lua-mode livid-mode skewer-mode simple-httpd js2-refactor js2-mode js-doc htmlize gnuplot company-tern tern coffee-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements mmm-mode markdown-toc markdown-mode live-py-mode hy-mode dash-functional helm-pydoc gh-md cython-mode company-anaconda anaconda-mode pythonic web-mode tagedit smeargle slim-mode scss-mode sass-mode pug-mode orgit magit-gitflow less-css-mode helm-gitignore helm-css-scss haml-mode go-guru go-eldoc gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit transient git-commit with-editor erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks emmet-mode company-web web-completion-data company-go go-mode unfill omnisharp flycheck mwim helm-company helm-c-yasnippet fuzzy dockerfile-mode docker json-mode tablist magit-popup docker-tramp json-snatcher json-reformat deft csv-mode csharp-mode company-statistics company clojure-snippets clj-refactor inflections edn multiple-cursors paredit peg cider-eval-sexp-fu cider sesman seq queue parseedn clojure-mode parseclj a auto-yasnippet yasnippet ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
+    (reveal-in-osx-finder pbcopy osx-trash osx-dictionary launchctl plantuml-mode eww-lnum dired-collapse helm-dash dash-docs dash-at-point dired-subtree dired-narrow powerline pcre2el org-category-capture org-plus-contrib org-mime markdown-mode skewer-mode simple-httpd js2-mode parent-mode projectile request haml-mode gitignore-mode fringe-helper git-gutter+ git-gutter flyspell-correct pos-tip flycheck flx highlight magit transient git-commit with-editor smartparens iedit anzu evil goto-chg undo-tree erc-terminal-notifier json-mode tablist magit-popup docker-tramp json-snatcher json-reformat diminish web-completion-data dash-functional tern restclient know-your-http-well company hydra inflections edn multiple-cursors paredit peg lv eval-sexp-fu cider sesman spinner queue pkg-info parseedn clojure-mode parseclj a epl inf-ruby bind-map bind-key yasnippet packed anaconda-mode pythonic f dash s alert log4e gntp helm avy helm-core async auto-complete popup deft noflet ensime sbt-mode scala-mode jinja2-mode slack emojify circe oauth2 websocket ht go-guru go-eldoc company-go go-mode enh-ruby-mode sql-indent ox-reveal omnisharp shut-up csharp-mode erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks terraform-mode hcl-mode sdcv showtip ranger engine-mode csv-mode yapfify yaml-mode xterm-color ws-butler winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package unfill toc-org tagedit spaceline smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restclient-helm restart-emacs rbenv rake rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode powershell popwin pip-requirements persp-mode paradox orgit org-projectile org-present org-pomodoro org-download org-bullets open-junk-file ob-restclient ob-http neotree mwim multi-term move-text monokai-theme mmm-mode minitest markdown-toc magit-gitflow macrostep lua-mode lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode js2-refactor js-doc insert-shebang info+ indent-guide hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy flyspell-correct-helm flycheck-pos-tip flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump dockerfile-mode docker diff-hl define-word default-text-scale cython-mode company-web company-tern company-statistics company-shell company-restclient company-anaconda column-enforce-mode coffee-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu chruby bundler auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
