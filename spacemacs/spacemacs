@@ -17,6 +17,7 @@
         org-brain
         sdcv
         seeing-is-believing
+        yasnippet-snippets
         ))
 
 (setq my-layers
