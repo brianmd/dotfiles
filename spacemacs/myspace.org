@@ -1,22 +1,22 @@
 * spacemacs init
 ** Other org emacs dotfiles
-https://github.com/zamansky/using-emacs/blob/master/myinit.org
+ https://github.com/zamansky/using-emacs/blob/master/myinit.org
 ** Initial Setup
-#+BEGIN_SRC emacs-lisp
-(defun debug-msg (msg)
-  (if t
-    (message msg)))
-(debug-msg "starting spacemacs init ...")
+ #+BEGIN_SRC emacs-lisp
+ (defun debug-msg (msg)
+   (if t
+     (message msg)))
+ (debug-msg "starting spacemacs init ...")
 
-(defun load-if-exists (f)
-  "load the elisp file only if it exists and is readable"
-  (if (file-readable-p f)
-      (load-file f)))
+ (defun load-if-exists (f)
+   "load the elisp file only if it exists and is readable"
+   (if (file-readable-p f)
+       (load-file f)))
 
-;; (load-if-exists "~/Sync/shared/mu4econfig.el")
-;; (load-if-exists "~/Sync/shared/not-for-github.el")
-#+END_SRC
-** Aliases
+ ;; (load-if-exists "~/Sync/shared/mu4econfig.el")
+ ;; (load-if-exists "~/Sync/shared/not-for-github.el")
+ #+END_SRC
+** Elisp Aliases
 #+BEGIN_SRC emacs-lisp
 ;; this is a just-in-case I forget I'm already emacs
 (defun eshell/emacs (file)
@@ -58,10 +58,6 @@ directory to make multiple eshell windows easier."
 ;; alias ll 'ls -l $*'
 ;; ls -al > #<buffer some-notes.org>
 #+END_SRC
-
-#+RESULTS:
-: eshell/ee
-
 ** Clojure
 #+BEGIN_SRC emacs-lisp
 (debug-msg "clojure ...")
@@ -506,8 +502,10 @@ is already narrowed."
 (debug-msg "org ...")
 (require 'org)
 
-(setq org-attach-directory "~/drop")
-(setq-default org-attach-directory "~/drop/notes")
+(setq org-brain-path "~/drop/brain/")
+(setq org-attach-directory "~/drop/notes/")
+;; (setq-default org-attach-directory "~/drop/notes/")
+(setq org-default-notes-file (concat org-directory "1.todo.org"))
 
 (setq org-agenda-files (list
                         ;; "~/Dropbox/docs/org/gtd.org"

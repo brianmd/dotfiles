@@ -334,8 +334,10 @@ is already narrowed."
 (debug-msg "org ...")
 (require 'org)
 
-(setq org-attach-directory "~/drop")
-(setq-default org-attach-directory "~/drop/notes")
+(setq org-brain-path "~/drop/brain/")
+(setq org-attach-directory "~/drop/notes/")
+;; (setq-default org-attach-directory "~/drop/notes/")
+(setq org-default-notes-file (concat org-directory "1.todo.org"))
 
 (setq org-agenda-files (list
                         ;; "~/Dropbox/docs/org/gtd.org"

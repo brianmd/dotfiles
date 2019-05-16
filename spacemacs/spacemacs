@@ -38,12 +38,20 @@
      javascript
      lua
      markdown
-     org
-     ;; (org :variables org-enable-reveal-js-support t)
+     ;; org
+     (org :variables
+          ;; org-want-todo-bindings t
+          ;; org-enable-reveal-js-support t
+          ;; org-re-reveal-root (concat "file:///" (getenv "HOME") "code/reference/reveal.js-3.8.0/")
+       )
+     ;; spacemacs-org
+     ;; pandoc
      plantuml
      python
      (ranger :variables
-       )
+             ranger-show-preview t
+             ranger-enter-with-minus t
+             ranger-show-hidden t)
      restclient
      (ruby :variables
        ruby-enable-enh-ruby-mode t)
@@ -55,6 +63,12 @@
      spell-checking
      shell-scripts
      search-engine
+     (shell :variables
+        shell-default-height 30
+        shell-default-position 'bottom
+        shell-default-shell 'eshell
+        ;; shell-default-shell 'multi-term
+        shell-default-term-shell "/bin/zsh")
      slack
      yaml
 
@@ -63,11 +77,6 @@
      git
      markdown
      ;; org
-     (shell :variables
-            shell-default-height 30
-            shell-default-position 'bottom
-            shell-default-shell 'eshell
-            shell-default-term-shell "/bin/zsh")
      ;; spell-checking
      ;; syntax-checking
      ;; version-control
