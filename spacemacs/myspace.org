@@ -502,6 +502,7 @@ is already narrowed."
 (debug-msg "org ...")
 (require 'org)
 
+(setq org-journal-dir "~/drop/notes/journal/")
 (setq org-brain-path "~/drop/brain/")
 (setq org-attach-directory "~/drop/notes/")
 ;; (setq-default org-attach-directory "~/drop/notes/")
