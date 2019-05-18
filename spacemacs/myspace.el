@@ -146,6 +146,12 @@ directory to make multiple eshell windows easier."
   ;; (bind-key "<tab>" #'dired-subtree-toggle dired-mode-map)
   (bind-key "<backtab>" #'dired-subtree-cycle dired-mode-map))
 
+(require 'cl-lib)
+
+(require 'vlf-setup)
+(custom-set-variables
+ '(vlf-application 'dont-ask))
+
 (debug-msg "fonts ...")
 ;;; Monaco font for programming (and some other modes)
 ;; from https://www.reddit.com/r/emacs/comments/73lplp/what_are_your_preferred_fonts_in_emacs/

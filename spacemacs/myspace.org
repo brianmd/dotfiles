@@ -167,6 +167,13 @@ You can bring emacs lisp closer to common lisp? How cool!
 #+BEGIN_SRC emacs-lisp
 (require 'cl-lib)
 #+END_SRC
+
+For viewing large log files:
+#+BEGIN_SRC emacs-lisp
+(require 'vlf-setup)
+(custom-set-variables
+ '(vlf-application 'dont-ask))
+#+END_SRC
 ** Eww
 #+BEGIN_SRC emacs-lisp :tangle no
 ;; keybindings are exactly the same as in vimperator unless otherwise stated
