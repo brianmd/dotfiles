@@ -170,6 +170,10 @@ You can bring emacs lisp closer to common lisp? How cool!
 
 For viewing large log files:
 #+BEGIN_SRC emacs-lisp :tangle no
+For viewing large log files, vlf will load the file in chunks.
+Doesn't feel like a very good workflow though.
+Might look at log4j-mode or logview.
+#+BEGIN_SRC emacs-lisp :tangle no
 (require 'vlf-setup)
 (custom-set-variables '(vlf-application 'dont-ask))
 #+END_SRC
