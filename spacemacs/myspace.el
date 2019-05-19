@@ -11,46 +11,6 @@
 ;; (load-if-exists "~/Sync/shared/mu4econfig.el")
 ;; (load-if-exists "~/Sync/shared/not-for-github.el")
 
-;; this is a just-in-case I forget I'm already emacs
-(defun eshell/emacs (file)
-      (find-file file))
-(defun eshell/vim (file)
-      (find-file file))
-(defun eshell/e (file)
-      (find-file file))
-(defun eshell/ee (file)
-      (find-file-other-window file))
-
-(defun eshell/gs () (git status))
-
-;; from http://www.howardism.org/Technical/Emacs/eshell-fun.html
-(defun eshell-here ()
-  "Opens up a new shell in the directory associated with the
-current buffer's file. The eshell is renamed to match that
-directory to make multiple eshell windows easier."
-  (interactive)
-  (let* ((parent (if (buffer-file-name)
-                     (file-name-directory (buffer-file-name))
-                   default-directory))
-         (height (/ (window-total-height) 3))
-         (name   (car (last (split-string parent "/" t)))))
-    (split-window-vertically (- height))
-    (other-window 1)
-    (eshell "new")
-    (rename-buffer (concat "*eshell: " name "*"))
-
-    (insert (concat "ls"))
-    (eshell-send-input)))
-(global-set-key (kbd "C-!") 'eshell-here)
-(defun eshell/x ()
-  (insert "exit")
-  (eshell-send-input)
-  (delete-window))
-
-
-;; alias ll 'ls -l $*'
-;; ls -al > #<buffer some-notes.org>
-
 (debug-msg "clojure ...")
 (global-set-key (kbd "C-e") 'cider-eval-defun-at-point)
 
@@ -146,16 +106,88 @@ directory to make multiple eshell windows easier."
   ;; (bind-key "<tab>" #'dired-subtree-toggle dired-mode-map)
   (bind-key "<backtab>" #'dired-subtree-cycle dired-mode-map))
 
+;; this is a just-in-case I forget I'm already emacs
+(defun eshell/emacs (file)
+      (find-file file))
+(defun eshell/vim (file)
+      (find-file file))
+(defun eshell/e (file)
+      (find-file file))
+(defun eshell/ee (file)
+      (find-file-other-window file))
+
+(defun eshell/gs () (git status))
+
+;; from http://www.howardism.org/Technical/Emacs/eshell-fun.html
+(defun eshell-here ()
+  "Opens up a new shell in the directory associated with the
+current buffer's file. The eshell is renamed to match that
+directory to make multiple eshell windows easier."
+  (interactive)
+  (let* ((parent (if (buffer-file-name)
+                     (file-name-directory (buffer-file-name))
+                   default-directory))
+         (height (/ (window-total-height) 3))
+         (name   (car (last (split-string parent "/" t)))))
+    (split-window-vertically (- height))
+    (other-window 1)
+    (eshell "new")
+    (rename-buffer (concat "*eshell: " name "*"))
+
+    (insert (concat "ls"))
+    (eshell-send-input)))
+(global-set-key (kbd "C-!") 'eshell-here)
+(defun eshell/x ()
+  (insert "exit")
+  (eshell-send-input)
+  (delete-window))
+
+
+;; alias ll 'ls -l $*'
+;; ls -al > #<buffer some-notes.org>
+
 (require 'cl-lib)
 
-(require 'vlf-setup)
-(custom-set-variables
- '(vlf-application 'dont-ask))
+;; from http://aaronbedra.com/emacs.d/
+;; (require 'f)
 
-(setq backup-directory-alist
-          `((".*" . ,temporary-file-directory)))
-    (setq auto-save-file-name-transforms
-          `((".*" ,temporary-file-directory t)))
+(setq eshell-visual-commands
+      '("less" "tmux" "htop" "top" "bash" "zsh" "fish"))
+
+(setq eshell-visual-subcommands
+      '(("git" "log" "l" "diff" "show")))
+
+;; ;; Prompt with a bit of help from http://www.emacswiki.org/emacs/EshellPrompt
+;; (defmacro with-face (str &rest properties)
+;;   `(propertize ,str 'face (list ,@properties)))
+
+;; (defun eshell/abbr-pwd ()
+;;   (let ((home (getenv "HOME"))
+;;         (path (eshell/pwd)))
+;;     (cond
+;;      ((string-equal home path) "~")
+;;      ((f-ancestor-of? home path) (concat "~/" (f-relative path home)))
+;;      (path))))
+
+;; (defun eshell/my-prompt ()
+;;   (let ((header-bg "#161616"))
+;;     (concat
+;;      (with-face (eshell/abbr-pwd) :foreground "#008700")
+;;      (if (= (user-uid) 0)
+;;          (with-face "#" :foreground "red")
+;;        (with-face "$" :foreground "#2345ba"))
+;;      " ")))
+
+;; (setq eshell-prompt-function 'eshell/my-prompt)
+;; (setq eshell-highlight-prompt nil)
+;; (setq eshell-prompt-regexp "^[^#$\n]+[#$] ")
+
+;; (setq eshell-cmpl-cycle-completions nil)
+
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+(setq backup-directory-alist `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
 (message "Deleting old backup files...")
 (let ((week (* 60 60 24 7))
@@ -201,6 +233,8 @@ directory to make multiple eshell windows easier."
 
 (debug-msg "indent tabs ...")
 (setq-default indent-tabs-mode nil)
+
+(setq-default show-trailing-whitespace t)
 (defun set-indent (n)
   (setq-default
    tab-width n
@@ -263,6 +297,32 @@ directory to make multiple eshell windows easier."
 (set-indent 2)
 (set-tab-width 2)
 (add-hook 'shell-script-hook (lambda () (set-indent 2)))
+
+(defun untabify-buffer ()
+  (interactive)
+  (untabify (point-min) (point-max)))
+
+(defun indent-buffer ()
+  (interactive)
+  (indent-region (point-min) (point-max)))
+
+(defun cleanup-buffer ()
+  "Perform a bunch of operations on the whitespace content of a buffer."
+  (interactive)
+  (indent-buffer)
+  (untabify-buffer)
+  (delete-trailing-whitespace))
+
+(defun cleanup-region (beg end)
+  "Remove tmux artifacts from region."
+  (interactive "r")
+  (dolist (re '("\\\\│\·*\n" "\W*│\·*"))
+    (replace-regexp re "" nil beg end)))
+
+(global-set-key (kbd "C-x M-t") 'cleanup-region)
+(global-set-key (kbd "C-c n") 'cleanup-buffer)
+
+(global-visual-line-mode 1)
 
 (debug-msg "mouse ...")
 (when nil
@@ -501,7 +561,8 @@ is already narrowed."
 ;; git clone https://github.com/hakimel/reveal.js.git
 ;; (setq org-reveal-root "file:///data/data/com.termux/files/home/code/reveal.js")
 ;; (setq org-reveal-root "file:///home/bmd/code/reveal.js")
-(setq org-reveal-root "file:///home/bmd/.config/dotfiles/docs/reveal.js")
+;; (setq org-reveal-root "file:///home/bmd/.config/dotfiles/docs/reveal.js")
+(setq org-reveal-root "~/.config/dotfiles/docs/reveal.js")
 (setq org-reveal-hlevel 1)
 
 ;; these were in the user-init

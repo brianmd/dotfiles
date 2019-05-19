@@ -17,7 +17,7 @@
         org-brain
         sdcv
         seeing-is-believing
-        vlf
+        ;; vlf
         yasnippet-snippets
         ))
 
@@ -32,6 +32,7 @@
        deft-directory "~/drop/notes")
      docker
      erc
+     ;; f ;; file/dir commands: https://github.com/rejeep/f.el/tree/8191672377816a1975414cc1f116fd3b94b30bd0
      git
      gnus
      go
@@ -44,7 +45,7 @@
           org-enable-org-journal-support t
           ;; org-want-todo-bindings t
           ;; org-enable-reveal-js-support t
-          ;; org-re-reveal-root (concat "file:///" (getenv "HOME") "code/reference/reveal.js-3.8.0/")
+       ;;    org-re-reveal-root (concat "file:///" (getenv "HOME") "code/reference/reveal.js-3.8.0/")
        )
      ;; spacemacs-org
      ;; pandoc
