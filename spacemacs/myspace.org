@@ -131,7 +131,6 @@ directory to make multiple eshell windows easier."
 (setq helm-dash-common-docsets '("Redis"))
 #+END_SRC
 ** Dired
-** 
 #+BEGIN_SRC emacs-lisp
 (setq dired-dwim-target t)
 (when (string= system-type "darwin")
@@ -316,6 +315,28 @@ For viewing large log files:
 (global-set-key (kbd "ob") 'browse-url-at-point)
 #+END_SRC
 
+** Files
+Storing backup files next to the file being edited causes
+issues with ruby, so store them in the tmp directory.
+
+But since we're storing in a global place, let's delete
+older backup files.
+#+BEGIN_SRC emacs-lisp
+(setq backup-directory-alist
+          `((".*" . ,temporary-file-directory)))
+    (setq auto-save-file-name-transforms
+          `((".*" ,temporary-file-directory t)))
+
+(message "Deleting old backup files...")
+(let ((week (* 60 60 24 7))
+      (current (float-time (current-time))))
+  (dolist (file (directory-files temporary-file-directory t))
+    (when (and (backup-file-name-p file)
+               (> (- current (float-time (fifth (file-attributes file))))
+                  week))
+      (message "%s" file)
+      (delete-file file))))
+#+END_SRC
 ** Fonts
 #+BEGIN_SRC emacs-lisp
 (debug-msg "fonts ...")
@@ -352,26 +373,15 @@ For viewing large log files:
 #+END_SRC
 ** Gnus (nothing here yet)
 ** Indent Tabs
+Don't ever, ever save tabs. Note: The setq-default command sets values only in buffers that do not have their own local values for the variable.
+
+Also, set tabs to two spaces in a lot of modes.
 #+BEGIN_SRC emacs-lisp
 (debug-msg "indent tabs ...")
-(defun my-setup-indent (n)
-  ;; java/c/c++
-  (setq c-basic-offset n)
-  ;; web development
-  (setq json-tab-width n)
-  (setq ruby-tab-width n)
-  (setq coffee-tab-width n) ; coffeescript
-  (setq javascript-indent-level n) ; javascript-mode
-  (setq js-indent-level n) ; js-mode
-  (setq js2-basic-offset n) ; js2-mode, in latest js2-mode, it's alias of js-indent-level
-  (setq web-mode-markup-indent-offset n) ; web-mode, html tag in html file
-  (setq web-mode-css-indent-offset n) ; web-mode, css in html file
-  (setq web-mode-code-indent-offset n) ; web-mode, js code in html file
-  (setq css-indent-offset n) ; css-mode
-  )
-
+(setq-default indent-tabs-mode nil)
 (defun set-indent (n)
   (setq-default
+   tab-width n
    c-basic-offset n
    coffee-tab-width n
    css-indent-offset n
@@ -381,19 +391,18 @@ For viewing large log files:
    js2-basic-offset n
    js-indent-level n
    json-indent-level n
+   json-tab-width n
    prolog-indent-width n
    python-indent n
    python-indent-offset n
    ruby-indent n
+   ruby-tab-width n
    sh-indentation n
    standard-indent n
    tab-width n
    web-mode-attr-indent-offset n
    web-mode-code-indent-offset n
-   web-mode-code-indent-offset n
    web-mode-css-indent-offset n
-   web-mode-css-indent-offset n
-   web-mode-markup-indent-offset n
    web-mode-markup-indent-offset n
    ))
 (defun set-tab-width (n)

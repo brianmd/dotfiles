@@ -152,6 +152,21 @@ directory to make multiple eshell windows easier."
 (custom-set-variables
  '(vlf-application 'dont-ask))
 
+(setq backup-directory-alist
+          `((".*" . ,temporary-file-directory)))
+    (setq auto-save-file-name-transforms
+          `((".*" ,temporary-file-directory t)))
+
+(message "Deleting old backup files...")
+(let ((week (* 60 60 24 7))
+      (current (float-time (current-time))))
+  (dolist (file (directory-files temporary-file-directory t))
+    (when (and (backup-file-name-p file)
+               (> (- current (float-time (fifth (file-attributes file))))
+                  week))
+      (message "%s" file)
+      (delete-file file))))
+
 (debug-msg "fonts ...")
 ;;; Monaco font for programming (and some other modes)
 ;; from https://www.reddit.com/r/emacs/comments/73lplp/what_are_your_preferred_fonts_in_emacs/
@@ -185,24 +200,10 @@ directory to make multiple eshell windows easier."
 ;; (add-hook 'prog-mode-hook #’dh-set-monaco-font)
 
 (debug-msg "indent tabs ...")
-(defun my-setup-indent (n)
-  ;; java/c/c++
-  (setq c-basic-offset n)
-  ;; web development
-  (setq json-tab-width n)
-  (setq ruby-tab-width n)
-  (setq coffee-tab-width n) ; coffeescript
-  (setq javascript-indent-level n) ; javascript-mode
-  (setq js-indent-level n) ; js-mode
-  (setq js2-basic-offset n) ; js2-mode, in latest js2-mode, it's alias of js-indent-level
-  (setq web-mode-markup-indent-offset n) ; web-mode, html tag in html file
-  (setq web-mode-css-indent-offset n) ; web-mode, css in html file
-  (setq web-mode-code-indent-offset n) ; web-mode, js code in html file
-  (setq css-indent-offset n) ; css-mode
-  )
-
+(setq-default indent-tabs-mode nil)
 (defun set-indent (n)
   (setq-default
+   tab-width n
    c-basic-offset n
    coffee-tab-width n
    css-indent-offset n
@@ -212,19 +213,18 @@ directory to make multiple eshell windows easier."
    js2-basic-offset n
    js-indent-level n
    json-indent-level n
+   json-tab-width n
    prolog-indent-width n
    python-indent n
    python-indent-offset n
    ruby-indent n
+   ruby-tab-width n
    sh-indentation n
    standard-indent n
    tab-width n
    web-mode-attr-indent-offset n
    web-mode-code-indent-offset n
-   web-mode-code-indent-offset n
    web-mode-css-indent-offset n
-   web-mode-css-indent-offset n
-   web-mode-markup-indent-offset n
    web-mode-markup-indent-offset n
    ))
 (defun set-tab-width (n)
