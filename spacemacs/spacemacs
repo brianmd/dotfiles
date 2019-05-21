@@ -35,7 +35,7 @@
        deft-directory "~/drop/notes")
      docker
      erc
-     ess ;; R
+     ;; ess ;; R
      ;; f ;; file/dir commands: https://github.com/rejeep/f.el/tree/8191672377816a1975414cc1f116fd3b94b30bd0
      git
      gnus
