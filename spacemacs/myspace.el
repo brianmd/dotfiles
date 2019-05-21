@@ -11,6 +11,11 @@
 ;; (load-if-exists "~/Sync/shared/mu4econfig.el")
 ;; (load-if-exists "~/Sync/shared/not-for-github.el")
 
+;; Syntax highlight in #+BEGIN_SRC blocks
+(setq org-src-fontify-natively t)
+;; Don't prompt before running code in org
+(setq org-confirm-babel-evaluate nil)
+
 (debug-msg "clojure ...")
 (global-set-key (kbd "C-e") 'cider-eval-defun-at-point)
 
@@ -549,6 +554,7 @@ is already narrowed."
     (org . t)
     (python . t)
     ;; (ipython . t)
+    (r . t)
     (ruby . t)
     (shell . t)
     ))
