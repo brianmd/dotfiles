@@ -1,3 +1,14 @@
+* Todos
+** TODO swap helm C-z and TAB as recommended?
+http://spacemacs.org/doc/DOCUMENTATION.html#helm
+** Shortcut keys to remember
+   [
+this
+issues
+]
+SPC w b   return focus to helm minibuffer if it loses focus
+
+
 * spacemacs init
 ** Other org emacs dotfiles
 - https://github.com/zamansky/using-emacs/blob/master/myinit.org
@@ -365,6 +376,26 @@ Set which commands should switch to ansi-term.
 (global-set-key (kbd "ob") 'browse-url-at-point)
 #+END_SRC
 
+** Eyebrowse
+#+BEGIN_SRC emacs-lisp
+(spacemacs/set-leader-keys
+  "obc" 'eyebrowse-create-window-config
+  "obr" 'eyebrowse-rename-window-config
+  "ob'" 'eyebrowse-last-window-config
+  "ob." 'eyebrowse-switch-to-window-config
+
+  "o0" 'eyebrowse-switch-to-window-config-0
+  "o1" 'eyebrowse-switch-to-window-config-1
+  "o2" 'eyebrowse-switch-to-window-config-2
+  "o3" 'eyebrowse-switch-to-window-config-3
+  "o4" 'eyebrowse-switch-to-window-config-4
+  "o5" 'eyebrowse-switch-to-window-config-5
+  "o6" 'eyebrowse-switch-to-window-config-6
+  "o7" 'eyebrowse-switch-to-window-config-7
+  "o8" 'eyebrowse-switch-to-window-config-8
+  "o9" 'eyebrowse-switch-to-window-config-9
+  )
+#+END_SRC
 ** Files
 Allow typing 'y' or 'n' on all prompts
 #+BEGIN_SRC emacs-lisp
@@ -747,6 +778,9 @@ is already narrowed."
 (setq org-columns-default-format "%50ITEM(Task) %10CLOCKSUM %16TIMESTAMP_IA")
 
 (package-initialize)
+#+END_SRC
+** Org babel
+#+BEGIN_SRC emacs-lisp
 ;; (require 'ob-browser)
 (require 'ob-python)
 ;; (require 'ob-ipython)
@@ -761,7 +795,7 @@ is already narrowed."
     (org . t)
     (python . t)
     ;; (ipython . t)
-    (r . t)
+    ;; (r . t)
     (ruby . t)
     (shell . t)
     ))

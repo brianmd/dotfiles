@@ -189,6 +189,24 @@ directory to make multiple eshell windows easier."
 
 ;; (setq eshell-cmpl-cycle-completions nil)
 
+(spacemacs/set-leader-keys
+  "obc" 'eyebrowse-create-window-config
+  "obr" 'eyebrowse-rename-window-config
+  "ob'" 'eyebrowse-last-window-config
+  "ob." 'eyebrowse-switch-to-window-config
+
+  "o0" 'eyebrowse-switch-to-window-config-0
+  "o1" 'eyebrowse-switch-to-window-config-1
+  "o2" 'eyebrowse-switch-to-window-config-2
+  "o3" 'eyebrowse-switch-to-window-config-3
+  "o4" 'eyebrowse-switch-to-window-config-4
+  "o5" 'eyebrowse-switch-to-window-config-5
+  "o6" 'eyebrowse-switch-to-window-config-6
+  "o7" 'eyebrowse-switch-to-window-config-7
+  "o8" 'eyebrowse-switch-to-window-config-8
+  "o9" 'eyebrowse-switch-to-window-config-9
+  )
+
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
@@ -540,6 +558,7 @@ is already narrowed."
 (setq org-columns-default-format "%50ITEM(Task) %10CLOCKSUM %16TIMESTAMP_IA")
 
 (package-initialize)
+
 ;; (require 'ob-browser)
 (require 'ob-python)
 ;; (require 'ob-ipython)
@@ -554,7 +573,7 @@ is already narrowed."
     (org . t)
     (python . t)
     ;; (ipython . t)
-    (r . t)
+    ;; (r . t)
     (ruby . t)
     (shell . t)
     ))
