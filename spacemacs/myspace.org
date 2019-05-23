@@ -105,7 +105,7 @@ SPC w b   return focus to helm minibuffer if it loses focus
 #+END_SRC
 ** Dash
 #+BEGIN_SRC emacs-lisp
-(setq helm-dash-common-docsets '("Redis"))
+(setq helm-dash-common-docsets '("Redis" "Ruby"))
 #+END_SRC
 ** Dired
 #+BEGIN_SRC emacs-lisp

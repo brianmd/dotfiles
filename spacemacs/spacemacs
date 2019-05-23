@@ -31,6 +31,7 @@
      better-defaults
      clojure
      csharp
+     dash
      (deft :variables
        deft-directory "~/drop/notes")
      docker
@@ -61,7 +62,9 @@
              ranger-show-hidden t)
      restclient
      (ruby :variables
-       ruby-enable-enh-ruby-mode t)
+           ruby-enable-enh-ruby-mode t
+       ;; ruby-version-manager 'rbenv
+       )
      scala
      syntax-checking
      (version-control :variables

@@ -80,7 +80,7 @@
     ;; http://www.mail-archive.com/help-gnu-emacs@gnu.org/msg03577.html
    ))
 
-(setq helm-dash-common-docsets '("Redis"))
+(setq helm-dash-common-docsets '("Redis" "Ruby"))
 
 (setq dired-dwim-target t)
 (when (string= system-type "darwin")
