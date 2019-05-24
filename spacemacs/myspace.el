@@ -283,6 +283,7 @@ directory to make multiple eshell windows easier."
    web-mode-code-indent-offset n
    web-mode-css-indent-offset n
    web-mode-markup-indent-offset n
+   yaml-indent-offset n
    ))
 (defun set-tab-width (n)
   (dolist (var '(evil-shift-width
@@ -314,7 +315,9 @@ directory to make multiple eshell windows easier."
                  sh-basic-offset
                  web-mode-code-indent-offset
                  web-mode-css-indent-offset
-                 web-mode-markup-indent-offset))
+                 web-mode-markup-indent-offset
+                 yaml-indent-offset n
+                 ))
     (set (make-local-variable var) n)))
 
 (set-indent 2)
