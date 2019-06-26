@@ -9,12 +9,106 @@ issues
 SPC w b   return focus to helm minibuffer if it loses focus
 
 
+
 * spacemacs init
 ** Other org emacs dotfiles
 - https://github.com/zamansky/using-emacs/blob/master/myinit.org
 - http://aaronbedra.com/emacs.d/
 ** Initial Setup
- #+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp
+;; save customizations from the UI (M-x customize) to its own file
+(setq custom-file "~/.config/dotfiles/spacemacs/custom.el")
+(load custom-file 'noerror)
+
+;; may need to do some setup before calling this?
+(package-initialize)
+#+END_SRC
+
+Set up the org-mode fonts
+;; from https://zzamboni.org/post/beautifying-org-mode-in-emacs/
+;; this section will remain enabled. The section below, also from this same web page
+
+First, we ask org-mode to hide the emphasis markup (e.g. /.../ for italics, *...* for bold, etc.):
+#+BEGIN_SRC emacs-lisp
+(setq org-hide-emphasis-markers t)
+#+END_SRC
+
+Then, we set up a font-lock substitution for list markers (I always use “-” for lists, but you can change this if you want) by replacing them with a centered-dot character:
+
+(for some reason this isn't working)
+#+BEGIN_SRC emacs-lisp
+(font-lock-add-keywords 'org-mode
+                        '(("^ +\\([-*]\\) "
+                           (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+;; (font-lock-add-keywords 'org-mode
+;;                         '(("^ *\\([-]\\) "
+;;                            (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+#+END_SRC
+
+Would like to have text be serif, headers sans, and code blocks proportional. The following does not get us there, so it is disabled for now..
+#+BEGIN_SRC emacs-lisp ;; :tangle no
+;; also from https://zzamboni.org/post/beautifying-org-mode-in-emacs/
+
+;; don't know that this does any better than the specific section in the org mode section
+;; (use-package org-bullets
+;;   :config
+;;   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+(let* ((variable-tuple
+        (cond
+              ((x-list-fonts "Times New Roman") '(:font "Times New Roman"))
+              ((x-list-fonts "Source Sans Pro") '(:font "Source Sans Pro"))
+              ((x-list-fonts "Lucida Grande")   '(:font "Lucida Grande"))
+              ((x-list-fonts "Verdana")         '(:font "Verdana"))
+              ((x-family-fonts "Sans Serif")    '(:family "Sans Serif"))
+              (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
+       ;; (base-font-color     (face-foreground 'default nil 'default))
+       ;; (headline           `(:inherit default :weight bold :foreground ,base-font-color))
+       (headline           `(:inherit default :weight bold))
+       )
+
+  (custom-theme-set-faces
+   'user
+   `(org-level-8 ((t (,@headline ,@variable-tuple))))
+   `(org-level-7 ((t (,@headline ,@variable-tuple))))
+   `(org-level-6 ((t (,@headline ,@variable-tuple))))
+   `(org-level-5 ((t (,@headline ,@variable-tuple))))
+   `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.1))))
+   `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.25))))
+   `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.5))))
+   `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.75))))
+   `(org-document-title ((t (,@headline ,@variable-tuple :height 2.0 :underline nil))))))
+
+(custom-theme-set-faces
+ 'user
+ '(variable-pitch ((t (:family "Source Sans Pro" :height 180 :weight light))))
+ '(fixed-pitch ((t ( :family "Inconsolata" :slant normal :weight normal :height 1.0 :width normal)))))
+
+(add-hook 'org-mode-hook 'variable-pitch-mode)
+(add-hook 'org-mode-hook 'visual-line-mode)
+
+(custom-theme-set-faces
+ 'user
+ '(org-block                 ((t (:inherit fixed-pitch))))
+ '(org-document-info         ((t (:foreground "dark orange"))))
+ '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
+ '(org-link                  ((t (:foreground "royal blue" :underline t))))
+ '(org-meta-line             ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+ '(org-property-value        ((t (:inherit fixed-pitch))) t)
+ '(org-special-keyword       ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+ '(org-tag                   ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
+ '(org-verbatim              ((t (:inherit (shadow fixed-pitch)))))
+ '(org-indent                ((t (:inherit (org-hide fixed-pitch))))))
+
+;; ^^^^^ from https://zzamboni.org/post/beautifying-org-mode-in-emacs/
+#+END_SRC
+this is a test
+0000
+llll
+
+#+RESULTS:
+
+#+BEGIN_SRC emacs-lisp
  (defun debug-msg (msg)
    (if t
      (message msg)))
@@ -28,6 +122,13 @@ SPC w b   return focus to helm minibuffer if it loses focus
  ;; (load-if-exists "~/Sync/shared/mu4econfig.el")
  ;; (load-if-exists "~/Sync/shared/not-for-github.el")
  #+END_SRC
+
+ #+RESULTS:
+ : load-if-exists
+
+  - test
+  - again
+
 ** Babel
 #+BEGIN_SRC emacs-lisp
 ;; Syntax highlight in #+BEGIN_SRC blocks
@@ -305,20 +406,6 @@ Set which commands should switch to ansi-term.
         (forward-line 1))
     (line-move (- arg))))
 
-(defun ace-link-setup-default ()
-  "Setup the default shortcuts."
-  (eval-after-load "info"
-    '(define-key Info-mode-map "o" 'ace-link-info))
-  (eval-after-load "help-mode"
-    '(define-key help-mode-map "o" 'ace-link-help))
-  (eval-after-load "eww"
-    '(progn
-       (define-key eww-link-keymap "o" 'ace-link-eww)
-       (define-key eww-mode-map "o" 'ace-link-eww))))
-
-(ace-link-setup-default)
-
-
 
 ;; https://github.com/dakrone/eos/blob/master/eos-web.org
 (use-package eww
@@ -466,37 +553,36 @@ Also, set tabs to two spaces in a lot of modes.
 (setq-default indent-tabs-mode nil)
 
 (setq-default show-trailing-whitespace t)
-(defun set-indent (n)
-  (setq-default
-   tab-width n
-   c-basic-offset n
-   coffee-tab-width n
-   css-indent-offset n
-   default-tab-width n
-   evil-shift-width n
-   javascript-indent-level n
-   js2-basic-offset n
-   js-indent-level n
-   json-indent-level n
-   json-tab-width n
-   prolog-indent-width n
-   python-indent n
-   python-indent-offset n
-   ruby-indent n
-   ruby-tab-width n
-   sh-indentation n
-   standard-indent n
-   tab-width n
-   web-mode-attr-indent-offset n
-   web-mode-code-indent-offset n
-   web-mode-css-indent-offset n
-   web-mode-markup-indent-offset n
-   yaml-indent-offset n
-   ))
+;; (defun set-indent (n)
+;;   (setq-default
+;;    c-basic-offset n
+;;    coffee-tab-width n
+;;    css-indent-offset n
+;;    default-tab-width n
+;;    evil-shift-width n
+;;    javascript-indent-level n
+;;    js2-basic-offset n
+;;    js-indent-level n
+;;    json-indent-level n
+;;    json-tab-width n
+;;    prolog-indent-width n
+;;    python-indent n
+;;    python-indent-offset n
+;;    ruby-indent n
+;;    ruby-tab-width n
+;;    sh-indentation n
+;;    standard-indent n
+;;    tab-width n
+;;    web-mode-attr-indent-offset n
+;;    web-mode-code-indent-offset n
+;;    web-mode-css-indent-offset n
+;;    web-mode-markup-indent-offset n
+;;    yaml-indent-offset n
+;;    ))
+
 (defun set-tab-width (n)
-  (dolist (var '(evil-shift-width
+  (dolist (var '(
                  default-tab-width
-                 tab-width
                  c-basic-offset
                  cmake-tab-width
                  coffee-tab-width
@@ -505,22 +591,31 @@ Also, set tabs to two spaces in a lot of modes.
                  elixir-smie-indent-basic
                  enh-ruby-indent-level
                  erlang-indent-level
+                 ess-indent-level
+                 evil-shift-width
                  javascript-indent-level
                  js-indent-level
                  js2-basic-offset
                  js3-indent-level
+                 json-indent-level
                  lisp-indent-offset
                  livescript-tab-width
                  mustache-basic-offset
                  nxml-child-indent
                  perl-indent-level
+                 prolog-indedent-offset
                  puppet-indent-level
                  python-indent-offset
+                 ruby-indent
                  ruby-indent-level
+                 ruby-tab-width
                  rust-indent-offset
                  scala-indent:step
                  sgml-basic-offset
                  sh-basic-offset
+                 sh-indentation
+                 tab-width
+                 web-mode-attr-indent-offset
                  web-mode-code-indent-offset
                  web-mode-css-indent-offset
                  web-mode-markup-indent-offset
@@ -528,10 +623,13 @@ Also, set tabs to two spaces in a lot of modes.
                  ))
     (set (make-local-variable var) n)))
 
-(set-indent 2)
+;; (set-indent 2)
 (set-tab-width 2)
 (add-hook 'shell-script-hook (lambda () (set-indent 2)))
 #+END_SRC
+
+#+RESULTS:
+| lambda | nil | (set-indent 2) |
 
 Use untabify-buffer if someone left tabs in the files
  #+BEGIN_SRC emacs-lisp
@@ -564,6 +662,78 @@ Turn on line wrap globally.
  #+BEGIN_SRC emacs-lisp
 (global-visual-line-mode 1)
 #+END_SRC
+** Mail, news, and irc
+#+BEGIN_SRC emacs-lisp
+  ;; ;; Get email, and store in nnml
+  ;; (setq gnus-secondary-select-methods
+  ;;   '(
+  ;;     (nntp "gmane" (nntp-address "news.gmane.org"))
+  ;;     (nntp "news.eternal-september.org")
+  ;;     (nntp "nntp.aioe.org")
+  ;;     (nntp "news.gwene.org")
+  ;;     (nnimap "gmail"
+  ;;             (nnimap-address
+  ;;              "imap.gmail.com")
+  ;;             (nnimap-server-port 993)
+  ;;             (nnimap-stream ssl))
+  ;;     ))
+
+  ;; ;; Send email via Gmail:
+  ;; (setq message-send-mail-function 'smtpmail-send-it
+  ;;       smtpmail-default-smtp-server "smtp.gmail.com")
+
+  ;; ;; Archive outgoing email in Sent folder on imap.gmail.com:
+  ;; (setq gnus-message-archive-method '(nnimap "imap.gmail.com")
+  ;;       gnus-message-archive-group "[Gmail]/Sent Mail")
+
+  ;; ;; set return email address based on incoming email address
+  ;; (setq gnus-posting-styles
+  ;;       ;; '(((header "to" "address@outlook.com")
+  ;;       ;;    (address "address@outlook.com"))
+  ;;         ((header "to" "brian@murphydye.com")
+  ;;          (address "brian@murphydye.com"))
+  ;;         ;; ((header "to" "bmdmailer@gmail.com")
+  ;;         ;;  (address "bmdmailer@gmail.com"))
+  ;;         )
+      ;; )
+
+  ;; ;; store email in ~/gmail directory
+  ;; (setq nnml-directory "~/.config/gmail")
+  ;; (setq message-directory "~/.config/gmail")
+#+END_SRC
+
+** Misc
+These are still searching for a home
+#+BEGIN_SRC emacs-lisp
+(add-hook 'compilation-finish-functions
+  (lambda (buf strg)
+    (switch-to-buffer-other-window "*compilation*")
+    (read-only-mode)
+    (goto-char (point-max))
+    (local-set-key (kbd "q")
+      (lambda () (interactive) (quit-restore-window)))))
+
+(defun ace-link-setup-default ()
+  "Setup the defualt shortcuts."
+  (eval-after-load "info"
+    '(define-key Info-mode-map "o" 'ace-link-info))
+  (eval-after-load "help-mode"
+    '(define-key help-mode-map "o" 'ace-link-help))
+  (eval-after-load "eww"
+    '(progn
+       (define-key eww-link-keymap "o" 'ace-link-eww)
+       (define-key eww-mode-map "o" 'ace-link-eww))))
+
+(ace-link-setup-default)
+
+(setq ranger-cleanup-eagerly t)
+
+(global-set-key (kbd "C-=") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
+;; (global-set-key (kbd "C-0") 'text-scale-mode) ;; conflicts with mac goto-space-0
+
+#+END_SRC
+
 ** Mouse
 #+BEGIN_SRC emacs-lisp
 (debug-msg "mouse ...")
@@ -679,7 +849,8 @@ is already narrowed."
         ("x" "Work Journal (extended entry)" entry (file+datetree "~/drop/notes/work-journal.org")
          "* %?\nEntered on %U\n  %i\n  %a")
         ("j" "Journal" entry (file+datetree "~/drop/notes/journal.org")
-         "* %?\nEntered on %U\n  %i\n  %a")
+         ;; "* %?\nEntered on %U\n  %i\n  %a")
+         "* TODO %?\nEntered on %U")
         ))
   ;; the above uses these escapes
   ;; %a          annotation, normally the link created with org-store-link
@@ -705,43 +876,6 @@ is already narrowed."
   ;;  'org
   ;  (setq org-agenda-files "/Users/bmd/.config/notes/"))
 
-
-  ;; ;; Get email, and store in nnml
-  ;; (setq gnus-secondary-select-methods
-  ;;   '(
-  ;;     (nntp "gmane" (nntp-address "news.gmane.org"))
-  ;;     (nntp "news.eternal-september.org")
-  ;;     (nntp "nntp.aioe.org")
-  ;;     (nntp "news.gwene.org")
-  ;;     (nnimap "gmail"
-  ;;             (nnimap-address
-  ;;              "imap.gmail.com")
-  ;;             (nnimap-server-port 993)
-  ;;             (nnimap-stream ssl))
-  ;;     ))
-
-  ;; ;; Send email via Gmail:
-  ;; (setq message-send-mail-function 'smtpmail-send-it
-  ;;       smtpmail-default-smtp-server "smtp.gmail.com")
-
-  ;; ;; Archive outgoing email in Sent folder on imap.gmail.com:
-  ;; (setq gnus-message-archive-method '(nnimap "imap.gmail.com")
-  ;;       gnus-message-archive-group "[Gmail]/Sent Mail")
-
-  ;; ;; set return email address based on incoming email address
-  ;; (setq gnus-posting-styles
-  ;;       ;; '(((header "to" "address@outlook.com")
-  ;;       ;;    (address "address@outlook.com"))
-  ;;         ((header "to" "brian@murphydye.com")
-  ;;          (address "brian@murphydye.com"))
-  ;;         ;; ((header "to" "bmdmailer@gmail.com")
-  ;;         ;;  (address "bmdmailer@gmail.com"))
-  ;;         )
-      ;; )
-
-  ;; ;; store email in ~/gmail directory
-  ;; (setq nnml-directory "~/.config/gmail")
-  ;; (setq message-directory "~/.config/gmail")
 
 (spacemacs/set-leader-keys
   "oa" 'org-agenda
@@ -779,77 +913,45 @@ is already narrowed."
 
 ; Set default column view headings: Task Total-Time Time-Stamp
 (setq org-columns-default-format "%50ITEM(Task) %10CLOCKSUM %16TIMESTAMP_IA")
-
-(package-initialize)
 #+END_SRC
-** Org babel
-#+BEGIN_SRC emacs-lisp
-;; (require 'ob-browser)
-(require 'ob-python)
-;; (require 'ob-ipython)
-(require 'ob-ruby)
-(require 'ob-shell)
 
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '( (emacs-lisp  . t)
-    ;; (html . t)
-    (js . t)
-    (org . t)
-    (python . t)
-    ;; (ipython . t)
-    ;; (r . t)
-    (ruby . t)
-    (shell . t)
-    ))
-#+END_SRC
-** Org & misc
-#+BEGIN_SRC emacs-lisp
-;; save customizations from the UI (M-x customize) to its own file
-(setq custom-file "~/.config/dotfiles/spacemacs/custom.el")
-(load custom-file 'noerror)
+#+RESULTS:
+: %50ITEM(Task) %10CLOCKSUM %16TIMESTAMP_IA
 
-;; https://github.com/yjwen/org-reveal
-;; git clone https://github.com/hakimel/reveal.js.git
-;; (setq org-reveal-root "file:///data/data/com.termux/files/home/code/reveal.js")
-;; (setq org-reveal-root "file:///home/bmd/code/reveal.js")
-;; (setq org-reveal-root "file:///home/bmd/.config/dotfiles/docs/reveal.js")
-(setq org-reveal-root "~/.config/dotfiles/docs/reveal.js")
-(setq org-reveal-hlevel 1)
+*** Org babel
+ #+BEGIN_SRC emacs-lisp
+ ;; (require 'ob-browser)
+ (require 'ob-python)
+ ;; (require 'ob-ipython)
+ (require 'ob-ruby)
+ (require 'ob-shell)
 
-;; these were in the user-init
+ (org-babel-do-load-languages
+  'org-babel-load-languages
+  '( (emacs-lisp  . t)
+     ;; (html . t)
+     (js . t)
+     (org . t)
+     (python . t)
+     ;; (ipython . t)
+     ;; (r . t)
+     (ruby . t)
+     (shell . t)
+     ))
+ #+END_SRC
+*** Org & misc
+ #+BEGIN_SRC emacs-lisp
+ ;; https://github.com/yjwen/org-reveal
+ ;; git clone https://github.com/hakimel/reveal.js.git
+ ;; (setq org-reveal-root "file:///data/data/com.termux/files/home/code/reveal.js")
+ ;; (setq org-reveal-root "file:///home/bmd/code/reveal.js")
+ ;; (setq org-reveal-root "file:///home/bmd/.config/dotfiles/docs/reveal.js")
+ (setq org-reveal-root "~/.config/dotfiles/docs/reveal.js")
+ (setq org-reveal-hlevel 1)
+ (setq org-ellipsis "⤵")
 
-(add-hook 'compilation-finish-functions
-  (lambda (buf strg)
-    (switch-to-buffer-other-window "*compilation*")
-    (read-only-mode)
-    (goto-char (point-max))
-    (local-set-key (kbd "q")
-      (lambda () (interactive) (quit-restore-window)))))
-
-(defun ace-link-setup-default ()
-  "Setup the defualt shortcuts."
-  (eval-after-load "info"
-    '(define-key Info-mode-map "o" 'ace-link-info))
-  (eval-after-load "help-mode"
-    '(define-key help-mode-map "o" 'ace-link-help))
-  (eval-after-load "eww"
-    '(progn
-       (define-key eww-link-keymap "o" 'ace-link-eww)
-       (define-key eww-mode-map "o" 'ace-link-eww))))
-
-;; (debug-msg "done loading my-user-config")
-
-(setq ranger-cleanup-eagerly t)
-
-(global-set-key (kbd "C-=") 'text-scale-increase)
-(global-set-key (kbd "C--") 'text-scale-decrease)
-(global-set-key (kbd "C-0") 'text-scale-mode)
-
-(setq org-ellipsis "⤵")
-
-;; xoxp-10924691317-169530033073-189201081253-8c708f799095a5d0b364b13edb73a0a7
-#+END_SRC
+ ;; xoxp-10924691317-169530033073-189201081253-8c708f799095a5d0b364b13edb73a0a7
+ #+END_SRC
 ** Personal map -- TODO make my own
 #+BEGIN_SRC emacs-lisp :tangle no
 unset C- and M- digit keys

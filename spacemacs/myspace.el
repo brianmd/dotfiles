@@ -1,3 +1,19 @@
+;; save customizations from the UI (M-x customize) to its own file
+(setq custom-file "~/.config/dotfiles/spacemacs/custom.el")
+(load custom-file 'noerror)
+
+;; may need to do some setup before calling this?
+(package-initialize)
+
+(setq org-hide-emphasis-markers t)
+
+(font-lock-add-keywords 'org-mode
+                        '(("^ +\\([-*]\\) "
+                           (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+;; (font-lock-add-keywords 'org-mode
+;;                         '(("^ *\\([-]\\) "
+;;                            (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+
 (defun debug-msg (msg)
   (if t
     (message msg)))
@@ -258,37 +274,36 @@ directory to make multiple eshell windows easier."
 (setq-default indent-tabs-mode nil)
 
 (setq-default show-trailing-whitespace t)
-(defun set-indent (n)
-  (setq-default
-   tab-width n
-   c-basic-offset n
-   coffee-tab-width n
-   css-indent-offset n
-   default-tab-width n
-   evil-shift-width n
-   javascript-indent-level n
-   js2-basic-offset n
-   js-indent-level n
-   json-indent-level n
-   json-tab-width n
-   prolog-indent-width n
-   python-indent n
-   python-indent-offset n
-   ruby-indent n
-   ruby-tab-width n
-   sh-indentation n
-   standard-indent n
-   tab-width n
-   web-mode-attr-indent-offset n
-   web-mode-code-indent-offset n
-   web-mode-css-indent-offset n
-   web-mode-markup-indent-offset n
-   yaml-indent-offset n
-   ))
+;; (defun set-indent (n)
+;;   (setq-default
+;;    c-basic-offset n
+;;    coffee-tab-width n
+;;    css-indent-offset n
+;;    default-tab-width n
+;;    evil-shift-width n
+;;    javascript-indent-level n
+;;    js2-basic-offset n
+;;    js-indent-level n
+;;    json-indent-level n
+;;    json-tab-width n
+;;    prolog-indent-width n
+;;    python-indent n
+;;    python-indent-offset n
+;;    ruby-indent n
+;;    ruby-tab-width n
+;;    sh-indentation n
+;;    standard-indent n
+;;    tab-width n
+;;    web-mode-attr-indent-offset n
+;;    web-mode-code-indent-offset n
+;;    web-mode-css-indent-offset n
+;;    web-mode-markup-indent-offset n
+;;    yaml-indent-offset n
+;;    ))
+
 (defun set-tab-width (n)
-  (dolist (var '(evil-shift-width
+  (dolist (var '(
                  default-tab-width
-                 tab-width
                  c-basic-offset
                  cmake-tab-width
                  coffee-tab-width
@@ -297,22 +312,31 @@ directory to make multiple eshell windows easier."
                  elixir-smie-indent-basic
                  enh-ruby-indent-level
                  erlang-indent-level
+                 ess-indent-level
+                 evil-shift-width
                  javascript-indent-level
                  js-indent-level
                  js2-basic-offset
                  js3-indent-level
+                 json-indent-level
                  lisp-indent-offset
                  livescript-tab-width
                  mustache-basic-offset
                  nxml-child-indent
                  perl-indent-level
+                 prolog-indedent-offset
                  puppet-indent-level
                  python-indent-offset
+                 ruby-indent
                  ruby-indent-level
+                 ruby-tab-width
                  rust-indent-offset
                  scala-indent:step
                  sgml-basic-offset
                  sh-basic-offset
+                 sh-indentation
+                 tab-width
+                 web-mode-attr-indent-offset
                  web-mode-code-indent-offset
                  web-mode-css-indent-offset
                  web-mode-markup-indent-offset
@@ -320,7 +344,7 @@ directory to make multiple eshell windows easier."
                  ))
     (set (make-local-variable var) n)))
 
-(set-indent 2)
+;; (set-indent 2)
 (set-tab-width 2)
 (add-hook 'shell-script-hook (lambda () (set-indent 2)))
 
@@ -349,6 +373,70 @@ directory to make multiple eshell windows easier."
 (global-set-key (kbd "C-c n") 'cleanup-buffer)
 
 (global-visual-line-mode 1)
+
+;; ;; Get email, and store in nnml
+;; (setq gnus-secondary-select-methods
+;;   '(
+;;     (nntp "gmane" (nntp-address "news.gmane.org"))
+;;     (nntp "news.eternal-september.org")
+;;     (nntp "nntp.aioe.org")
+;;     (nntp "news.gwene.org")
+;;     (nnimap "gmail"
+;;             (nnimap-address
+;;              "imap.gmail.com")
+;;             (nnimap-server-port 993)
+;;             (nnimap-stream ssl))
+;;     ))
+
+;; ;; Send email via Gmail:
+;; (setq message-send-mail-function 'smtpmail-send-it
+;;       smtpmail-default-smtp-server "smtp.gmail.com")
+
+;; ;; Archive outgoing email in Sent folder on imap.gmail.com:
+;; (setq gnus-message-archive-method '(nnimap "imap.gmail.com")
+;;       gnus-message-archive-group "[Gmail]/Sent Mail")
+
+;; ;; set return email address based on incoming email address
+;; (setq gnus-posting-styles
+;;       ;; '(((header "to" "address@outlook.com")
+;;       ;;    (address "address@outlook.com"))
+;;         ((header "to" "brian@murphydye.com")
+;;          (address "brian@murphydye.com"))
+;;         ;; ((header "to" "bmdmailer@gmail.com")
+;;         ;;  (address "bmdmailer@gmail.com"))
+;;         )
+    ;; )
+
+;; ;; store email in ~/gmail directory
+;; (setq nnml-directory "~/.config/gmail")
+;; (setq message-directory "~/.config/gmail")
+
+(add-hook 'compilation-finish-functions
+  (lambda (buf strg)
+    (switch-to-buffer-other-window "*compilation*")
+    (read-only-mode)
+    (goto-char (point-max))
+    (local-set-key (kbd "q")
+      (lambda () (interactive) (quit-restore-window)))))
+
+(defun ace-link-setup-default ()
+  "Setup the defualt shortcuts."
+  (eval-after-load "info"
+    '(define-key Info-mode-map "o" 'ace-link-info))
+  (eval-after-load "help-mode"
+    '(define-key help-mode-map "o" 'ace-link-help))
+  (eval-after-load "eww"
+    '(progn
+       (define-key eww-link-keymap "o" 'ace-link-eww)
+       (define-key eww-mode-map "o" 'ace-link-eww))))
+
+(ace-link-setup-default)
+
+(setq ranger-cleanup-eagerly t)
+
+(global-set-key (kbd "C-=") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
+;; (global-set-key (kbd "C-0") 'text-scale-mode) ;; conflicts with mac goto-space-0
 
 (debug-msg "mouse ...")
 (when nil
@@ -459,7 +547,8 @@ is already narrowed."
         ("x" "Work Journal (extended entry)" entry (file+datetree "~/drop/notes/work-journal.org")
          "* %?\nEntered on %U\n  %i\n  %a")
         ("j" "Journal" entry (file+datetree "~/drop/notes/journal.org")
-         "* %?\nEntered on %U\n  %i\n  %a")
+         ;; "* %?\nEntered on %U\n  %i\n  %a")
+         "* TODO %?\nEntered on %U")
         ))
   ;; the above uses these escapes
   ;; %a          annotation, normally the link created with org-store-link
@@ -485,43 +574,6 @@ is already narrowed."
   ;;  'org
   ;  (setq org-agenda-files "/Users/bmd/.config/notes/"))
 
-
-  ;; ;; Get email, and store in nnml
-  ;; (setq gnus-secondary-select-methods
-  ;;   '(
-  ;;     (nntp "gmane" (nntp-address "news.gmane.org"))
-  ;;     (nntp "news.eternal-september.org")
-  ;;     (nntp "nntp.aioe.org")
-  ;;     (nntp "news.gwene.org")
-  ;;     (nnimap "gmail"
-  ;;             (nnimap-address
-  ;;              "imap.gmail.com")
-  ;;             (nnimap-server-port 993)
-  ;;             (nnimap-stream ssl))
-  ;;     ))
-
-  ;; ;; Send email via Gmail:
-  ;; (setq message-send-mail-function 'smtpmail-send-it
-  ;;       smtpmail-default-smtp-server "smtp.gmail.com")
-
-  ;; ;; Archive outgoing email in Sent folder on imap.gmail.com:
-  ;; (setq gnus-message-archive-method '(nnimap "imap.gmail.com")
-  ;;       gnus-message-archive-group "[Gmail]/Sent Mail")
-
-  ;; ;; set return email address based on incoming email address
-  ;; (setq gnus-posting-styles
-  ;;       ;; '(((header "to" "address@outlook.com")
-  ;;       ;;    (address "address@outlook.com"))
-  ;;         ((header "to" "brian@murphydye.com")
-  ;;          (address "brian@murphydye.com"))
-  ;;         ;; ((header "to" "bmdmailer@gmail.com")
-  ;;         ;;  (address "bmdmailer@gmail.com"))
-  ;;         )
-      ;; )
-
-  ;; ;; store email in ~/gmail directory
-  ;; (setq nnml-directory "~/.config/gmail")
-  ;; (setq message-directory "~/.config/gmail")
 
 (spacemacs/set-leader-keys
   "oa" 'org-agenda
@@ -560,8 +612,6 @@ is already narrowed."
 ; Set default column view headings: Task Total-Time Time-Stamp
 (setq org-columns-default-format "%50ITEM(Task) %10CLOCKSUM %16TIMESTAMP_IA")
 
-(package-initialize)
-
 ;; (require 'ob-browser)
 (require 'ob-python)
 ;; (require 'ob-ipython)
@@ -581,10 +631,6 @@ is already narrowed."
     (shell . t)
     ))
 
-;; save customizations from the UI (M-x customize) to its own file
-(setq custom-file "~/.config/dotfiles/spacemacs/custom.el")
-(load custom-file 'noerror)
-
 ;; https://github.com/yjwen/org-reveal
 ;; git clone https://github.com/hakimel/reveal.js.git
 ;; (setq org-reveal-root "file:///data/data/com.termux/files/home/code/reveal.js")
@@ -592,36 +638,6 @@ is already narrowed."
 ;; (setq org-reveal-root "file:///home/bmd/.config/dotfiles/docs/reveal.js")
 (setq org-reveal-root "~/.config/dotfiles/docs/reveal.js")
 (setq org-reveal-hlevel 1)
-
-;; these were in the user-init
-
-(add-hook 'compilation-finish-functions
-  (lambda (buf strg)
-    (switch-to-buffer-other-window "*compilation*")
-    (read-only-mode)
-    (goto-char (point-max))
-    (local-set-key (kbd "q")
-      (lambda () (interactive) (quit-restore-window)))))
-
-(defun ace-link-setup-default ()
-  "Setup the defualt shortcuts."
-  (eval-after-load "info"
-    '(define-key Info-mode-map "o" 'ace-link-info))
-  (eval-after-load "help-mode"
-    '(define-key help-mode-map "o" 'ace-link-help))
-  (eval-after-load "eww"
-    '(progn
-       (define-key eww-link-keymap "o" 'ace-link-eww)
-       (define-key eww-mode-map "o" 'ace-link-eww))))
-
-;; (debug-msg "done loading my-user-config")
-
-(setq ranger-cleanup-eagerly t)
-
-(global-set-key (kbd "C-=") 'text-scale-increase)
-(global-set-key (kbd "C--") 'text-scale-decrease)
-(global-set-key (kbd "C-0") 'text-scale-mode)
-
 (setq org-ellipsis "⤵")
 
 ;; xoxp-10924691317-169530033073-189201081253-8c708f799095a5d0b364b13edb73a0a7
