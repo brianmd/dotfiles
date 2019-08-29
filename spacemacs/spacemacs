@@ -34,6 +34,7 @@
      better-defaults
      clojure
      csharp
+     chrome
      dash
      (deft :variables
        deft-directory "~/drop/notes")

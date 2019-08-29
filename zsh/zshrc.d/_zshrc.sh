@@ -74,6 +74,7 @@ plugins=(git bundler brew vagrant git-flow docker docker-compose docker-machine 
 # shellcheck source=/dev/null
 source "$ZSH/oh-my-zsh.sh"
 # shellcheck source=/dev/null
+export XDG_CONFIG_HOME="$HOME/.config"
 source "$HOME/.config/dotfiles/etc/git-sh.rc"
 
 if [ -n "$INSIDE_EMACS" ]; then
