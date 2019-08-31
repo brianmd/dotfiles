@@ -57,5 +57,3 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # export TEST_KITCHEN_CPUS=6
 
 export ANSIBLE_ROLES_PATH="./roles:../roles:../../roles"
-
-[ -d "$HOME/.linuxbrew" ] && export PATH="$PATH:$HOME/.linuxbrew/bin"
