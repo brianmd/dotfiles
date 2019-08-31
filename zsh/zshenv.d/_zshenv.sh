@@ -58,3 +58,4 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 export ANSIBLE_ROLES_PATH="./roles:../roles:../../roles"
 
+[ -d "$HOME/.linuxbrew" ] && export PATH="$PATH:$HOME/.linuxbrew/bin"
