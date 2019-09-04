@@ -218,6 +218,7 @@ if [[ $KERNEL == 'Darwin' ]]; then
   #export SSL_CERT_FILE=/git/Certificates.pem
   JAVA_HOME=$(/usr/libexec/java_home)
   export JAVA_HOME
+  ulimit -n 2048
 else
   # keychain_cmd="keychain --quiet"
   keychain_cmd="keychain"
