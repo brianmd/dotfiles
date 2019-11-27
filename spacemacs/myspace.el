@@ -434,8 +434,9 @@ directory to make multiple eshell windows easier."
 
 (setq ranger-cleanup-eagerly t)
 
-(global-set-key (kbd "C-=") 'text-scale-increase)
-(global-set-key (kbd "C--") 'text-scale-decrease)
+;; use SPC z f to increase/decrease font size
+;; (global-set-key (kbd "C-=") 'text-scale-increase)
+;; (global-set-key (kbd "C--") 'text-scale-decrease)
 ;; (global-set-key (kbd "C-0") 'text-scale-mode) ;; conflicts with mac goto-space-0
 
 (debug-msg "mouse ...")
@@ -644,6 +645,21 @@ is already narrowed."
 
 (require 'seeing-is-believing)
 (add-hook 'ruby-mode-hook 'seeing-is-believing)
+
+(add-hook 'ruby-mode-hook
+          (lambda () (hs-minor-mode)))
+
+(eval-after-load "hideshow"
+  '(add-to-list 'hs-special-modes-alist
+                `(ruby-mode
+                  ,(rx (or "def" "class" "module" "do" "{" "[")) ; Block start
+                  ,(rx (or "}" "]" "end"))                       ; Block end
+                  ,(rx (or "#" "=begin"))                        ; Comment start
+                  ruby-forward-sexp nil)))
+
+(global-set-key (kbd "C-c h <left>") 'hs-hide-block)
+(global-set-key (kbd "C-c h <right>") 'hs-show-block)
+(global-set-key (kbd "C-c h <up>") 'hs-hide-level)
 
 (debug-msg "terminal ...")
 ;; term shortcuts
