@@ -70,7 +70,7 @@ DISABLE_CORRECTION="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby gem lighthouse)
-plugins=(git bundler brew vagrant git-flow docker docker-compose docker-machine knife mercurial kitchen knife knife_ssh kubectl mosh)
+plugins=(git bundler brew vagrant git-flow docker docker-compose docker-machine knife mercurial kitchen knife knife_ssh kubectl mosh systemd)
 # shellcheck source=/dev/null
 source "$ZSH/oh-my-zsh.sh"
 # shellcheck source=/dev/null
