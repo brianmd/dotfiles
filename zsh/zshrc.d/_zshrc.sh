@@ -1,6 +1,8 @@
 # TODO: .ssh/config, .ssh/keys
 # TODO: add 'export VAGRANT_HOME=...' to a shared directory, then move
 # $HOME/.vagrant.d there
+#
+# may use '*' in history search, not regex
 
 KERNEL=$(uname -s)
 # to auto-update oh-my-zsh

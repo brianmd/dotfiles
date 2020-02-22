@@ -1081,6 +1081,11 @@ unset C- and M- digit keys
 (setq multi-term-program "/usr/bin/zsh")
 
 #+END_SRC
+** Tramp
+#+BEGIN_SRC emacs-lisp
+(setq tramp-default-method "ssh")
+#+END_SRC
+
 ** Trash
 #+BEGIN_SRC emacs-lisp
 (setq delete-by-moving-to-trash t)

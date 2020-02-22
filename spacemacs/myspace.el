@@ -703,6 +703,8 @@ is already narrowed."
 
 (setq multi-term-program "/usr/bin/zsh")
 
+(setq tramp-default-method "ssh")
+
 (setq delete-by-moving-to-trash t)
 
 (global-set-key (kbd "M-1") 'select-window-1)
