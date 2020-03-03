@@ -57,3 +57,4 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # export TEST_KITCHEN_CPUS=6
 
 export ANSIBLE_ROLES_PATH="./roles:../roles:../../roles"
+export infrainv=~/code/ans/ttd-ansible/inventories/production/infraflow.yaml
