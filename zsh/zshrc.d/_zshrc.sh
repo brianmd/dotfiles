@@ -286,7 +286,6 @@ export SMTPSERVER="smtp.gmail.com"
 export CHEF_TEST_KITCHEN_ENCRYPTED_DBAG_SECRET_FILE="$HOME/.chef/databag-secret-kitchen.pem"
 export CHEF_SECRET="$HOME/.chef/databag-secret.pem"
 
-export ANSIBLE_VAULT_PASSWORD_FILE=.vault_key
 export opsinventory=$HOME/code/mux/bin/opsinventory.py
 #export opinv=$HOME/code/mux/bin/opsinventory.py
 export oinv=$HOME/code/mux/bin/opsinventory.py
@@ -301,7 +300,7 @@ function osh { host=$1; shift; ssh brian.murphy-dye@"$($oinv --ip $host)" -o Str
 test -f ~/.fzf.zsh && source ~/.fzf.zsh
 
 # export PATH="$PATH:/snap/bin"
-export  ANSIBLE_VAULT_PASSWORD_FILE="./.vault_key"
+# export  ANSIBLE_VAULT_PASSWORD_FILE="./.vault_key" # use ANSIBLE_VAULT_KEY in ~/.ansible.cfg, and override that in .envrc files
 
 
 

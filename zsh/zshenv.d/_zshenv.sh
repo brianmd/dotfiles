@@ -58,3 +58,4 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 export ANSIBLE_ROLES_PATH="./roles:../roles:../../roles"
 export infrainv=~/code/ans/ttd-ansible/inventories/production/infraflow.yaml
+export ANSIBLE_VAULT_KEY=~/.config/ansible_vault_key
