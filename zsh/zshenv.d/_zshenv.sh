@@ -8,6 +8,8 @@ for d in \
         $HOME/pkgs \
         $HOME/pkgs/boxes \
         $HOME/Documents \
+        $HOME/code/chef \
+        $HOME/code/chef/cookbooks \
     ; do
   # echo "path: $d"
   test -d $d && CDPATH="$d:$CDPATH"
@@ -29,7 +31,7 @@ for d in \
         $HOME/code/mux/bin \
         $HOME/code/mux/tasks \
         /opt/local/bin \
-        /opt/chefdk/embedded/bin \
+        /opt/chef/embedded/bin \
         /opt/X11/bin \
         /usr/local/bin \
         /usr/bin \
