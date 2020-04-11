@@ -14,7 +14,7 @@ To install, clone and make as follows:
     cd ~/.config/dotfiles && sudo make root_install_user && make install_user
 
 
-    sudo apt install -y zsh vim git gcc make curl emacs gnome-tweaks
+    sudo apt install -y zsh vim git gcc make curl emacs gnome-tweaks keychain
         gnome-tweaks to allow changing caps lock to ctrl
     sudo visudo => username ALL=(ALL) NOPASSWD: ALL
     make relink
