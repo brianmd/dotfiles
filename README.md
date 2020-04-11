@@ -16,6 +16,7 @@ To install, clone and make as follows:
 
     sudo apt install -y zsh vim git gcc make curl emacs gnome-tweaks keychain
         gnome-tweaks to allow changing caps lock to ctrl
+    sudo update-alternatives --config editor # to use vim instead of yucky nano
     sudo visudo => username ALL=(ALL) NOPASSWD: ALL
     make relink
     make force_install_spacemacs
