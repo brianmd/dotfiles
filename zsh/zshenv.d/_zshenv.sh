@@ -31,6 +31,7 @@ for d in \
         $HOME/code/mux/bin \
         $HOME/code/mux/tasks \
         /opt/local/bin \
+        /opt/chef-workstation/embedded/bin \ # make this before chef, just in case both exist
         /opt/chef/embedded/bin \
         /opt/X11/bin \
         /usr/local/bin \
