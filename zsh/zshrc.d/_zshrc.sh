@@ -342,7 +342,7 @@ fi
 # TODO: this is slow
 if [ -d ${HOME}/.rbenv ]; then
     export RBENV_ROOT=${HOME}/.rbenv
-    eval "$(rbenv init - zsh --no-rehash)"
+    eval "$(rbenv init - --no-rehash zsh)"
 fi
 
 # The next line updates PATH for the Google Cloud SDK.
