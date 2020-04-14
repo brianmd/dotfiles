@@ -30,6 +30,7 @@ for d in \
         ~/.pkgs/packer \
         $HOME/code/mux/bin \
         $HOME/code/mux/tasks \
+        $HOME/Library/Python/3.7/bin \
         /opt/local/bin \
         /opt/chef-workstation/embedded/bin \
         /opt/chef/embedded/bin \
