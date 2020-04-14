@@ -340,10 +340,13 @@ if [ -d "${HOME}/.pyenv" ]; then
 fi
 
 # TODO: this is slow
-if [ -d ${HOME}/.rbenv ]; then
-    export RBENV_ROOT=${HOME}/.rbenv
+if [ -d "${HOME}/.rbenv" ]; then
+    export RBENV_ROOT="${HOME}/.rbenv"
     eval "$(rbenv init - --no-rehash zsh)"
 fi
+
+test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
+test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 # The next line updates PATH for the Google Cloud SDK.
 # shellcheck source=/dev/null
