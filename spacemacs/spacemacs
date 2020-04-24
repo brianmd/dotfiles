@@ -71,7 +71,8 @@
            ruby-enable-enh-ruby-mode t
        ;; ruby-version-manager 'rbenv
        )
-     scala
+     ;; scala ; note: causes ensime (enhanced scala) which can't be found on melpa
+     (scala :variables scala-backend 'scala-ensime)
      syntax-checking
      (version-control :variables
        version-controll-diff-tool 'diff-hl)
@@ -98,16 +99,16 @@
 
 
 (defun dotspacemacs/layers ()
-  "Configuration Layers declaration.
-You should not put any user code in this function besides modifying the variable
+  "configuration layers declaration.
+you should not put any user code in this function besides modifying the variable
 values."
   (setq-default
-   ;; Base distribution to use. This is a layer contained in the directory
-   ;; `+distribution'. For now available distributions are `spacemacs-base'
+   ;; base distribution to use. this is a layer contained in the directory
+   ;; `+distribution'. for now available distributions are `spacemacs-base'
    ;; or `spacemacs'. (default 'spacemacs)
    dotspacemacs-distribution 'spacemacs
-   ;; Lazy installation of layers (i.e. layers are installed only when a file
-   ;; with a supported type is opened). Possible values are `all', `unused'
+   ;; lazy installation of layers (i.e. layers are installed only when a file
+   ;; with a supported type is opened). possible values are `all', `unused'
    ;; and `nil'. `unused' will lazy install only unused layers (i.e. layers
    ;; not listed in variable `dotspacemacs-configuration-layers'), `all' will
    ;; lazy install any layer that support lazy installation even the layers
@@ -116,20 +117,20 @@ values."
    ;; variable `dotspacemacs-configuration-layers' to install it.
    ;; (default 'unused)
    dotspacemacs-enable-lazy-installation 'unused
-   ;; If non-nil then Spacemacs will ask for confirmation before installing
+   ;; if non-nil then spacemacs will ask for confirmation before installing
    ;; a layer lazily. (default t)
    dotspacemacs-ask-for-lazy-installation t
-   ;; If non-nil layers with lazy install support are lazy installed.
-   ;; List of additional paths where to look for configuration layers.
-   ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
+   ;; if non-nil layers with lazy install support are lazy installed.
+   ;; list of additional paths where to look for configuration layers.
+   ;; paths must have a trailing slash (i.e. `~/.mycontribs/')
    dotspacemacs-configuration-layer-path '()
-   ;; List of configuration layers to load.
+   ;; list of configuration layers to load.
    dotspacemacs-configuration-layers my-layers
    ;; '(
    ;;   ;; ----------------------------------------------------------------
-   ;;   ;; Example of useful layers you may want to use right away.
-   ;;   ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
-   ;;   ;; <M-m f e R> (Emacs style) to install them.
+   ;;   ;; example of useful layers you may want to use right away.
+   ;;   ;; uncomment some layer names and press <spc f e r> (vim style) or
+   ;;   ;; <m-m f e r> (emacs style) to install them.
    ;;   ;; ----------------------------------------------------------------
    ;;   csv
    ;;   auto-completion
@@ -434,6 +435,9 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  ;; the following 2 lines are an attempt to get ensime to install
+  (add-to-list 'configuration-layer-elpa-archives '("melpa-stable" . "stable.melpa.org/packages/"))
+  (add-to-list 'package-pinned-packages '(ensime . "melpa-stable"))
   )
 
 (defun dotspacemacs/user-config ()
@@ -459,7 +463,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (zeal-at-point jinja2-mode company-ansible ansible-doc ansible gmail-message-mode ham-mode html-to-markdown flymd edit-server vterm ess-smart-equals ess-R-data-view ctable ess julia-mode helm-dash dash-docs dash-at-point yasnippet-snippets seeing-is-believing org-brain erc-terminal-notifier enh-ruby-mode try log4j-mode logview datetime extmap vlf sdcv showtip dired-subtree dired-narrow dired-collapse dired-hacks-utils yaml-mode slack emojify circe oauth2 websocket ht insert-shebang flyspell-correct-helm flyspell-correct fish-mode engine-mode company-shell auto-dictionary reveal-in-osx-finder pbcopy osx-trash osx-dictionary launchctl git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter flycheck-pos-tip pos-tip diff-hl noflet ensime sbt-mode scala-mode xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby restclient-helm ob-restclient ob-http company-restclient restclient know-your-http-well ranger web-beautify plantuml-mode ox-reveal org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download lua-mode livid-mode skewer-mode simple-httpd js2-refactor js2-mode js-doc htmlize gnuplot company-tern tern coffee-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements mmm-mode markdown-toc markdown-mode live-py-mode hy-mode dash-functional helm-pydoc gh-md cython-mode company-anaconda anaconda-mode pythonic web-mode tagedit smeargle slim-mode scss-mode sass-mode pug-mode orgit magit-gitflow less-css-mode helm-gitignore helm-css-scss haml-mode go-guru go-eldoc gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit transient git-commit with-editor erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks emmet-mode company-web web-completion-data company-go go-mode unfill omnisharp flycheck mwim helm-company helm-c-yasnippet fuzzy dockerfile-mode docker json-mode tablist magit-popup docker-tramp json-snatcher json-reformat deft csv-mode csharp-mode company-statistics company clojure-snippets clj-refactor inflections edn multiple-cursors paredit peg cider-eval-sexp-fu cider sesman seq queue parseedn clojure-mode parseclj a auto-yasnippet yasnippet ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
+    (zeal-at-point jinja2-mode company-ansible ansible-doc ansible gmail-message-mode ham-mode html-to-markdown flymd edit-server vterm ess-smart-equals ess-R-data-view ctable ess julia-mode helm-dash dash-docs dash-at-point yasnippet-snippets seeing-is-believing org-brain erc-terminal-notifier enh-ruby-mode try log4j-mode logview datetime extmap vlf sdcv showtip dired-subtree dired-narrow dired-collapse dired-hacks-utils yaml-mode slack emojify circe oauth2 websocket ht insert-shebang flyspell-correct-helm flyspell-correct fish-mode engine-mode company-shell auto-dictionary reveal-in-osx-finder pbcopy osx-trash osx-dictionary launchctl git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter flycheck-pos-tip pos-tip diff-hl noflet sbt-mode xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby restclient-helm ob-restclient ob-http company-restclient restclient know-your-http-well ranger web-beautify plantuml-mode ox-reveal org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download lua-mode livid-mode skewer-mode simple-httpd js2-refactor js2-mode js-doc htmlize gnuplot company-tern tern coffee-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements mmm-mode markdown-toc markdown-mode live-py-mode hy-mode dash-functional helm-pydoc gh-md cython-mode company-anaconda anaconda-mode pythonic web-mode tagedit smeargle slim-mode scss-mode sass-mode pug-mode orgit magit-gitflow less-css-mode helm-gitignore helm-css-scss haml-mode go-guru go-eldoc gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit transient git-commit with-editor erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks emmet-mode company-web web-completion-data company-go go-mode unfill omnisharp flycheck mwim helm-company helm-c-yasnippet fuzzy dockerfile-mode docker json-mode tablist magit-popup docker-tramp json-snatcher json-reformat deft csv-mode csharp-mode company-statistics company clojure-snippets clj-refactor inflections edn multiple-cursors paredit peg cider-eval-sexp-fu cider sesman seq queue parseedn clojure-mode parseclj a auto-yasnippet yasnippet ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
