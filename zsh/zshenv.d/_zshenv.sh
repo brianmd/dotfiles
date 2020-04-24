@@ -34,6 +34,7 @@ for d in \
         /opt/local/bin \
         /opt/chef/embedded/bin \
         /opt/chef-workstation/embedded/bin \
+        /opt/chef-workstation/bin \
         /opt/X11/bin \
         /usr/local/bin \
         /usr/bin \
