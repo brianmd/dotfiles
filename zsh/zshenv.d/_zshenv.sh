@@ -32,8 +32,8 @@ for d in \
         $HOME/code/mux/tasks \
         $HOME/Library/Python/3.7/bin \
         /opt/local/bin \
-        /opt/chef-workstation/embedded/bin \
         /opt/chef/embedded/bin \
+        /opt/chef-workstation/embedded/bin \
         /opt/X11/bin \
         /usr/local/bin \
         /usr/bin \
@@ -51,6 +51,15 @@ export PATH
 
 test -f "$HOME/.config/pw" && source $HOME/.config/pw
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# TODO: this is slow
+if [ -d "${HOME}/.rbenv" ]; then
+  export RBENV_ROOT="${HOME}/.rbenv"
+  eval "$(rbenv init - --no-rehash zsh)"
+fi
+
+test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
+test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 #if [ -d ${HOME}/.pyenv ]; then
 #  export PYENV_ROOT="${HOME}/.pyenv"
