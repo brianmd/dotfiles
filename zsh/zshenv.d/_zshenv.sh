@@ -59,6 +59,10 @@ if [ -d "${HOME}/.rbenv" ]; then
   eval "$(rbenv init - --no-rehash zsh)"
 fi
 
+if [ -d "$HOME/.pyenv" ]; then
+  export PATH="$(pyenv root)/shims:$PATH"
+fi
+
 test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
 test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
