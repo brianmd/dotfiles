@@ -20,12 +20,6 @@ export CDPATH
 PATH="/sbin"
 for d in \
         ~/.config/binfiles \
-        ~/.local/bin \
-        ~/.linuxbrew \
-        /home/linuxbrew/.linuxbrew/bin \
-        ~/.pyenv/bin \
-        ~/.pyenv/shims \
-        ~/.nodenv/bin \
         ~/.code/gocode/bin \
         ~/.cargo/bin \
         ~/.pkgs/packer \
@@ -46,6 +40,13 @@ for d in \
         /usr/local/share/npm/bin \
         /usr/local/go/bin \
         /usr/local/share/bin \
+        ~/.local/bin \
+        ~/.linuxbrew \
+        /home/linuxbrew/.linuxbrew/bin \
+        ~/.nodenv/bin \
+        ~/.pyenv/bin \
+        ~/.pyenv/shims \
+        ~/.rbenv/shims \
     ; do
   test -d "$d" && PATH="$d:$PATH"
 done
