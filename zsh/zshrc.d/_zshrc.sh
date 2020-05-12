@@ -18,6 +18,7 @@ export DEFAULT_CONFIG_FILE="$HOME/.redmine"
 # time that oh-my-zsh is loaded.
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
+export SAVEHIST=20000
 
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="agnoster"
