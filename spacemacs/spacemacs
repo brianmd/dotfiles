@@ -25,6 +25,7 @@
         ;; on mac, vterm needs: brew install cmake libtool
         ;;   also may need to rm -rf ~/.emacs.d/elpa
         vterm
+        yafolding
         yasnippet-snippets
         ))
 
@@ -72,7 +73,7 @@
        ;; ruby-version-manager 'rbenv
        )
      ;; scala ; note: causes ensime (enhanced scala) which can't be found on melpa
-     (scala :variables scala-backend 'scala-ensime)
+     ;; (scala :variables scala-backend 'scala-ensime)
      syntax-checking
      (version-control :variables
        version-controll-diff-tool 'diff-hl)
@@ -437,7 +438,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
   ;; the following 2 lines are an attempt to get ensime to install
   (add-to-list 'configuration-layer-elpa-archives '("melpa-stable" . "stable.melpa.org/packages/"))
-  (add-to-list 'package-pinned-packages '(ensime . "melpa-stable"))
+  ;; (add-to-list 'package-pinned-packages '(ensime . "melpa-stable"))
   )
 
 (defun dotspacemacs/user-config ()

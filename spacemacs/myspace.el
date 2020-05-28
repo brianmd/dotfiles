@@ -576,6 +576,11 @@ is already narrowed."
   ;  (setq org-agenda-files "/Users/bmd/.config/notes/"))
 
 
+
+;; (require 'yafolding)
+
+
+
 (spacemacs/set-leader-keys
   "oa" 'org-agenda
   "og" 'helm-org-agenda-files-headings
@@ -590,6 +595,8 @@ is already narrowed."
   "ox" 'add-extended-work-entry
   "mse" 'ruby-send-last-sexp
   "oz" 'find-gtd
+
+  "of" 'yafolding-toggle-element
 
   "hw" 'sdcv-search-input
   )
@@ -659,7 +666,15 @@ is already narrowed."
 
 (global-set-key (kbd "C-c h <left>") 'hs-hide-block)
 (global-set-key (kbd "C-c h <right>") 'hs-show-block)
+
 (global-set-key (kbd "C-c h <up>") 'hs-hide-level)
+
+;; (require 'yafolding)
+(add-hook 'ruby-mode-hook 'yafolding-mode)
+;; (global-set-key (kbd "M-RET")   'yafolding-toggle-element)
+(spacemacs/set-leader-keys
+  "of" 'yafolding-toggle-element
+  )
 
 (debug-msg "terminal ...")
 ;; term shortcuts
@@ -757,7 +772,5 @@ is already narrowed."
 (global-set-key (kbd "C-M--") 'text-scale-decrease)
 ;; (global-set-key (kbd "C-M-=") 'default-text-scale-increase)
 ;; (global-set-key (kbd "C-M--") 'default-text-scale-decrease)
-
-(setq org-plantuml-jar-path "/Users/brianmurphy-dye/.config/dotfiles/plantuml.jar")
 
 (debug-msg "all done ...")

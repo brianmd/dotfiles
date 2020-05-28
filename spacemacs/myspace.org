@@ -881,6 +881,11 @@ is already narrowed."
   ;  (setq org-agenda-files "/Users/bmd/.config/notes/"))
 
 
+
+;; (require 'yafolding)
+
+
+
 (spacemacs/set-leader-keys
   "oa" 'org-agenda
   "og" 'helm-org-agenda-files-headings
@@ -895,6 +900,8 @@ is already narrowed."
   "ox" 'add-extended-work-entry
   "mse" 'ruby-send-last-sexp
   "oz" 'find-gtd
+
+  "of" 'yafolding-toggle-element
 
   "hw" 'sdcv-search-input
   )
@@ -1034,7 +1041,15 @@ unset C- and M- digit keys
 
 (global-set-key (kbd "C-c h <left>") 'hs-hide-block)
 (global-set-key (kbd "C-c h <right>") 'hs-show-block)
+
 (global-set-key (kbd "C-c h <up>") 'hs-hide-level)
+
+;; (require 'yafolding)
+(add-hook 'ruby-mode-hook 'yafolding-mode)
+;; (global-set-key (kbd "M-RET")   'yafolding-toggle-element)
+(spacemacs/set-leader-keys
+  "of" 'yafolding-toggle-element
+  )
 #+END_SRC
 ** Terminal
 #+BEGIN_SRC emacs-lisp
@@ -1176,10 +1191,6 @@ unset C- and M- digit keys
 ;; (global-set-key (kbd "C-M-=") 'default-text-scale-increase)
 ;; (global-set-key (kbd "C-M--") 'default-text-scale-decrease)
 
-#+END_SRC
-** Plantuml
-#+BEGIN_SRC emacs-lisp
-(setq org-plantuml-jar-path "/Users/brianmurphy-dye/.config/dotfiles/plantuml.jar")
 #+END_SRC
 ** All done
 #+BEGIN_SRC emacs-lisp
