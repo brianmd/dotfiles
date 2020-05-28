@@ -17,7 +17,8 @@ CDPATH=".:$CDPATH"
 export CDPATH
 
 # ~/.chefdk/gem/ruby/2.5.0/bin \
-PATH="/sbin"
+# PATH="/sbin"
+NEWPATH=""
 for d in \
         ~/.config/binfiles \
         ~/.code/gocode/bin \
@@ -34,8 +35,6 @@ for d in \
         /usr/local/bin \
         /usr/bin \
         /bin \
-        /usr/local/sbin \
-        /usr/sbin \
         /snap/bin \
         /usr/local/share/npm/bin \
         /usr/local/go/bin \
@@ -48,8 +47,10 @@ for d in \
         ~/.pyenv/shims \
         ~/.rbenv/shims \
     ; do
-  test -d "$d" && PATH="$d:$PATH"
+  test -d "$d" && NEWPATH="$d:$NEWPATH"
 done
+echo $NEWPATH
+PATH=$NEWPATH
 export PATH
 
 # shellcheck source=../../../pw
