@@ -49,7 +49,6 @@ for d in \
     ; do
   test -d "$d" && NEWPATH="$d:$NEWPATH"
 done
-echo $NEWPATH
 PATH=$NEWPATH
 export PATH
 
