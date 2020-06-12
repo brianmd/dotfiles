@@ -76,7 +76,7 @@ fi
 # export TEST_KITCHEN_CPUS=6
 
 export BID_CLUSTER_NODES="tor-cit200 lax-cit150 ukp-cit050 va1-cituser075 va1-citmap025 ca2-hi-abg35 cn2-cit-c5b1cd5 cn4-cit-db7754 de1-cit001 jp1-2-cit001 sg2-2-cit001 tor-aip025 lax-aip020 ukp-aip010"
-export NON_BID_CLUSTER_NODES="use-cit-sgsk001 use-cit-cold001 use-cit-cxt001 cit-dedup001 cit-nie001 cit-ramv001 cit-vid001"
+export NON_BID_CLUSTER_NODES="use-cit-sgsk001 use-cit-cold001 use-cit-cxt001 cit-dedup001 cit-nie001 cit-ram001 cit-vid001"
 export CLUSTER_NODES="$BID_CLUSTER_NODES $NON_BID_CLUSTER_NODES"
 export ANSIBLE_ROLES_PATH="./roles:../roles:../../roles"
 export infrainv=~/code/ans/ttd-ansible/inventories/production/infraflow.yaml
