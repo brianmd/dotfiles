@@ -78,6 +78,9 @@
 
 
 [alias]
+  # use 'git save branchname' instead of stash: https://codingkilledthecat.wordpress.com/2012/04/27/git-stash-pop-considered-harmful/#:~:text=git%20stash%20pop%20takes%20a,the%20%E2%80%9Cstash%20stack%E2%80%9D).
+  # it'll create a new branch, commit the changes, and re-checkout the original branch
+  save = !sh -c 'export PREV=$(git symbolic-ref HEAD|cut -d/ -f3-) && git checkout -b "$1" && git commit -am "$1" && git checkout "$PREV"' -
   # interactive rebase of all non-pushed commits
   # interestingly, @{upstream} is now the default!
   ri = rebase -i @{upstream}
