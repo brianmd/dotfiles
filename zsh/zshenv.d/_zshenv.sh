@@ -81,3 +81,6 @@ export CLUSTER_NODES="$BID_CLUSTER_NODES $NON_BID_CLUSTER_NODES"
 export ANSIBLE_ROLES_PATH="./roles:../roles:../../roles"
 export infrainv=~/code/ans/ttd-ansible/inventories/production/infraflow.yaml
 export ANSIBLE_VAULT_KEY=~/.config/ansible_vault_key
+
+function ip { echo `ttdops list nodes --name "$1" --groupby internal_ip --summary --format json | jq '.[].internal_ip' | tr -d '"'` }
+function s { ip=$(ip "$1"); shift; ssh "$ip" $@; }

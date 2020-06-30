@@ -164,7 +164,7 @@ alias be="b exec"
 alias binit="bi && b package"
 alias bev="b exec vagrant"
 
-alias s="ssh -AY"
+# alias s="ssh -AY"
 
 alias reload="source ~/.zshrc"
 alias config="subl ~/.zshrc"
