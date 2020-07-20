@@ -7,6 +7,9 @@
 KERNEL=$(uname -s)
 # to auto-update oh-my-zsh
 export DISABLE_UPDATE_PROMPT=true
+export DISABLE_AUTO_TITLE=true
+# alias settitle="echo -e \"\033];$1\007\""
+settitle() { echo -e "\033];$1\007" }
 
 export DEFAULT_CONFIG_FILE="$HOME/.redmine"
 
