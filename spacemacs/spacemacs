@@ -16,7 +16,8 @@
         dired-subtree
         log4j-mode
         ;; logview
-        org-brain
+        ;; (org :variables org-enable-reveal-js-support t)
+        ;; org-brain
         sdcv
         seeing-is-believing
         ;; (taskpaper-mode :location (recipe :fetcher github :repo "al3xandru/taskpaper-mode" :branch dev))
@@ -53,12 +54,15 @@
      lua
      markdown
      ;; org
+     org-re-reveal
+     emacs-reveal
      (org :variables
           org-enable-org-journal-support t
           ;; org-want-todo-bindings t
           ;; org-enable-reveal-js-support t
-       ;;    org-re-reveal-root (concat "file:///" (getenv "HOME") "code/reference/reveal.js-3.8.0/")
+          ;; org-re-reveal-root (concat "file:///" (getenv "HOME") "code/reference/reveal.js/")
        )
+     org-re-reveal
      ;; spacemacs-org
      ;; pandoc
      plantuml

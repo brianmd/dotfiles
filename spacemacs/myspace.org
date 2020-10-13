@@ -628,6 +628,7 @@ Also, set tabs to two spaces in a lot of modes.
 
 ;; (set-indent 2)
 (set-tab-width 2)
+(setq js-indent-level 2)
 (add-hook 'shell-script-hook (lambda () (set-indent 2)))
 #+END_SRC
 

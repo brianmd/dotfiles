@@ -346,6 +346,7 @@ directory to make multiple eshell windows easier."
 
 ;; (set-indent 2)
 (set-tab-width 2)
+(setq js-indent-level 2)
 (add-hook 'shell-script-hook (lambda () (set-indent 2)))
 
 (defun untabify-buffer ()
