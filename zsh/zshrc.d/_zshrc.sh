@@ -4,6 +4,9 @@
 #
 # may use '*' in history search, not regex
 
+# shellcheck source=/dev/null
+test -f ~/.fzf.zsh && source ~/.fzf.zsh
+
 KERNEL=$(uname -s)
 # to auto-update oh-my-zsh
 export DISABLE_UPDATE_PROMPT=true
@@ -301,9 +304,6 @@ alias ans="ansible -i $oinv"
 function osh { host=$1; shift; ssh brian.murphy-dye@"$($oinv --ip $host)" -o StrictHostKeyChecking=no "$@";  }
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-# shellcheck source=/dev/null
-test -f ~/.fzf.zsh && source ~/.fzf.zsh
 
 # export PATH="$PATH:/snap/bin"
 # export  ANSIBLE_VAULT_PASSWORD_FILE="./.vault_key" # use ANSIBLE_VAULT_KEY in ~/.ansible.cfg, and override that in .envrc files
