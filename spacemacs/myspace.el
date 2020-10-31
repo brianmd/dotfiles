@@ -2,6 +2,10 @@
 (setq custom-file "~/.config/dotfiles/spacemacs/custom.el")
 (load custom-file 'noerror)
 
+;; allow cursor past eol; useful for evaluating in clojure
+;; (setq evil-move-cursor-back nil)
+(setq evil-move-beyond-eol t)
+
 ;; may need to do some setup before calling this?
 (package-initialize)
 
