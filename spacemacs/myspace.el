@@ -2,10 +2,6 @@
 (setq custom-file "~/.config/dotfiles/spacemacs/custom.el")
 (load custom-file 'noerror)
 
-;; allow cursor past eol; useful for evaluating in clojure
-;; (setq evil-move-cursor-back nil)
-(setq evil-move-beyond-eol t)
-
 ;; may need to do some setup before calling this?
 (package-initialize)
 
@@ -37,6 +33,14 @@
 (setq org-confirm-babel-evaluate nil)
 
 (debug-msg "clojure ...")
+
+;; allow cursor past eol; useful for evaluating in clojure
+;; (setq evil-move-cursor-back nil)
+(setq evil-move-beyond-eol t)
+
+;; by default (GET "/user/:id" [id]\n{:body ...}, body will align with /user/:id
+;; (put-clojure-indent 'GET 2) ;; now always indent by 2
+
 (global-set-key (kbd "C-e") 'cider-eval-defun-at-point)
 
                                         ;(define-key cider-minor-mode (kbd "M-e") 'cider-eval-defun-at-point)
