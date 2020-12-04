@@ -36,7 +36,12 @@
      ansible
      auto-completion
      better-defaults
-     clojure
+     (clojure :variables
+              clojure-enable-linters 'clj-kondo
+              clojure-enable-sayid t
+              clojure-enable-clj-refactor t)
+       ;; clj-refactor
+       ;; sayid
      csharp
      chrome
      dash
