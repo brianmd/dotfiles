@@ -1,17 +1,17 @@
 CDPATH="$HOME"
 # put in reverse order of importanc
 for d in \
-        $HOME/code \
-        $HOME/code/clojure \
-        $HOME/code/reference \
-        $HOME/code/chef \
-        $HOME/code/chef/cookbooks \
         $HOME/code/ans \
         $HOME/code/docker \
         $HOME/pkgs \
         $HOME/pkgs/boxes \
         $HOME/Documents \
         $HOME/.config \
+        $HOME/code/reference \
+        $HOME/code/chef \
+        $HOME/code/chef/cookbooks \
+        $HOME/code/clojure \
+        $HOME/code \
     ; do
   test -d "$d" && CDPATH="$d:$CDPATH"
 done
@@ -88,4 +88,4 @@ function ip { echo `ttdops list nodes --name "$1" --groupby internal_ip --summar
 function s { ip=$(ip "$1"); shift; ssh "$ip" $@; }
 
 setopt share_history
- setopt inc_append_history
+setopt inc_append_history
