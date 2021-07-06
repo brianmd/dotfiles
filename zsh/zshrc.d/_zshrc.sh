@@ -239,6 +239,7 @@ fi
 if [[ -x $(which $keychain_cmd 2>/dev/null) ]]; then
   if [[ -f "$HOME/.ssh/git_key" ]]; then eval "$keychain_cmd $HOME/.ssh/git_key"; fi
   if [[ -f "$HOME/.ssh/chrome" ]]; then eval "$keychain_cmd $HOME/.ssh/chrome"; fi
+  if [[ -f "$HOME/.ssh/ttd-vault" ]]; then eval "$keychain_cmd $HOME/.ssh/ttd-vault"; fi
   if [[ -f "$HOME/.ssh/gru" ]]; then eval "$keychain_cmd $HOME/.ssh/gru"; fi
   if [[ -f "$HOME/.ssh/bmd-ttd" ]]; then eval "$keychain_cmd $HOME/.ssh/bmd-ttd"; fi
   # shellcheck source=/dev/null
