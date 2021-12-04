@@ -46,13 +46,18 @@ for d in \
         /home/linuxbrew/.linuxbrew/bin \
         ~/.nodenv/bin \
         ~/.pyenv/bin \
+        /opt/homebrew/bin \
         ~/.pyenv/shims \
         ~/.rbenv/shims \
     ; do
+  # echo $d ; test -d "$d" && echo "    yes"
   test -d "$d" && NEWPATH="$d:$NEWPATH"
 done
+# echo $NEWPATH
 PATH=$NEWPATH
 export PATH
+
+# /opt/homebrew/opt/openjdk/bin \
 
 # shellcheck source=../../../pw
 # shellcheck disable=SC1091

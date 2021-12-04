@@ -272,15 +272,6 @@ export EMAIL="bmdmailer@gmail.com"
 export NAME="Brian Murphy-Dye"
 export SMTPSERVER="smtp.gmail.com"
 
-### Added by the Heroku Toolbelt
-# export PATH="/usr/local/heroku/bin:$PATH"
-# export RBENV_ROOT=/home/bmd/.rbenv
-# export PATH=/home/bmd/.rbenv/bin:/home/bmd/.rbenv/shims:/home/bmd/.rbenv/bin:/home/bmd/.rbenv/shims:/home/bmd/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
-# eval "$(rbenv init -)"
-# export RBENV_ROOT=/home/bmd/.rbenv
-# export PATH=/home/bmd/.rbenv/bin:/home/bmd/.rbenv/shims:/home/bmd/.rbenv/bin:/home/bmd/.rbenv/shims:/home/bmd/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
-# eval "$(rbenv init -)"
-
 # something sets xclip to a function, preventing /usr/bin/xclip from working
 # bmd unset -f xclip
 
@@ -350,12 +341,13 @@ fi
 # test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 # TODO: this is slow
-if [ -d ${HOME}/.rbenv ]; then
-    export PATH="$HOME/.rbenv/bin:$PATH"
-    export RBENV_ROOT=${HOME}/.rbenv
-    # eval "$(rbenv init - zsh --no-rehash)"
-    eval "$(rbenv init -)"
-fi
+# moved to zshenv
+# if [ -d ${HOME}/.rbenv ]; then
+#     export PATH="$HOME/.rbenv/bin:$PATH"
+#     export RBENV_ROOT=${HOME}/.rbenv
+#     # eval "$(rbenv init - zsh --no-rehash)"
+#     eval "$(rbenv init -)"
+# fi
 
 # The next line updates PATH for the Google Cloud SDK.
 # shellcheck source=/dev/null
