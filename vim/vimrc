@@ -24,7 +24,7 @@ Plug 'rking/ag.vim'
 " Plug 'mileszs/ack.vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
+"Plug 'garbas/vim-snipmate'""
 " Plug 'nviennot/snipmate.vim'
 " Plug 'nviennot/vim-armasm'
 Plug 'ton/vim-bufsurf'
