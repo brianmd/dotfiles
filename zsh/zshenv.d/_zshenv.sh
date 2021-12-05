@@ -39,6 +39,7 @@ for d in \
         /bin \
         /snap/bin \
         /usr/local/share/npm/bin \
+        /Users/bmd/Library/Python/3.8/bin \
         /usr/local/go/bin \
         /usr/local/share/bin \
         ~/.local/bin \
