@@ -78,6 +78,8 @@ if [ -d "$HOME/.pyenv" ]; then
   eval "$(pyenv init - zsh)"
 fi
 
+alias saml='saml2aws login --session-duration=28800 --force --verbose --profile saml && s2a saml'
+
 # test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
 # test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
@@ -89,6 +91,8 @@ export CLUSTER_NODES="$BID_CLUSTER_NODES $NON_BID_CLUSTER_NODES"
 export ANSIBLE_ROLES_PATH="./roles:../roles:../../roles"
 export infrainv=~/code/ans/ttd-ansible/inventories/production/infraflow.yaml
 export ANSIBLE_VAULT_KEY=~/.config/ansible_vault_key
+# export VAULT_ADDR=https://tdsi-secrets.adsrvr.org
+export VAULT_ADDR=https://vault.adsrvr.org
 
 function ip { echo `ttdops list nodes --name "$1" --groupby internal_ip --summary --format json | jq '.[].internal_ip' | tr -d '"'` }
 function s { ip=$(ip "$1"); shift; ssh "$ip" $@; }
