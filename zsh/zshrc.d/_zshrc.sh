@@ -1,3 +1,5 @@
+# Note: zshrc runs after zshenv
+
 # TODO: .ssh/config, .ssh/keys
 # TODO: add 'export VAGRANT_HOME=...' to a shared directory, then move
 # $HOME/.vagrant.d there
@@ -348,6 +350,12 @@ fi
 #     # eval "$(rbenv init - zsh --no-rehash)"
 #     eval "$(rbenv init -)"
 # fi
+
+if [ -d "${HOME}/.rbenv" ]; then
+  export RBENV_ROOT="${HOME}/.rbenv"
+  eval "$(rbenv init - --no-rehash zsh)"
+fi
+
 
 # The next line updates PATH for the Google Cloud SDK.
 # shellcheck source=/dev/null

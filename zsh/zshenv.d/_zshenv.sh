@@ -1,3 +1,5 @@
+# Note: zshenv runs before zshrc
+#
 CDPATH="$HOME"
 # put in reverse order of importanc
 for d in \
@@ -68,10 +70,10 @@ test -f "$HOME/.config/pw" && source "$HOME/.config/pw"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # TODO: this is slow
-if [ -d "${HOME}/.rbenv" ]; then
-  export RBENV_ROOT="${HOME}/.rbenv"
-  eval "$(rbenv init - --no-rehash zsh)"
-fi
+#if [ -d "${HOME}/.rbenv" ]; then
+#  export RBENV_ROOT="${HOME}/.rbenv"
+#  eval "$(rbenv init - --no-rehash zsh)"
+#fi
 
 if [ -d "$HOME/.pyenv" ]; then
   export PYENV_ROOT="$HOME/.pyenv"
