@@ -190,7 +190,7 @@ vnoremap . :normal .<CR>
 vnoremap @ :normal! @
 
 " Insert the date at the top of a development log.
-nmap <leader>N ggi# <C-R>=strftime("%Y-%m-%d - %A")<CR><DEL><CR><DEL><CR>
+nmap <leader>N ggi# <C-R>=strftime("%Y-%m-%d - %A")<CR><CR><CR><CR><CR><ESC>kki
 
 " Toggles
 set pastetoggle=<F1>
