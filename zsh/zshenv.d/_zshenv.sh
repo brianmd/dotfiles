@@ -36,9 +36,9 @@ for d in \
         /opt/chef-workstation/embedded/bin \
         /opt/chef-workstation/bin \
         /opt/X11/bin \
-        /usr/local/bin \
         /usr/bin \
         /bin \
+        /usr/local/bin \
         /snap/bin \
         /usr/local/share/npm/bin \
         /Users/bmd/Library/Python/3.8/bin \
