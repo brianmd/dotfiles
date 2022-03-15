@@ -31,6 +31,11 @@ Set up the org-mode fonts
 ;; from https://zzamboni.org/post/beautifying-org-mode-in-emacs/
 ;; this section will remain enabled. The section below, also from this same web page
 
+Load highlight-parentheses to prevent 'failed to define highlight-parentheses-minibuffer-setup' error
+;; #+BEGIN_SRC emacs-lisp
+;; (setq org-hide-emphasis-markers t)
+;; #+END_SRC
+
 First, we ask org-mode to hide the emphasis markup (e.g. /.../ for italics, *...* for bold, etc.):
 #+BEGIN_SRC emacs-lisp
 (setq org-hide-emphasis-markers t)

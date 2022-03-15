@@ -14,6 +14,7 @@
         dired-collapse
         dired-narrow
         dired-subtree
+        highlight-parentheses
         log4j-mode
         ;; logview
         ;; (org :variables org-enable-reveal-js-support t)
