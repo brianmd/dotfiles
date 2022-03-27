@@ -377,7 +377,8 @@ let g:rainbow_matching_filetypes = ['lisp', 'scheme', 'clojure', 'javascript', '
 
 function s:load()
   if count(g:rainbow_matching_filetypes, &ft) > 0
-    call rainbow#hook()
+    " this causes an error on .clj files
+    " call rainbow#hook()
   endif
 endfunction
 
