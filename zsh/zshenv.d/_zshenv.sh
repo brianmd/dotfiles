@@ -26,6 +26,7 @@ NEWPATH=""
 for d in \
         ~/.config/binfiles \
         ~/.code/gocode/bin \
+        /snap/bin \
         ~/.cargo/bin \
         ~/.pkgs/packer \
         $HOME/code/mux/bin \
