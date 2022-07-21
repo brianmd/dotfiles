@@ -60,8 +60,8 @@
      lua
      markdown
      ;; org
-     org-re-reveal
-     emacs-reveal
+     ;; org-re-reveal
+     ;; emacs-reveal
      (org :variables
           org-enable-org-journal-support t
           ;; org-want-todo-bindings t
