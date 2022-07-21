@@ -102,3 +102,7 @@ function s { ip=$(ip "$1"); shift; ssh "$ip" $@; }
 
 setopt share_history
 setopt inc_append_history
+
+alias m="$HOME/code/minikube/out/minikube-darwin-arm64 -p minipod"
+alias minikube="$HOME/code/minikube/out/minikube-darwin-arm64 -p minipod"
+

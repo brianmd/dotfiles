@@ -38,9 +38,26 @@
      auto-completion
      better-defaults
      (clojure :variables
+              ;; clojure-backend 'cider
               clojure-enable-linters 'clj-kondo
               clojure-enable-sayid t
-              clojure-enable-clj-refactor t)
+              clojure-enable-clj-refactor t
+
+              clojure-indent-style 'align-arguments
+              clojure-align-forms-automatically t
+              ;; clojure-toplevel-inside-comment-form t ;; evaluate expressions in comment as top level
+              ;; cider-repl-display-help-banner nil     ;; disable help banner
+              ;; cider-print-fn 'puget     ;; pretty printing w/ sorted keys / set values
+              ;; cider-result-overlay-position 'at-point ;; results shown right after expression
+              ;; cide-overlays-use-font-lock t
+              ;; cider-repl-buffer-size-limit 100  ;; limit lines shown in repl buffer
+              )
+     ;; lsp-layer
+     ;; (lsp :variables
+     ;;      ;; lsp-ui-doc-enable nil       ;; disable all doc popus
+     ;;      ;; lsp-ui-sideline-enable nil  ;; disable sideline bar for less distractions
+     ;;      ;; treemacs-space-between-root-nodes nil  ;; no spacing in tremacs views
+     ;;      )
        ;; clj-refactor
        ;; sayid
      csharp
@@ -49,16 +66,24 @@
      (deft :variables
        deft-directory "~/drop/notes")
      docker
+     emacs-lisp
      erc
      ess ;; R
-     ;; f ;; file/dir commands: https://github.com/rejeep/f.el/tree/8191672377816a1975414cc1f116fd3b94b30bd0
-     git
+     (git :variables
+          ;; git-magit-status-fullscreen t
+          ;; magit-diff-refine-hunk t
+          ;; git-enable-magit-todos-plugin t
+          )
      gnus
      go
+     ;; generate graphs of clojure project dependencies
+     ;; https://develop.spacemacs.org/layers/+lang/graphviz/README.html
+     graphviz
      html
      javascript
-     lua
-     markdown
+     (markdown :variables
+               ;; markdown-live-preview-engine 'vmd
+               )
      ;; org
      ;; org-re-reveal
      ;; emacs-reveal
@@ -67,16 +92,31 @@
           ;; org-want-todo-bindings t
           ;; org-enable-reveal-js-support t
           ;; org-re-reveal-root (concat "file:///" (getenv "HOME") "code/reference/reveal.js/")
-       )
+
+          org-enable-github-support t
+          org-enable-bootstrap-support t
+          org-enable-reveal-js-support t
+          org-want-todo-bindings t
+          org-enable-org-journal-support t
+          org-journal-dir "~/projects/journal/"
+          org-journal-file-format "%Y-%m-%d"
+          org-journal-date-prefix "#+TITLE: "
+          org-journal-date-format "%A, %B %d %Y"
+          org-journal-time-prefix "* "
+          org-journal-time-format ""
+          org-journal-carryover-items "TODO=\"TODO\"|TODO=\"DOING\"|TODO=\"BLOCKED\"|TODO=\"REVIEW\""
+          )
      org-re-reveal
      ;; spacemacs-org
      ;; pandoc
      plantuml
      python
      (ranger :variables
-             ranger-show-preview t
              ranger-enter-with-minus t
-             ranger-show-hidden t)
+             ranger-show-preview t
+             ranger-show-hidden t
+             ranger-ignored-extensions '("mkv" "flv" "iso" "mp4")
+             )
      restclient
      (ruby :variables
            ruby-enable-enh-ruby-mode t
