@@ -64,6 +64,7 @@
 ;;     "ec" 'cider-pprint-eval-defun-to-comment))
 
 (setq deft-directory "~/drop/notes")
+(setq projectile-create-missing-test-files t)
 
 (debug-msg "copy/paste ...")
   (setq x-select-enable-clipboard t)

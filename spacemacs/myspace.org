@@ -146,38 +146,39 @@ llll
 #+END_SRC
 ** Clojure
 #+BEGIN_SRC emacs-lisp
-(debug-msg "clojure ...")
+    (debug-msg "clojure ...")
 
-;; allow cursor past eol; useful for evaluating in clojure
-;; (setq evil-move-cursor-back nil)
-(setq evil-move-beyond-eol t)
+    ;; allow cursor past eol; useful for evaluating in clojure
+    ;; (setq evil-move-cursor-back nil)
+    (setq evil-move-beyond-eol t)
 
-;; by default (GET "/user/:id" [id]\n{:body ...}, body will align with /user/:id
-;; (put-clojure-indent 'GET 2) ;; now always indent by 2
+    ;; by default (GET "/user/:id" [id]\n{:body ...}, body will align with /user/:id
+    ;; (put-clojure-indent 'GET 2) ;; now always indent by 2
 
-(global-set-key (kbd "C-e") 'cider-eval-defun-at-point)
+    (global-set-key (kbd "C-e") 'cider-eval-defun-at-point)
 
-                                        ;(define-key cider-minor-mode (kbd "M-e") 'cider-eval-defun-at-point)
-                                        ;(define-key cider-minor-mode (kbd "M-l") 'cider-eval-buffer)
-                                        ;(setq clojure-enable-fancify-symbols t)
-; (spacemacs/set-leader-keys-for-major-mode 'clojure-mode "e;" 'cider-pprint-eval-defun-to-comment)
-(spacemacs/set-leader-keys-for-major-mode 'clojure-mode "ec" 'cider-ppprint-eval-last-sexp-to-comment)
+                                            ;(define-key cider-minor-mode (kbd "M-e") 'cider-eval-defun-at-point)
+                                            ;(define-key cider-minor-mode (kbd "M-l") 'cider-eval-buffer)
+                                            ;(setq clojure-enable-fancify-symbols t)
+    ; (spacemacs/set-leader-keys-for-major-mode 'clojure-mode "e;" 'cider-pprint-eval-defun-to-comment)
+    (spacemacs/set-leader-keys-for-major-mode 'clojure-mode "ec" 'cider-ppprint-eval-last-sexp-to-comment)
 
-;; (add-to-list 'exec-path "/home/zamansky/bin/")
+    ;; (add-to-list 'exec-path "/home/zamansky/bin/")
 
 
-;; (evil-define-key 'normal clojure-mode-map (kbd ", e ;") 'cider-pprint-eval-defun-to-comment)
+    ;; (evil-define-key 'normal clojure-mode-map (kbd ", e ;") 'cider-pprint-eval-defun-to-comment)
 
-;; (add-hook 'clojure-mode-hook
-;;           (lambda()
-;;             (spacemacs/set-leader-keys-for-major-mode 'clojure-mode
-;;               "ec" 'cider-pprint-eval-defun-to-comment)))
-;; (spacemacs|use-package-add-hook clojure
-;;   :post-config
-;;   (spacemacs/set-leader-keys-for-major-mode 'clojure-mode
-;;     "ec" 'cider-pprint-eval-defun-to-comment))
+    ;; (add-hook 'clojure-mode-hook
+    ;;           (lambda()
+    ;;             (spacemacs/set-leader-keys-for-major-mode 'clojure-mode
+    ;;               "ec" 'cider-pprint-eval-defun-to-comment)))
+    ;; (spacemacs|use-package-add-hook clojure
+    ;;   :post-config
+    ;;   (spacemacs/set-leader-keys-for-major-mode 'clojure-mode
+    ;;     "ec" 'cider-pprint-eval-defun-to-comment))
 
-(setq deft-directory "~/drop/notes")
+    (setq deft-directory "~/drop/notes")
+    (setq projectile-create-missing-test-files t)
 #+END_SRC
 ** Copy/Paste
 #+BEGIN_SRC emacs-lisp

@@ -60,25 +60,25 @@
      ;;      )
        ;; clj-refactor
        ;; sayid
-     csharp
-     chrome
-     dash
+     ;; csharp
+     ;; chrome
+     ;; dash
      (deft :variables
        deft-directory "~/drop/notes")
      docker
      emacs-lisp
-     erc
-     ess ;; R
+     ;; erc
+     ;; ess ;; R
      (git :variables
           ;; git-magit-status-fullscreen t
           ;; magit-diff-refine-hunk t
           ;; git-enable-magit-todos-plugin t
           )
      gnus
-     go
+     ;; go
      ;; generate graphs of clojure project dependencies
      ;; https://develop.spacemacs.org/layers/+lang/graphviz/README.html
-     graphviz
+     ;; graphviz
      html
      javascript
      (markdown :variables
@@ -127,8 +127,7 @@
      syntax-checking
      (version-control :variables
        version-controll-diff-tool 'diff-hl)
-     osx
-     shell-scripts
+     ;; osx
      search-engine
      (shell :variables
         shell-default-height 30
@@ -136,16 +135,14 @@
         shell-default-shell 'eshell
         ;; shell-default-shell 'multi-term
         shell-default-term-shell "/bin/zsh")
-     slack
+     shell-scripts
+     ;; slack
      spell-checking
-     yaml
 
-     helm
-     emacs-lisp
-     git
-     markdown
+     ;; helm
      syntax-checking
      ;; version-control
+     yaml
      ))
 
 
