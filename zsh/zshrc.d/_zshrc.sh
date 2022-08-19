@@ -132,6 +132,7 @@ test -f /usr/local/bin/fd && alias f="/usr/local/bin/fd"
 test -f /bin/fd && alias f="/bin/fd"
 test -f /usr/local/bin/trash && alias rm="/usr/local/bin/trash"
 
+alias ag1="ag --depth 1"
 alias rs="rsync -ahP"
 
 # bmd c() { cd "$HOME/code/$1"; }
