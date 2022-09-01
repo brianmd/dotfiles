@@ -45,5 +45,4 @@ Gemfile.my*
 Procfile
 node_modules
 dist
-
-
+bmd*
