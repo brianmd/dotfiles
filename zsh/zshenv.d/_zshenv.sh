@@ -3,6 +3,7 @@
 CDPATH="$HOME"
 # put in reverse order of importanc
 for d in \
+        $HOME/code/multipass \
         $HOME/code/ans \
         $HOME/code/docker \
         $HOME/pkgs \
