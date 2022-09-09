@@ -14,6 +14,7 @@
         dired-collapse
         dired-narrow
         dired-subtree
+        disable-mouse
         highlight-parentheses
         log4j-mode
         ;; logview
@@ -39,7 +40,7 @@
      better-defaults
      (clojure :variables
               ;; clojure-backend 'cider
-              clojure-enable-linters 'clj-kondo
+              clojure-enable-linters '(clj-kondo joker)
               clojure-enable-sayid t
               clojure-enable-clj-refactor t
 
@@ -58,9 +59,6 @@
      ;;      ;; lsp-ui-sideline-enable nil  ;; disable sideline bar for less distractions
      ;;      ;; treemacs-space-between-root-nodes nil  ;; no spacing in tremacs views
      ;;      )
-       ;; clj-refactor
-       ;; sayid
-     ;; csharp
      ;; chrome
      ;; dash
      (deft :variables
@@ -110,7 +108,7 @@
      ;; spacemacs-org
      ;; pandoc
      plantuml
-     python
+     ;; python
      (ranger :variables
              ranger-enter-with-minus t
              ranger-show-preview t
@@ -118,10 +116,10 @@
              ranger-ignored-extensions '("mkv" "flv" "iso" "mp4")
              )
      restclient
-     (ruby :variables
-           ruby-enable-enh-ruby-mode t
-       ;; ruby-version-manager 'rbenv
-       )
+     ;; (ruby :variables
+     ;;       ruby-enable-enh-ruby-mode t
+     ;;   ;; ruby-version-manager 'rbenv
+     ;;   )
      ;; scala ; note: causes ensime (enhanced scala) which can't be found on melpa
      ;; (scala :variables scala-backend 'scala-ensime)
      syntax-checking
@@ -500,6 +498,19 @@ you should place your code here."
                 '("~/.config/dotfiles/spacemacs")))
   ;; (require 'my-user-config)
   (org-babel-load-file (expand-file-name "~/.config/dotfiles/spacemacs/myspace.org"))
+  (defun silence ()
+    (interactive))
+  ;; don't jump the cursor around in the window on clicking
+  (define-key evil-motion-state-map [down-mouse-1] 'silence)
+  ;; also avoid any '<mouse-1> is undefined' when setting to 'undefined
+  (define-key evil-motion-state-map [mouse-1] 'silence)
+  (require 'disable-mouse)
+  (global-disable-mouse-mode)
+  (mapc #'disable-mouse-in-keymap
+    (list evil-motion-state-map
+          evil-normal-state-map
+          evil-visual-state-map
+          evil-insert-state-map))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

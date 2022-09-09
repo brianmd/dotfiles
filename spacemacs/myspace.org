@@ -1032,7 +1032,7 @@ unset C- and M- digit keys
 
 (global-set-key (kbd "<end>") 'move-end-of-line)
 
-(global-set-key [mouse-3] 'flyspell-correct-word-before-point)
+;; (global-set-key [mouse-3] 'flyspell-correct-word-before-point)
 #+END_SRC
 ** Plantuml
 #+BEGIN_SRC emacs-lisp :tangle no
