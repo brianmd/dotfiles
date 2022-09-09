@@ -111,7 +111,7 @@ unsetopt AUTO_CD
 
 alias k=kubectl
 alias kns='kubectl config set-context $(kubectl config current-context) --namespace '
-alias p='pgrep -af'
+# alias p='pgrep -af'
 
 alias c='xclip -selection clipboard'
 alias v='xclip -selection clipboard -o'
@@ -222,6 +222,8 @@ alias d=docker
 alias dm=docker-machine
 alias dc=docker-compose
 # function dmenv() { eval $(docker-machine env "$1") }
+alias p=podman
+alias pm=podman machine
 
 # export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
 
