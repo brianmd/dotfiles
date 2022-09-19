@@ -146,39 +146,46 @@ llll
 #+END_SRC
 ** Clojure
 #+BEGIN_SRC emacs-lisp
-    (debug-msg "clojure ...")
+  (debug-msg "clojure ...")
 
-    ;; allow cursor past eol; useful for evaluating in clojure
-    ;; (setq evil-move-cursor-back nil)
-    (setq evil-move-beyond-eol t)
+  ;; allow cursor past eol; useful for evaluating in clojure
+  ;; (setq evil-move-cursor-back nil)
+  (setq evil-move-beyond-eol t)
 
-    ;; by default (GET "/user/:id" [id]\n{:body ...}, body will align with /user/:id
-    ;; (put-clojure-indent 'GET 2) ;; now always indent by 2
+  ;; by default (GET "/user/:id" [id]\n{:body ...}, body will align with /user/:id
+  ;; (put-clojure-indent 'GET 2) ;; now always indent by 2
 
-    (global-set-key (kbd "C-e") 'cider-eval-defun-at-point)
+  (global-set-key (kbd "C-e") 'cider-eval-defun-at-point)
 
-                                            ;(define-key cider-minor-mode (kbd "M-e") 'cider-eval-defun-at-point)
-                                            ;(define-key cider-minor-mode (kbd "M-l") 'cider-eval-buffer)
-                                            ;(setq clojure-enable-fancify-symbols t)
-    ; (spacemacs/set-leader-keys-for-major-mode 'clojure-mode "e;" 'cider-pprint-eval-defun-to-comment)
-    (spacemacs/set-leader-keys-for-major-mode 'clojure-mode "ec" 'cider-ppprint-eval-last-sexp-to-comment)
+  (evil-define-key 'normal cider-mode (kbd ", e q") 'cider-tap-last-sexp)
+  (evil-define-key 'normal cider-mode (kbd ", e t") 'cider-tap-sexp-at-point)
+  ;; (global-set-key (kbd ", e q") 'cider-tap-last-sexp)
+  ;; (global-set-key (kbd ", e t") 'cider-tap-sexp-at-point)
+  ;; (define-key cider-minor-mode (kbd ",eq") 'cider-tap-last-sexp)
+  ;; (define-key cider-minor-mode (kbd ",et") 'cider-tap-sexp-at-point)
 
-    ;; (add-to-list 'exec-path "/home/zamansky/bin/")
+                                          ;(define-key cider-minor-mode (kbd "M-e") 'cider-eval-defun-at-point)
+                                          ;(define-key cider-minor-mode (kbd "M-l") 'cider-eval-buffer)
+                                          ;(setq clojure-enable-fancify-symbols t)
+  ; (spacemacs/set-leader-keys-for-major-mode 'clojure-mode "e;" 'cider-pprint-eval-defun-to-comment)
+  (spacemacs/set-leader-keys-for-major-mode 'clojure-mode "ec" 'cider-ppprint-eval-last-sexp-to-comment)
+
+  ;; (add-to-list 'exec-path "/home/zamansky/bin/")
 
 
-    ;; (evil-define-key 'normal clojure-mode-map (kbd ", e ;") 'cider-pprint-eval-defun-to-comment)
+  ;; (evil-define-key 'normal clojure-mode-map (kbd ", e ;") 'cider-pprint-eval-defun-to-comment)
 
-    ;; (add-hook 'clojure-mode-hook
-    ;;           (lambda()
-    ;;             (spacemacs/set-leader-keys-for-major-mode 'clojure-mode
-    ;;               "ec" 'cider-pprint-eval-defun-to-comment)))
-    ;; (spacemacs|use-package-add-hook clojure
-    ;;   :post-config
-    ;;   (spacemacs/set-leader-keys-for-major-mode 'clojure-mode
-    ;;     "ec" 'cider-pprint-eval-defun-to-comment))
+  ;; (add-hook 'clojure-mode-hook
+  ;;           (lambda()
+  ;;             (spacemacs/set-leader-keys-for-major-mode 'clojure-mode
+  ;;               "ec" 'cider-pprint-eval-defun-to-comment)))
+  ;; (spacemacs|use-package-add-hook clojure
+  ;;   :post-config
+  ;;   (spacemacs/set-leader-keys-for-major-mode 'clojure-mode
+  ;;     "ec" 'cider-pprint-eval-defun-to-comment))
 
-    (setq deft-directory "~/drop/notes")
-    (setq projectile-create-missing-test-files t)
+  (setq deft-directory "~/drop/notes")
+  (setq projectile-create-missing-test-files t)
 #+END_SRC
 ** Copy/Paste
 #+BEGIN_SRC emacs-lisp
@@ -1155,56 +1162,57 @@ unset C- and M- digit keys
 #+END_SRC
 ** Windows
 #+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "M-1") 'select-window-1)
-(global-set-key (kbd "M-2") 'select-window-2)
-(global-set-key (kbd "M-3") 'select-window-3)
-(global-set-key (kbd "M-4") 'select-window-4)
-(global-set-key (kbd "M-5") 'select-window-5)
-(global-set-key (kbd "M-6") 'select-window-6)
-(global-set-key (kbd "M-7") 'select-window-7)
-(global-set-key (kbd "M-8") 'select-window-8)
-(global-set-key (kbd "M-9") 'select-window-9)
+  (global-set-key (kbd "M-1") 'select-window-1)
+  (global-set-key (kbd "M-2") 'select-window-2)
+  (global-set-key (kbd "M-3") 'select-window-3)
+  (global-set-key (kbd "M-4") 'select-window-4)
+  (global-set-key (kbd "M-5") 'select-window-5)
+  (global-set-key (kbd "M-6") 'select-window-6)
+  (global-set-key (kbd "M-7") 'select-window-7)
+  (global-set-key (kbd "M-8") 'select-window-8)
+  (global-set-key (kbd "M-9") 'select-window-9)
 
-(global-set-key (kbd "M-l") 'evil-window-next)
-(global-set-key (kbd "M-h") 'evil-window-prev)
-(global-unset-key (kbd "M-j"))
-(global-set-key (kbd "M-j") 'evil-window-next)
-(global-set-key (kbd "M-k") 'evil-window-prev)
+  (global-set-key (kbd "M-l") 'evil-window-next)
+  (global-set-key (kbd "M-h") 'evil-window-prev)
+  (global-unset-key (kbd "M-j"))
+  (global-set-key (kbd "M-j") 'evil-window-next)
+  (global-set-key (kbd "M-k") 'evil-window-prev)
 
-;; (define-key auto-highlight-symbol-mode-major-mode (kbd "M--") nil)
-;; (local-unset-key "M--")
-;; (global-unset-key (kbd "M--"))
-;; (define-key minor-mode-map (kbd "M--") 'split-window-below-and-focus)
-;; (define-key minor-mode-map (kbd "M-_") 'split-window-below-and-focus)
-;; (global-set-key (kbd "M--") 'split-window-below-and-focus)
-;; (local-set-key (kbd "M--") 'split-window-below-and-focus)
-;; (global-set-key (kbd "M-_") 'split-window-below-and-focus)
-;; (global-set-key (kbd "M-_") 'split-window-vertically)
-;; (local-unset-key (kbd "M--"))
-;; (local-unset-key "M--")
-;; (local-unset-key "\M--")
-;; (global-unset-key (kbd "M--"))
-(global-set-key (kbd "M--") 'split-window-below-and-focus)
-(global-set-key (kbd "M-\\") 'split-window-right-and-focus)
-;; (global-set-key (kbd "M-n") 'split-window-right-and-focus)
-(define-key (current-global-map) [remap ahs-back-to-start] 'split-window-below-and-focus)
 
-;; these are M-left and M-right. These interfere with org mode
-;; (define-key (current-global-map) [remap ahs-forward] 'evil-window-decrease-width)
-;; (define-key (current-global-map) [remap ahs-backward] 'evil-window-increase-width)
+  ;; (define-key auto-highlight-symbol-mode-major-mode (kbd "M--") nil)
+  ;; (local-unset-key "M--")
+  ;; (global-unset-key (kbd "M--"))
+  ;; (define-key minor-mode-map (kbd "M--") 'split-window-below-and-focus)
+  ;; (define-key minor-mode-map (kbd "M-_") 'split-window-below-and-focus)
+  ;; (global-set-key (kbd "M--") 'split-window-below-and-focus)
+  ;; (local-set-key (kbd "M--") 'split-window-below-and-focus)
+  ;; (global-set-key (kbd "M-_") 'split-window-below-and-focus)
+  ;; (global-set-key (kbd "M-_") 'split-window-vertically)
+  ;; (local-unset-key (kbd "M--"))
+  ;; (local-unset-key "M--")
+  ;; (local-unset-key "\M--")
+  ;; (global-unset-key (kbd "M--"))
+  (global-set-key (kbd "M--") 'split-window-below-and-focus)
+  (global-set-key (kbd "M-\\") 'split-window-right-and-focus)
+  ;; (global-set-key (kbd "M-n") 'split-window-right-and-focus)
+  (define-key (current-global-map) [remap ahs-back-to-start] 'split-window-below-and-focus)
 
-;; (global-unset-key (kbd "M-<left>"))
-;; (global-unset-key "\M-left")
-;; (global-unset-key "\M-right")
-;; (global-set-key (kbd "M-C-k") 'evil-window-decrease-height)
-;; (global-set-key (kbd "M-C-j") 'evil-window-increase-height)
-;; (global-set-key (kbd "M-C-h") 'evil-window-decrease-width)
-;; (global-set-key (kbd "M-C-l") 'evil-window-increase-width)
+  ;; these are M-left and M-right. These interfere with org mode
+  ;; (define-key (current-global-map) [remap ahs-forward] 'evil-window-decrease-width)
+  ;; (define-key (current-global-map) [remap ahs-backward] 'evil-window-increase-width)
 
-(global-set-key (kbd "C-M-=") 'text-scale-increase)
-(global-set-key (kbd "C-M--") 'text-scale-decrease)
-;; (global-set-key (kbd "C-M-=") 'default-text-scale-increase)
-;; (global-set-key (kbd "C-M--") 'default-text-scale-decrease)
+  ;; (global-unset-key (kbd "M-<left>"))
+  ;; (global-unset-key "\M-left")
+  ;; (global-unset-key "\M-right")
+  ;; (global-set-key (kbd "M-C-k") 'evil-window-decrease-height)
+  ;; (global-set-key (kbd "M-C-j") 'evil-window-increase-height)
+  ;; (global-set-key (kbd "M-C-h") 'evil-window-decrease-width)
+  ;; (global-set-key (kbd "M-C-l") 'evil-window-increase-width)
+
+  (global-set-key (kbd "C-M-=") 'text-scale-increase)
+  (global-set-key (kbd "C-M--") 'text-scale-decrease)
+  ;; (global-set-key (kbd "C-M-=") 'default-text-scale-increase)
+  ;; (global-set-key (kbd "C-M--") 'default-text-scale-decrease)
 
 #+END_SRC
 ** All done

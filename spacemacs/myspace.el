@@ -43,6 +43,13 @@
 
 (global-set-key (kbd "C-e") 'cider-eval-defun-at-point)
 
+(evil-define-key 'normal cider-mode (kbd ", e q") 'cider-tap-last-sexp)
+(evil-define-key 'normal cider-mode (kbd ", e t") 'cider-tap-sexp-at-point)
+;; (global-set-key (kbd ", e q") 'cider-tap-last-sexp)
+;; (global-set-key (kbd ", e t") 'cider-tap-sexp-at-point)
+;; (define-key cider-minor-mode (kbd ",eq") 'cider-tap-last-sexp)
+;; (define-key cider-minor-mode (kbd ",et") 'cider-tap-sexp-at-point)
+
                                         ;(define-key cider-minor-mode (kbd "M-e") 'cider-eval-defun-at-point)
                                         ;(define-key cider-minor-mode (kbd "M-l") 'cider-eval-buffer)
                                         ;(setq clojure-enable-fancify-symbols t)
@@ -747,6 +754,7 @@ is already narrowed."
 (global-unset-key (kbd "M-j"))
 (global-set-key (kbd "M-j") 'evil-window-next)
 (global-set-key (kbd "M-k") 'evil-window-prev)
+
 
 ;; (define-key auto-highlight-symbol-mode-major-mode (kbd "M--") nil)
 ;; (local-unset-key "M--")
