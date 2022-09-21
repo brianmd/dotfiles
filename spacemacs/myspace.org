@@ -19,12 +19,17 @@ SPC w b   return focus to helm minibuffer if it loses focus
 - http://aaronbedra.com/emacs.d/
 ** Initial Setup
 #+BEGIN_SRC emacs-lisp
-;; save customizations from the UI (M-x customize) to its own file
-(setq custom-file "~/.config/dotfiles/spacemacs/custom.el")
-(load custom-file 'noerror)
 
-;; may need to do some setup before calling this?
-(package-initialize)
+  (spacemacs/set-leader-keys-for-major-mode 'clojure-mode (kbd "ep") 'cider-tap-last-sexp)
+  ;; (evil-define-key 'normal cider-mode (kbd ", e q") 'cider-tap-last-sexp)
+  ;; (evil-define-key 'normal cider-mode (kbd ", e t") 'cider-tap-sexp-at-point)
+
+  ;; save customizations from the UI (M-x customize) to its own file
+  (setq custom-file "~/.config/dotfiles/spacemacs/custom.el")
+  (load custom-file 'noerror)
+
+  ;; may need to do some setup before calling this?
+  (package-initialize)
 #+END_SRC
 
 Set up the org-mode fonts

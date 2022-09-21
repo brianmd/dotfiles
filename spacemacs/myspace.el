@@ -1,3 +1,7 @@
+(spacemacs/set-leader-keys-for-major-mode 'clojure-mode (kbd "ep") 'cider-tap-last-sexp)
+;; (evil-define-key 'normal cider-mode (kbd ", e q") 'cider-tap-last-sexp)
+;; (evil-define-key 'normal cider-mode (kbd ", e t") 'cider-tap-sexp-at-point)
+
 ;; save customizations from the UI (M-x customize) to its own file
 (setq custom-file "~/.config/dotfiles/spacemacs/custom.el")
 (load custom-file 'noerror)
