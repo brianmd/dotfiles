@@ -14,7 +14,7 @@
         dired-collapse
         dired-narrow
         dired-subtree
-        disable-mouse
+        ;; disable-mouse
         highlight-parentheses
         log4j-mode
         ;; logview
@@ -55,6 +55,7 @@
               )
      ;; lsp-layer
      (lsp :variables  ;; uses cljfmt per https://practical.li/spacemacs/improving-code/formatting/
+          treemacs-use-filewatch-mode nil
      ;;      ;; lsp-ui-doc-enable nil       ;; disable all doc popups
      ;;      ;; lsp-ui-sideline-enable nil  ;; disable sideline bar for less distractions
      ;       treemacs-space-between-root-nodes nil  ;; no spacing in tremacs views
@@ -140,7 +141,8 @@
      ;; helm
      syntax-checking
      (treemacs :variables
-               treemacs-use-follow-mode 'tag)
+               ; treemacs-use-follow-mode 'tag
+               )
      ;; version-control
      yaml
      ))
@@ -502,17 +504,19 @@ you should place your code here."
   (org-babel-load-file (expand-file-name "~/.config/dotfiles/spacemacs/myspace.org"))
   (defun silence ()
     (interactive))
-  ;; don't jump the cursor around in the window on clicking
-  (define-key evil-motion-state-map [down-mouse-1] 'silence)
-  ;; also avoid any '<mouse-1> is undefined' when setting to 'undefined
-  (define-key evil-motion-state-map [mouse-1] 'silence)
-  (require 'disable-mouse)
-  (global-disable-mouse-mode)
-  (mapc #'disable-mouse-in-keymap
-    (list evil-motion-state-map
-          evil-normal-state-map
-          evil-visual-state-map
-          evil-insert-state-map))
+
+  (when nil
+    ;; don't jump the cursor around in the window on clicking
+    (define-key evil-motion-state-map [down-mouse-1] 'silence)
+    ;; also avoid any '<mouse-1> is undefined' when setting to 'undefined
+    (define-key evil-motion-state-map [mouse-1] 'silence)
+    (require 'disable-mouse)
+    (global-disable-mouse-mode)
+    (mapc #'disable-mouse-in-keymap
+      (list evil-motion-state-map
+            evil-normal-state-map
+            evil-visual-state-map
+            evil-insert-state-map)))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

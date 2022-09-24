@@ -1,4 +1,4 @@
-(spacemacs/set-leader-keys-for-major-mode 'clojure-mode (kbd "ep") 'cider-tap-last-sexp)
+(spacemacs/set-leader-keys-for-major-mode 'clojure-mode (kbd "eq") 'cider-tap-last-sexp)
 ;; (evil-define-key 'normal cider-mode (kbd ", e q") 'cider-tap-last-sexp)
 ;; (evil-define-key 'normal cider-mode (kbd ", e t") 'cider-tap-sexp-at-point)
 
@@ -47,8 +47,8 @@
 
 (global-set-key (kbd "C-e") 'cider-eval-defun-at-point)
 
-(evil-define-key 'normal cider-mode (kbd ", e q") 'cider-tap-last-sexp)
-(evil-define-key 'normal cider-mode (kbd ", e t") 'cider-tap-sexp-at-point)
+;; (evil-define-key 'normal cider-mode (kbd ", e q") 'cider-tap-last-sexp)
+;; (evil-define-key 'normal cider-mode (kbd ", e t") 'cider-tap-sexp-at-point)
 ;; (global-set-key (kbd ", e q") 'cider-tap-last-sexp)
 ;; (global-set-key (kbd ", e t") 'cider-tap-sexp-at-point)
 ;; (define-key cider-minor-mode (kbd ",eq") 'cider-tap-last-sexp)

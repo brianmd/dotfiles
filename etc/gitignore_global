@@ -45,6 +45,7 @@ Gemfile.my*
 Procfile
 node_modules
 dist
-bmd*
+local_overrides.edn
+bmd/*
 junk*
 scratch*
