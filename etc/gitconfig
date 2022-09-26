@@ -1,7 +1,7 @@
 # see https://blog.scottnonnenberg.com/better-git-configuration/
 [user]
   name = Brian Murphy-Dye
-  email = brian.murphy-dye@thetradedesk.com
+  email = brian_murphy-dye@comcast.com
   # email = brian@murphydye.com
 [core]
   # excludesfile = $HOME/.config/dotfiles/etc/gitignore_global
