@@ -49,24 +49,12 @@
   conflictstyle = diff3
 [difftool "sourcetree"]
   cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-  path = 
+  path =
 [mergetool "sourcetree"]
   cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
   trustExitCode = true
 [mergetool.ediff]
-  cmd = emacs --eval \"\
-(progn\
-  (defun ediff-write-merge-buffer ()\
-    (let ((file ediff-merge-store-file))\
-      (set-buffer ediff-buffer-C)\
-      (write-region (point-min) (point-max) file)\
-      (message \\\"Merge buffer saved in: %s\\\" file)\
-      (set-buffer-modified-p nil)\
-      (sit-for 1)))\
-  (setq ediff-quit-hook 'kill-emacs\
-        ediff-quit-merge-hook 'ediff-write-merge-buffer)\
-  (ediff-merge-files-with-ancestor \\\"$LOCAL\\\" \\\"$REMOTE\\\"\
-                                   \\\"$BASE\\\" nil \\\"$MERGED\\\"))\"
+  cmd = emacs --eval \"(progn  (defun ediff-write-merge-buffer ()    (let ((file ediff-merge-store-file))      (set-buffer ediff-buffer-C)      (write-region (point-min) (point-max) file)      (message \\\"Merge buffer saved in: %s\\\" file)      (set-buffer-modified-p nil)      (sit-for 1)))  (setq ediff-quit-hook 'kill-emacs        ediff-quit-merge-hook 'ediff-write-merge-buffer)  (ediff-merge-files-with-ancestor \\\"$LOCAL\\\" \\\"$REMOTE\\\"                                   \\\"$BASE\\\" nil \\\"$MERGED\\\"))\"
 [pull]
   default = current
 	rebase = true
@@ -80,7 +68,7 @@
 [alias]
   # use 'git save branchname' instead of stash: https://codingkilledthecat.wordpress.com/2012/04/27/git-stash-pop-considered-harmful/#:~:text=git%20stash%20pop%20takes%20a,the%20%E2%80%9Cstash%20stack%E2%80%9D).
   # it'll create a new branch, commit the changes, and re-checkout the original branch
-  save = !sh -c 'export PREV=$(git symbolic-ref HEAD|cut -d/ -f3-) && git checkout -b "$1" && git commit -am "$1" && git checkout "$PREV"' -
+  save = !sh -c 'export PREV=$(git symbolic-ref HEAD|cut -d/ -f3-) && git checkout -b $1 && git commit -am $1 && git checkout $PREV' -
   # interactive rebase of all non-pushed commits
   # interestingly, @{upstream} is now the default!
   ri = rebase -i @{upstream}
@@ -104,14 +92,14 @@
   c = commitca = commit -a
   cm = commit -m
   cem = commit --allow-empty -m
-  cam =         commit -am
+  cam = commit -am
   cd = commit --amend
   cad = commit -a --amend
   ced = commit      --allow-empty --amend
   #############
   d = diff
   dc = diff --cached
-  dl        = difftool
+  dl = difftool
   dlc = difftool --cached
   dk = diff --check
   dp = diff --pathience
@@ -131,10 +119,10 @@
   lg = log --oneline --graph --decorate
   #############
   ls = lgs-files
-  lsf = "!git ls-files | grep -i"
+  lsf = !git ls-files | grep -i
   #############
   m = merge
-  ma        = merge --abort
+  ma = merge --abort
   mc = merge --continue
   ms = merge --skip
   ############ms#
@@ -168,7 +156,7 @@
   pbpbpm = pull --rebase upstream master
   #############
   rb = rebase
-  rba =       rebase --abort
+  rba = rebase --abort
   rbc = rebase --continue
   rbi = rebase --interactive
   rbas = rebase --skip
@@ -186,7 +174,7 @@
   ra = remote add
   rr = remote rm
   rv = remote -v
-  rm =          remote rename
+  rm = remote rename
   rp = remote prune
   rs = remote show
   rao = remote add orrau = remote add upstream
@@ -216,14 +204,14 @@
   #############
   assume = update-index --assume-unchanged
   unassume = update-index --no-noassume-unchanged
-  assumed = "!git ls-files -v | grep ^h | cut -c 3-"
+  assumed = !git ls-files -v | grep ^h | cut -c 3-
   updatenassumeall = !git assumed | xargs git update-index --no-assume-unchanged
-  assumeall = "!git st -s | awk {'print $2'} | xargs git assume"
+  assumeall = !git st -s | awk {'print $2'} | xargs git assume
   #############
   ours = "!f() { git checkout --ours $@ && git add $@; }; f"
   theirs = "!f()theirs { git checkout --theirs $@ && git add $@; }; f"
   #############
-  whois     = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
+  whois = !sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -
   whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
   #############
   barebranch = !sh -c 'git symbolic-ref HEAD refs/heads/$1 && git rm --cached -r . && git clean -xfd' -
@@ -331,7 +319,7 @@
 #
 #    git simple-loop lorem 5
 #
-    simple-loop = "!simpleLoop() { NAME=$1; i="1"; while [ $i -le $2 ]; do git simple-commit $NAME$i; i=$[$i+1]; done; }; simpleLoop"
+    simple-loop = "!simpleLoop() { NAME=$1; i=1; while [ $i -le $2 ]; do git simple-commit $NAME$i; i=$[$i+1]; done; }; simpleLoop"
 
 
 # Alias: simple-loop2
@@ -456,3 +444,5 @@
 	displaycommentprefix = true
 [init]
 	defaultBranch = main
+[gc]
+	autoDetach = false
