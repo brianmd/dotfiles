@@ -45,6 +45,6 @@ Gemfile.my*
 Procfile
 node_modules
 dist
-bmd/*
+bmd*
 junk*
 scratch*

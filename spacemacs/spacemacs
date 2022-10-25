@@ -144,6 +144,7 @@
                ; treemacs-use-follow-mode 'tag
                )
      ;; version-control
+     ; (xclipboard :variables xclipboard-enable-cliphist t) ;; requires pbcopy and flycut on mac
      yaml
      ))
 

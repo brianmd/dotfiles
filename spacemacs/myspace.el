@@ -78,43 +78,91 @@
 (setq projectile-create-missing-test-files t)
 
 (debug-msg "copy/paste ...")
-  (setq x-select-enable-clipboard t)
-  ;; (setq mouse-drag-copy-region t)
 
-  ;; (define-key evil-normal-state-map "y" "\"+y")
-  ;; (fset 'evil-visual-update-x-selection 'ignore)
-  ;; (global-set-key (kbd "<mouse-2>") 'x-clipboard-yank)
+  ; (shell-command-on-region (region-beginning) (region-end) "pbcopy")
+  (cond
+   ;; OS X
+   ((string-equal system-type "darwin") ; Mac OS X
+    (progn
+      (setq save-to-clipboard-cmd "pbcopy")
+      (setq paste-from-clipboard-cmd "pbpaste")
+      )
+    )
+   ;; Linux
+   ((string-equal system-type "gnu/linux") ; linux
+    (progn
+      (setq save-to-clipboard-cmd "xsel -i -b")
+      (setq paste-from-clipboard-cmd "xsel -o -b")
+      )
+    )
+   )
+(defun copy-to-clipboard ()
+  "Copies selection to x-clipboard."
+  (interactive)
+  (if (display-graphic-p)
+      (progn
+        (message "Yanked region to x-clipboard!")
+        (call-interactively 'clipboard-kill-ring-save)
+        )
+    (if (region-active-p)
+        (progn
+          (shell-command-on-region (region-beginning) (region-end) save-to-clipboard-cmd)
+          (message "Yanked region to clipboard!")
+          (deactivate-mark))
+      (message "No region active; can't yank to clipboard!")))
+  )
 
-  ;; this is what makes copy/paste work in terminal mode.
-  ;; IMPORTANT: local and remote systems also need xsel
-  ;; from https://hugoheden.wordpress.com/2009/03/08/copypaste-with-emacs-in-terminal/
-  (unless window-system
-   (when (getenv "DISPLAY")
-    ;; Callback for when user cuts
-    (defun xsel-cut-function (text &optional push)
-      ;; Insert text to temp-buffer, and "send" content to xsel stdin
-      (with-temp-buffer
-        (insert text)
-        ;; I prefer using the "clipboard" selection (the one the
-        ;; typically is used by c-c/c-v) before the primary selection
-        ;; (that uses mouse-select/middle-button-click)
-        (call-process-region (point-min) (point-max) "xsel" nil 0 nil "--clipboard" "--input")))
-    ;; Call back for when user pastes
-    (defun xsel-paste-function()
-      ;; Find out what is current selection by xsel. If it is different
-      ;; from the top of the kill-ring (car kill-ring), then return
-      ;; it. Else, nil is returned, so whatever is in the top of the
-      ;; kill-ring will be used.
-      (let ((xsel-output (shell-command-to-string "xsel --clipboard --output")))
-        (unless (string= (car kill-ring) xsel-output)
-	xsel-output )))
-    ;; Attach callbacks to hooks
-    ;; (setq interprogram-cut-function 'xsel-cut-function)
-    ;; (setq interprogram-paste-function 'xsel-paste-function)
-    ;; Idea from
-    ;; http://shreevatsa.wordpress.com/2006/10/22/emacs-copypaste-and-x/
-    ;; http://www.mail-archive.com/help-gnu-emacs@gnu.org/msg03577.html
-   ))
+(defun paste-from-clipboard ()
+  "Pastes from x-clipboard."
+  (interactive)
+  (if (display-graphic-p)
+      (progn
+        (clipboard-yank)
+        (message "graphics active")
+        )
+    (insert (shell-command-to-string paste-from-clipboard-cmd))
+    )
+  )
+(evil-leader/set-key "o y" 'copy-to-clipboard)
+(evil-leader/set-key "o p" 'paste-from-clipboard)
+
+    (setq x-select-enable-clipboard t)
+    ;; (setq mouse-drag-copy-region t)
+
+    ;; (define-key evil-normal-state-map "y" "\"+y")
+    ;; (fset 'evil-visual-update-x-selection 'ignore)
+    ;; (global-set-key (kbd "<mouse-2>") 'x-clipboard-yank)
+
+    ;; this is what makes copy/paste work in terminal mode.
+    ;; IMPORTANT: local and remote systems also need xsel
+    ;; from https://hugoheden.wordpress.com/2009/03/08/copypaste-with-emacs-in-terminal/
+    (unless window-system
+     (when (getenv "DISPLAY")
+      ;; Callback for when user cuts
+      (defun xsel-cut-function (text &optional push)
+        ;; Insert text to temp-buffer, and "send" content to xsel stdin
+        (with-temp-buffer
+          (insert text)
+          ;; I prefer using the "clipboard" selection (the one the
+          ;; typically is used by c-c/c-v) before the primary selection
+          ;; (that uses mouse-select/middle-button-click)
+          (call-process-region (point-min) (point-max) "xsel" nil 0 nil "--clipboard" "--input")))
+      ;; Call back for when user pastes
+      (defun xsel-paste-function()
+        ;; Find out what is current selection by xsel. If it is different
+        ;; from the top of the kill-ring (car kill-ring), then return
+        ;; it. Else, nil is returned, so whatever is in the top of the
+        ;; kill-ring will be used.
+        (let ((xsel-output (shell-command-to-string "xsel --clipboard --output")))
+          (unless (string= (car kill-ring) xsel-output)
+    xsel-output )))
+      ;; Attach callbacks to hooks
+      ;; (setq interprogram-cut-function 'xsel-cut-function)
+      ;; (setq interprogram-paste-function 'xsel-paste-function)
+      ;; Idea from
+      ;; http://shreevatsa.wordpress.com/2006/10/22/emacs-copypaste-and-x/
+      ;; http://www.mail-archive.com/help-gnu-emacs@gnu.org/msg03577.html
+     ))
 
 (setq helm-dash-common-docsets '("Redis" "Ruby"))
 

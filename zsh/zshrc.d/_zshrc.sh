@@ -359,6 +359,7 @@ if [ -d "${HOME}/.rbenv" ]; then
   eval "$(rbenv init - --no-rehash zsh)"
 fi
 
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
 
 # The next line updates PATH for the Google Cloud SDK.
 # shellcheck source=/dev/null

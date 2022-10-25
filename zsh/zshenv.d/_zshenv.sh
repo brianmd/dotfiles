@@ -82,6 +82,8 @@ if [ -d "$HOME/.pyenv" ]; then
   eval "$(pyenv init - zsh)"
 fi
 
+export NVM_DIR="$HOME/.nvm"
+
 alias saml='saml2aws login --session-duration=28800 --force --verbose --profile saml && s2a saml'
 
 # test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
