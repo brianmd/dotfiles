@@ -8,6 +8,7 @@
 
 # shellcheck source=/dev/null
 test -f ~/.fzf.zsh && source ~/.fzf.zsh
+export FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
 
 KERNEL=$(uname -s)
 # to auto-update oh-my-zsh
@@ -82,6 +83,9 @@ DISABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby gem lighthouse)
 plugins=(git bundler brew vagrant git-flow docker docker-compose docker-machine knife mercurial kitchen knife knife_ssh kubectl mosh systemd vi-mode fzf)
+# Could add:
+#   brew, adds aliases for brew
+plugins=(git bundler docker docker-compose docker-machine kubectl mosh systemd vi-mode fzf)
 # shellcheck source=/dev/null
 source "$ZSH/oh-my-zsh.sh"
 # shellcheck source=/dev/null
