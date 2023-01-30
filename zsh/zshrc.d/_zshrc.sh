@@ -133,7 +133,7 @@ alias ni="DEBUG=* node-debug --harmony"
 alias bn="DEBUG=* babel-node --state 0"
 # matching filenames
 test -f /usr/local/bin/fd && alias f="/usr/local/bin/fd"
-test -f /usr/homebrew/bin/fd && alias f="/usr/homebrew/bin/fd"
+test -f /opt/homebrew/bin/fd && alias f="/opt/homebrew/bin/fd"
 test -f /bin/fd && alias f="/bin/fd"
 test -f /usr/local/bin/trash && alias rm="/usr/local/bin/trash"
 
