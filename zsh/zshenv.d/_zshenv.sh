@@ -109,3 +109,19 @@ setopt inc_append_history
 alias m="$HOME/code/minikube/out/minikube-darwin-arm64 -p minipod"
 alias minikube="$HOME/code/minikube/out/minikube-darwin-arm64 -p minipod"
 
+set_env () {
+    export CONSUL_HTTP_ADDRESS="https://$1.consul.multipass.comcast.com"
+    export CONSUL__URL="https://$1.consul.multipass.comcast.com"
+#   export CONSUL__PATH="/sphere/gossamer/$1"
+    export CONSUL_TOKEN="$2"
+}
+
+check_env () {
+    echo $CONSUL_TOKEN
+    echo $CONSUL_HTTP_ADDRESS
+    echo $CONSUL__URL
+    echo $CONSUL__PATH
+}
+
+alias devenv="setconsul dev"
+alias qaenv="setconsul qa"

@@ -374,3 +374,34 @@ fi
 #  These are already set above, so delete them from here
 
 function s2a { eval $( $(which saml2aws) script --shell=bash --profile=$@); }
+
+setconsul () {
+  if [ ":" = ":$CONSUL_DEV_TOKEN" ]; then
+    echo "CONSUL_DEV_TOKEN must be set"
+    return 1
+  elif [ ":" = ":$CONSUL_QA_TOKEN" ]; then
+    echo "CONSUL_QA_TOKEN must be set"
+    return 1
+  fi
+
+  if [ ":$1" = ":dev" ]; then
+    export CONSUL_TOKEN="$CONSUL_DEV_TOKEN"
+  elif [ ":$1" = ":qa" ]; then
+    export CONSUL_TOKEN="$CONSUL_QA_TOKEN"
+  else
+    echo "Must pass either 'dev' or 'qa'"
+    return 1
+  fi
+
+  export CONSUL_ENV=$1
+  export CONSUL_HTTP_ADDRESS="https://$1.consul.multipass.comcast.com"
+
+  # for ops/bin/start.sh:
+  export CONSUL_HOST="https://$1.consul.multipass.comcast.com"
+  export ENV=$1
+
+  echo "CONSUL_ENV=$CONSUL_ENV"
+  echo "CONSUL_HTTP_ADDRESS=$CONSUL_HTTP_ADDRESS"
+  # echo "CONSUL_TOKEN=$CONSUL_TOKEN"
+  echo "CONSUL_TOKEN is set for $CONSUL_ENV"
+}

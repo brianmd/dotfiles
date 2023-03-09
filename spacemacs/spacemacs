@@ -54,16 +54,18 @@
               ;; cider-repl-buffer-size-limit 100  ;; limit lines shown in repl buffer
               )
      ;; lsp-layer
-     (lsp :variables  ;; uses cljfmt per https://practical.li/spacemacs/improving-code/formatting/
-          treemacs-use-filewatch-mode nil
-     ;;      ;; lsp-ui-doc-enable nil       ;; disable all doc popups
-     ;;      ;; lsp-ui-sideline-enable nil  ;; disable sideline bar for less distractions
-     ;       treemacs-space-between-root-nodes nil  ;; no spacing in tremacs views
-          )
+;     (lsp :variables  ;; uses cljfmt per https://practical.li/spacemacs/improving-code/formatting/
+;          treemacs-use-filewatch-mode nil
+;     ;;      ;; lsp-ui-doc-enable nil       ;; disable all doc popups
+;     ;;      ;; lsp-ui-sideline-enable nil  ;; disable sideline bar for less distractions
+;     ;       treemacs-space-between-root-nodes nil  ;; no spacing in tremacs views
+;          )
      ;; chrome
      ;; dash
      (deft :variables
-       deft-directory "~/drop/notes")
+       ; deft-directory "~/drop/notes"
+       deft-directory "~/icloud/LogSeq"
+       deft-zetteldeft t)
      docker
      emacs-lisp
      ;; erc
