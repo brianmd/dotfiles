@@ -54,6 +54,7 @@ for d in \
         /opt/homebrew/bin \
         ~/.pyenv/shims \
         ~/.rbenv/shims \
+        ~/Library/Python/3.9/bin \
     ; do
   # echo $d ; test -d "$d" && echo "    yes"
   test -d "$d" && NEWPATH="$d:$NEWPATH"
