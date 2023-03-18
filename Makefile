@@ -228,6 +228,9 @@ mac_gnu_tools:
 	brew install nmap
 	brew install gpg
 	brew install htop
+	brew install fzf
+	# this might require several <ENTER>s
+	$(brew --prefix)/opt/fzf/install
 
 mac_install_direnv: "${HOME}/.config/direnv"
 
