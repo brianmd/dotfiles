@@ -131,6 +131,7 @@ alias emacsbare="emacs -nw -Q --eval \"(load-theme 'misterioso)\""
 alias n="DEBUG=* node --harmony"
 alias ni="DEBUG=* node-debug --harmony"
 alias bn="DEBUG=* babel-node --state 0"
+
 # matching filenames
 test -f /usr/local/bin/fd && alias f="/usr/local/bin/fd"
 test -f /opt/homebrew/bin/fd && alias f="/opt/homebrew/bin/fd"
@@ -246,15 +247,24 @@ else
   # if [[ -f "$HOME/.keychain/${HOST}-sh" ]]; then source "$HOME/.keychain/${HOST}-sh"; fi
 fi
 
+SSH_KEYS=(git_key chrome ttd-vault gru bmd-ttd safe git)
 if [[ -x $(which $keychain_cmd 2>/dev/null) ]]; then
-  if [[ -f "$HOME/.ssh/git_key" ]]; then eval "$keychain_cmd $HOME/.ssh/git_key"; fi
-  if [[ -f "$HOME/.ssh/chrome" ]]; then eval "$keychain_cmd $HOME/.ssh/chrome"; fi
-  if [[ -f "$HOME/.ssh/ttd-vault" ]]; then eval "$keychain_cmd $HOME/.ssh/ttd-vault"; fi
-  if [[ -f "$HOME/.ssh/gru" ]]; then eval "$keychain_cmd $HOME/.ssh/gru"; fi
-  if [[ -f "$HOME/.ssh/bmd-ttd" ]]; then eval "$keychain_cmd $HOME/.ssh/bmd-ttd"; fi
-  # shellcheck source=/dev/null
+  for key in $SSH_KEYS; do
+    ssh_key="$HOME/.ssh/$key"
+    test -f $ssh_key && eval "$keychain_cmd $ssh_key"
+  done
   if [[ -f "$HOME/.keychain/$HOST-sh" ]]; then source "$HOME/.keychain/$HOST-sh"; fi
 fi
+
+# if [[ -x $(which $keychain_cmd 2>/dev/null) ]]; then
+#   if [[ -f "$HOME/.ssh/git_key" ]]; then eval "$keychain_cmd $HOME/.ssh/git_key"; fi
+#   if [[ -f "$HOME/.ssh/chrome" ]]; then eval "$keychain_cmd $HOME/.ssh/chrome"; fi
+#   if [[ -f "$HOME/.ssh/ttd-vault" ]]; then eval "$keychain_cmd $HOME/.ssh/ttd-vault"; fi
+#   if [[ -f "$HOME/.ssh/gru" ]]; then eval "$keychain_cmd $HOME/.ssh/gru"; fi
+#   if [[ -f "$HOME/.ssh/bmd-ttd" ]]; then eval "$keychain_cmd $HOME/.ssh/bmd-ttd"; fi
+#   # shellcheck source=/dev/null
+#   if [[ -f "$HOME/.keychain/$HOST-sh" ]]; then source "$HOME/.keychain/$HOST-sh"; fi
+# fi
 
 if [ -n "$INSIDE_EMACS" ]; then
   echo "inside emacs, so will not load vim key bindings"

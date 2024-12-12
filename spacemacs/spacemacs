@@ -179,7 +179,12 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; list of configuration layers to load.
    dotspacemacs-configuration-layers my-layers
-   ;; '(sql
+   ;; '(ruby
+   ruby
+   ruby
+   ruby
+   ruby
+   sql
    ;;   ;; ----------------------------------------------------------------
    ;;   ;; example of useful layers you may want to use right away.
    ;;   ;; uncomment some layer names and press <spc f e r> (vim style) or

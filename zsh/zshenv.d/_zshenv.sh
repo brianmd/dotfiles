@@ -1,7 +1,7 @@
 # Note: zshenv runs before zshrc
 #
 CDPATH="$HOME"
-# put in reverse order of importanc
+# put in reverse order of importance
 for d in \
         $HOME/code/multipass \
         $HOME/code/ans \
@@ -49,12 +49,14 @@ for d in \
         ~/.local/bin \
         ~/.linuxbrew \
         /home/linuxbrew/.linuxbrew/bin \
+        ~/go/bin \
         ~/.nodenv/bin \
         ~/.pyenv/bin \
         /opt/homebrew/bin \
         ~/.pyenv/shims \
         ~/.rbenv/shims \
         ~/Library/Python/3.9/bin \
+        ~/code/reference/flutter/bin \
     ; do
   # echo $d ; test -d "$d" && echo "    yes"
   test -d "$d" && NEWPATH="$d:$NEWPATH"
@@ -126,3 +128,6 @@ check_env () {
 
 alias devenv="setconsul dev"
 alias qaenv="setconsul qa"
+
+export GOTOOLCHAIN=local
+
