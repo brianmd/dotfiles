@@ -57,13 +57,13 @@ for d in \
         ~/.rbenv/shims \
         ~/Library/Python/3.9/bin \
         ~/code/reference/flutter/bin \
+        /Applications/Xcode.app/Contents/Developer/Toolchains/xCodeDefault.xctoolchain/usr/bin \
     ; do
   # echo $d ; test -d "$d" && echo "    yes"
   test -d "$d" && NEWPATH="$d:$NEWPATH"
 done
 # echo $NEWPATH
-PATH=$NEWPATH
-export PATH
+export PATH=$NEWPATH
 
 # /opt/homebrew/opt/openjdk/bin \
 

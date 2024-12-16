@@ -139,6 +139,7 @@
      shell-scripts
      ;; slack
      spell-checking
+     swift
 
      ;; helm
      syntax-checking
