@@ -4,8 +4,6 @@ CDPATH="$HOME"
 # put in reverse order of importance
 for d in \
         $HOME/code/multipass \
-        $HOME/code/ans \
-        $HOME/code/docker \
         $HOME/pkgs \
         $HOME/pkgs/boxes \
         $HOME/Documents \
@@ -13,6 +11,9 @@ for d in \
         $HOME/code/reference \
         $HOME/code/chef \
         $HOME/code/chef/cookbooks \
+        $HOME/code/ans \
+        $HOME/code/docker \
+        $HOME/Documents/obsidian \
         $HOME/code/clojure \
         $HOME/code \
     ; do
