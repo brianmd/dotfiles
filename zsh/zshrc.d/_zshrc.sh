@@ -138,6 +138,8 @@ test -f /opt/homebrew/bin/fd && alias f="/opt/homebrew/bin/fd"
 test -f /bin/fd && alias f="/bin/fd"
 test -f /usr/local/bin/trash && alias rm="/usr/local/bin/trash"
 
+test -f /opt/homebrew/bin/bat && alias cat=bat
+
 alias ag1="ag --depth 1"
 alias rs="rsync -ahP"
 
