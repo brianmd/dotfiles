@@ -147,7 +147,10 @@ alias rs="rsync -ahP"
 # bmd _c() { _files -W "$HOME/code" -/; }
 #compdef _c c
 
-alias ipaddrs="ifconfig | awk '/inet / {print \$2}'"
+# alias ipaddrs="ifconfig | awk '/inet / {print \$2}'"
+test -f /usr/sbin/ip && alias ipaddrcmd='/usr/sbin/ip addr list'
+test -f /sbin/ifconfig && alias ipaddrcmd=/sbin/ifconfig
+alias ipaddrs="ipaddrcmd | grep 'inet ' | cut -d' ' -f2"
 
 alias myip="ip -br -c a"
 alias os='cat /etc/*release*'
