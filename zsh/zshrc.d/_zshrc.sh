@@ -254,7 +254,7 @@ else
   # if [[ -f "$HOME/.keychain/${HOST}-sh" ]]; then source "$HOME/.keychain/${HOST}-sh"; fi
 fi
 
-SSH_KEYS=(git_key chrome ttd-vault gru bmd-ttd md git safe)
+SSH_KEYS=(git_key chrome loftsonlomas ttd-vault gru bmd-ttd md git safe)
 if [[ -x $(which $keychain_cmd 2>/dev/null) ]]; then
   for key in $SSH_KEYS; do
     ssh_key="$HOME/.ssh/$key"

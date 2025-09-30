@@ -24,3 +24,11 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/bmd/.lmstudio/bin"
+
+# The next line updates PATH for the Google Cloud SDK.
+#if [ -f '/Users/bmd/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/bmd/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+#if [ -f '/Users/bmd/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/bmd/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+source /Users/bmd/.config/broot/launcher/bash/br
