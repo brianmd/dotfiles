@@ -104,6 +104,8 @@ export ANSIBLE_VAULT_KEY=~/.config/ansible_vault_key
 # export VAULT_ADDR=https://tdsi-secrets.adsrvr.org
 export VAULT_ADDR=https://or.vault.comcast.com
 
+export OLLAMA_HOST=0.0.0.0:11434
+
 function ip { echo `ttdops list nodes --name "$1" --groupby internal_ip --summary --format json | jq '.[].internal_ip' | tr -d '"'` }
 function s { ip=$(ip "$1"); shift; ssh "$ip" $@; }
 

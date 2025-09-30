@@ -236,6 +236,8 @@ alias dc=docker-compose
 alias p=podman
 alias pm=podman machine
 
+alias ai="ollama run llama3"
+
 # export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
 
 if [[ $KERNEL == 'Darwin' ]]; then
